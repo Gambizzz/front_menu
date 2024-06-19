@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
 import { useTranslation } from 'react-i18next';
@@ -39,10 +39,6 @@ const AdminProfile = () => {
       <p>{t('id')}: {user.id}</p>
 
       <Link to="/create-restaurant">{t('createRestaurant')}</Link>
-      
-      <div>
-      <Link to="/admin/edit-profile"> Modifier le profil admin </Link>
-      </div>
       
       <h2>{t('adminPageTitle')}</h2>
       <CKEditorComponent
