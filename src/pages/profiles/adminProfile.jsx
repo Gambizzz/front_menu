@@ -80,6 +80,10 @@ const AdminProfile = () => {
         <p>{t('id')}: {user.id}</p>
       </div>
 
+      <div>
+        <Link to="/admin/edit-profile"> Modifier le profil admin </Link>
+      </div>
+
     <div className='link-create'>
       <Link to="/create-restaurant"> <button> Créer un restaurant </button> </Link>
     </div>
