@@ -29,10 +29,16 @@ const Details = () => {
 
     const fetchText = async () => {
       try {
-        const response = await fetch("/api/texts"); // Endpoint à adapter selon votre structure d'API
+        const response = await ky.get("http://localhost:3000/api/latest-text", {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+  
         if (!response.ok) {
           throw new Error("Failed to fetch text");
         }
+        
         const data = await response.json();
         setText(data.text);
       } catch (error) {
