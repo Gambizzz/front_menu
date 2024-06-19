@@ -7,6 +7,16 @@ const CreateRestaurant = () => {
   const [user] = useAtom(userAtom);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [city, setCity] = useState('');
+  const [food, setFood] = useState('');
+
+  const cities = ['Paris', 'Marseille', 'Toulouse', 'Lyon', 'Bordeaux', 'Lille', 'Montpellier', 'Nice', 'Rennes', 'Rouen', 'Strasbourg', 'Reims'];
+  const foods = ['Chinese', 'Japanese', 'Italian', 'French', 'Lebanese', 'Mediterranean', 'Greek', 'Mexican', 'Indian', 'Thaï', 'Korean', 'Vegetarian', 'Fast food'];
+
+  const handleSelection = (e) => {
+    setCity(e.target.value);
+    setFood(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +28,9 @@ const CreateRestaurant = () => {
         json: {
           name: name,
           description: description,
-          admin_id: user.id
+          admin_id: user.id,
+          city: city,
+          food: food,
         },
         headers: {
           Authorization: `Bearer ${token}`
@@ -29,8 +41,9 @@ const CreateRestaurant = () => {
 
       setName('');
       setDescription('');
+      
+      // window.location.href = "/";
 
-      window.location.href = "/";
     } catch (error) {
       console.error('There was an error creating the restaurant!', error);
     }
@@ -38,7 +51,7 @@ const CreateRestaurant = () => {
 
   return (
     <>
-      <h1> Créer un Restaurant </h1>
+      <h1> Ajouter un restaurant </h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label> Nom : </label>
@@ -59,6 +72,24 @@ const CreateRestaurant = () => {
             required
           />
         </div>
+        <div>
+          <label> Ville : </label>
+          <select value={city} onChange={handleSelection}>
+            <option value=''> Sélectionner une ville </option>
+            {cities.map((city, index) => (
+              <option key={index} value={city}> {city} </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label> Type de nourriture : </label>
+          <select value={food} onChange={handleSelection}>
+            <option value=''> Sélectionner un type </option>
+            {foods.map((food, index) => (
+              <option key={index} value={food}> {food} </option>
+            ))}
+          </select>
+        </div>
         <button type="submit"> Créer </button>
       </form>
     </>
@@ -66,4 +97,5 @@ const CreateRestaurant = () => {
 };
 
 export default CreateRestaurant;
+
 

@@ -438,6 +438,7 @@ li {
   flex-direction: column;
   align-items: center;
   margin-top: 10%;
+
 }
 
 .top-footer {
@@ -915,3 +916,31 @@ html.nuit .form-contact button {
   }
 }
 /* END MEDIA QUERY */
+
+
+
+/* START INDEX RESTAURANTS */
+.card-restau {
+  display: flex;
+  flex-direction: column;
+}
+
+.restau {
+  border: 1px solid $title-icons-light;
+  margin: 2%;
+  padding: 2%;
+
+  h1 {
+    color: $title-icons-light;
+  }
+}
+/* END INDEX RESTAURANTS */
+
+
+
+/* START DETAILS RESTAURANTS */
+.name-restau {
+  color: $title-icons-light;
+}
+
+/* END DETAILS RESTAURANTS */
