@@ -27,6 +27,7 @@ import UserProfile from './pages/profiles/userProfile';
 import AdminProfile from './pages/profiles/adminProfile';
 import CreateRestaurant from './pages/restaurant/createRestaurant';
 import EditRestaurant from './pages/restaurant/editRestaurant';
+import EditAdmin from './pages/forms/editAdmin';
 
 function App() {
   const [isNightMode, setIsNightMode] = useAtom(nightModeAtom);
@@ -96,6 +97,7 @@ function App() {
         <Route path='/profile' element={<UserProfile />} />
         {/* route Profil ADMIN */}
         <Route path='/admin/profile' element={<AdminProfile />} />
+        <Route path="/admin/edit-profile" element={<EditAdmin />} />
       </Routes>
 
       <footer>
@@ -106,5 +108,3 @@ function App() {
 }
 
 export default App;
-
-
