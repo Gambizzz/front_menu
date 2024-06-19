@@ -34,9 +34,12 @@ const Details = () => {
   
     return (
       <>
-        <h1> PAGE DÉTAILS D'UN RESTAURANT </h1>
-        <h2> {restaurant.name} </h2>
-        <p> Description : {restaurant.description} </p>
+        <div key={restaurant.id}>
+          <h1 className="name-restau"> {restaurant.name} </h1>
+          <p> Description : {restaurant.description} </p>
+          <p> Ville : {restaurant.city} </p>
+          <p> Type de nourriture : {restaurant.food} </p>
+        </div>
       </>
     )
 }

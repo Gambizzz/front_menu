@@ -22,7 +22,7 @@ function AdminSign() {
       return;
     }
 
-    try { 
+    try {
       const response = await ky.post('http://localhost:3000/admins', {
         json: {
           admin: {
@@ -48,8 +48,8 @@ function AdminSign() {
 
       setEmail('');
       setPassword('');
-      setPasswordConfirmation('');
-      
+      setConfirmPassword('');
+
       window.location.href = "/";
     } catch (error) {
       setError('Erreur lors de l\'inscription');
@@ -77,4 +77,5 @@ function AdminSign() {
 }
 
 export default AdminSign;
+
 
