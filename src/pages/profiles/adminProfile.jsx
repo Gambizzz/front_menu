@@ -5,11 +5,13 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import ky from 'ky';
 import Cookies from 'js-cookie';
+import CKEditorComponent from '../../components/CKEditorComponent';
 
 const AdminProfile = () => {
   const [user] = useAtom(userAtom);
   const { t } = useTranslation();
   const [restaurants, setRestaurants] = useState([]);
+  const [editorData, setEditorData] = useState('');
 
   useEffect(() => {
     fetchRestaurants();
@@ -32,6 +34,27 @@ const AdminProfile = () => {
       setRestaurants(adminRestaurants);
     } catch (error) {
       console.error('Erreur lors de la récupération des restaurants : ', error);
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      const response = await ky.post('http://localhost:3000/api/save-text', {
+        json: { text: editorData },
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      });
+
+      if (response.ok) {
+        alert(t('textSavedSuccessfully'));
+      } else {
+        const errorData = await response.json();
+        alert(`${t('failedToSaveText')}: ${errorData.error}`);
+      }
+    } catch (error) {
+      console.error('Error saving text:', error);
+      alert(t('failedToSaveTextPleaseTryAgain'));
     }
   };
 
@@ -60,6 +83,10 @@ const AdminProfile = () => {
     <div className='link-create'>
       <Link to="/create-restaurant"> <button> Créer un restaurant </button> </Link>
     </div>
+
+    <CKEditorComponent data={editorData} onChange={setEditorData} />
+    <button onClick={handleSave}>{t('saveButton')}</button>
+    
 
       <div>
         <h2 className='your-restau'> Vos restaurants </h2>
