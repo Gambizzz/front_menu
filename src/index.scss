@@ -944,3 +944,48 @@ html.nuit .form-contact button {
 }
 
 /* END DETAILS RESTAURANTS */
+
+
+
+/* START ADMIN PROFILE */
+.link-create {
+  margin: 2%;
+
+  button {
+    border: 1px solid $title-icons-light;
+    padding: 1%;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+}
+
+.admin-infos {
+  margin: 2%;
+}
+
+.cards-admin {
+  margin: 2%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.solo-card {
+  border: 1px solid $title-icons-light;
+  margin-top: 2%;
+  padding: 2%;
+}
+
+.your-restau {
+  color: $title-icons-light;
+  font-size: large;
+  text-align: center;
+}
+
+.btn-admin {
+  display: flex;
+  flex-direction: column;
+  color: $title-icons-light;
+  cursor: pointer;
+}
