@@ -1,0 +1,917 @@
+@import "node_modules/bootswatch/dist/zephyr/variables"; 
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/bootswatch/dist/zephyr/bootswatch"; 
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@font-face {
+  font-family: 'Nectarine';
+  src: url('src/assets/fonts/Nectarine DEMO.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('src/assets/fonts/OpenDyslexic3-Regular.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('src/assets/fonts/OpenDyslexic3-Bold.ttf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Variables*/
+$bg-light-font-night: #FCF6F2;
+$bg-night: #191970;
+$font-light: #2454FF;
+$title-icons-light: #FE4C00;
+$title-icons-night: #FFC40C;
+$font: "Raleway", sans-serif;
+$title-font: 'Nectarine';
+
+
+/* START OPENDYS STYLES */
+body.dyslexic {
+  font-family: 'OpenDyslexic';
+}
+
+.toggle-btn.dyslexic {
+  font-family: 'OpenDyslexic';
+  font-size: 50%;
+}
+/* END OPENDYS STYLES */
+
+
+/* START LIGHT THEME STYLES */
+body {
+    background-color: $bg-light-font-night;
+    color: $font-light;
+    font-family: $font;
+    margin: 1.2%;
+}
+/* END LIGHT THEME STYLES */
+
+
+/* START NIGHT THEME STYLES */
+html.nuit body {
+    background-color: $bg-night;
+    color: $bg-light-font-night;
+}
+
+html.nuit .gold {
+    background-color: $bg-night;
+    color: $title-icons-night;
+}
+
+html.nuit .sidebar {
+  background-color: $bg-night;
+  color: $title-icons-night;
+
+  li {
+    padding: 10px;
+    border-bottom: 1px solid $bg-light-font-night;
+  }
+}
+
+html.nuit .title-pages {
+  font-family: $title-font;
+  font-size: 40px;
+  color: $title-icons-night;
+}
+
+html.nuit .log {
+  color: $title-icons-night;
+  background-color: transparent !important;
+  border: none;
+  box-shadow: none;
+  font-size: 1em;
+}
+
+html.nuit .log:hover {
+  background-color: transparent !important;
+  border: none;
+  color: $title-icons-night;
+}
+
+html.nuit .log:focus, .log:active {
+  background-color: transparent !important;
+  border: none;
+  color: $title-icons-night !important;
+  box-shadow: none;
+}
+
+html.nuit .drop-box {
+  border-color: $title-icons-night;
+  background-color: $bg-night;
+}
+
+html.nuit .drop-text {
+  color: $bg-light-font-night;
+}
+
+html.nuit .drop-text:hover {
+  background-color: $title-icons-night;
+  color: $bg-night;
+}
+
+html.nuit .card-front-concept {
+  background-color: $title-icons-night;
+  border-color: $title-icons-night;
+  color: $bg-night;
+}
+
+html.nuit .card-back-concept {
+  background-color: $bg-light-font-night;
+  border-color: $bg-light-font-night;
+  color: $bg-night;
+}
+
+html.nuit .card-team {
+  background-color: $bg-night;
+  border-color: $title-icons-night;
+}
+
+html.nuit .card-title-team {
+  color: $bg-light-font-night;
+}
+
+html.nuit .card-subtitle-team {
+  color: $title-icons-night;
+}
+
+html.nuit .card-social__item svg {
+  fill: $bg-light-font-night;
+}
+
+html.nuit .card-social__item svg:hover {
+  fill: $title-icons-night;
+}
+
+html.nuit .card-avatar-team {
+  background: linear-gradient(to top, $title-icons-night 0%, #fcbc97 100%);
+}
+/* END NIGHT THEME STYLES */
+
+
+
+
+
+/* START SIDEBAR */
+.app-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  position: relative;
+}
+
+.sidebar {
+  width: 250px;
+  height: 20%;
+  position: fixed;
+  top: 50%;
+  right: -250px;
+  background-color: $bg-light-font-night;
+  color: $title-icons-light;
+  transform: translateY(-50%);
+  transition: left 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.toggle-btn {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: $title-icons-light;
+  color: $bg-light-font-night;
+  border: none;
+  padding: 0.7%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28%;
+  width: 1%;
+  border-radius: 10px 0 0 10px;
+  text-align: center;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  font-family: $font;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.toggle-btn:focus {
+  outline: none;
+}
+
+.toggle-btn.nuit {
+  background-color: $title-icons-night;
+  color: $bg-night;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid $font-light;
+}
+/* END SIDEBAR */
+
+
+/* START NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-right: 10px;
+  font-size: 1.2em;
+}
+
+/* start language btn */
+.switch {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 70px;
+  height: 36px;
+  transform: translateX(calc(50% - 10px));
+  margin-left: 1%;
+}
+
+.toggle {
+  opacity: 0;
+}
+
+.slider.day {
+  box-sizing: border-box;
+  border-radius: 100px;
+  border: 2px solid $font-light;
+  box-shadow: 4px 4px $title-icons-light;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $bg-light-font-night;
+  transition: 0.3s;
+}
+
+.slider.night {
+  box-sizing: border-box;
+  border-radius: 100px;
+  border: 2px solid $bg-light-font-night;
+  box-shadow: 4px 4px $title-icons-night;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $bg-night;
+  transition: 0.3s;
+}
+
+.slider:before {
+  content: "FR";
+  box-sizing: border-box;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 2px;
+  bottom: 1px;
+  border: 2px solid $title-icons-light;
+  border-radius: 100px;
+  background-color: $bg-light-font-night;
+  color: $title-icons-light;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 25px;
+  transition: 0.3s;
+}
+
+.slider.night:before {
+  content: "FR";
+  box-sizing: border-box;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 2px;
+  bottom: 1px;
+  border: 2px solid $title-icons-night;
+  border-radius: 100px;
+  background-color: $bg-night;
+  color: $title-icons-night;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 25px;
+  transition: 0.3s;
+}
+
+.toggle:checked + .slider {
+  background-color: $bg-light-font-night;
+  transform: translateX(-32px);
+}
+
+.toggle:checked + .slider.night {
+  background-color: $bg-night;
+  transform: translateX(-32px);
+}
+
+.toggle:checked + .slider:before {
+  content: "EN";
+  transform: translateX(32px);
+  color: $font-light;
+  border-color: $font-light;
+}
+
+.toggle:checked + .slider.night:before {
+  content: "EN";
+  transform: translateX(32px);
+  color: $bg-light-font-night;
+  border-color: $bg-light-font-night;
+  background-color: $bg-night;
+}
+/* end language btn */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  width: 100%;
+}
+
+.nav-links {
+  p {
+    margin: 0 200px;
+  }
+
+  img {
+    width: 45%;
+    position: relative;
+  }
+}
+
+
+.btn-dropdown {
+  padding-right: 10%;
+}
+
+.log {
+  color: $title-icons-light;
+  background-color: transparent !important;
+  border: none;
+  box-shadow: none;
+  font-size: 1em;
+}
+
+.log:hover {
+  background-color: transparent !important;
+  border: none;
+  color: $title-icons-light;
+}
+
+.log:focus,
+.log:active {
+  background-color: transparent !important;
+  border: none;
+  color: $title-icons-light !important;
+  box-shadow: none;
+}
+
+.drop-box {
+  border-color: $font-light;
+  background-color: $bg-light-font-night;
+}
+
+.drop-text {
+  color: $font-light;
+}
+
+.drop-text:hover {
+  background-color: $title-icons-light;
+  color: $bg-light-font-night;
+}
+
+.theme-toggler {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  font-size: 1.6em;
+  padding-right: 8px;
+  margin-right: 1%;
+}
+/* END NAVBAR */
+
+
+
+/* START FOOTER */
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.top-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-footer {
+  width: 15%;
+}
+
+.link-form-footer {
+  color: $title-icons-light;
+  font-weight: bold;
+}
+
+.pages-footer {
+  margin-top: 2%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.links-footer {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.social-icons {
+  color: $title-icons-light;
+  padding: 0;
+  font-size: 1.5em;
+}
+/* END FOOTER */
+
+
+
+/* START PAGE CONCEPT */
+.concept-cards {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10%;
+}
+
+.card-concept {
+  width: 300px;
+  height: 200px;
+  perspective: 1000px;
+}
+
+.card-inner-concept {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.999s;
+}
+
+.card-concept:hover .card-inner-concept {
+  transform: rotateY(180deg);
+}
+
+.card-front-concept,
+.card-back-concept {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-front-concept {
+  background-color: $title-icons-light;
+  color: $bg-light-font-night;
+  display: flex;
+  align-items: center;
+  border: 10px solid $title-icons-light;
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 24px;
+  transform: rotateY(0deg);
+}
+
+.card-back-concept {
+  background-color: $font-light;
+  color: $bg-light-font-night;
+  display: flex;
+  align-items: center;
+  border: 10px solid $font-light;
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 24px;
+  transform: rotateY(180deg);
+
+  p {
+    text-align: center;
+  }
+}
+/* END PAGE CONCEPT */
+
+
+
+/* START PAGE TEAM */
+.team-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10%;
+}
+
+.card-team {
+  width: 250px;
+  height: 340px;
+  background: $bg-light-font-night;
+  border: 1px solid $title-icons-light;
+  border-radius: 15px;
+  padding: 2rem 1.5rem;
+  transition: box-shadow .3s ease, transform .2s ease;
+ }
+ 
+ .card-info-team {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8%;
+  transition: transform .2s ease, opacity .2s ease;
+ }
+ 
+ /*Image*/
+ .card-avatar-team {
+  --size: 90px;
+  background: linear-gradient(to top, $title-icons-light 0%, #fcbc97 100%);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  transition: transform .2s ease;
+  margin-bottom: 1rem;
+ }
+ 
+ /*Card footer*/
+ .card-social {
+  transform: translateY(200%);
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  opacity: 0;
+  transition: transform .2s ease, opacity .2s ease;
+ }
+ 
+ .card-social__item svg {
+  display: block;
+  height: 18px;
+  width: 18px;
+  fill: $font-light;
+  cursor: pointer;
+  transition: fill 0.2s ease ,transform 0.2s ease;
+ }
+ 
+ /*Text*/
+ .card-title-team {
+  color: $font-light;
+  font-size: 2em;
+  font-weight: 600;
+  line-height: 2rem;
+ }
+ 
+ .card-subtitle-team {
+  color: $title-icons-light;
+  font-size: 1em;
+ }
+ 
+ /*Hover*/
+ .card-team:hover {
+  box-shadow: 0 8px 50px #23232333;
+ }
+ 
+ .card-team:hover .card-info-team {
+  transform: translateY(-5%);
+ }
+ 
+ .card-team:hover .card-social {
+  transform: translateY(100%);
+  opacity: 1;
+ }
+ 
+ .card-social__item svg:hover {
+  fill: $title-icons-light;
+  transform: scale(1.1);
+ }
+ 
+ .card-avatar-team:hover {
+  transform: scale(1.1);
+ }
+/* END PAGE TEAM */
+
+
+
+/* START PAGE CONTACT */
+.full-contact {
+  display: flex;
+  align-items: center;
+  margin-top: 10%;
+  margin-left: 20%;
+}
+
+.contact-form {
+  display: flex;
+  justify-content: end;
+  flex: 1;
+  margin-right: 30%;
+}
+
+.form-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  background-color: transparent;
+  border: solid 1px $title-icons-light;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+}
+
+html.nuit .form-contact {
+  border: solid 1px $title-icons-night;
+}
+
+.flex-contact {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form-contact label {
+  position: relative;
+}
+
+.form-contact label input {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid $font-light;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+html.nuit .form-contact label input {
+  border: 1px solid $bg-light-font-night;
+}
+
+.form-contact label input + span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: $font-light;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+html.nuit .form-contact label input + span {
+  color: $title-icons-night;
+}
+
+.form-contact label input:placeholder-shown + span {
+  top: 15px;
+  font-size: 0.9em;
+}
+
+.form-contact label input:focus + span,
+.form-contact label input:valid + span {
+  top: 30px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.form-contact label input:valid + span {
+  color: $title-icons-light;
+}
+
+html.nuit .form-contact label input:valid + span {
+  color: $title-icons-night;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid $font-light;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+html.nuit textarea {
+  border: 1px solid $bg-light-font-night;
+}
+
+.form-contact label textarea + span {
+  position: absolute;
+  left: 10px;
+  top: 50px;
+  color: grey;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form-contact label textarea:placeholder-shown + span {
+  top: 40px;
+  font-size: 0.9em;
+}
+
+.form-contact label textarea:focus + span,
+.form-contact label textarea:valid + span {
+  top: 50px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.form-contact label textarea:valid + span {
+  color: $title-icons-light;
+}
+
+html.nuit .form-contact label textarea:valid + span {
+  color: $title-icons-night;
+}
+
+.coord-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 350px;
+  flex: 1;
+  margin-right: 15%;
+}
+
+.ref-contact p {
+  display: flex;
+  flex-direction: row;
+  margin: 2%;
+  align-items: center;
+  
+  .icon {
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .ref-contact p {
+  .icon {
+    color: $title-icons-night;
+  }
+}
+
+html.nuit .form-contact button {
+  color: $title-icons-night;
+}
+/* END PAGE CONTACT */
+
+
+
+
+
+/* START GENERALS */
+.title-pages {
+  font-family: $title-font;
+  font-size: 40px;
+  color: $title-icons-light;
+}
+
+.title-pages.night {
+  font-family: $title-font;
+  font-size: 40px;
+  color: $title-icons-night;
+}
+
+.page-header {
+  text-align: center;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+/* END GENERALS */
+
+
+
+/* START MEDIA QUERY */
+@media (max-width: 515px) {
+  .navbar {
+    flex-direction: column;
+    font-size: 1em;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links p,
+  .nav-links img,
+  .nav-links .btn-dropdown {
+    margin: 10px 0;
+  }
+
+  .nav-links p {
+    margin-left: 15%;
+  }
+
+  .nav-links .btn-dropdown {
+   margin-left: 18%; 
+  }
+
+  .nav-links img {
+    width: 35%;
+    margin-left: 38%;
+  }
+
+  .switch {
+    width: 70px;
+    height: 35px;
+    margin-right: 75%;
+  }
+
+  .slider:before {
+    height: 25px;
+    width: 25px;
+    line-height: 20px;
+  }
+
+  .theme-toggler {
+    font-size: 1.2em;
+    padding-right: 5px;
+    margin-right: 2%;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 40%;
+    right: -100%;
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+
+  .toggle-btn {
+    margin-right: 0;
+    height: 20%;
+    width: auto;
+    font-size: 0.7rem;
+    padding: 5px;
+  }
+
+  ul {
+    width: 100%;
+  }
+
+  li {
+    padding: 5px;
+  }
+
+  .concept-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-concept {
+    margin-bottom: 5%;
+  }
+}
+/* END MEDIA QUERY */
