@@ -10,8 +10,8 @@ const Restaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [user] = useAtom(userAtom);
   const { city, food } = useParams(); 
-  const [selectedCity, setSelectedCity] = useState(city || '');
-  const [selectedFood, setSelectedFood] = useState(food || '');
+  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedFood, setSelectedFood] = useState('');
 
   useEffect(() => {
     fetchRestaurants();
