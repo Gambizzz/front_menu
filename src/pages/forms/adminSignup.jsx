@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
 import Cookies from 'js-cookie';
 import ky from 'ky';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AdminSign() {
   const [, setUser] = useAtom(userAtom);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
   const { t } = useTranslation();
 
   const handleSignup = async (event) => {
     event.preventDefault();
-    setError('');
 
     if (password !== confirmPassword) {
-      setError('Les mots de passe ne correspondent pas');
+      toast.error(t('mismatchPass'));
       return;
     }
 
@@ -50,32 +51,46 @@ function AdminSign() {
       setPassword('');
       setConfirmPassword('');
 
-      window.location.href = "/";
+      toast.success(t('sign'));
+
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000); 
+
     } catch (error) {
-      setError('Erreur lors de l\'inscription');
+      toast.error(t('signErr'));
+      console.error('Error during signup:', error);
     }
   };
 
   return (
     <div className='signup-form'>
       <form onSubmit={handleSignup} id='new_admin'>
-        <h2>{t('sinscrireAdmin')}</h2>
+      <h1 className="title-pages"> {t('signupForm')} </h1>
         <div className='form-group'>
-          <input type='email' className='form-control' id='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t('email')} required />
+          <input type='email' className='form-control' id='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t('placeEmail')} required />
         </div>
         <div className='form-group'>
-          <input type='password' className='form-control' id='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder={t('motDePasse')} required />
+          <input type='password' className='form-control' id='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder={t('password')}required />
         </div>
         <div className='form-group'>
-          <input type='password' className='form-control' id='confirmPassword' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder={t('confirmezMotDePasse')} required />
+          <input type='password' className='form-control' id='confirmPassword' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder={t('passConfirm')} required />
         </div>
-        {error && <p className='error-message'>{error}</p>}
-        <button type='submit' className='btn btn-primary'>{t('sinscrire')}</button>
+        <button type='submit'> {t('welcome')} </button>
       </form>
+      <p>
+        <Link to="/login" className='links'> {t('seConnecter')} </Link> | 
+        <Link to="/" className='links'> {t('home')} </Link>
+      </p>
+
+      <ToastContainer />
     </div>
   );
 }
 
 export default AdminSign;
+
+
+
 
 

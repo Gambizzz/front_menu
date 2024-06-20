@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import ky from 'ky';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditRestaurant = () => {
   const { id } = useParams();
+  const { t } = useTranslation('');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [city, setCity] = useState('');
@@ -71,57 +75,67 @@ const EditRestaurant = () => {
         }
       }).json();
 
+      toast.success(t('majRestaurant'));
       console.log('Réponse de mise à jour:', response);
       
-      window.location.href = "/"; 
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000); 
+
     } catch (error) {
       console.error('Erreur lors de la mise à jour du restaurant : ', error);
+      toast.error(t('errorMajRestaurant'));
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Nom :</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Description :</label>
-        <textarea
-          name="description"
-          value={description}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Ville :</label>
-        <input
-          type="text"
-          name="city"
-          value={city}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Type de cuisine :</label>
-        <input
-          type="text"
-          name="food"
-          value={food}
-          onChange={handleChange}
-        />
-      </div>
-      <button type="submit"> Mettre à jour </button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label> {t('nameR')} </label>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label> {t('descriptR')} </label>
+          <textarea
+            name="description"
+            value={description}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label> {t('cityR')} </label>
+          <input
+            type="text"
+            name="city"
+            value={city}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label> {t('foodR')} </label>
+          <input
+            type="text"
+            name="food"
+            value={food}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit"> {t('updateR')} </button>
+      </form>
+
+      <ToastContainer />
+    </>
   );
 };
 
 export default EditRestaurant;
+
 
 
 

@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import ky from 'ky';
 import { useAtom } from "jotai";
 import { userAtom } from "../../atoms";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Details = () => {
   const { t } = useTranslation();
@@ -24,6 +26,7 @@ const Details = () => {
         setRestaurant(data);
       } catch (error) {
         console.error('Erreur lors de la récupération du restaurant : ', error);
+        toast.error(t('errorFetchingRestaurants'));
       }
     };
 
@@ -34,11 +37,11 @@ const Details = () => {
             Authorization: `Bearer ${user.token}`,
           },
         });
-  
+
         if (!response.ok) {
           throw new Error("Failed to fetch text");
         }
-        
+
         const data = await response.json();
         setText(data.text);
       } catch (error) {
@@ -51,20 +54,22 @@ const Details = () => {
   }, [id, user.token]);
 
   if (!restaurant) {
-    return <div>Loading...</div>;
+    return <div> {t('load')} </div>;
   }
 
   return (
     <div>
-      <h1>{t("restaurantDetailsPageTitle")}</h1>
+      <ToastContainer />
+
       <div>
         <h1 className="name-restau">{restaurant.name}</h1>
-        <p>Description : {restaurant.description}</p>
-        <p>Ville : {restaurant.city}</p>
-        <p>Type de nourriture : {restaurant.food}</p>
+        <p> {t('descriptR')} : {restaurant.description}</p>
+        <p> {t('cityR')} : {restaurant.city}</p>
+        <p> {t('foodR')} : {restaurant.food}</p>
       </div>
+
       <div>
-        <h2>{t("additionalTextTitle")}</h2>
+        <h2> {t('ourMenu')} </h2>
         <div dangerouslySetInnerHTML={{ __html: text }}></div>
       </div>
     </div>
@@ -72,3 +77,4 @@ const Details = () => {
 };
 
 export default Details;
+
