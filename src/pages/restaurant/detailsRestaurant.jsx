@@ -58,6 +58,7 @@ const Details = () => {
     <div>
       <h1>{t("restaurantDetailsPageTitle")}</h1>
       <div>
+      <img src={restaurant.image_url} />
         <h1 className="name-restau">{restaurant.name}</h1>
         <p>Description : {restaurant.description}</p>
         <p>Ville : {restaurant.city}</p>
