@@ -9,29 +9,40 @@ const CreateRestaurant = () => {
   const [description, setDescription] = useState('');
   const [city, setCity] = useState('');
   const [food, setFood] = useState('');
+  const [photo, setPhoto] = useState(null);
 
   const cities = ['Paris', 'Marseille', 'Toulouse', 'Lyon', 'Bordeaux', 'Lille', 'Montpellier', 'Nice', 'Rennes', 'Rouen', 'Strasbourg', 'Reims'];
   const foods = ['Chinese', 'Japanese', 'Italian', 'French', 'Lebanese', 'Mediterranean', 'Greek', 'Mexican', 'Indian', 'Thaï', 'Korean', 'Vegetarian', 'Fast food'];
 
   const handleSelection = (e) => {
-    setCity(e.target.value);
-    setFood(e.target.value);
+    const { name, value } = e.target;
+    if (name === 'city') {
+      setCity(value);
+    } else if (name === 'food') {
+      setFood(value);
+    }
+  };
+
+  const handleFileChange = (e) => {
+    setPhoto(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      const formData = new FormData();
+      formData.append('restaurant[name]', name);
+      formData.append('restaurant[description]', description);
+      formData.append('restaurant[admin_id]', user.id);
+      formData.append('restaurant[city]', city);
+      formData.append('restaurant[food]', food);
+      formData.append('restaurant[photo]', photo);
+
       const token = user.token;
 
       const response = await ky.post('http://localhost:3000/restaurants', {
-        json: {
-          name: name,
-          description: description,
-          admin_id: user.id,
-          city: city,
-          food: food,
-        },
+        body: formData,
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -41,9 +52,11 @@ const CreateRestaurant = () => {
 
       setName('');
       setDescription('');
-      
-      // window.location.href = "/";
+      setCity('');
+      setFood('');
+      setPhoto(null);
 
+      // Redirection ou autre action après la création réussie
     } catch (error) {
       console.error('There was an error creating the restaurant!', error);
     }
@@ -74,7 +87,7 @@ const CreateRestaurant = () => {
         </div>
         <div>
           <label> Ville : </label>
-          <select value={city} onChange={handleSelection}>
+          <select name="city" value={city} onChange={handleSelection} required>
             <option value=''> Sélectionner une ville </option>
             {cities.map((city, index) => (
               <option key={index} value={city}> {city} </option>
@@ -83,12 +96,21 @@ const CreateRestaurant = () => {
         </div>
         <div>
           <label> Type de nourriture : </label>
-          <select value={food} onChange={handleSelection}>
+          <select name="food" value={food} onChange={handleSelection} required>
             <option value=''> Sélectionner un type </option>
             {foods.map((food, index) => (
               <option key={index} value={food}> {food} </option>
             ))}
           </select>
+        </div>
+        <div>
+          <label> Photo : </label>
+          <input
+            type="file"
+            onChange={handleFileChange}
+            accept="image/*"
+            required
+          />
         </div>
         <button type="submit"> Créer </button>
       </form>

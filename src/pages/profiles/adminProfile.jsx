@@ -102,6 +102,7 @@ const AdminProfile = () => {
               <p>{restaurant.description}</p>
               <p>{restaurant.city}</p>
               <p>{restaurant.food}</p>
+              <img src={restaurant.image_url} />
               <div className='btn-admin'>
                 <Link to={`/edit-restaurant/${restaurant.id}`}>
                   <button> Éditer </button>
@@ -120,10 +121,3 @@ const AdminProfile = () => {
 };
 
 export default AdminProfile;
-
-
-
-
-
-
-
