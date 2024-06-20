@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ky from 'ky';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ResetPassword = () => {
   const { token } = useParams();
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [message, setMessage] = useState('');
   const [tokenValid, setTokenValid] = useState(true);
   const { t } = useTranslation();
 
@@ -18,7 +19,7 @@ const ResetPassword = () => {
         setTokenValid(true);
       } catch (error) {
         setTokenValid(false);
-        setMessage('Le lien de réinitialisation du mot de passe est invalide ou a expiré.');
+        toast.error('passLink');
       }
     }
     checkTokenValidity();
@@ -40,16 +41,16 @@ const ResetPassword = () => {
           "Content-Type": "application/json"
         }
       }).json();
-      setMessage('Le mot de passe a été réinitialisé avec succès.');
+      toast.success(t('passOK'));
       console.log(response);
     } catch (error) {
       if (error.response) {
         const errorData = await error.response.json();
         const errorMessage = Array.isArray(errorData.error) ? errorData.error.join(', ') : errorData.error;
-        setMessage(`Erreur lors de la réinitialisation du mot de passe: ${errorMessage}`);
+        toast.error(`(t('errorReset')); ${errorMessage}`);
         console.error('There was an error resetting the password!', errorData);
       } else {
-        setMessage('Erreur lors de la réinitialisation du mot de passe.');
+        toast.error(t('errorReset'));
         console.error('There was an error resetting the password!', error);
       }
     }
@@ -58,8 +59,7 @@ const ResetPassword = () => {
   if (!tokenValid) {
     return (
       <div>
-        <h2>Token invalide</h2>
-        <p>{message}</p>
+        <h2> (t('invalidToken')) </h2>
         <p>
           <Link to="/signup"> {t('sinscrire')} </Link> | <Link to="/login"> {t('seConnecter')} </Link> | <Link to="/"> {t('home')} </Link>
         </p>
@@ -93,10 +93,11 @@ const ResetPassword = () => {
         </div>
         <button type="submit" className='btn-reset'> {t('reset')} </button>
       </form>
-      <p> {message} </p>
       <p>
-        <Link to="/signup" className='links'> {t('sinscrire')} </Link> | <Link to="/login" className='links'> {t('seConnecter')} </Link> | <Link to="/" className='links'> {t('home')} </Link>
+        <Link to="/signup" className='links'> {t('signup')} </Link> | <Link to="/login" className='links'> {t('seConnecter')} </Link> | <Link to="/" className='links'> {t('home')} </Link>
       </p>
+
+      <ToastContainer />
     </div>
   );
 };
