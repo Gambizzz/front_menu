@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import ky from 'ky';
 import Cookies from 'js-cookie';
 import CKEditorComponent from '../../components/CKEditorComponent';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminProfile = () => {
   const [user] = useAtom(userAtom);
@@ -26,13 +28,14 @@ const AdminProfile = () => {
         }
       }).json();
 
-      const adminId = parseInt(user.id, 10); // Convertir user.id en nombre
+      const adminId = parseInt(user.id, 10); // Convert user.id to a number
 
-      // Filtrer les restaurants où admin_id correspond à l'ID de l'administrateur connecté
+      // Filter restaurants where admin_id matches the ID of the logged-in admin
       const adminRestaurants = response.filter(restaurant => parseInt(restaurant.admin_id, 10) === adminId);
 
       setRestaurants(adminRestaurants);
     } catch (error) {
+      toast.error(t('errorFetchingRestaurants'));
       console.error('Erreur lors de la récupération des restaurants : ', error);
     }
   };
@@ -47,18 +50,19 @@ const AdminProfile = () => {
       });
 
       if (response.ok) {
-        alert(t('textSavedSuccessfully'));
+        toast.success(t('textSavedSuccessfully'));
       } else {
         const errorData = await response.json();
-        alert(`${t('failedToSaveText')}: ${errorData.error}`);
+        toast.error(`${t('failedToSaveText')}: ${errorData.error}`);
       }
     } catch (error) {
       console.error('Error saving text:', error);
-      alert(t('failedToSaveTextPleaseTryAgain'));
+      toast.error(t('failedToSaveText'));
     }
   };
 
-  const handleDelete = async (restaurantId, token) => {
+  const handleDelete = async (restaurantId) => {
+    const token = Cookies.get('token');
     try {
       await ky.delete(`http://localhost:3000/restaurants/${restaurantId}`, {
         headers: {
@@ -66,8 +70,10 @@ const AdminProfile = () => {
         }
       });
       fetchRestaurants();
+      toast.success(t('restaurantDeleted'));
     } catch (error) {
       console.error('Erreur lors de la suppression du restaurant : ', error);
+      toast.error(t('deleteRestaurantError'));
     }
   };
 
@@ -81,43 +87,52 @@ const AdminProfile = () => {
       </div>
 
       <div>
-        <Link to="/admin/edit-profile"> Modifier le profil admin </Link>
+        <Link to="/admin/edit-profile"> {t('editAdmin')} </Link>
       </div>
 
-    <div className='link-create'>
-      <Link to="/create-restaurant"> <button> Créer un restaurant </button> </Link>
-    </div>
+      <div className='link-create'>
+        <Link to="/create-restaurant"> <button> {t('createRestau')} </button> </Link>
+      </div>
 
-    <CKEditorComponent data={editorData} onChange={setEditorData} />
-    <button onClick={handleSave}>{t('saveButton')}</button>
-    
+      <CKEditorComponent data={editorData} onChange={setEditorData} />
+      <button onClick={handleSave}>{t('saveButton')}</button>
 
       <div>
-        <h2 className='your-restau'> Vos restaurants </h2>
+        <h2 className='your-restau'> {t('yourRestau')} </h2>
         <div className='cards-admin'>
-        {restaurants.length > 0 ? (
-          restaurants.map(restaurant => (
-            <div key={restaurant.id} className='solo-card'>
-              <h3>{restaurant.name}</h3>
-              <p>{restaurant.description}</p>
-              <p>{restaurant.city}</p>
-              <p>{restaurant.food}</p>
-              <img src={restaurant.image_url} />
-              <div className='btn-admin'>
-                <Link to={`/edit-restaurant/${restaurant.id}`}>
-                  <button> Éditer </button>
-                </Link>
-                <button onClick={() => handleDelete(restaurant.id)}> Supprimer </button>
+          {restaurants.length > 0 ? (
+            restaurants.map(restaurant => (
+              <div key={restaurant.id} className='solo-card'>
+                <h3>{restaurant.name}</h3>
+                <img src={restaurant.image_url} />
+                <p>{restaurant.description}</p>
+                <p>{restaurant.city}</p>
+                <p>{restaurant.food}</p>
+                <div className='btn-admin'>
+                  <Link to={`/edit-restaurant/${restaurant.id}`}>
+                    <button> {t('editR')} </button>
+                  </Link>
+                  <button onClick={() => handleDelete(restaurant.id)}> {t('delR')} </button>
+                </div>
               </div>
-            </div>
-          ))
-        ) : (
-          <p> Aucun restaurant trouvé. </p>
-        )}
+            ))
+          ) : (
+            <p> {t('noRestau')} </p>
+          )}
+        </div>
       </div>
-    </div>
+
+      <ToastContainer />
     </div>
   );
 };
 
 export default AdminProfile;
+
+
+
+
+
+
+
+

@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import ky from 'ky';
+import { useTranslation } from 'react-i18next';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CreateRestaurant = () => {
+  const { t } = useTranslation('');
   const [user] = useAtom(userAtom);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -48,26 +52,31 @@ const CreateRestaurant = () => {
         }
       }).json();
 
-      console.log('Restaurant created', response);
+      toast.success(t('successR'));
+      console.log('Restaurant créé', response);
 
       setName('');
       setDescription('');
       setCity('');
       setFood('');
       setPhoto(null);
+      
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000); 
 
-      // Redirection ou autre action après la création réussie
     } catch (error) {
-      console.error('There was an error creating the restaurant!', error);
+      console.error('Erreur lors de la création du restaurant : ', error);
+      toast.error(t('errorR'));
     }
   };
 
   return (
     <>
-      <h1> Ajouter un restaurant </h1>
+      <h1 className="title-pages"> {t('addR')} </h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label> Nom : </label>
+          <label> {t('nameR')} </label>
           <input
             type="text"
             name="name"
@@ -77,7 +86,7 @@ const CreateRestaurant = () => {
           />
         </div>
         <div>
-          <label> Description : </label>
+          <label> {t('descriptR')} </label>
           <textarea
             name="description"
             value={description}
@@ -86,18 +95,18 @@ const CreateRestaurant = () => {
           />
         </div>
         <div>
-          <label> Ville : </label>
+          <label> {t('cityR')} </label>
           <select name="city" value={city} onChange={handleSelection} required>
-            <option value=''> Sélectionner une ville </option>
+            <option value=''> {t('selectedCities')} </option>
             {cities.map((city, index) => (
               <option key={index} value={city}> {city} </option>
             ))}
           </select>
         </div>
         <div>
-          <label> Type de nourriture : </label>
+          <label> {t('foodR')} </label>
           <select name="food" value={food} onChange={handleSelection} required>
-            <option value=''> Sélectionner un type </option>
+            <option value=''> {t('selectFood')} </option>
             {foods.map((food, index) => (
               <option key={index} value={food}> {food} </option>
             ))}
@@ -112,12 +121,15 @@ const CreateRestaurant = () => {
             required
           />
         </div>
-        <button type="submit"> Créer </button>
+        <button type="submit"> {t('createR')}</button>
       </form>
+
+      <ToastContainer />
     </>
   );
 };
 
 export default CreateRestaurant;
+
 
 
