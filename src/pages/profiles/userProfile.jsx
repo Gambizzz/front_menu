@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
 import { useTranslation } from 'react-i18next';
@@ -7,6 +6,9 @@ import { Link } from 'react-router-dom';
 const UserProfile = () => {
   const [user] = useAtom(userAtom);
   const { t } = useTranslation();
+
+  console.log('User data in UserProfile:', user);  // Log pour vérifier les données de l'utilisateur
+
 
   return (
     <div>

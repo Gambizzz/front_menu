@@ -33,6 +33,7 @@ function Log() {
         id: user.id,
         token: token,
         isLoggedIn: true,
+        isAdmin: user.isAdmin
       });
 
       Cookies.set('token', token);

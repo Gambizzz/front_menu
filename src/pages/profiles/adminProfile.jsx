@@ -14,8 +14,10 @@ const AdminProfile = () => {
   const [editorData, setEditorData] = useState('');
 
   useEffect(() => {
-    fetchRestaurants();
-  }, []);
+    if (user.isLoggedIn) {
+      fetchRestaurants();
+    }
+  });
 
   const fetchRestaurants = async () => {
     const token = Cookies.get('token');
@@ -120,10 +122,3 @@ const AdminProfile = () => {
 };
 
 export default AdminProfile;
-
-
-
-
-
-
-
