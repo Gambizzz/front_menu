@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import ky from 'ky';
 import { useTranslation } from 'react-i18next';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
   const { t } = useTranslation();
 
   const handleSubmit = async (e) => {
@@ -13,7 +14,6 @@ const ForgotPassword = () => {
     try {
       console.log('Sending email:', email);
 
-      // Sending email in the correct structure
       const response = await ky.post('http://localhost:3000/users/password', {
         json: {
           user: { email: email } 
@@ -23,16 +23,16 @@ const ForgotPassword = () => {
         }
       }).json();
 
-      setMessage('Un email de réinitialisation du mot de passe a été envoyé.');
+      toast.success(t('resetMail'));
       console.log(response);
     } catch (error) {
       if (error.response) {
         const errorData = await error.response.json();
         const errorMessage = Array.isArray(errorData.error) ? errorData.error.join(', ') : errorData.error;
-        setMessage(`Erreur lors de l'envoi de l'email de réinitialisation: ${errorMessage}`);
+        toast.error(`(t('errorMail')); ${errorMessage}`);
         console.error('There was an error sending the reset password email!', errorData);
       } else {
-        setMessage('Erreur lors de l\'envoi de l\'email de réinitialisation.');
+        toast.error(t('errorMail'));
         console.error('There was an error sending the reset password email!', error);
       }
     }
@@ -42,7 +42,7 @@ const ForgotPassword = () => {
     <div className='forgot-pass'>
       <h1 className="title-pages"> {t('forgotPass')} </h1>
       <form onSubmit={handleSubmit} className='forgot-form'>
-        <label htmlFor="email"> Email </label>
+        <label htmlFor="email"> {t('placeEmail')} </label>
         <input
           type="email"
           id="email"
@@ -54,12 +54,14 @@ const ForgotPassword = () => {
         <button type="submit" className='btn-forgot'> {t('sendEmail')} </button>
 
       </form>
-      <p>{message}</p>
+
+      <ToastContainer />
     </div>
   );
 };
 
 export default ForgotPassword;
+
 
 
 
