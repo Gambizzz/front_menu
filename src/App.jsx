@@ -10,6 +10,7 @@ import Sign from './pages/forms/signup';
 import Edit from './pages/forms/edit';
 import Logout from './components/logout';
 import ResetPassword from './pages/forms/resetPassword';
+import ResetPasswordAdmin from './pages/forms/resetPasswordAdmin';
 import ForgotPassword from './pages/forms/forgotPassword';
 import ForgotPasswordAdmin from './pages/forms/forgotPasswordAdmin';
 import Home from './pages/home/home';
@@ -72,8 +73,8 @@ function App() {
       </header>
 
       <Routes>
-        {/* routes pour le USER */}
         <Route path='/' element={<Home />} />
+        {/* routes pour le USER */}
         <Route path='/login' element={<Log />} />
         <Route path='/signup' element={<Sign />} />
         <Route path='/logout' element={<Logout />} />
@@ -84,6 +85,7 @@ function App() {
         <Route path='/admin/signup' element={<AdminSign />} />
         <Route path='/admin/logout' element={<AdminLogout />} />
         <Route path='/forgot-password-admin' element={<ForgotPasswordAdmin />} />
+        <Route path='/reset-password-admin/:token' element={<ResetPasswordAdmin />} />
         {/* routes FOOTER */}
         <Route path='/concept' element={<Concept />} />
         <Route path='/team' element={<Team />} />
@@ -93,11 +95,10 @@ function App() {
         <Route path='/restaurant/:id' element={<Details />} />
         <Route path='/create-restaurant' element={<CreateRestaurant />} />
         <Route path='/edit-restaurant/:id' element={<EditRestaurant />} />
-        {/* route EDIT PROFILE */}
-        <Route path='/edit' element={<Edit />} />
-        {/* route Profil USER */}
+        {/* routes Profil USER */}
         <Route path='/profile' element={<UserProfile />} />
-        {/* route Profil ADMIN */}
+        <Route path='/edit' element={<Edit />} />
+        {/* routes Profil ADMIN */}
         <Route path='/admin/profile' element={<AdminProfile />} />
         <Route path="/admin/edit-profile" element={<EditAdmin />} />
       </Routes>
