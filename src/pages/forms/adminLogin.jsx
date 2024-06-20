@@ -58,7 +58,7 @@ function AdminLog() {
         </div>
         {error && <p className='error-message'>{error}</p>}
         <button type='submit' className='btn btn-primary'>{t('seConnecter')}</button>
-        <p><Link to="/forgot-password">{t('motDePasseOublie')}</Link></p>
+        <p><Link to="/forgot-password-admin">{t('motDePasseOublie')}</Link></p>
       </form>
     </div>
   );

@@ -11,6 +11,7 @@ import Edit from './pages/forms/edit';
 import Logout from './components/logout';
 import ResetPassword from './pages/forms/resetPassword';
 import ForgotPassword from './pages/forms/forgotPassword';
+import ForgotPasswordAdmin from './pages/forms/forgotPasswordAdmin';
 import Home from './pages/home/home';
 import Nav from './components/navbar';
 import Sidebar from './components/sidebar';
@@ -82,6 +83,7 @@ function App() {
         <Route path='/admin/login' element={<AdminLog />} />
         <Route path='/admin/signup' element={<AdminSign />} />
         <Route path='/admin/logout' element={<AdminLogout />} />
+        <Route path='/forgot-password-admin' element={<ForgotPasswordAdmin />} />
         {/* routes FOOTER */}
         <Route path='/concept' element={<Concept />} />
         <Route path='/team' element={<Team />} />

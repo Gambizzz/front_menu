@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ky from 'ky';
 import { useTranslation } from 'react-i18next';
 
-const ForgotPassword = () => {
+const ForgotPasswordAdmin = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const { t } = useTranslation();
@@ -14,9 +14,9 @@ const ForgotPassword = () => {
       console.log('Sending email:', email);
 
       // Sending email in the correct structure
-      const response = await ky.post('http://localhost:3000/users/password', {
+      const response = await ky.post('http://localhost:3000/admins/password', {
         json: {
-          user: { email: email } 
+          admin: { email: email } 
         },
         headers: {
           "Content-Type": "application/json"
@@ -59,7 +59,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
-
-
-
+export default ForgotPasswordAdmin;
