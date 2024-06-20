@@ -106,6 +106,7 @@ const AdminProfile = () => {
             restaurants.map(restaurant => (
               <div key={restaurant.id} className='solo-card'>
                 <h3>{restaurant.name}</h3>
+                <img src={restaurant.image_url} />
                 <p>{restaurant.description}</p>
                 <p>{restaurant.city}</p>
                 <p>{restaurant.food}</p>

@@ -62,6 +62,7 @@ const Details = () => {
       <ToastContainer />
 
       <div>
+        <img src={restaurant.image_url} />
         <h1 className="name-restau">{restaurant.name}</h1>
         <p> {t('descriptR')} : {restaurant.description}</p>
         <p> {t('cityR')} : {restaurant.city}</p>
