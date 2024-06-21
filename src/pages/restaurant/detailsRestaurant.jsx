@@ -6,6 +6,7 @@ import { useAtom } from "jotai";
 import { userAtom } from "../../atoms";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ReservationForm from "./ReservationForm";
 
 const Details = () => {
   const { t } = useTranslation();
@@ -72,6 +73,10 @@ const Details = () => {
       <div>
         <h2> {t('ourMenu')} </h2>
         <div dangerouslySetInnerHTML={{ __html: text }}></div>
+      </div>
+      <div>
+        <h2>{t("makeReservation")}</h2>
+        <ReservationForm restaurantId={id} userToken={user.token} />
       </div>
     </div>
   );
