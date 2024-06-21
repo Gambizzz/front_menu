@@ -3,6 +3,8 @@ import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
 import { useTranslation } from 'react-i18next';
 import ky from 'ky';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditAdmin = () => {
   const [user, setUser] = useAtom(userAtom);
@@ -15,7 +17,7 @@ const EditAdmin = () => {
     e.preventDefault();
 
     try {
-      const updatedUser = await ky.put(`http://localhost:3000/admins/${user.id}`, {
+      const updatedAdmin = await ky.put(`http://localhost:3000/admins/${user.id}`, {
         json: {
           admin: {
             email,
@@ -30,17 +32,23 @@ const EditAdmin = () => {
 
       setUser((prevUser) => ({
         ...prevUser,
-        email: updatedUser.email,
+        email: updatedAdmin.email,
       }));
 
-      alert(t('profileMODIFIER!!!!!!'));
+      toast.success(t('profileUpdateSuccess'));
+
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000);
+
     } catch (error) {
-      alert(t('profileUpdateError'));
+      console.error("Error updating profile:", error);
+      toast.error(t('profileUpdateError'));
     }
   };
 
   const handleDeleteAccount = async () => {
-    if (window.confirm(t('voulez vous supprimez le compte ?'))) {
+    if (window.confirm(t('confirmDeleteAccount'))) {
       try {
         await ky.delete(`http://localhost:3000/admins/${user.id}`, {
           headers: {
@@ -50,41 +58,45 @@ const EditAdmin = () => {
 
         setUser(null);
 
-        // Effacer les cookies ou stockage local pour assurer la déconnexion
+        // Clear cookies or local storage to ensure logout
         document.cookie = "adminToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "adminId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
+        toast.success(t('accountDeleted'));
 
-        window.location.href = '/';
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1000);
 
-        alert(t('compte supprimé'));
       } catch (error) {
-        console.error(error);
-        alert(t('deleteAccountError'));
+        console.error("Error deleting account:", error);
+        toast.error(t('deleteAccountError'));
       }
     }
   };
 
   return (
     <div>
-      <h1>{t('editProfileForm')}</h1>
+      <h1 className="title-pages"> {t('editProfileForm')} </h1>
       <form onSubmit={handleUpdate}>
         <div>
-          <label>{t('email')}</label>
+          <label> {t('placeEmail')} </label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div>
-          <label>{t('mot de passe')}</label>
+          <label> {t('password')} </label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         <div>
-          <label>{t('Confirmation du mot de passe')}</label>
+          <label> {t('PassConfirm')} </label>
           <input type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
         </div>
-        <button type="submit">{t('édité le profil')}</button>
+        <button type="submit"> {t('editR')} </button>
       </form>
 
-      <button onClick={handleDeleteAccount}>{t('supprimé le profil')}</button>
+      <button onClick={handleDeleteAccount}> {t('delP')} </button>
+
+      <ToastContainer />
     </div>
   );
 };

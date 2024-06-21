@@ -1,60 +1,82 @@
 import React, { useState } from 'react';
 import ky from 'ky';
+import { useTranslation } from 'react-i18next';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CreateRestaurant = () => {
+  const { t } = useTranslation('');
   const [user] = useAtom(userAtom);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [city, setCity] = useState('');
   const [food, setFood] = useState('');
+  const [photo, setPhoto] = useState(null);
 
   const cities = ['Paris', 'Marseille', 'Toulouse', 'Lyon', 'Bordeaux', 'Lille', 'Montpellier', 'Nice', 'Rennes', 'Rouen', 'Strasbourg', 'Reims'];
   const foods = ['Chinese', 'Japanese', 'Italian', 'French', 'Lebanese', 'Mediterranean', 'Greek', 'Mexican', 'Indian', 'Thaï', 'Korean', 'Vegetarian', 'Fast food'];
 
   const handleSelection = (e) => {
-    setCity(e.target.value);
-    setFood(e.target.value);
+    const { name, value } = e.target;
+    if (name === 'city') {
+      setCity(value);
+    } else if (name === 'food') {
+      setFood(value);
+    }
+  };
+
+  const handleFileChange = (e) => {
+    setPhoto(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      const formData = new FormData();
+      formData.append('restaurant[name]', name);
+      formData.append('restaurant[description]', description);
+      formData.append('restaurant[admin_id]', user.id);
+      formData.append('restaurant[city]', city);
+      formData.append('restaurant[food]', food);
+      formData.append('restaurant[photo]', photo);
+
       const token = user.token;
 
       const response = await ky.post('http://localhost:3000/restaurants', {
-        json: {
-          name: name,
-          description: description,
-          admin_id: user.id,
-          city: city,
-          food: food,
-        },
+        body: formData,
         headers: {
           Authorization: `Bearer ${token}`
         }
       }).json();
 
-      console.log('Restaurant created', response);
+      toast.success(t('successR'));
+      console.log('Restaurant créé', response);
 
       setName('');
       setDescription('');
+      setCity('');
+      setFood('');
+      setPhoto(null);
       
-      // window.location.href = "/";
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000); 
 
     } catch (error) {
-      console.error('There was an error creating the restaurant!', error);
+      console.error('Erreur lors de la création du restaurant : ', error);
+      toast.error(t('errorR'));
     }
   };
 
   return (
     <>
-      <h1> Ajouter un restaurant </h1>
+      <h1 className="title-pages"> {t('addR')} </h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label> Nom : </label>
+          <label> {t('nameR')} </label>
           <input
             type="text"
             name="name"
@@ -64,7 +86,7 @@ const CreateRestaurant = () => {
           />
         </div>
         <div>
-          <label> Description : </label>
+          <label> {t('descriptR')} </label>
           <textarea
             name="description"
             value={description}
@@ -73,29 +95,41 @@ const CreateRestaurant = () => {
           />
         </div>
         <div>
-          <label> Ville : </label>
-          <select value={city} onChange={handleSelection}>
-            <option value=''> Sélectionner une ville </option>
+          <label> {t('cityR')} </label>
+          <select name="city" value={city} onChange={handleSelection} required>
+            <option value=''> {t('selectedCities')} </option>
             {cities.map((city, index) => (
               <option key={index} value={city}> {city} </option>
             ))}
           </select>
         </div>
         <div>
-          <label> Type de nourriture : </label>
-          <select value={food} onChange={handleSelection}>
-            <option value=''> Sélectionner un type </option>
+          <label> {t('foodR')} </label>
+          <select name="food" value={food} onChange={handleSelection} required>
+            <option value=''> {t('selectFood')} </option>
             {foods.map((food, index) => (
               <option key={index} value={food}> {food} </option>
             ))}
           </select>
         </div>
-        <button type="submit"> Créer </button>
+        <div>
+          <label> Photo : </label>
+          <input
+            type="file"
+            onChange={handleFileChange}
+            accept="image/*"
+            required
+          />
+        </div>
+        <button type="submit"> {t('createR')}</button>
       </form>
+
+      <ToastContainer />
     </>
   );
 };
 
 export default CreateRestaurant;
+
 
 

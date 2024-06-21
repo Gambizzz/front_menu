@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ForgotPassword = () => {
+const ForgotPasswordAdmin = () => {
   const [email, setEmail] = useState('');
   const { t } = useTranslation();
 
@@ -14,9 +14,9 @@ const ForgotPassword = () => {
     try {
       console.log('Sending email:', email);
 
-      const response = await ky.post('http://localhost:3000/users/password', {
+      const response = await ky.post('http://localhost:3000/admins/password', {
         json: {
-          user: { email: email } 
+          admin: { email: email } 
         },
         headers: {
           "Content-Type": "application/json"
@@ -60,8 +60,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
-
-
-
-
+export default ForgotPasswordAdmin;

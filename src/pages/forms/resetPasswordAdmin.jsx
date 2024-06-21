@@ -5,7 +5,7 @@ import ky from 'ky';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ResetPassword = () => {
+const ResetPasswordAdmin = () => {
   const { token } = useParams();
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
@@ -28,9 +28,9 @@ const ResetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await ky.post('http://localhost:3000/users/password', {
+      const response = await ky.post('http://localhost:3000/admins/password', {
         json: { 
-          user: { 
+          admin: { 
             email: '', 
             password: password,
             password_confirmation: passwordConfirmation
@@ -102,4 +102,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default ResetPasswordAdmin;
