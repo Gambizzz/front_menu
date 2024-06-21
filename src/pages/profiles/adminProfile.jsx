@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
 import { useTranslation } from 'react-i18next';
@@ -16,10 +16,8 @@ const AdminProfile = () => {
   const [editorData, setEditorData] = useState('');
 
   useEffect(() => {
-    if (user.isLoggedIn) {
-      fetchRestaurants();
-    }
-  });
+    fetchRestaurants();
+  }, []);
 
   const fetchRestaurants = async () => {
     const token = Cookies.get('token');
