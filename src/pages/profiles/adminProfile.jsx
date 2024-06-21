@@ -19,7 +19,7 @@ const AdminProfile = () => {
     if (user.isLoggedIn) {
       fetchRestaurants();
     }
-  });
+  }, [user.isLoggedIn]);
 
   const fetchRestaurants = async () => {
     const token = Cookies.get('token');
