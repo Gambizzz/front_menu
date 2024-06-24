@@ -101,7 +101,7 @@ function App() {
         {/* routes Profil ADMIN */}
         <Route path='/admin/profile' element={<AdminProfile />} />
         <Route path="/admin/edit-profile" element={<EditAdmin />} />
-      </Routes>
+      </Routes> 
 
       <footer>
         <Footer isNightMode={isNightMode} />
