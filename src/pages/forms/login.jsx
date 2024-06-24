@@ -36,8 +36,8 @@ function Log() {
         isAdmin: user.isAdmin
       });
 
-      Cookies.set('token', token);
-      Cookies.set('id', user.id);
+      Cookies.set('adminToken', token); // Changement du nom du cookie à 'adminToken'
+      Cookies.set('adminId', user.id); // Changement du nom du cookie à 'adminId'
 
       toast.success(t('log')); 
 
@@ -79,5 +79,3 @@ function Log() {
 }
 
 export default Log;
-
-
