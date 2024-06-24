@@ -29,7 +29,6 @@ import AdminProfile from './pages/profiles/adminProfile';
 import CreateRestaurant from './pages/restaurant/createRestaurant';
 import EditRestaurant from './pages/restaurant/editRestaurant';
 import EditAdmin from './pages/forms/editAdmin';
-import Reservations from './components/Reservations'; // Importez le composant Reservations ici
 
 function App() {
   const [isNightMode, setIsNightMode] = useAtom(nightModeAtom);
@@ -101,7 +100,6 @@ function App() {
         <Route path='/admin/profile' element={<AdminProfile />} />
         <Route path='/admin/edit-profile' element={<EditAdmin />} />
         {/* Route pour les réservations */}
-        <Route path="/restaurants/:restaurantId/reservations" element={<Reservations />} />
   
       </Routes>
 
