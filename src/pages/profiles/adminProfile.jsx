@@ -22,7 +22,14 @@ const AdminProfile = () => {
   }, [user.isLoggedIn]);
 
   const fetchRestaurants = async () => {
-    const token = Cookies.get('token');
+    const token = Cookies.get('adminToken'); // Utilise 'adminToken' pour récupérer le token
+    console.log('Fetch Token:', token); // Affiche le token dans la console
+
+    if (!token) {
+      toast.error('Token is missing');
+      return;
+    }
+
     try {
       const response = await ky.get('http://localhost:3000/restaurants', {
         headers: {
@@ -30,9 +37,8 @@ const AdminProfile = () => {
         }
       }).json();
 
-      const adminId = parseInt(user.id, 10); // Convert user.id to a number
+      const adminId = parseInt(user.id, 10);
 
-      // Filter restaurants where admin_id matches the ID of the logged-in admin
       const adminRestaurants = response.filter(restaurant => parseInt(restaurant.admin_id, 10) === adminId);
 
       setRestaurants(adminRestaurants);
@@ -43,11 +49,19 @@ const AdminProfile = () => {
   };
 
   const handleSave = async () => {
+    const token = Cookies.get('adminToken'); // Utilise 'adminToken' pour récupérer le token
+    console.log('Save Token:', token); // Affiche le token dans la console
+
+    if (!token) {
+      toast.error('Token is missing');
+      return;
+    }
+
     try {
       const response = await ky.post('http://localhost:3000/api/save-text', {
         json: { text: editorData },
         headers: {
-          'Authorization': `Bearer ${user.token}`
+          'Authorization': `Bearer ${token}`
         }
       });
 
@@ -64,7 +78,14 @@ const AdminProfile = () => {
   };
 
   const handleDelete = async (restaurantId) => {
-    const token = Cookies.get('token');
+    const token = Cookies.get('adminToken'); // Utilise 'adminToken' pour récupérer le token
+    console.log('Delete Token:', token); // Affiche le token dans la console
+
+    if (!token) {
+      toast.error('Token is missing');
+      return;
+    }
+
     try {
       await ky.delete(`http://localhost:3000/restaurants/${restaurantId}`, {
         headers: {
@@ -78,6 +99,8 @@ const AdminProfile = () => {
       toast.error(t('deleteRestaurantError'));
     }
   };
+
+  console.log(user);
 
   return (
     <div>

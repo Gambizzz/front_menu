@@ -85,7 +85,7 @@ const EditRestaurant = () => {
 
       toast.success(t('majRestaurant'));
       console.log('Réponse de mise à jour:', response);
-      
+
       setTimeout(() => {
         window.location.href = "/";
       }, 1000);
@@ -101,46 +101,23 @@ const EditRestaurant = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label> {t('nameR')} </label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-          />
+          <input type="text" name="name" value={name} onChange={handleChange} />
         </div>
         <div>
           <label> {t('descriptR')} </label>
-          <textarea
-            name="description"
-            value={description}
-            onChange={handleChange}
-          />
+          <textarea name="description" value={description} onChange={handleChange} />
         </div>
         <div>
           <label> {t('cityR')} </label>
-          <input
-            type="text"
-            name="city"
-            value={city}
-            onChange={handleChange}
-          />
+          <input type="text" name="city" value={city} onChange={handleChange} />
         </div>
         <div>
           <label> {t('foodR')} </label>
-          <input
-            type="text"
-            name="food"
-            value={food}
-            onChange={handleChange}
-          />
+          <input type="text" name="food" value={food} onChange={handleChange} />
         </div>
         <div>
           <label> Photo : </label>
-          <input
-            type="file"
-            onChange={handleFileChange}
-            accept="image/*"
-          />
+          <input type="file" onChange={handleFileChange} accept="image/*" />
         </div>
         <button type="submit"> {t('updateR')} </button>
       </form>
