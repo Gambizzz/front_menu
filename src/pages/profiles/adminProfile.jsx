@@ -13,6 +13,7 @@ const AdminProfile = () => {
   const [user] = useAtom(userAtom);
   const { t } = useTranslation();
   const [restaurants, setRestaurants] = useState([]);
+  const [reservations, setReservations] = useState({});
   const [editorData, setEditorData] = useState('');
 
   useEffect(() => {
@@ -36,6 +37,17 @@ const AdminProfile = () => {
       const adminRestaurants = response.filter(restaurant => parseInt(restaurant.admin_id, 10) === adminId);
 
       setRestaurants(adminRestaurants);
+
+      // Fetch reservations for each restaurant
+      adminRestaurants.forEach(async (restaurant) => {
+        const reservationsResponse = await ky.get(`http://localhost:3000/restaurants/${restaurant.id}/reservations`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }).json();
+        setReservations(prev => ({ ...prev, [restaurant.id]: reservationsResponse.length }));
+      });
+
     } catch (error) {
       toast.error(t('errorFetchingRestaurants'));
       console.error('Erreur lors de la récupération des restaurants : ', error);
@@ -110,6 +122,7 @@ const AdminProfile = () => {
                 <p>{restaurant.description}</p>
                 <p>{restaurant.city}</p>
                 <p>{restaurant.food}</p>
+                <p>{t('numberOfReservations')}: {reservations[restaurant.id] || 0}</p>
                 <div className='btn-admin'>
                   <Link to={`/edit-restaurant/${restaurant.id}`}>
                     <button> {t('editR')} </button>

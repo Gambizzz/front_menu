@@ -7,14 +7,17 @@ const UserProfile = () => {
   const [user] = useAtom(userAtom);
   const { t } = useTranslation();
 
-  console.log('User data in UserProfile:', user);  // Log pour vérifier les données de l'utilisateur
-
+  console.log('User data in UserProfile:', user);  // Log to verify user data
 
   return (
     <div>
       <h1 className="title-pages">{t('titleSpaceUser')}</h1>
       <p>{t('email')}: {user.email}</p>
       <p>{t('id')}: {user.id}</p>
+
+      <Link to={`/restaurants/${user.restaurant_id}/reservations`}>
+        {t('viewReservations')}
+      </Link>
 
       <Link to="/edit">
         <button>{t('editProfileButton')}</button>
