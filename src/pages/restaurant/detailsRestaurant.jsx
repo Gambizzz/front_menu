@@ -6,7 +6,7 @@ import { useAtom } from "jotai";
 import { userAtom } from "../../atoms";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ReservationForm from "./reservationForm";
+import ReservationForm from "./ReservationForm";
 
 const Details = () => {
   const { t } = useTranslation();
