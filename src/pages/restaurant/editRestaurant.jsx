@@ -98,7 +98,7 @@ const EditRestaurant = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='form-edit-restau'>
         <div>
           <label> {t('nameR')} </label>
           <input
@@ -109,7 +109,7 @@ const EditRestaurant = () => {
           />
         </div>
         <div>
-          <label> {t('descriptR')} </label>
+          <label className='textarea'> {t('descriptR')} </label>
           <textarea
             name="description"
             value={description}
@@ -135,7 +135,7 @@ const EditRestaurant = () => {
           />
         </div>
         <div>
-          <label> Photo : </label>
+          <label> {t('picture')} </label>
           <input
             type="file"
             onChange={handleFileChange}

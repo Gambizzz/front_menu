@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import ky from 'ky';
 import Cookies from 'js-cookie';
-import CKEditorComponent from '../../components/CKEditorComponent';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,7 +12,6 @@ const AdminProfile = () => {
   const [user] = useAtom(userAtom);
   const { t } = useTranslation();
   const [restaurants, setRestaurants] = useState([]);
-  const [editorData, setEditorData] = useState('');
 
   useEffect(() => {
     if (user.isLoggedIn) {
@@ -39,27 +37,6 @@ const AdminProfile = () => {
     } catch (error) {
       toast.error(t('errorFetchingRestaurants'));
       console.error('Erreur lors de la récupération des restaurants : ', error);
-    }
-  };
-
-  const handleSave = async () => {
-    try {
-      const response = await ky.post('http://localhost:3000/api/save-text', {
-        json: { text: editorData },
-        headers: {
-          'Authorization': `Bearer ${user.token}`
-        }
-      });
-
-      if (response.ok) {
-        toast.success(t('textSavedSuccessfully'));
-      } else {
-        const errorData = await response.json();
-        toast.error(`${t('failedToSaveText')}: ${errorData.error}`);
-      }
-    } catch (error) {
-      console.error('Error saving text:', error);
-      toast.error(t('failedToSaveText'));
     }
   };
 
@@ -95,9 +72,6 @@ const AdminProfile = () => {
       <div className='link-create'>
         <Link to="/create-restaurant"> <button> {t('createRestau')} </button> </Link>
       </div>
-
-      <CKEditorComponent data={editorData} onChange={setEditorData} />
-      <button onClick={handleSave}>{t('saveButton')}</button>
 
       <div>
         <h2 className='your-restau'> {t('yourRestau')} </h2>
