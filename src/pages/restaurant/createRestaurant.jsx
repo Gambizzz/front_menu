@@ -74,7 +74,7 @@ const CreateRestaurant = () => {
   return (
     <>
       <h1 className="title-pages"> {t('addR')} </h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='create-form'>
         <div>
           <label> {t('nameR')} </label>
           <input
@@ -113,7 +113,7 @@ const CreateRestaurant = () => {
           </select>
         </div>
         <div>
-          <label> Photo : </label>
+          <label> {t('picture')} </label>
           <input
             type="file"
             onChange={handleFileChange}
@@ -121,7 +121,7 @@ const CreateRestaurant = () => {
             required
           />
         </div>
-        <button type="submit"> {t('createR')}</button>
+        <button type="submit"> {t('createR')} </button>
       </form>
 
       <ToastContainer />

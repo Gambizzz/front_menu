@@ -98,14 +98,18 @@ const EditRestaurant = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='form-edit-restau'>
         <div>
           <label> {t('nameR')} </label>
           <input type="text" name="name" value={name} onChange={handleChange} />
         </div>
         <div>
-          <label> {t('descriptR')} </label>
-          <textarea name="description" value={description} onChange={handleChange} />
+          <label className='textarea'> {t('descriptR')} </label>
+          <textarea
+            name="description"
+            value={description}
+            onChange={handleChange}
+          />
         </div>
         <div>
           <label> {t('cityR')} </label>
@@ -116,8 +120,12 @@ const EditRestaurant = () => {
           <input type="text" name="food" value={food} onChange={handleChange} />
         </div>
         <div>
-          <label> Photo : </label>
-          <input type="file" onChange={handleFileChange} accept="image/*" />
+          <label> {t('picture')} </label>
+          <input
+            type="file"
+            onChange={handleFileChange}
+            accept="image/*"
+          />
         </div>
         <button type="submit"> {t('updateR')} </button>
       </form>

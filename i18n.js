@@ -130,6 +130,12 @@ i18n
           "passOK": "Password updated successfully",
           "errorReset": "Error while reseting password",
           "invalidToken": "Invalid token",
+          "makeReservation": "MAKE A RESERVATION",
+          "reservationDate": "Date",
+          "reservationTime": "Time",
+          "makeResa": "BOOK",
+          "picture": "Picture",
+          "text": "Text",
         }
       },
       fr: {
@@ -258,6 +264,12 @@ i18n
           "passOk": "Le mot de passe a été réinitialisé avec succès",
           "errorReset": "Erreur lors de la réinitialisation du mot de passe",
           "invalidToken": "Token invalide",
+          "makeReservation": "FAIRE UNE RESERVATION",
+          "reservationDate": "Date",
+          "reservationTime": "Heure",
+          "makeResa": "RÉSERVER",
+          "picture": "Photo",
+          "text": "Texte",
         }
       }
     },
