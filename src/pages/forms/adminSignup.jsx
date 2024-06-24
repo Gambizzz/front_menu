@@ -24,7 +24,7 @@ function AdminSign() {
     }
 
     try {
-      const response = await ky.post('http://localhost:3000/admins', {
+      const response = await ky.post('https://menu-v2-0bd45fb14757.herokuapp.com/admins', {
         json: {
           admin: {
             email,

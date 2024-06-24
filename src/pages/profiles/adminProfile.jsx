@@ -29,7 +29,7 @@ const AdminProfile = () => {
     }
 
     try {
-      const response = await ky.get('http://localhost:3000/restaurants', {
+      const response = await ky.get('https://menu-v2-0bd45fb14757.herokuapp.com/restaurants', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -56,7 +56,7 @@ const AdminProfile = () => {
     }
 
     try {
-      await ky.delete(`http://localhost:3000/restaurants/${restaurantId}`, {
+      await ky.delete(`https://menu-v2-0bd45fb14757.herokuapp.com/restaurants/${restaurantId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

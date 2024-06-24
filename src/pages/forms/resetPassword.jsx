@@ -15,7 +15,7 @@ const ResetPassword = () => {
   useEffect(() => {
     async function checkTokenValidity() {
       try {
-        await ky.get(`/api/password/reset/${token}`);
+        await ky.get(`https://menu-v2-0bd45fb14757.herokuapp.com/password/reset/${token}`);
         setTokenValid(true);
       } catch (error) {
         setTokenValid(false);
@@ -28,7 +28,7 @@ const ResetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await ky.post('http://localhost:3000/users/password', {
+      const response = await ky.post('https://menu-v2-0bd45fb14757.herokuapp.com/users/password', {
         json: { 
           user: { 
             email: '', 

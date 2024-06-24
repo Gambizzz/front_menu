@@ -18,7 +18,7 @@ function Log() {
     event.preventDefault();
 
     try {
-      const response = await ky.post('http://localhost:3000/users/sign_in', {
+      const response = await ky.post('https://menu-v2-0bd45fb14757.herokuapp.com/users/sign_in', {
         json: {
           user: {
             email,
