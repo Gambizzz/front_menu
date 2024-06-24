@@ -17,7 +17,7 @@ const Details = () => {
   useEffect(() => {
     const fetchRestaurant = async () => {
       try {
-        const response = await ky.get(`http://localhost:3000/restaurants/${id}`, {
+        const response = await ky.get(`https://menu-v2-0bd45fb14757.herokuapp.com/restaurants/${id}`, {
           headers: {
             Authorization: `Bearer ${user.token}`
           }

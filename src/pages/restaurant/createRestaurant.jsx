@@ -45,7 +45,7 @@ const CreateRestaurant = () => {
 
       const token = user.token;
 
-      const response = await ky.post('http://localhost:3000/restaurants', {
+      const response = await ky.post('https://menu-v2-0bd45fb14757.herokuapp.com/restaurants', {
         body: formData,
         headers: {
           Authorization: `Bearer ${token}`

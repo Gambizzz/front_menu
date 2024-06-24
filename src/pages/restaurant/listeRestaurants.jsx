@@ -22,7 +22,7 @@ const Restaurants = () => {
   const fetchRestaurants = async () => {
     try {
       const token = user.token;
-      let url = 'http://localhost:3000/restaurants';
+      let url = 'https://menu-v2-0bd45fb14757.herokuapp.com/restaurants';
 
       const queryParams = {};
       if (selectedCity) queryParams.city = selectedCity;
