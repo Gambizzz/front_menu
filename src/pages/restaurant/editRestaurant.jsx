@@ -85,7 +85,7 @@ const EditRestaurant = () => {
 
       toast.success(t('majRestaurant'));
       console.log('Réponse de mise à jour:', response);
-      
+
       setTimeout(() => {
         window.location.href = "/";
       }, 1000);
@@ -101,12 +101,7 @@ const EditRestaurant = () => {
       <form onSubmit={handleSubmit} className='form-edit-restau'>
         <div>
           <label> {t('nameR')} </label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-          />
+          <input type="text" name="name" value={name} onChange={handleChange} />
         </div>
         <div>
           <label className='textarea'> {t('descriptR')} </label>
@@ -118,21 +113,11 @@ const EditRestaurant = () => {
         </div>
         <div>
           <label> {t('cityR')} </label>
-          <input
-            type="text"
-            name="city"
-            value={city}
-            onChange={handleChange}
-          />
+          <input type="text" name="city" value={city} onChange={handleChange} />
         </div>
         <div>
           <label> {t('foodR')} </label>
-          <input
-            type="text"
-            name="food"
-            value={food}
-            onChange={handleChange}
-          />
+          <input type="text" name="food" value={food} onChange={handleChange} />
         </div>
         <div>
           <label> {t('picture')} </label>
