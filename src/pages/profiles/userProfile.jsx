@@ -9,29 +9,42 @@ const UserProfile = () => {
   const [user] = useAtom(userAtom);
   const { t } = useTranslation();
   const [reservations, setReservations] = useState([]);
+  const [restaurants, setRestaurants] = useState({});
 
   useEffect(() => {
     const fetchUserReservations = async () => {
-
       if (!user.id) {
         console.error('Erreur: user.id est vide ou non défini.');
         return;
       }
-      
+
       try {
-        const response = await ky.get(`http://localhost:3000/users/${user.id}/reservations`, {
+
+        const reservationsResponse = await ky.get(`http://localhost:3000/users/${user.id}/reservations`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
+        }).json();
+
+
+        setReservations(reservationsResponse);
+
+
+        const restaurantIds = reservationsResponse.map(reservation => reservation.restaurant_id).join(',');
+        const restaurantsResponse = await ky.get(`http://localhost:3000/restaurants`, {
+          searchParams: {
+            ids: restaurantIds,
+          },
+        }).json();
+
+        const restaurants = {};
+        restaurantsResponse.forEach(restaurant => {
+          restaurants[restaurant.id] = restaurant.name;
         });
-        if (response.ok) {
-          const data = await response.json();
-          setReservations(data);
-        } else {
-          throw new Error('erreur du fetch reservations');
-        }
+
+        setRestaurants(restaurants);
       } catch (error) {
-        console.error('erreur fetch reservations:', error);
+        console.error('Erreur lors du fetch des réservations:', error);
       }
     };
 
@@ -48,7 +61,10 @@ const UserProfile = () => {
       <ul>
         {reservations.map(reservation => (
           <li key={reservation.id}>
-            {t('reservationNumber')}: {reservation.number}, {t('reservationDate')}: {reservation.date}, {t('reservationTime')}: {reservation.time}
+            {t('reservationNumber')}: {reservation.number}, {t('reservationDate')}: {reservation.date}, {t('reservationTime')}: {reservation.time},
+            {restaurants[reservation.restaurant_id] && (
+              <span>{t('restaurantName')}: {restaurants[reservation.restaurant_id]}</span>
+            )}
           </li>
         ))}
       </ul>

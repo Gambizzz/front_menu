@@ -36,7 +36,7 @@ const AdminProfile = () => {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      }).json();
+      }).json(); 
 
       const adminId = parseInt(user.id, 10);
 
