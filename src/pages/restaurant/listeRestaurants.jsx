@@ -51,6 +51,13 @@ const Restaurants = () => {
     setSelectedFood(e.target.value);
   };
 
+  const truncateText = (text, maxLength) => {
+    if (text.length <= maxLength) {
+      return text;
+    }
+    return text.substring(0, maxLength) + '...VOIR PLUS';
+  };
+
   return (
     <>
       <h1 className="title-pages">{t('titleRestau')}</h1>
@@ -98,9 +105,9 @@ const Restaurants = () => {
             <Link to={`/restaurant/${restaurant.id}`}>
               <img src={restaurant.image_url} />
               <h1> {restaurant.name} </h1>
-              <p> {restaurant.description} </p>
               <p> {restaurant.city} </p>
               <p> {restaurant.food} </p>
+              <p> {truncateText(restaurant.description, 100)} </p>
             </Link>
           </div>
         ))}
