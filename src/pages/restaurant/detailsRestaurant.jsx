@@ -12,13 +12,12 @@ const Details = () => {
   const { t } = useTranslation();
   const { id } = useParams();
   const [restaurant, setRestaurant] = useState(null);
-  const [text, setText] = useState('');
   const [user] = useAtom(userAtom);
 
   useEffect(() => {
     const fetchRestaurant = async () => {
       try {
-        const response = await ky.get(`http://localhost:3000/restaurants/${id}`, {
+        const response = await ky.get(`https://menu-v2-0bd45fb14757.herokuapp.com/restaurants/${id}`, {
           headers: {
             Authorization: `Bearer ${user.token}`
           }
@@ -31,27 +30,7 @@ const Details = () => {
       }
     };
 
-    const fetchText = async () => {
-      try {
-        const response = await ky.get("http://localhost:3000/api/latest-text", {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch text");
-        }
-
-        const data = await response.json();
-        setText(data.text);
-      } catch (error) {
-        console.error("Error fetching text:", error);
-      }
-    };
-
     fetchRestaurant();
-    fetchText();
   }, [id, user.token]);
 
   if (!restaurant) {
@@ -62,19 +41,18 @@ const Details = () => {
     <div>
       <ToastContainer />
 
-      <div>
-        <img src={restaurant.image_url} />
+      <div className="card-details">
         <h1 className="name-restau">{restaurant.name}</h1>
         <p> {t('descriptR')} : {restaurant.description}</p>
         <p> {t('cityR')} : {restaurant.city}</p>
         <p> {t('foodR')} : {restaurant.food}</p>
+        <div className="menu-details">
+          <h2> {t('ourMenu')} </h2>
+          <img src={restaurant.image_url} />
+        </div>
       </div>
 
-      <div>
-        <h2> {t('ourMenu')} </h2>
-        <div dangerouslySetInnerHTML={{ __html: text }}></div>
-      </div>
-      <div>
+      <div className="resa-details">
         <h2>{t("makeReservation")}</h2>
         <ReservationForm restaurantId={id} userToken={user.token} />
       </div>

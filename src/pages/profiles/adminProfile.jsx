@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import ky from 'ky';
 import Cookies from 'js-cookie';
-import CKEditorComponent from '../../components/CKEditorComponent';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,24 +12,31 @@ const AdminProfile = () => {
   const [user] = useAtom(userAtom);
   const { t } = useTranslation();
   const [restaurants, setRestaurants] = useState([]);
-  const [editorData, setEditorData] = useState('');
 
   useEffect(() => {
-    fetchRestaurants();
-  }, []);
+    if (user.isLoggedIn) {
+      fetchRestaurants();
+    }
+  }, [user.isLoggedIn]);
 
   const fetchRestaurants = async () => {
-    const token = Cookies.get('token');
+    const token = Cookies.get('adminToken'); // Utilise 'adminToken' pour récupérer le token
+    console.log('Fetch Token:', token); // Affiche le token dans la console
+
+    if (!token) {
+      toast.error('Token is missing');
+      return;
+    }
+
     try {
-      const response = await ky.get('http://localhost:3000/restaurants', {
+      const response = await ky.get('https://menu-v2-0bd45fb14757.herokuapp.com/restaurants', {
         headers: {
           Authorization: `Bearer ${token}`
         }
       }).json();
 
-      const adminId = parseInt(user.id, 10); // Convert user.id to a number
+      const adminId = parseInt(user.id, 10);
 
-      // Filter restaurants where admin_id matches the ID of the logged-in admin
       const adminRestaurants = response.filter(restaurant => parseInt(restaurant.admin_id, 10) === adminId);
 
       setRestaurants(adminRestaurants);
@@ -40,31 +46,17 @@ const AdminProfile = () => {
     }
   };
 
-  const handleSave = async () => {
-    try {
-      const response = await ky.post('http://localhost:3000/api/save-text', {
-        json: { text: editorData },
-        headers: {
-          'Authorization': `Bearer ${user.token}`
-        }
-      });
-
-      if (response.ok) {
-        toast.success(t('textSavedSuccessfully'));
-      } else {
-        const errorData = await response.json();
-        toast.error(`${t('failedToSaveText')}: ${errorData.error}`);
-      }
-    } catch (error) {
-      console.error('Error saving text:', error);
-      toast.error(t('failedToSaveText'));
-    }
-  };
-
   const handleDelete = async (restaurantId) => {
-    const token = Cookies.get('token');
+    const token = Cookies.get('adminToken'); // Utilise 'adminToken' pour récupérer le token
+    console.log('Delete Token:', token); // Affiche le token dans la console
+
+    if (!token) {
+      toast.error('Token is missing');
+      return;
+    }
+
     try {
-      await ky.delete(`http://localhost:3000/restaurants/${restaurantId}`, {
+      await ky.delete(`https://menu-v2-0bd45fb14757.herokuapp.com/restaurants/${restaurantId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -76,6 +68,8 @@ const AdminProfile = () => {
       toast.error(t('deleteRestaurantError'));
     }
   };
+
+  console.log(user);
 
   return (
     <div>
@@ -93,9 +87,6 @@ const AdminProfile = () => {
       <div className='link-create'>
         <Link to="/create-restaurant"> <button> {t('createRestau')} </button> </Link>
       </div>
-
-      <CKEditorComponent data={editorData} onChange={setEditorData} />
-      <button onClick={handleSave}>{t('saveButton')}</button>
 
       <div>
         <h2 className='your-restau'> {t('yourRestau')} </h2>

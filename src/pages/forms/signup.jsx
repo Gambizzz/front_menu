@@ -21,7 +21,7 @@ function Sign() {
     console.log('Email:', email);
 
     try {
-      const response = await ky.post('http://localhost:3000/users', {
+      const response = await ky.post('https://menu-v2-0bd45fb14757.herokuapp.com/users', {
         json: {
           user: {
             email,
@@ -64,15 +64,15 @@ function Sign() {
     <form onSubmit={handleSubmit} className='login-form' id='new_user'>
       <h1 className="title-pages"> {t('signupForm')} </h1>
       <div>
-        <label htmlFor='email'>{t('Email')}</label>
+        <label htmlFor='email'> {t('Email')} </label>
         <input type='email' id='email' placeholder={t('placeEmail')} value={email} onChange={(e) => setEmail(e.target.value)} required />
       </div>
       <div>
-        <label htmlFor='password'>{t('Password')}</label>
+        <label htmlFor='password'> {t('Password')} </label>
         <input type='password' id='password' placeholder={t('password')} value={password} onChange={(e) => setPassword(e.target.value)} required />
       </div>
       <div>
-        <label htmlFor='passwordConfirmation'>{t('PassConfirm')}</label>
+        <label htmlFor='passwordConfirmation'> {t('PassConfirm')} </label>
         <input type='password' id='passwordConfirmation' placeholder={t('passConfirm')} value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} required />
       </div>
       <div>

@@ -18,7 +18,7 @@ function AdminLog() {
     event.preventDefault();
 
     try {
-      const response = await ky.post('http://localhost:3000/admins/sign_in', {
+      const response = await ky.post('https://menu-v2-0bd45fb14757.herokuapp.com/admins/sign_in', {
         json: {
           admin: {
             email,
@@ -56,15 +56,17 @@ function AdminLog() {
       <form onSubmit={handleLogin}>
         <h1 className="title-pages"> {t('seCo')} </h1>
         <div className='form-group'>
-          <input type='email' className='form-control' id='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t('placeEmail')} required />
+          <label htmlFor='email'> {t('Email')} </label>
+          <input type='email' className='form-control form-ad' id='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t('placeEmail')} required />
         </div>
         <div className='form-group'>
-          <input type='password' className='form-control' id='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder={t('password')} required />
+          <label htmlFor='password' > {t('Password')} </label>
+          <input type='password' className='form-control form-ad' id='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder={t('password')} required />
         </div>
         <button type='submit'> {t('connexion')} </button>
         <p>
-          <Link to="/signup" className='links'> {t('signup')} </Link> | 
-          <Link to="/forgot-password" className='links'> {t('forgotPassword')} </Link> | 
+          <Link to="/admin/signup" className='links'> {t('signup')} </Link> | 
+          <Link to="/forgot-password-admin" className='links'> {t('forgotPassword')} </Link> | 
           <Link to="/" className='links'> {t('home')} </Link>
         </p>
       </form>

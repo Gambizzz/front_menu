@@ -17,7 +17,7 @@ const Edit = () => {
     e.preventDefault();
 
     try {
-      const updatedUser = await ky.put(`http://localhost:3000/users/${user.id}`, {
+      const updatedUser = await ky.put(`https://menu-v2-0bd45fb14757.herokuapp.com/users/${user.id}`, {
         json: {
           user: {
             email,
@@ -49,7 +49,7 @@ const Edit = () => {
   const handleDeleteAccount = async () => {
     if (window.confirm(t('confirmDeleteAccount'))) {
       try {
-        await ky.delete(`http://localhost:3000/users/${user.id}`, {
+        await ky.delete(`https://menu-v2-0bd45fb14757.herokuapp.com/users/${user.id}`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
@@ -77,7 +77,7 @@ const Edit = () => {
   return (
     <div>
       <h1 className="title-pages"> {t('editProfileForm')} </h1>
-      <form onSubmit={handleUpdate}>
+      <form onSubmit={handleUpdate} className='edit-profile-form'>
         <div>
           <label> {t('placeEmail')} </label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -90,10 +90,12 @@ const Edit = () => {
           <label> {t('PassConfirm')} </label>
           <input type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
         </div>
-        <button type="submit"> {t('editR')} </button>
       </form>
 
-      <button onClick={handleDeleteAccount}> {t('delP')} </button>
+      <div className='btn-edit'>
+        <button type="submit"> {t('editR')} </button> | 
+        <button onClick={handleDeleteAccount} className='btn-del'> {t('delP')} </button>
+      </div>
 
       <ToastContainer />
     </div>

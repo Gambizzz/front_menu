@@ -10,7 +10,7 @@ const ReservationForm = ({ restaurantId, userToken }) => {
   const handleReservation = async (e) => {
     e.preventDefault();
     try {
-      const response = await ky.post(`http://localhost:3000/restaurants/${restaurantId}/reservations`, {
+      const response = await ky.post(`https://menu-v2-0bd45fb14757.herokuapp.com/restaurants/${restaurantId}/reservations`, {
         json: { reservation: { date, time } },
         headers: {
           Authorization: `Bearer ${userToken}`,
@@ -31,16 +31,19 @@ const ReservationForm = ({ restaurantId, userToken }) => {
   };
 
   return (
-    <form onSubmit={handleReservation}>
+    <form onSubmit={handleReservation} className="resa-form">
       <label>
-        {t("reservationDate")}:
+        {t("reservationDate")} :
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
       </label>
       <label>
-        {t("reservationTime")}:
+        {t("reservationTime")} :
         <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
       </label>
-      <button type="submit">{t("makeReservation")}</button>
+
+      <div className="btn-resa">
+        <button type="submit">{t("makeResa")}</button>
+      </div>
     </form>
   );
 };

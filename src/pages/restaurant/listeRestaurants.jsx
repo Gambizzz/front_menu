@@ -22,7 +22,7 @@ const Restaurants = () => {
   const fetchRestaurants = async () => {
     try {
       const token = user.token;
-      let url = 'http://localhost:3000/restaurants';
+      let url = 'https://menu-v2-0bd45fb14757.herokuapp.com/restaurants';
 
       const queryParams = {};
       if (selectedCity) queryParams.city = selectedCity;
@@ -55,12 +55,13 @@ const Restaurants = () => {
     <>
       <h1 className="title-pages">{t('titleRestau')}</h1>
 
-      <div>
+      <div className="drop-cities">
         <label> {t('selectedCities')} </label>
         <select value={selectedCity} onChange={handleCityChange}>
           <option value=""> {t('allCities')} </option>
           <option value="Paris"> Paris </option>
           <option value="Marseille"> Marseille </option>
+          <option value="Toulouse"> Toulouse </option>
           <option value="Lyon"> Lyon </option>
           <option value="Bordeaux"> Bordeaux </option>
           <option value="Lille"> Lille </option>
@@ -73,7 +74,7 @@ const Restaurants = () => {
         </select>
       </div>
 
-      <div>
+      <div className="drop-food">
         <label> {t('selectFood')} </label>
         <select value={selectedFood} onChange={handleFoodChange}>
           <option value=""> {t('allFood')} </option>
@@ -96,7 +97,7 @@ const Restaurants = () => {
         {restaurants.map((restaurant) => (
           <div className="restau" key={restaurant.id}>
             <Link to={`/restaurant/${restaurant.id}`}>
-              <img src={restaurant.image_url} />
+              <img src={restaurant.image_url} alt={restaurant.title} />
               <h1> {restaurant.name} </h1>
               <p> {restaurant.description} </p>
               <p> {restaurant.city} </p>
@@ -105,6 +106,8 @@ const Restaurants = () => {
           </div>
         ))}
       </div>
+
+      <ToastContainer />
     </>
   );
 };
