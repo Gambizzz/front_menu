@@ -19,7 +19,7 @@ function Sign() {
     event.preventDefault();
 
     try {
-      const response = await ky.post('https://menu-v2-0bd45fb14757.herokuapp.com/users', {
+      const response = await ky.post('http://localhost:3000/users', {
         json: {
           user: {
             email,

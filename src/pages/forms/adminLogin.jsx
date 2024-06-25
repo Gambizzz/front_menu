@@ -18,7 +18,7 @@ function AdminLog() {
     event.preventDefault();
 
     try {
-      const response = await ky.post('https://menu-v2-0bd45fb14757.herokuapp.com/admins/sign_in', {
+      const response = await ky.post('http://localhost:3000/admins/sign_in', {
         json: {
           admin: {
             email,

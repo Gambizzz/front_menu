@@ -136,6 +136,12 @@ i18n
           "makeResa": "BOOK",
           "picture": "Picture",
           "text": "Text",
+          "favoriteAdded": "Restaurant added to favorites",
+          "errorAddingFavorite": "Error while adding to favorites",
+          "errorFetchFav": "Error while fetching favorites",
+          "myFav": "MY FAVORITES RESTAURANTS",
+          "favoriteRemoved": "Restaurant removed from favorites",
+          "errorRemovingFav": "Error while removing favorite",
         }
       },
       fr: {
@@ -270,6 +276,12 @@ i18n
           "makeResa": "RÉSERVER",
           "picture": "Photo",
           "text": "Texte",
+          "favoriteAdded": "Restaurant ajouté aux favoris",
+          "errorAddingFavorite": "Erreur lors de l'ajout aux favoris",
+          "errorFetchFav": "Erreur lors de la récupération des favoris",
+          "myFav": "MES RESTAURANTS FAVORIS",
+          "favoriteRemoved": "Restaurant retiré des favoris",
+          "errorRemovingFav": "Erreur lors de la supression des favoris",
         }
       }
     },

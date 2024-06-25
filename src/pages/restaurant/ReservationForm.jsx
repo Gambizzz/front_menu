@@ -10,7 +10,7 @@ const ReservationForm = ({ restaurantId, userToken }) => {
   const handleReservation = async (e) => {
     e.preventDefault();
     try {
-      const response = await ky.post(`https://menu-v2-0bd45fb14757.herokuapp.com/restaurants/${restaurantId}/reservations`, {
+      const response = await ky.post(`http://localhost:3000/restaurants/${restaurantId}/reservations`, {
         json: { reservation: { date, time } },
         headers: {
           Authorization: `Bearer ${userToken}`,

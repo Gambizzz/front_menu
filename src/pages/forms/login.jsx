@@ -18,7 +18,7 @@ function Log() {
     event.preventDefault();
 
     try {
-      const response = await ky.post('https://menu-v2-0bd45fb14757.herokuapp.com/users/sign_in', {
+      const response = await ky.post('http://localhost:3000/users/sign_in', {
         json: {
           user: {
             email,
@@ -36,8 +36,8 @@ function Log() {
         isAdmin: user.isAdmin
       });
 
-      Cookies.set('adminToken', token); // Changement du nom du cookie à 'adminToken'
-      Cookies.set('adminId', user.id); // Changement du nom du cookie à 'adminId'
+      Cookies.set('userToken', token); // Changement du nom du cookie à 'adminToken'
+      Cookies.set('userId', user.id); // Changement du nom du cookie à 'adminId'
 
       toast.success(t('log')); 
 

@@ -24,7 +24,7 @@ const EditRestaurant = () => {
   const fetchRestaurant = async () => {
     try {
       const token = user.token;
-      const response = await ky.get(`https://menu-v2-0bd45fb14757.herokuapp.com/restaurants/${id}`, {
+      const response = await ky.get(`http://localhost:3000/restaurants/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -76,7 +76,7 @@ const EditRestaurant = () => {
 
       const token = user.token;
 
-      const response = await ky.put(`https://menu-v2-0bd45fb14757.herokuapp.com/restaurants/${id}`, {
+      const response = await ky.put(`http://localhost:3000/restaurants/${id}`, {
         body: formData,
         headers: {
           Authorization: `Bearer ${token}`

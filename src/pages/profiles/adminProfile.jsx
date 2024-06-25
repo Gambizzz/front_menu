@@ -29,7 +29,7 @@ const AdminProfile = () => {
     }
 
     try {
-      const response = await ky.get('https://menu-v2-0bd45fb14757.herokuapp.com/restaurants', {
+      const response = await ky.get('http://localhost:3000/restaurants', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -56,7 +56,7 @@ const AdminProfile = () => {
     }
 
     try {
-      await ky.delete(`https://menu-v2-0bd45fb14757.herokuapp.com/restaurants/${restaurantId}`, {
+      await ky.delete(`http://localhost:3000/restaurants/${restaurantId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -81,7 +81,7 @@ const AdminProfile = () => {
       </div>
 
       <div>
-        <Link to="/admin/edit-profile"> {t('editAdmin')} </Link>
+        <Link to="/admin/edit-profile" className='btn-edit-user'> {t('editAdmin')} </Link>
       </div>
 
       <div className='link-create'>
