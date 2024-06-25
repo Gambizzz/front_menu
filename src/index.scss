@@ -993,25 +993,29 @@ html.nuit .form-contact button {
 
 /* CARROUSEL ACCUEIL */
 
+/* src/pages/home/Home.css */
+
 .carousel-container {
-  height: 14rem; /* 56 h */
+  height: 50vh; 
+  max-width: 90%; 
+  margin: 0 auto; /* Centre le carrousel horizontalement */
 }
 
 @media (min-width: 640px) {
   .carousel-container {
-    height: 16rem; /* 64 h */
+    height: 60vh; 
   }
 }
 
 @media (min-width: 1280px) {
   .carousel-container {
-    height: 20rem; /* 80 h */
+    height: 70vh; 
   }
 }
 
 @media (min-width: 1536px) {
   .carousel-container {
-    height: 24rem; /* 96 h */
+    height: 80vh; 
   }
 }
 
@@ -1021,40 +1025,72 @@ html.nuit .form-contact button {
   margin-top: 1rem;
 }
 
+
+.carousel-arrow {
+  display: none !important;
+}
+
+.carousel-indicators {
+  display: none !important;
+}
+
+
+
 /* FIN CARROUSEL ACCUEIL */
 
-/* DÉPLIANT ACCUEIL */
-
-.mb-2 {
-  margin-bottom: 0.5rem;
+/* START HERO */
+.lead {
+  font-size: 250%;
+  color: #522A00;
 }
 
-.text-gray-500 {
-  color: #6b7280;
+.lead-easier {
+  font-size: 250%;
+  font-weight: 750;
+  color: #522A00;
 }
 
-.dark\:text-gray-400 {
-  color: #9ca3af;
+.lead-eat {
+  font-size: 250%;
+  color: #ff4800;
 }
 
-.text-cyan-600 {
-  color: #0891b2;
+.lead-cities {
+  font-size: 250%;
+  font-weight: 750;
+  color: #522A00;
 }
 
-.hover\:underline:hover {
-  text-decoration: underline;
+.lead-come {
+  font-size: 250%;
+  color: #ff4800;
 }
 
-.dark\:text-cyan-500 {
-  color: #06b6d4;
+.shadow {
+  height: 105%;
+  width: 60%;
 }
 
-.list-disc {
-  list-style-type: disc;
+.cities {
+  margin-top: 15%;
 }
 
-.pl-5 {
-  padding-left: 1.25rem;
+.text-hero {
+  margin-top: 10%;
 }
 
-/* FIN DÉPLIANT ACCUEIL */
+.text-cities {
+  margin-top: 12%;
+}
+
+.avis {
+  margin-top: 15%;
+}
+
+.expe {
+  font-size: 250%;
+  color: #522A00;
+  display: flex;
+  justify-content: center;
+}
+/* END HERO */
