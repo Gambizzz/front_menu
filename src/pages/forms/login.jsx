@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
@@ -17,6 +17,8 @@ function Log() {
   const handleLogin = async (event) => {
     event.preventDefault();
 
+    console.log('Email avant login:', email);
+
     try {
       const response = await ky.post('http://localhost:3000/users/sign_in', {
         json: {
@@ -26,6 +28,8 @@ function Log() {
           }
         }
       }).json();
+
+      console.log('API:', response);
 
       const { user, token } = response;
       setUser({
