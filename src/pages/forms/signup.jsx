@@ -36,8 +36,8 @@ function Sign() {
         token: token,
         isLoggedIn: true,
       });
-      Cookies.set('token', token);
-      Cookies.set('id', user.id);
+      Cookies.set('userToken', token); // Utilisation d'un nom différent pour le cookie
+      Cookies.set('userId', user.id); // Utilisation d'un nom différent pour le cookie
 
       toast.success(t('sign'));
 

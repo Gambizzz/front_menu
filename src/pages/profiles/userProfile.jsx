@@ -19,16 +19,13 @@ const UserProfile = () => {
       }
 
       try {
-
         const reservationsResponse = await ky.get(`http://localhost:3000/users/${user.id}/reservations`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
         }).json();
 
-
         setReservations(reservationsResponse);
-
 
         const restaurantIds = reservationsResponse.map(reservation => reservation.restaurant_id).join(',');
         const restaurantsResponse = await ky.get(`http://localhost:3000/restaurants`, {
@@ -51,6 +48,26 @@ const UserProfile = () => {
     fetchUserReservations();
   }, [user.id, user.token]);
 
+  const handleDelete = async (reservationId) => {
+    try {
+      const response = await ky.delete(`http://localhost:3000/restaurants/${user.id}/reservations/${reservationId}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+
+      if (response.ok) {
+        setReservations(reservations.filter(reservation => reservation.id !== reservationId));
+        alert('Réservation supprimée avec succès!');
+      } else {
+        throw new Error('Failed to delete reservation');
+      }
+    } catch (error) {
+      console.error('Erreur lors de la suppression de la réservation : ', error);
+      alert('Erreur lors de la suppression de la réservation');
+    }
+  };
+
   return (
     <div>
       <h1 className="title-pages">{t('titleSpaceUser')}</h1>
@@ -65,6 +82,7 @@ const UserProfile = () => {
             {restaurants[reservation.restaurant_id] && (
               <span>{t('restaurantName')}: {restaurants[reservation.restaurant_id]}</span>
             )}
+            <button onClick={() => handleDelete(reservation.id)}>{t('deleteReservation')}</button>
           </li>
         ))}
       </ul>

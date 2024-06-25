@@ -28,6 +28,8 @@ function AdminLog() {
       }).json();
 
       const { admin, token } = response;
+      console.log('Admin response:', response); // Log pour vérifier les données reçues
+
       setUser({
         email: admin.email,
         id: admin.id,
@@ -47,6 +49,7 @@ function AdminLog() {
       }, 1000); 
 
     } catch (error) {
+      console.error('Login error:', error); // Log pour les erreurs de connexion
       toast.error(t('logError'));
     }
   };

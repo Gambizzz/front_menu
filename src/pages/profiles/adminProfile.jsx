@@ -23,8 +23,7 @@ const AdminProfile = () => {
   }, [user.isLoggedIn]);
 
   const fetchRestaurants = async () => {
-    const token = Cookies.get('adminToken'); // Utilise 'adminToken' pour récupérer le token
-    console.log('Fetch Token:', token); // Affiche le token dans la console
+    const token = Cookies.get('adminToken');
 
     if (!token) {
       toast.error('Token is missing');
@@ -36,33 +35,30 @@ const AdminProfile = () => {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      }).json(); 
+      }).json();
 
       const adminId = parseInt(user.id, 10);
-
       const adminRestaurants = response.filter(restaurant => parseInt(restaurant.admin_id, 10) === adminId);
 
       setRestaurants(adminRestaurants);
 
-      // Fetch reservations for each restaurant
       adminRestaurants.forEach(async (restaurant) => {
         const reservationsResponse = await ky.get(`http://localhost:3000/restaurants/${restaurant.id}/reservations`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
         }).json();
-        setReservations(prev => ({ ...prev, [restaurant.id]: reservationsResponse.length }));
+        setReservations(prev => ({ ...prev, [restaurant.id]: reservationsResponse }));
       });
-
     } catch (error) {
       toast.error(t('errorFetchingRestaurants'));
       console.error('Erreur lors de la récupération des restaurants : ', error);
     }
   };
+  
 
   const handleSave = async () => {
-    const token = Cookies.get('adminToken'); // Utilise 'adminToken' pour récupérer le token
-    console.log('Save Token:', token); // Affiche le token dans la console
+    const token = Cookies.get('adminToken');
 
     if (!token) {
       toast.error('Token is missing');
@@ -73,7 +69,7 @@ const AdminProfile = () => {
       const response = await ky.post('http://localhost:3000/api/save-text', {
         json: { text: editorData },
         headers: {
-          'Authorization': `Bearer ${token}`
+          Authorization: `Bearer ${token}`
         }
       });
 
@@ -90,8 +86,8 @@ const AdminProfile = () => {
   };
 
   const handleDelete = async (restaurantId) => {
-    const token = Cookies.get('adminToken'); // Utilise 'adminToken' pour récupérer le token
-    console.log('Delete Token:', token); // Affiche le token dans la console
+    const token = Cookies.get('adminToken');
+    console.log('Delete Token:', token);
 
     if (!token) {
       toast.error('Token is missing');
@@ -112,7 +108,30 @@ const AdminProfile = () => {
     }
   };
 
-  console.log(user);
+  const handleDeleteReservation = async (restaurant_id, reservationId) => {
+    const token = Cookies.get('adminToken');
+
+    if (!token) {
+      toast.error('Token is missing');
+      return;
+    }
+
+    try {
+      await ky.delete(`http://localhost:3000/restaurants/${restaurant_id}/reservations/${reservationId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      toast.success(t('reservation supprimé'));
+    } catch (error) {
+      console.error('Erreur lors de la suppression de la réservation : ', error);
+      toast.error(t('deleteReservationError'));
+    }
+  };
+
+  // Ajout des logs pour vérifier la valeur de user
+  console.log('User:', user);
 
   return (
     <div>
@@ -124,18 +143,20 @@ const AdminProfile = () => {
       </div>
 
       <div>
-        <Link to="/admin/edit-profile"> {t('editAdmin')} </Link>
+        <Link to="/admin/edit-profile">{t('editAdmin')}</Link>
       </div>
 
       <div className='link-create'>
-        <Link to="/create-restaurant"> <button> {t('createRestau')} </button> </Link>
+        <Link to="/create-restaurant">
+          <button>{t('createRestau')}</button>
+        </Link>
       </div>
 
       <CKEditorComponent data={editorData} onChange={setEditorData} />
       <button onClick={handleSave}>{t('saveButton')}</button>
 
       <div>
-        <h2 className='your-restau'> {t('yourRestau')} </h2>
+        <h2 className='your-restau'>{t('yourRestau')}</h2>
         <div className='cards-admin'>
           {restaurants.length > 0 ? (
             restaurants.map(restaurant => (
@@ -145,17 +166,34 @@ const AdminProfile = () => {
                 <p>{restaurant.description}</p>
                 <p>{restaurant.city}</p>
                 <p>{restaurant.food}</p>
-                <p>{t('numberOfReservations')}: {reservations[restaurant.id] || 0}</p>
+                <p>{t('numberOfReservations')}: {reservations[restaurant.id]?.length || 0}</p>
                 <div className='btn-admin'>
                   <Link to={`/edit-restaurant/${restaurant.id}`}>
-                    <button> {t('editR')} </button>
+                    <button>{t('editR')}</button>
                   </Link>
-                  <button onClick={() => handleDelete(restaurant.id)}> {t('delR')} </button>
+                  <button onClick={() => handleDelete(restaurant.id)}>{t('delR')}</button>
+                </div>
+                <div>
+                  <h4>{t('reservations')}:</h4>
+                  {reservations[restaurant.id]?.length > 0 ? (
+                    reservations[restaurant.id].map(reservation => (
+                      <div key={reservation.id}>
+                        <p>{t('reservationId')}: {reservation.id}</p>
+                        <p>{t('reservationDate')}: {reservation.date}</p>
+                        <p>{t('reservationTime')}: {reservation.time}</p>
+                        <p>{t('reservationEmail')}: {reservation.email}</p>
+                        <p>{t('reservationEmail')}: {reservation.user_id}</p>
+                        <button onClick={() => handleDeleteReservation(restaurant.id, reservation.id)}>{t('delR')}</button>
+                      </div>
+                    ))
+                  ) : (
+                    <p>{t('noReservations')}</p>
+                  )}
                 </div>
               </div>
             ))
           ) : (
-            <p> {t('noRestau')} </p>
+            <p>{t('noRestau')}</p>
           )}
         </div>
       </div>
