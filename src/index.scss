@@ -812,6 +812,9 @@ html.nuit .form-contact button {
   font-family: $title-font;
   font-size: 40px;
   color: $title-icons-light;
+  text-align: center;
+  margin-top: 4%;
+  margin-bottom: 4%;
 }
 
 .title-pages.night {
@@ -1362,4 +1365,47 @@ html.nuit .form-edit-restau {
     color: $title-icons-night;
   }
 }
+/* END EDIT RESTAURANT */
+
+
+
+/* START USER PROFILE */
+.favs {
+  margin: 2%;
+  border: 1px solid $font-light;
+  padding: 1%;
+  width: 20%;
+
+  h2 {
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .favs {
+  border: 1px solid $bg-light-font-night;
+
+  h2 {
+    color: $title-icons-night;
+  }
+}
+
+.restau-fav {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 4%;
+}
+
+.btn-edit-user {
+  margin: 2%;
+  text-decoration: underline;
+}
+
+.btn-fav {
+  color: $title-icons-light;
+}
+
+html.nuit .btn-fav {
+  color: $title-icons-night;
+}
+/* END USER PROFILE */
 

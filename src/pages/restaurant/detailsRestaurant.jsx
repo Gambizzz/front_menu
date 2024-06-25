@@ -7,6 +7,7 @@ import { userAtom } from "../../atoms";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReservationForm from "./ReservationForm";
+import { FaHeart } from "react-icons/fa6";
 
 const Details = () => {
   const { t } = useTranslation();
@@ -17,7 +18,7 @@ const Details = () => {
   useEffect(() => {
     const fetchRestaurant = async () => {
       try {
-        const response = await ky.get(`https://menu-v2-0bd45fb14757.herokuapp.com/restaurants/${id}`, {
+        const response = await ky.get(`http://localhost:3000/restaurants/${id}`, {
           headers: {
             Authorization: `Bearer ${user.token}`
           }
@@ -33,8 +34,23 @@ const Details = () => {
     fetchRestaurant();
   }, [id, user.token]);
 
+  const addFavorite = async () => {
+    try {
+      await ky.post('http://localhost:3000/favorites', {
+        json: { favorite: { restaurant_id: id } },
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        }
+      });
+      toast.success(t('favoriteAdded'));
+    } catch (error) {
+      console.error('Erreur lors de l\'ajout du favori : ', error);
+      toast.error(t('errorAddingFavorite'));
+    }
+  };
+
   if (!restaurant) {
-    return <div> {t('load')} </div>;
+    return <div>{t('load')}</div>;
   }
 
   return (
@@ -43,13 +59,16 @@ const Details = () => {
 
       <div className="card-details">
         <h1 className="name-restau">{restaurant.name}</h1>
-        <p> {t('descriptR')} : {restaurant.description}</p>
-        <p> {t('cityR')} : {restaurant.city}</p>
-        <p> {t('foodR')} : {restaurant.food}</p>
+        <p>{t('descriptR')}: {restaurant.description}</p>
+        <p>{t('cityR')}: {restaurant.city}</p>
+        <p>{t('foodR')}: {restaurant.food}</p>
         <div className="menu-details">
-          <h2> {t('ourMenu')} </h2>
-          <img src={restaurant.image_url} />
+          <h2>{t('ourMenu')}</h2>
+          <img src={restaurant.image_url} alt={restaurant.name} />
         </div>
+        <button onClick={addFavorite} className="btn-fav">
+          <FaHeart size={30} />
+        </button>
       </div>
 
       <div className="resa-details">

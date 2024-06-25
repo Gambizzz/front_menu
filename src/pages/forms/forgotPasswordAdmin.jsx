@@ -14,7 +14,7 @@ const ForgotPasswordAdmin = () => {
     try {
       console.log('Sending email:', email);
 
-      const response = await ky.post('https://menu-v2-0bd45fb14757.herokuapp.com/admins/password', {
+      const response = await ky.post('http://localhost:3000/admins/password', {
         json: {
           admin: { email: email } 
         },

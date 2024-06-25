@@ -17,7 +17,7 @@ const EditAdmin = () => {
     e.preventDefault();
 
     try {
-      const updatedAdmin = await ky.put(`https://menu-v2-0bd45fb14757.herokuapp.com/admins/${user.id}`, {
+      const updatedAdmin = await ky.put(`http://localhost:3000/admins/${user.id}`, {
         json: {
           admin: {
             email,
@@ -50,7 +50,7 @@ const EditAdmin = () => {
   const handleDeleteAccount = async () => {
     if (window.confirm(t('confirmDeleteAccount'))) {
       try {
-        await ky.delete(`https://menu-v2-0bd45fb14757.herokuapp.com/admins/${user.id}`, {
+        await ky.delete(`http://localhost:3000/admins/${user.id}`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
