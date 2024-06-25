@@ -991,4 +991,70 @@ html.nuit .form-contact button {
 }
 
 
+/* CARROUSEL ACCUEIL */
 
+.carousel-container {
+  height: 14rem; /* 56 h */
+}
+
+@media (min-width: 640px) {
+  .carousel-container {
+    height: 16rem; /* 64 h */
+  }
+}
+
+@media (min-width: 1280px) {
+  .carousel-container {
+    height: 20rem; /* 80 h */
+  }
+}
+
+@media (min-width: 1536px) {
+  .carousel-container {
+    height: 24rem; /* 96 h */
+  }
+}
+
+.home-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+/* FIN CARROUSEL ACCUEIL */
+
+/* DÉPLIANT ACCUEIL */
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.text-gray-500 {
+  color: #6b7280;
+}
+
+.dark\:text-gray-400 {
+  color: #9ca3af;
+}
+
+.text-cyan-600 {
+  color: #0891b2;
+}
+
+.hover\:underline:hover {
+  text-decoration: underline;
+}
+
+.dark\:text-cyan-500 {
+  color: #06b6d4;
+}
+
+.list-disc {
+  list-style-type: disc;
+}
+
+.pl-5 {
+  padding-left: 1.25rem;
+}
+
+/* FIN DÉPLIANT ACCUEIL */
