@@ -36,8 +36,10 @@ function Log() {
         isAdmin: false 
       });
 
-      Cookies.set('userToken', token); // Utilisation d'un nom différent pour le cookie
-      Cookies.set('userId', user.id); // Utilisation d'un nom différent pour le cookie
+
+      Cookies.set('userToken', token); // Changement du nom du cookie à 'adminToken'
+      Cookies.set('userId', user.id); // Changement du nom du cookie à 'adminId'
+
 
       // Cookies.set('adminToken', token); // Changement du nom du cookie à 'adminToken'
       // Cookies.set('adminId', user.id); // Changement du nom du cookie à 'adminId'

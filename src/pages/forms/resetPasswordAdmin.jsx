@@ -15,7 +15,7 @@ const ResetPasswordAdmin = () => {
   useEffect(() => {
     async function checkTokenValidity() {
       try {
-        await ky.get(`/api/password/reset/${token}`);
+        await ky.get(`http://localhost:3000/password/reset/${token}`);
         setTokenValid(true);
       } catch (error) {
         setTokenValid(false);
@@ -61,7 +61,7 @@ const ResetPasswordAdmin = () => {
       <div>
         <h2> (t('invalidToken')) </h2>
         <p>
-          <Link to="/signup"> {t('sinscrire')} </Link> | <Link to="/login"> {t('seConnecter')} </Link> | <Link to="/"> {t('home')} </Link>
+          <Link to="/admin/signup"> {t('sinscrire')} </Link> | <Link to="/admin/login"> {t('seConnecter')} </Link> | <Link to="/"> {t('home')} </Link>
         </p>
       </div>
     );

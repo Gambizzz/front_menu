@@ -15,7 +15,7 @@ const ResetPassword = () => {
   useEffect(() => {
     async function checkTokenValidity() {
       try {
-        await ky.get(`/api/password/reset/${token}`);
+        await ky.get(`http://localhost:3000/password/reset/${token}`);
         setTokenValid(true);
       } catch (error) {
         setTokenValid(false);

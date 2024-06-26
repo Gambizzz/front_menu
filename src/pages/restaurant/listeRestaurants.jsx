@@ -56,12 +56,13 @@ const Restaurants = () => {
     <>
       <center><h1 className="title-pages">{t('titleRestau')}</h1></center>
 
-      <div>
+      <div className="drop-cities">
         <label> {t('selectedCities')} </label>
         <select value={selectedCity} onChange={handleCityChange}>
           <option value=""> {t('allCities')} </option>
           <option value="Paris"> Paris </option>
           <option value="Marseille"> Marseille </option>
+          <option value="Toulouse"> Toulouse </option>
           <option value="Lyon"> Lyon </option>
           <option value="Bordeaux"> Bordeaux </option>
           <option value="Lille"> Lille </option>
@@ -74,7 +75,7 @@ const Restaurants = () => {
         </select>
       </div>
 
-      <div>
+      <div className="drop-food">
         <label> {t('selectFood')} </label>
         <select value={selectedFood} onChange={handleFoodChange}>
           <option value=""> {t('allFood')} </option>
@@ -97,6 +98,7 @@ const Restaurants = () => {
         {restaurants.map((restaurant) => (
           <div className="restaurant-card" key={restaurant.id}>
             <Link to={`/restaurant/${restaurant.id}`}>
+
               <img className="restaurant-image" src={restaurant.image_url} alt={restaurant.name} />
               <div className="restaurant-content">
                 <h5 className="restaurant-title">{restaurant.name}</h5>
@@ -110,10 +112,12 @@ const Restaurants = () => {
                   </svg>
                 </a>
               </div>
-            </Link>
+
           </div>
         ))}
       </div>
+
+      <ToastContainer />
     </>
   );
 };
