@@ -154,11 +154,16 @@ const Details = () => {
 
       <div className="resa-details">
         <h2>{t("makeReservation")}</h2>
-        <ReservationForm restaurantId={id} userToken={user.token} />
+        {user.isLoggedIn ? (
+          <ReservationForm restaurantId={id} userToken={user.token} />
+        ) : (
+          <p>{t('noReservationForAdmin')}</p>
+        )}
       </div>
     </div>
   );
 };
 
 export default Details;
+
 
