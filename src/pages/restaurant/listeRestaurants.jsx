@@ -6,6 +6,7 @@ import ky from "ky";
 import { Link, useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../../index.scss';
 
 const Restaurants = () => {
   const { t } = useTranslation();
@@ -53,7 +54,7 @@ const Restaurants = () => {
 
   return (
     <>
-      <h1 className="title-pages">{t('titleRestau')}</h1>
+      <center><h1 className="title-pages">{t('titleRestau')}</h1></center>
 
       <div>
         <label> {t('selectedCities')} </label>
@@ -92,15 +93,23 @@ const Restaurants = () => {
         </select>
       </div>
 
-      <div className="card-restau">
+      <div className="card-container">
         {restaurants.map((restaurant) => (
-          <div className="restau" key={restaurant.id}>
+          <div className="restaurant-card" key={restaurant.id}>
             <Link to={`/restaurant/${restaurant.id}`}>
-              <img src={restaurant.image_url} />
-              <h1> {restaurant.name} </h1>
-              <p> {restaurant.description} </p>
-              <p> {restaurant.city} </p>
-              <p> {restaurant.food} </p>
+              <img className="restaurant-image" src={restaurant.image_url} alt={restaurant.name} />
+              <div className="restaurant-content">
+                <h5 className="restaurant-title">{restaurant.name}</h5>
+                <p className="restaurant-description">{restaurant.description}</p>
+                <p className="restaurant-city">{restaurant.city}</p>
+                <p className="restaurant-food">{restaurant.food}</p>
+                <a href="#" className="restaurant-link">
+                  {t('readMore')}
+                  <svg className="restaurant-link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                  </svg>
+                </a>
+              </div>
             </Link>
           </div>
         ))}
@@ -110,4 +119,3 @@ const Restaurants = () => {
 };
 
 export default Restaurants;
-
