@@ -1034,7 +1034,32 @@ html.nuit .form-contact button {
   display: none !important;
 }
 
+.slide {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.slide img {
+  width: 100%;
+  height: auto;
+}
+
+.slide-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);  
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 10;  
+}
 
 /* FIN CARROUSEL ACCUEIL */
 
@@ -1072,7 +1097,7 @@ html.nuit .form-contact button {
 }
 
 .cities {
-  margin-top: 15%;
+  margin-top: 4%;
 }
 
 .text-hero {
@@ -1094,3 +1119,7 @@ html.nuit .form-contact button {
   justify-content: center;
 }
 /* END HERO */
+
+
+
+
