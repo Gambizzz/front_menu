@@ -11,7 +11,66 @@ import { FaHeartBroken } from "react-icons/fa";
 const UserProfile = () => {
   const [user] = useAtom(userAtom);
   const { t } = useTranslation();
+  const [reservations, setReservations] = useState([]);
+  const [restaurants, setRestaurants] = useState({});
   const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const fetchUserReservations = async () => {
+      if (!user.id) {
+        console.error('Erreur: user.id est vide ou non défini.');
+        return;
+      }
+
+      try {
+        const reservationsResponse = await ky.get(`http://localhost:3000/users/${user.id}/reservations`, {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }).json();
+
+        setReservations(reservationsResponse);
+
+        const restaurantIds = reservationsResponse.map(reservation => reservation.restaurant_id).join(',');
+        const restaurantsResponse = await ky.get(`http://localhost:3000/restaurants`, {
+          searchParams: {
+            ids: restaurantIds,
+          },
+        }).json();
+
+        const restaurantsMap = {};
+        restaurantsResponse.forEach(restaurant => {
+          restaurantsMap[restaurant.id] = restaurant.name;
+        });
+
+        setRestaurants(restaurantsMap);
+      } catch (error) {
+        console.error('Erreur lors du fetch des réservations:', error);
+      }
+    };
+
+    fetchUserReservations();
+  }, [user.id, user.token]);
+
+  const handleDelete = async (reservationId) => {
+    try {
+      const response = await ky.delete(`http://localhost:3000/restaurants/${user.id}/reservations/${reservationId}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+
+      if (response.ok) {
+        setReservations(reservations.filter(reservation => reservation.id !== reservationId));
+        alert('Réservation supprimée avec succès!');
+      } else {
+        throw new Error('Failed to delete reservation');
+      }
+    } catch (error) {
+      console.error('Erreur lors de la suppression de la réservation : ', error);
+      alert('Erreur lors de la suppression de la réservation');
+    }
+  };
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -53,6 +112,19 @@ const UserProfile = () => {
       <p>{t('email')}: {user.email}</p>
       <p>{t('id')}: {user.id}</p>
 
+      <h2>{t('reservations')}</h2>
+      <ul>
+        {reservations.map(reservation => (
+          <li key={reservation.id}>
+            {t('reservationNumber')}: {reservation.number}, {t('reservationDate')}: {reservation.date}, {t('reservationTime')}: {reservation.time},
+            {restaurants[reservation.restaurant_id] && (
+              <span>{t('restaurantName')}: {restaurants[reservation.restaurant_id]}</span>
+            )}
+            <button onClick={() => handleDelete(reservation.id)}>{t('deleteReservation')}</button>
+          </li>
+        ))}
+      </ul>
+
       <Link to="/edit">
         <button className='btn-edit-user'> {t('editProfileButton')} </button>
       </Link>
@@ -72,6 +144,6 @@ const UserProfile = () => {
       <ToastContainer/>
     </div>
   );
-}
+};
 
 export default UserProfile;

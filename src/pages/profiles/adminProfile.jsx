@@ -12,6 +12,7 @@ const AdminProfile = () => {
   const [user] = useAtom(userAtom);
   const { t } = useTranslation();
   const [restaurants, setRestaurants] = useState([]);
+  const [reservations, setReservations] = useState([]);
 
   useEffect(() => {
     if (user.isLoggedIn) {
@@ -20,8 +21,7 @@ const AdminProfile = () => {
   }, [user.isLoggedIn]);
 
   const fetchRestaurants = async () => {
-    const token = Cookies.get('adminToken'); // Utilise 'adminToken' pour récupérer le token
-    console.log('Fetch Token:', token); // Affiche le token dans la console
+    const token = Cookies.get('adminToken'); 
 
     if (!token) {
       toast.error('Token is missing');
@@ -36,10 +36,18 @@ const AdminProfile = () => {
       }).json();
 
       const adminId = parseInt(user.id, 10);
-
       const adminRestaurants = response.filter(restaurant => parseInt(restaurant.admin_id, 10) === adminId);
 
       setRestaurants(adminRestaurants);
+
+      adminRestaurants.forEach(async (restaurant) => {
+        const reservationsResponse = await ky.get(`http://localhost:3000/restaurants/${restaurant.id}/reservations`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }).json();
+        setReservations(prev => ({ ...prev, [restaurant.id]: reservationsResponse }));
+      });
     } catch (error) {
       toast.error(t('errorFetchingRestaurants'));
       console.error('Erreur lors de la récupération des restaurants : ', error);
@@ -47,8 +55,8 @@ const AdminProfile = () => {
   };
 
   const handleDelete = async (restaurantId) => {
-    const token = Cookies.get('adminToken'); // Utilise 'adminToken' pour récupérer le token
-    console.log('Delete Token:', token); // Affiche le token dans la console
+    const token = Cookies.get('adminToken'); 
+    console.log('Delete Token:', token);
 
     if (!token) {
       toast.error('Token is missing');
@@ -69,7 +77,27 @@ const AdminProfile = () => {
     }
   };
 
-  console.log(user);
+  const handleDeleteReservation = async (restaurant_id, reservationId) => {
+    const token = Cookies.get('adminToken');
+
+    if (!token) {
+      toast.error('Token is missing');
+      return;
+    }
+
+    try {
+      await ky.delete(`http://localhost:3000/restaurants/${restaurant_id}/reservations/${reservationId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      toast.success(t('reservation supprimé'));
+    } catch (error) {
+      console.error('Erreur lors de la suppression de la réservation : ', error);
+      toast.error(t('deleteReservationError'));
+    }
+  };
 
   return (
     <div>
@@ -99,11 +127,29 @@ const AdminProfile = () => {
                 <p>{restaurant.description}</p>
                 <p>{restaurant.city}</p>
                 <p>{restaurant.food}</p>
+                <p>{t('numberOfReservations')} : {reservations[restaurant.id]?.length || 0}</p>
                 <div className='btn-admin'>
                   <Link to={`/edit-restaurant/${restaurant.id}`}>
                     <button> {t('editR')} </button>
                   </Link>
                   <button onClick={() => handleDelete(restaurant.id)}> {t('delR')} </button>
+                </div>
+                <div>
+                <h4>{t('reservations')}:</h4>
+                  {reservations[restaurant.id]?.length > 0 ? (
+                    reservations[restaurant.id].map(reservation => (
+                      <div key={reservation.id}>
+                        <p>{t('reservationId')}: {reservation.id}</p>
+                        <p>{t('reservationDate')}: {reservation.date}</p>
+                        <p>{t('reservationTime')}: {reservation.time}</p>
+                        <p>{t('reservationEmail')}: {reservation.email}</p>
+                        <p>{t('reservationEmail')}: {reservation.user_id}</p>
+                        <button onClick={() => handleDeleteReservation(restaurant.id, reservation.id)}>{t('delR')}</button>
+                      </div>
+                    ))
+                  ) : (
+                    <p>{t('noReservations')}</p>
+                  )}
                 </div>
               </div>
             ))

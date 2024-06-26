@@ -5,12 +5,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
 
-
-@font-face {
-  font-family: 'Nectarine';
-  src: url('src/assets/fonts/Nectarine DEMO.ttf') format('truetype');
-}
 
 @font-face {
   font-family: 'OpenDyslexic';
@@ -33,7 +29,7 @@ $font-light: #2454FF;
 $title-icons-light: #FE4C00;
 $title-icons-night: #FFC40C;
 $font: "Raleway", sans-serif;
-$title-font: 'Nectarine';
+$title-font: "Overlock", sans-serif;
 
 
 /* START OPENDYS STYLES */
@@ -1048,16 +1044,81 @@ html.nuit .resa-form {
 }
 
 .btn-resa {
-  margin-top: 2%;
-  padding: 1%;
-  cursor: pointer;
-  border-radius: 15px;
-  border: 1px solid $title-icons-light;
-  width: 8.5%;
+  margin: 2%;
+
+  button {
+    border: 1px solid $title-icons-light;
+    padding: 1%;
+    cursor: pointer;
+    border-radius: 15px;
+  }
 }
 
 html.nuit .btn-resa {
-  border: 1px solid $title-icons-night;
+  margin: 2%;
+
+  button {
+    border: 1px solid $title-icons-night;
+    padding: 1%;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+}
+
+.comment {
+  display: flex;
+  gap: 1%;
+}
+
+.comments-section {
+  margin: 2%;
+  padding: 2%;
+
+  h2 {
+    color: $title-icons-light;
+    margin-bottom: 1%;
+  }
+}
+
+html.nuit .comments-section {
+  h2 {
+    color: $title-icons-night;
+  }
+}
+
+.btn-comm {
+  color: $title-icons-light;
+}
+
+html.nuit .btn-comm {
+  color: $title-icons-night;
+}
+
+.form-comm {
+  margin-top: 4%;
+  width: 40%;
+
+  textarea {
+    color: $title-icons-light;
+  }
+
+  button {
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .form-comm {
+  textarea {
+    color: $title-icons-night;
+  }
+
+  button {
+    color: $title-icons-night;
+  }
+}
+
+.log-comm {
+  margin-top: 4%;
 }
 /* END DETAILS RESTAURANTS */
 
@@ -1312,6 +1373,15 @@ html.nuit .signup-form {
     border: 1px solid $title-icons-night;
   }
 }
+
+.logout-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+/* END FORMS */
+
+
 
 /* START EDIT RESTAURANT */
 .form-edit-restau {
