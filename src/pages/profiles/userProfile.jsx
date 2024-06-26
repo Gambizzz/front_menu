@@ -7,10 +7,13 @@ import ky from 'ky';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaHeartBroken } from "react-icons/fa";
+import { IoTrashSharp } from "react-icons/io5";
+import { format } from 'date-fns';
+import { fr, enUS } from 'date-fns/locale';
 
 const UserProfile = () => {
   const [user] = useAtom(userAtom);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [reservations, setReservations] = useState([]);
   const [restaurants, setRestaurants] = useState({});
   const [favorites, setFavorites] = useState([]);
@@ -106,28 +109,44 @@ const UserProfile = () => {
     }
   };
 
+  const formatDate = (date) => {
+    const locale = i18n.language === 'fr' ? fr : enUS;
+    return `${format(new Date(date), 'PPPP', { locale })}`;
+  };
+
+  const formatTime = (timeString) => {
+    const date = new Date(timeString);
+    const locale = i18n.language === 'fr' ? fr : enUS;
+    return format(date, 'HH:mm', { locale });
+  };
+
   return (
     <div>
       <h1 className="title-pages"> {t('titleSpaceUser')} </h1>
       <p>{t('email')}: {user.email}</p>
       <p>{t('id')}: {user.id}</p>
 
-      <h2>{t('reservations')}</h2>
-      <ul>
-        {reservations.map(reservation => (
-          <li key={reservation.id}>
-            {t('reservationNumber')}: {reservation.number}, {t('reservationDate')}: {reservation.date}, {t('reservationTime')}: {reservation.time},
-            {restaurants[reservation.restaurant_id] && (
-              <span>{t('restaurantName')}: {restaurants[reservation.restaurant_id]}</span>
-            )}
-            <button onClick={() => handleDelete(reservation.id)}>{t('deleteReservation')}</button>
-          </li>
-        ))}
-      </ul>
-
       <Link to="/edit">
         <button className='btn-edit-user'> {t('editProfileButton')} </button>
       </Link>
+
+      <div className='res-us'>
+        <h2> {t('resaUser')} </h2>
+        <ul>
+          {reservations.map(reservation => (
+            <li key={reservation.id}>
+              <div className='user-resa'>
+                <p> {t('resaText')} {reservation.number} {t('pers')}, {t('on')} {formatDate(reservation.date)} {t('at')} {formatTime(reservation.time)} {t('at')}
+                {restaurants[reservation.restaurant_id] && (
+                  <span> {restaurants[reservation.restaurant_id]} </span>
+                )}
+                <button onClick={() => handleDelete(reservation.id)} className="btn-comm"> <IoTrashSharp /> </button>
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <div className='favs'>
       <h2>{t('myFav')}</h2>
