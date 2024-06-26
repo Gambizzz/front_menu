@@ -33,8 +33,8 @@ const ReservationForm = ({ restaurantId, userToken }) => {
   return (
     <form onSubmit={handleReservation} className="resa-form">
       <label>
-        {t("reservationNumber")}:
-        <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} required />
+        {t("reservationNumber")} :
+        <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} className="people" required />
       </label>
       <label>
         {t("reservationDate")} :

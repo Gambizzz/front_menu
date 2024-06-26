@@ -108,9 +108,9 @@ const Details = () => {
 
       <div className="card-details">
         <h1 className="name-restau"> {restaurant.name} </h1>
-        <p>{t('descriptR')}: {restaurant.description} </p>
-        <p>{t('cityR')}: {restaurant.city} </p>
-        <p>{t('foodR')}: {restaurant.food} </p>
+        <p>{t('descriptR')} : {restaurant.description} </p>
+        <p>{t('cityR')} : {restaurant.city} </p>
+        <p>{t('foodR')} : {restaurant.food} </p>
         <div className="menu-details">
           <h2> {t('ourMenu')} </h2>
           <img src={restaurant.image_url} alt={restaurant.name} />
@@ -157,7 +157,7 @@ const Details = () => {
         {user.isLoggedIn ? (
           <ReservationForm restaurantId={id} userToken={user.token} />
         ) : (
-          <p>{t('noReservationForAdmin')}</p>
+          <p> {t('noReservationForAdmin')} </p>
         )}
       </div>
     </div>

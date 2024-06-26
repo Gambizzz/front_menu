@@ -1036,6 +1036,15 @@ html.nuit .resa-details {
   }
 }
 
+.people {
+  border: 1px solid $title-icons-light;
+  border-radius: 5px;
+}
+
+html.nuit .people {
+  border: 1px solid $title-icons-night;
+}
+
 html.nuit .resa-form {
   input {
     color: $title-icons-night;
@@ -1158,10 +1167,29 @@ html.nuit .link-create {
   border: 1px solid $title-icons-light;
   margin-top: 2%;
   padding: 2%;
+
+  img {
+    margin-bottom: 2%;
+  }
+
+  .title-resa {
+    color: $title-icons-light;
+    margin-bottom: 1%;
+    text-align: center;
+  }
 }
 
 html.nuit .solo-card {
   border: 1px solid $title-icons-night;
+
+  .title-resa {
+    color: $title-icons-night;
+  }
+}
+
+.title-solo {
+  text-align: center;
+  margin-bottom: 2%;
 }
 
 .your-restau {
@@ -1175,6 +1203,8 @@ html.nuit .your-restau {
 }
 
 .btn-admin {
+  margin-top: 2%;
+  margin-bottom: 2%;
   display: flex;
   flex-direction: column;
   color: $title-icons-light;
@@ -1183,6 +1213,11 @@ html.nuit .your-restau {
 
 html.nuit .btn-admin {
   color: $title-icons-night;
+}
+
+.div-resa {
+  display: flex;
+  justify-content: space-between;
 }
 /* END ADMIN PROFILE */
 
@@ -1476,6 +1511,25 @@ html.nuit .favs {
 
 html.nuit .btn-fav {
   color: $title-icons-night;
+}
+
+.res-us {
+  margin: 4%;
+
+  h2 {
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .res-us {
+  h2 {
+    color: $title-icons-night;
+  }
+}
+
+.user-resa {
+  display: flex;
+  justify-content: space-between;
 }
 /* END USER PROFILE */
 
