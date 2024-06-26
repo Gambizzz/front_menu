@@ -14,6 +14,7 @@ const Restaurants = () => {
   const { city, food } = useParams(); 
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedFood, setSelectedFood] = useState('');
+  const [isTruncated, setIsTruncated] = useState(true);
 
   useEffect(() => {
     fetchRestaurants();
@@ -51,11 +52,15 @@ const Restaurants = () => {
     setSelectedFood(e.target.value);
   };
 
+  const toggleTruncate = () => {
+    setIsTruncated(!isTruncated);
+  };
+
   const truncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
       return text;
     }
-    return text.substring(0, maxLength) + '...VOIR PLUS';
+    return text.substring(0, maxLength) + '...';
   };
 
   return (
@@ -99,6 +104,7 @@ const Restaurants = () => {
         </select>
       </div>
 
+<div className="list-restau">
       <div className="card-restau">
         {restaurants.map((restaurant) => (
           <div className="restau" key={restaurant.id}>
@@ -107,10 +113,12 @@ const Restaurants = () => {
               <h1> {restaurant.name} </h1>
               <p> {restaurant.city} </p>
               <p> {restaurant.food} </p>
-              <p> {truncateText(restaurant.description, 100)} </p>
+              <p> {isTruncated ? truncateText(restaurant.description, 100) : restaurant.description} </p>
+              <button onClick={toggleTruncate} className="btn-more">{isTruncated ? 'Voir plus' : 'Voir moins'}</button>
             </Link>
           </div>
         ))}
+      </div>
       </div>
     </>
   );

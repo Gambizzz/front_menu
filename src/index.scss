@@ -938,10 +938,16 @@ html.nuit .form-contact button {
   border: 1px solid $title-icons-light;
   margin: 2%;
   padding: 2%;
+  display: flex;
+  justify-content: space-around;
 
   h1 {
     color: $title-icons-light;
   }
+}
+
+.btn-more {
+  
 }
 /* END INDEX RESTAURANTS */
 
