@@ -4,6 +4,7 @@ import ky from 'ky';
 
 const ReservationForm = ({ restaurantId, userToken }) => {
   const { t } = useTranslation();
+  const [number, setNumber] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
 
@@ -11,7 +12,7 @@ const ReservationForm = ({ restaurantId, userToken }) => {
     e.preventDefault();
     try {
       const response = await ky.post(`http://localhost:3000/restaurants/${restaurantId}/reservations`, {
-        json: { reservation: { date, time } },
+        json: { reservation: { number, date, time } },
         headers: {
           Authorization: `Bearer ${userToken}`,
           'Content-Type': 'application/json'
@@ -20,7 +21,6 @@ const ReservationForm = ({ restaurantId, userToken }) => {
 
       if (response.ok) {
         alert('Réservation créée avec succès!');
-        // Réinitialiser le formulaire ou effectuer d'autres actions après la réservation
       } else {
         throw new Error('Failed to create reservation');
       }
@@ -32,6 +32,10 @@ const ReservationForm = ({ restaurantId, userToken }) => {
 
   return (
     <form onSubmit={handleReservation} className="resa-form">
+      <label>
+        {t("reservationNumber")}:
+        <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} required />
+      </label>
       <label>
         {t("reservationDate")} :
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />

@@ -129,7 +129,7 @@ const Details = () => {
             <div className="comment" key={comment.id}>
               <p> {t('client')} <strong> {comment.email} </strong> {t('hadComment')} {comment.body} </p>
               {user && comment.user_id === user.id && (
-                <button onClick={() => handleDeleteComment(comment.id)} className="btn-comm">
+                <button onClick={() => removeComment(comment.id)} className="btn-comm">
                   <IoTrashSharp />
                 </button>
               )}
@@ -137,7 +137,7 @@ const Details = () => {
             </div>
           ))
         )}
-        {user ? (
+        {user.isLoggedIn ? (
           <form onSubmit={handleCommentSubmit} className="form-comm">
             <h2> {t("leaveComments")} </h2>
             <textarea
