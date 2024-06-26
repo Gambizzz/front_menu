@@ -56,42 +56,45 @@ const Restaurants = () => {
     <>
       <center><h1 className="title-pages">{t('titleRestau')}</h1></center>
 
+      <div className="form-wrapper">
       <div>
-        <label> {t('selectedCities')} </label>
-        <select value={selectedCity} onChange={handleCityChange}>
-          <option value=""> {t('allCities')} </option>
-          <option value="Paris"> Paris </option>
-          <option value="Marseille"> Marseille </option>
-          <option value="Lyon"> Lyon </option>
-          <option value="Bordeaux"> Bordeaux </option>
-          <option value="Lille"> Lille </option>
-          <option value="Montpellier"> Montpellier </option>
-          <option value="Nice"> Nice </option>
-          <option value="Rennes"> Rennes </option>
-          <option value="Rouen"> Rouen </option>
-          <option value="Strasbourg"> Strasbourg </option>
-          <option value="Reims"> Reims </option>
+        <label className="label">{t('selectedCities')}</label>
+        <select className="select" value={selectedCity} onChange={handleCityChange}>
+          <option value="">{t('allCities')}</option>
+          <option value="Paris">Paris</option>
+          <option value="Marseille">Marseille</option>
+          <option value="Lyon">Lyon</option>
+          <option value="Bordeaux">Bordeaux</option>
+          <option value="Lille">Lille</option>
+          <option value="Montpellier">Montpellier</option>
+          <option value="Nice">Nice</option>
+          <option value="Rennes">Rennes</option>
+          <option value="Rouen">Rouen</option>
+          <option value="Strasbourg">Strasbourg</option>
+          <option value="Reims">Reims</option>
         </select>
       </div>
 
       <div>
-        <label> {t('selectFood')} </label>
-        <select value={selectedFood} onChange={handleFoodChange}>
-          <option value=""> {t('allFood')} </option>
-          <option value="Italian"> {t('italian')} </option>
-          <option value="French"> {t('french')} </option>
-          <option value="Japanese"> {t('japanese')} </option>
-          <option value="Chinese"> {t('chinese')} </option>
-          <option value="Indian"> {t('indian')} </option>
-          <option value="Mexican"> {t('mexican')} </option>
-          <option value="Lebanese"> {t('lebanese')} </option>
-          <option value="Mediterranean"> {t('medit')} </option>
-          <option value="Thaï"> {t('thai')} </option>
-          <option value="Korean"> {t('korean')} </option>
-          <option value="Vegetarian"> {t('veggie')} </option>
-          <option value="Fast food"> {t('fast')} </option>
+        <label className="label">{t('selectFood')}</label>
+        <select className="select" value={selectedFood} onChange={handleFoodChange}>
+          <option value="">{t('allFood')}</option>
+          <option value="Italian">{t('italian')}</option>
+          <option value="French">{t('french')}</option>
+          <option value="Japanese">{t('japanese')}</option>
+          <option value="Chinese">{t('chinese')}</option>
+          <option value="Indian">{t('indian')}</option>
+          <option value="Mexican">{t('mexican')}</option>
+          <option value="Lebanese">{t('lebanese')}</option>
+          <option value="Mediterranean">{t('medit')}</option>
+          <option value="Thai">{t('thai')}</option>
+          <option value="Korean">{t('korean')}</option>
+          <option value="Vegetarian">{t('veggie')}</option>
+          <option value="Fast food">{t('fast')}</option>
         </select>
       </div>
+    </div>
+  
 
       <div className="card-container">
         {restaurants.map((restaurant) => (

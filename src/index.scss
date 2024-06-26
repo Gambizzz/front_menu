@@ -1199,3 +1199,35 @@ html.nuit .form-contact button {
 }
 
 
+/* SÉLECTION RESTAURANTS ET FOOD */ 
+
+.form-wrapper {
+  display: inline-flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.label {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.select {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+}
+
+.select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+/* FIN SÉLECTION RESTAURANTS ET FOOD */ 
+
