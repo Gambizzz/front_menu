@@ -103,7 +103,7 @@ const Details = () => {
   }
 
   return (
-    <div>
+    <div className="details-container">
       <ToastContainer />
 
       <div className="card-details">
@@ -151,8 +151,7 @@ const Details = () => {
           <p className="log-comm"> <strong> {t('loginToComment')} </strong> </p>
         )}
       </div>
-
-      <div className="resa-details">
+      <div className="reservation-section">
         <h2>{t("makeReservation")}</h2>
         {user.isLoggedIn ? (
           <ReservationForm restaurantId={id} userToken={user.token} />
@@ -165,5 +164,3 @@ const Details = () => {
 };
 
 export default Details;
-
-

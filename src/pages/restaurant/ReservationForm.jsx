@@ -12,7 +12,13 @@ const ReservationForm = ({ restaurantId, userToken }) => {
     e.preventDefault();
     try {
       const response = await ky.post(`http://localhost:3000/restaurants/${restaurantId}/reservations`, {
-        json: { reservation: { number, date, time } },
+        json: {
+          reservation: {
+            number,
+            date,
+            time
+          }
+        },
         headers: {
           Authorization: `Bearer ${userToken}`,
           'Content-Type': 'application/json'
