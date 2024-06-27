@@ -16,6 +16,7 @@ const AdminProfile = () => {
   const { t, i18n } = useTranslation();
   const [restaurants, setRestaurants] = useState([]);
   const [reservations, setReservations] = useState({});
+  const [favorites, setFavorites] = useState({});
   const [refreshFlag, setRefreshFlag] = useState(false);
 
   useEffect(() => {
@@ -50,7 +51,16 @@ const AdminProfile = () => {
             Authorization: `Bearer ${token}`
           }
         }).json();
+
         setReservations(prev => ({ ...prev, [restaurant.id]: reservationsResponse }));
+
+        const favoritesResponse = await ky.get(`http://localhost:3000/favorites/admin_favorites/${adminId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }).json();
+
+        setFavorites(favoritesResponse);
       });
     } catch (error) {
       toast.error(t('errorFetchingRestaurants'));
@@ -143,6 +153,7 @@ const AdminProfile = () => {
                 <p> {t('cityR')} : {restaurant.city} </p>
                 <p> {t('foodR')} : {restaurant.food} </p>
                 <p> {t('numberOfReservations')} : {reservations[restaurant.id]?.length || 0} </p>
+                <p> {t('numberOfFavorites')} : {favorites[restaurant.id]?.length || 0} </p>
 
                 <div className='btn-admin'>
                   <div>
@@ -182,3 +193,4 @@ const AdminProfile = () => {
 };
 
 export default AdminProfile;
+
