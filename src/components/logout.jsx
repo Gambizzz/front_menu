@@ -21,7 +21,7 @@ function Logout() {
 
   return (
     <div className='logout-form'>
-      <h1> {t('déco')} </h1>
+      <h1 className='title-pages'> {t('déco')} </h1>
       <button onClick={handleLogout}> {t('btn-déco')} </button>
     </div>
   );

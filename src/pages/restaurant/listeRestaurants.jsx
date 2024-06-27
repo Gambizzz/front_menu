@@ -117,6 +117,8 @@ const Restaurants = () => {
           </div>
         ))}
       </div>
+
+      <ToastContainer />
     </>
   );
 };

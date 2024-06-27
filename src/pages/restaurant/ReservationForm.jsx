@@ -5,6 +5,7 @@ import ky from 'ky';
 const ReservationForm = ({ restaurantId, userToken }) => {
   const { t } = useTranslation();
   const [number, setNumber] = useState('');
+  const [number, setNumber] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
 
@@ -27,7 +28,6 @@ const ReservationForm = ({ restaurantId, userToken }) => {
 
       if (response.ok) {
         alert('Réservation créée avec succès!');
-        // Réinitialiser le formulaire ou effectuer d'autres actions après la réservation
       } else {
         throw new Error('Failed to create reservation');
       }
@@ -38,20 +38,23 @@ const ReservationForm = ({ restaurantId, userToken }) => {
   };
 
   return (
-    <form onSubmit={handleReservation}>
+    <form onSubmit={handleReservation} className="resa-form">
       <label>
-        {t("reservationNumber")}:
-        <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} required />
+        {t("reservationNumber")} :
+        <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} className="people" required />
       </label>
       <label>
-        {t("reservationDate")}:
+        {t("reservationDate")} :
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
       </label>
       <label>
-        {t("reservationTime")}:
+        {t("reservationTime")} :
         <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
       </label>
-      <button type="submit">{t("makeReservation")}</button>
+
+      <div className="btn-resa">
+        <button type="submit">{t("makeResa")}</button>
+      </div>
     </form>
   );
 };

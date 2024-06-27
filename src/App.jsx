@@ -98,10 +98,8 @@ function App() {
         <Route path='/profile' element={<UserProfile />} />
         <Route path='/edit' element={<Edit />} />
         <Route path='/admin/profile' element={<AdminProfile />} />
-        <Route path='/admin/edit-profile' element={<EditAdmin />} />
-        {/* Route pour les réservations */}
-  
-      </Routes>
+        <Route path="/admin/edit-profile" element={<EditAdmin />} />
+      </Routes> 
 
       <footer>
         <Footer isNightMode={isNightMode} />

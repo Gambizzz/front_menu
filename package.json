@@ -14,6 +14,9 @@
     "@ckeditor/ckeditor5-react": "^7.0.0",
     "bootstrap": "^5.3.3",
     "bootswatch": "^5.3.3",
+    "ckeditor4-react": "^5.1.0",
+    "date-fns": "^3.6.0",
+    "fr": "link:date-fns/locale/fr",
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.10.1",
     "i18next": "^23.11.5",
@@ -27,7 +30,7 @@
     "react-dom": "^18.3.1",
     "react-i18next": "^14.1.2",
     "react-icons": "^5.2.1",
-    "react-router-dom": "^6.23.1",
+    "react-router-dom": "^6.24.0",
     "react-toastify": "^10.0.5"
   },
   "devDependencies": {
