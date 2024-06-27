@@ -24,7 +24,7 @@ function AdminSign() {
     }
 
     try {
-      const response = await ky.post('https://back-menu-yqxn.onrender.com/admins', {
+      const response = await ky.post('http://localhost:3000/admins', {
         json: {
           admin: {
             email,
