@@ -126,15 +126,6 @@ const UserProfile = () => {
       <p>{t('email')}: {user.email}</p>
       <p>{t('id')}: {user.id}</p>
 
-      <h2>{t('reservations')}</h2>
-      <ul>
-        {reservations.map(reservation => (
-          <li key={reservation.id}>
-            {t('reservationNumber')}: {reservation.number}, {t('reservationDate')}: {reservation.date}, {t('reservationTime')}: {reservation.time}
-          </li>
-        ))}
-      </ul>
-
       <Link to="/edit">
         <button className='btn-edit-user'> {t('editProfileButton')} </button>
       </Link>
