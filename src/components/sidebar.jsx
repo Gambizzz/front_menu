@@ -21,7 +21,6 @@ const Sidebar = ({ toggleDyslexic }) => {
       <div className={`sidebar ${showSidebar ? 'active' : ''} ${isNightMode ? 'nuit' : ''}`}>
         <ul>
           <li> <button onClick={toggleDyslexic}> {t('opendys')} </button> </li>
-          <li> {t('colorBlind')} </li>
         </ul>
       </div>
       <button onClick={toggleSidebar} className={`toggle-btn ${isNightMode ? 'nuit' : ''} ${isDyslexicMode ? 'dyslexic' : ''}`}>
