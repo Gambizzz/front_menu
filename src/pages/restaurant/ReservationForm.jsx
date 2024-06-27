@@ -5,6 +5,7 @@ import ky from 'ky';
 const ReservationForm = ({ restaurantId, userToken }) => {
   const { t } = useTranslation();
   const [number, setNumber] = useState('');
+  const [number, setNumber] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
 
@@ -12,7 +13,13 @@ const ReservationForm = ({ restaurantId, userToken }) => {
     e.preventDefault();
     try {
       const response = await ky.post(`http://localhost:3000/restaurants/${restaurantId}/reservations`, {
-        json: { reservation: { number, date, time } },
+        json: {
+          reservation: {
+            number,
+            date,
+            time
+          }
+        },
         headers: {
           Authorization: `Bearer ${userToken}`,
           'Content-Type': 'application/json'

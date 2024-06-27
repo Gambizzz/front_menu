@@ -1,6 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { nightModeAtom, dyslexicModeAtom, userAtom } from './atoms';
 import Cookies from 'js-cookie';
@@ -65,7 +64,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
+    <Router>
       <Sidebar isNightMode={isNightMode} isDyslexicMode={isDyslexicMode} toggleDyslexic={toggleDyslexic} />
 
       <header>
@@ -74,7 +73,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Home />} />
-        {/* routes pour le USER */}
+        {/* Routes pour le USER */}
         <Route path='/login' element={<Log />} />
         <Route path='/signup' element={<Sign />} />
         <Route path='/logout' element={<Logout />} />
@@ -86,19 +85,18 @@ function App() {
         <Route path='/admin/logout' element={<AdminLogout />} />
         <Route path='/forgot-password-admin' element={<ForgotPasswordAdmin />} />
         <Route path='/reset-password-admin/:token' element={<ResetPasswordAdmin />} />
-        {/* routes FOOTER */}
+        {/* Routes FOOTER */}
         <Route path='/concept' element={<Concept />} />
         <Route path='/team' element={<Team />} />
         <Route path='/contact' element={<Contact />} />
-        {/* routes RESTAURANTS */}
+        {/* Routes RESTAURANTS */}
         <Route path='/restaurants' element={<Restaurants />} />
         <Route path='/restaurant/:id' element={<Details />} />
         <Route path='/create-restaurant' element={<CreateRestaurant />} />
         <Route path='/edit-restaurant/:id' element={<EditRestaurant />} />
-        {/* routes Profil USER */}
+        {/* Routes Profil USER */}
         <Route path='/profile' element={<UserProfile />} />
         <Route path='/edit' element={<Edit />} />
-        {/* routes Profil ADMIN */}
         <Route path='/admin/profile' element={<AdminProfile />} />
         <Route path="/admin/edit-profile" element={<EditAdmin />} />
       </Routes> 
@@ -106,7 +104,7 @@ function App() {
       <footer>
         <Footer isNightMode={isNightMode} />
       </footer>
-    </BrowserRouter>
+    </Router>
   );
 }
 

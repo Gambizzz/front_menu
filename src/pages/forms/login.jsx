@@ -39,11 +39,11 @@ function Log() {
       Cookies.set('userToken', token); // Changement du nom du cookie à 'adminToken'
       Cookies.set('userId', user.id); // Changement du nom du cookie à 'adminId'
 
-      toast.success(t('log')); 
+      toast.success(t('log'));
 
       setTimeout(() => {
         window.location.href = "/";
-      }, 1000); 
+      }, 1000);
 
     } catch (error) {
       console.error('Login error:', error);
@@ -67,8 +67,8 @@ function Log() {
           <button type='submit'> {t('connexion')} </button>
         </div>
         <p>
-          <Link to="/signup" className='links'> {t('signup')} </Link> | 
-          <Link to="/forgot-password" className='links'> {t('forgotPassword')} </Link> | 
+          <Link to="/signup" className='links'> {t('signup')} </Link> |
+          <Link to="/forgot-password" className='links'> {t('forgotPassword')} </Link> |
           <Link to="/" className='links'> {t('home')} </Link>
         </p>
       </form>
