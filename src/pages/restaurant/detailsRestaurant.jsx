@@ -59,22 +59,24 @@ const Details = () => {
   }
 
   return (
-    <div>
+    <div className="details-container">
       <ToastContainer />
 
-      <div>
-        <img src={restaurant.image_url} />
-        <h1 className="name-restau">{restaurant.name}</h1>
-        <p> {t('descriptR')} : {restaurant.description}</p>
-        <p> {t('cityR')} : {restaurant.city}</p>
-        <p> {t('foodR')} : {restaurant.food}</p>
+      <div className="restaurant-info">
+        <img src={restaurant.image_url} alt={restaurant.name} />
+        <div className="restaurant-details">
+          <h1 className="name-restau">{restaurant.name}</h1>
+          <p> {t('descriptR')} : {restaurant.description}</p>
+          <p> {t('cityR')} : {restaurant.city}</p>
+          <p> {t('foodR')} : {restaurant.food}</p>
+        </div>
       </div>
 
-      <div>
+      <div className="menu-section">
         <h2> {t('ourMenu')} </h2>
         <div dangerouslySetInnerHTML={{ __html: text }}></div>
       </div>
-      <div>
+      <div className="reservation-section">
         <h2>{t("makeReservation")}</h2>
         <ReservationForm restaurantId={id} userToken={user.token} />
       </div>
@@ -83,4 +85,3 @@ const Details = () => {
 };
 
 export default Details;
-
