@@ -918,68 +918,6 @@ html.nuit .form-contact button {
 
 
 
-/* START INDEX RESTAURANTS */
-.card-restau {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.restau {
-  display: flex;
-  flex: 1 1 calc(33.333% - 8px);
-  border: 1px solid $title-icons-light;
-  border-radius: 15px;
-  margin: 2%;
-  padding: 2%;
-
-  h1 {
-    color: $title-icons-light;
-  }
-}
-
-html.nuit .restau {
-  border: 1px solid $title-icons-night;
-
-  h1 {
-    color: $title-icons-night;
-  }
-}
-
-.drop-cities {
-  select {
-    color: $title-icons-light;
-    background-color: $bg-light-font-night;
-    margin-left: 1%;
-  }
-}
-
-html.nuit .drop-cities {
-  select {
-    color: $title-icons-night;
-    background-color: $bg-night;
-    margin-left: 1%;
-  }
-}
-
-.drop-food {
-  select {
-    color: $title-icons-light;
-    background-color: $bg-light-font-night;
-    margin-left: 1%;
-  }
-}
-
-html.nuit .drop-food {
-  select {
-    color: $title-icons-night;
-    background-color: $bg-night;
-    margin-left: 1%;
-  }
-}
-/* END INDEX RESTAURANTS */
-
-
 
 /* START DETAILS RESTAURANTS */
 .name-restau {
@@ -1774,8 +1712,6 @@ html.nuit .res-us {
 
 
 /* PAGE DÉTAIL DU RESTAURANT */
-
-
 .details-container {
   display: flex;
   flex-direction: column;

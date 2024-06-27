@@ -5,7 +5,6 @@ import ky from 'ky';
 const ReservationForm = ({ restaurantId, userToken }) => {
   const { t } = useTranslation();
   const [number, setNumber] = useState('');
-  const [number, setNumber] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
 
