@@ -13,7 +13,7 @@ const Home = () => {
       <div className="hero-index">
         <div className="div-pic">
           <img
-            src="src/assets/images/pic_menu.png" 
+            src="public/pic_menu.png" 
             className="hero-pic"
             alt="Photo d'accueil"
           />
@@ -43,51 +43,51 @@ const Home = () => {
         <div className="carousel-container">
           <Carousel>
             <div className="slide">
-              <img src="src/assets/images/PARIS.jpeg" alt="PARIS" />
+              <img src="public/PARIS.jpeg" alt="PARIS" />
               <div className="slide-caption"> PARIS </div>
             </div>
             <div className="slide">
-              <img src="src/assets/images/MARSEILLE.jpg" alt="MARSEILLE" />
+              <img src="public/MARSEILLE.jpg" alt="MARSEILLE" />
               <div className="slide-caption"> MARSEILLE </div>
             </div>
             <div className="slide">
-              <img src="src/assets/images/TOULOUSE.jpg" alt="TOULOUSE" />
+              <img src="public/TOULOUSE.jpg" alt="TOULOUSE" />
               <div className="slide-caption"> TOULOUSE </div>
             </div>
             <div className="slide">
-              <img src="src/assets/images/LYON.avif" alt="LYON" />
+              <img src="public/LYON.avif" alt="LYON" />
               <div className="slide-caption"> LYON </div>
             </div>
             <div className="slide">
-              <img src="src/assets/images/STRASBOURG.jpg" alt="STRASBOURG" />
+              <img src="public/STRASBOURG.jpg" alt="STRASBOURG" />
               <div className="slide-caption">STRASBOURG</div>
             </div>
             <div className="slide">
-              <img src="src/assets/images/MONTPEL.jpg" alt="MONTPELLIER" />
+              <img src="public/MONTPEL.jpg" alt="MONTPELLIER" />
               <div className="slide-caption"> MONTPELLIER </div>
             </div>
             <div className="slide">
-              <img src="src/assets/images/LILLE.webp" alt="LILLE" />
+              <img src="public/LILLE.webp" alt="LILLE" />
               <div className="slide-caption"> LILLE </div>
             </div>
             <div className="slide">
-              <img src="src/assets/images/RENNES.jpeg" alt="RENNES" />
+              <img src="public/RENNES.jpeg" alt="RENNES" />
               <div className="slide-caption"> RENNES </div>
             </div>
             <div className="slide">
-              <img src="src/assets/images/BORDEAUX.jpg" alt="BORDEAUX" />
+              <img src="public/BORDEAUX.jpg" alt="BORDEAUX" />
               <div className="slide-caption"> BORDEAUX </div>
             </div>
             <div className="slide">
-              <img src="src/assets/images/ROUEN.webp" alt="ROUEN" />
+              <img src="public/ROUEN.webp" alt="ROUEN" />
               <div className="slide-caption"> ROUEN </div>
             </div>
             <div className="slide">
-              <img src="src/assets/images/NICE.webp" alt="NICE" />
+              <img src="public/NICE.webp" alt="NICE" />
               <div className="slide-caption"> NICE </div>
             </div>
             <div className="slide">
-              <img src="src/assets/images/REIMS.avif" alt="REIMS" />
+              <img src="public/REIMS.avif" alt="REIMS" />
               <div className="slide-caption"> REIMS </div>
             </div>
           </Carousel>
