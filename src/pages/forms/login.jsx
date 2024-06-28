@@ -36,8 +36,8 @@ function Log() {
         isAdmin: user.isAdmin
       });
 
-      Cookies.set('userToken', token); // Changement du nom du cookie à 'adminToken'
-      Cookies.set('userId', user.id); // Changement du nom du cookie à 'adminId'
+      Cookies.set('userToken', token);
+      Cookies.set('userId', user.id);
 
       toast.success(t('log'));
 

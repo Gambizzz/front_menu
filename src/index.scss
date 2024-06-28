@@ -1,3 +1,4 @@
+/* Imports */
 @import "node_modules/bootswatch/dist/zephyr/variables"; 
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/bootswatch/dist/zephyr/bootswatch"; 
@@ -8,6 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
 
 
+/* Fonts */
 @font-face {
   font-family: 'OpenDyslexic';
   src: url('src/assets/fonts/OpenDyslexic3-Regular.ttf') format('opentype');
@@ -22,7 +24,8 @@
   font-style: normal;
 }
 
-/* Variables*/
+
+/* Variables */
 $bg-light-font-night: #FCF6F2;
 $bg-night: #191970;
 $font-light: #2454FF;
@@ -44,6 +47,7 @@ body.dyslexic {
 /* END OPENDYS STYLES */
 
 
+/* COLOR THEMES */
 /* START LIGHT THEME STYLES */
 body {
     background-color: $bg-light-font-night;
@@ -52,7 +56,6 @@ body {
     margin: 1.2%;
 }
 /* END LIGHT THEME STYLES */
-
 
 /* START NIGHT THEME STYLES */
 html.nuit body {
@@ -156,6 +159,119 @@ html.nuit .card-avatar-team {
 
 
 
+/* START GENERALS */
+.title-pages {
+  font-family: $title-font;
+  font-size: 40px;
+  color: $title-icons-light;
+  text-align: center;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.title-pages.night {
+  font-family: $title-font;
+  font-size: 40px;
+  color: $title-icons-night;
+}
+
+.page-header {
+  text-align: center;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+/* END GENERALS */
+
+
+
+/* START MEDIA QUERY */
+@media (max-width: 515px) {
+  .navbar {
+    flex-direction: column;
+    font-size: 1em;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links p,
+  .nav-links img,
+  .nav-links .btn-dropdown {
+    margin: 10px 0;
+  }
+
+  .nav-links p {
+    margin-left: 15%;
+  }
+
+  .nav-links .btn-dropdown {
+   margin-left: 18%; 
+  }
+
+  .nav-links img {
+    width: 35%;
+    margin-left: 38%;
+  }
+
+  .switch {
+    width: 70px;
+    height: 35px;
+    margin-right: 75%;
+  }
+
+  .slider:before {
+    height: 25px;
+    width: 25px;
+    line-height: 20px;
+  }
+
+  .theme-toggler {
+    font-size: 1.2em;
+    padding-right: 5px;
+    margin-right: 2%;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 40%;
+    right: -100%;
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+
+  .toggle-btn {
+    margin-right: 0;
+    height: 20%;
+    width: auto;
+    font-size: 0.7rem;
+    padding: 5px;
+  }
+
+  ul {
+    width: 100%;
+  }
+
+  li {
+    padding: 5px;
+  }
+
+  .concept-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-concept {
+    margin-bottom: 5%;
+  }
+}
+/* END MEDIA QUERY */
+
 
 
 /* START SIDEBAR */
@@ -183,7 +299,22 @@ html.nuit .card-avatar-team {
 }
 
 .sidebar.active {
+  display: flex;
+  justify-content: space-evenly;
   right: 0;
+  background-color: transparent;
+
+  .dys-text {
+    color: $font-light;
+  }
+}
+
+html.nuit .sidebar.active {
+  background-color: transparent;
+
+  .dys-text {
+    color: $bg-light-font-night;
+  }
 }
 
 .toggle-btn {
@@ -229,6 +360,7 @@ li {
   border-bottom: 1px solid $font-light;
 }
 /* END SIDEBAR */
+
 
 
 /* START NAVBAR */
@@ -567,8 +699,7 @@ li {
   margin-top: 8%;
   transition: transform .2s ease, opacity .2s ease;
  }
- 
- /*Image*/
+
  .card-avatar-team {
   --size: 90px;
   background: linear-gradient(to top, $title-icons-light 0%, #fcbc97 100%);
@@ -578,8 +709,7 @@ li {
   transition: transform .2s ease;
   margin-bottom: 1rem;
  }
- 
- /*Card footer*/
+
  .card-social {
   transform: translateY(200%);
   display: flex;
@@ -588,7 +718,7 @@ li {
   opacity: 0;
   transition: transform .2s ease, opacity .2s ease;
  }
- 
+
  .card-social__item svg {
   display: block;
   height: 18px;
@@ -597,39 +727,37 @@ li {
   cursor: pointer;
   transition: fill 0.2s ease ,transform 0.2s ease;
  }
- 
- /*Text*/
+
  .card-title-team {
   color: $font-light;
   font-size: 2em;
   font-weight: 600;
   line-height: 2rem;
  }
- 
+
  .card-subtitle-team {
   color: $title-icons-light;
   font-size: 1em;
  }
- 
- /*Hover*/
+
  .card-team:hover {
   box-shadow: 0 8px 50px #23232333;
  }
- 
+
  .card-team:hover .card-info-team {
   transform: translateY(-5%);
  }
- 
+
  .card-team:hover .card-social {
   transform: translateY(100%);
   opacity: 1;
  }
- 
+
  .card-social__item svg:hover {
   fill: $title-icons-light;
   transform: scale(1.1);
  }
- 
+
  .card-avatar-team:hover {
   transform: scale(1.1);
  }
@@ -782,7 +910,7 @@ html.nuit .form-contact label textarea:valid + span {
   flex-direction: row;
   margin: 2%;
   align-items: center;
-  
+
   .icon {
     color: $title-icons-light;
   }
@@ -801,125 +929,723 @@ html.nuit .form-contact button {
 
 
 
+/* START PAGE RESTAU LIST */
+/* start filters */ 
+.form-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 2%;
+  justify-content: space-around;
 
+  .label {
+    font-weight: bold;
+    margin-left: 1%;
+  }
 
-/* START GENERALS */
-.title-pages {
-  font-family: $title-font;
-  font-size: 40px;
-  color: $title-icons-light;
-  text-align: center;
-  margin-top: 4%;
-  margin-bottom: 4%;
+  .select {
+    width: 80%;
+    padding: 2%;
+    border: 1px solid $title-icons-light;
+    border-radius: 4px;
+    background-color: $bg-light-font-night;
+  }
+
+  .select:focus {
+    border-color: $font-light;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+    color: $title-icons-light;
+  }
 }
 
-.title-pages.night {
-  font-family: $title-font;
-  font-size: 40px;
+html.nuit .form-wrapper {
+  .select {
+    border: 1px solid $title-icons-night;
+    background-color: $bg-night;
+  }
+
+  .select:focus {
+    border-color: $bg-light-font-night;
+    color: $title-icons-night;
+  }
+}
+/* end filters */ 
+
+/* start cards */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-around;
+  margin: 4%;
+}
+
+.restaurant-card {
+  max-width: 20rem;
+  background-color: $bg-light-font-night;
+  border: 1px solid $title-icons-light;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+  margin-top: 10%;
+}
+
+html.nuit .restaurant-card {
+  background-color: $bg-night;
+  border: 1px solid $title-icons-night;
+}
+
+.restaurant-card:hover {
+  transform: scale(1.05);
+}
+
+.restaurant-image {
+  width: 100%;
+  height: auto;
+  border-bottom: 0.5px solid $title-icons-light;
+  object-fit: cover;
+}
+
+html.nuit .restaurant-image {
+  border-bottom: 0.5px solid $title-icons-night;
+}
+
+.restaurant-content {
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.restaurant-title {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: $title-icons-light;
+  text-align: center;
+}
+
+html.nuit .restaurant-title {
   color: $title-icons-night;
 }
 
-.page-header {
-  text-align: center;
+.restaurant-description {
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.2;
+  max-height: 3rem;
+  overflow: scroll;
+}
+
+html.nuit .restaurant-description {
+  color: $bg-light-font-night;
+}
+
+.restaurant-city {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.restaurant-food {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+html.nuit .restaurant-city {
+  color: #bab6b6;
+}
+
+html.nuit .restaurant-food {
+  color: #bab6b6;
+}
+
+.restaurant-link-wrapper {
+  display: flex;
   margin-top: 4%;
-  margin-bottom: 4%;
+  align-items: center;
+  justify-content: center;
 }
-/* END GENERALS */
+
+.restaurant-link-text {
+  color: $font-light;
+  margin-right: 2%;
+}
+
+html.nuit .restaurant-link-text {
+  color: $title-icons-night;
+}
+
+.restaurant-link-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-left: 0.5rem;
+  color: $font-light;
+}
+
+html.nuit .restaurant-link-icon {
+  color: $title-icons-night;
+}
+/* end cards */
+/* END PAGE RESTAU LIST */
 
 
 
-/* START MEDIA QUERY */
-@media (max-width: 515px) {
-  .navbar {
-    flex-direction: column;
-    font-size: 1em;
+
+/* START CREATE RESTAURANT */
+.create-form {
+  width: 50%;
+  margin: 2%;
+
+  label {
+    margin-right: 1%;
   }
 
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  input {
+    color: $title-icons-light;
+    background-color: $bg-light-font-night;
+    border: 1px solid $font-light;
+    padding: 1%;
   }
 
-  .nav-links p,
-  .nav-links img,
-  .nav-links .btn-dropdown {
-    margin: 10px 0;
+  select {
+    color: $title-icons-light;
+    background-color: $bg-light-font-night;
   }
 
-  .nav-links p {
-    margin-left: 15%;
+  textarea {
+    color: $title-icons-light;
   }
 
-  .nav-links .btn-dropdown {
-   margin-left: 18%; 
-  }
-
-  .nav-links img {
-    width: 35%;
-    margin-left: 38%;
-  }
-
-  .switch {
-    width: 70px;
-    height: 35px;
-    margin-right: 75%;
-  }
-
-  .slider:before {
-    height: 25px;
-    width: 25px;
-    line-height: 20px;
-  }
-
-  .theme-toggler {
-    font-size: 1.2em;
-    padding-right: 5px;
-    margin-right: 2%;
-  }
-
-  .sidebar {
-    width: 100%;
-    height: 40%;
-    right: -100%;
-  }
-
-  .sidebar.active {
-    right: 0;
-  }
-
-  .toggle-btn {
-    margin-right: 0;
-    height: 20%;
-    width: auto;
-    font-size: 0.7rem;
-    padding: 5px;
-  }
-
-  ul {
-    width: 100%;
-  }
-
-  li {
-    padding: 5px;
-  }
-
-  .concept-cards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card-concept {
-    margin-bottom: 5%;
+  button {
+    color: $font-light;
+    border: 1px solid $title-icons-light;
+    border-radius: 15px;
+    padding: 1%;
+    margin-top: 2%;
   }
 }
-/* END MEDIA QUERY */
+
+html.nuit .create-form {
+  input {
+    color: $title-icons-night;
+    background-color: $bg-night;
+    border: 1px solid $bg-light-font-night;
+  }
+
+  select {
+    color: $title-icons-night;
+    background-color: $bg-night;
+  }
+
+  textarea {
+    color: $title-icons-night;
+  }
+
+  button {
+    color: $bg-light-font-night;
+    border: 1px solid $title-icons-night;
+  }
+}
+/* END CREATE RESTAURANT */
+
+
+
+/* START EDIT RESTAURANT */
+.form-edit-restau {
+  margin: 2%;
+  width: 50%;
+
+  label {
+    margin-right: 1%;
+  }
+
+  input {
+    margin-left: 1%;
+    color: $title-icons-light;
+    border: 1px solid $font-light;
+    background-color: $bg-light-font-night;
+    border-radius: 5px;
+    margin-top: 1%;
+    padding: 0.5%;
+  }
+
+  button {
+    margin-top: 2%;
+    color: $font-light;
+    border: 1px solid $title-icons-light;
+    border-radius: 10px;
+    padding: 1%;
+  }
+
+  .textarea {
+    margin-top: 1%;
+  }
+
+  textarea {
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .form-edit-restau {
+  input {
+    color: $title-icons-night;
+    border: 1px solid $bg-light-font-night;
+    background-color: $bg-night;
+  }
+
+  button {
+    color: $bg-light-font-night;
+    border: 1px solid $title-icons-night;
+  }
+
+  textarea {
+    color: $title-icons-night;
+  }
+}
+/* END EDIT RESTAURANT */
+
+
+
+/* START EDIT PROFILES */
+.edit-profile-form {
+  label {
+    margin-right: 1%;
+  }
+
+  input {
+    color: $title-icons-light;
+    border: 1px solid $title-icons-light;
+    background-color: $bg-light-font-night;
+    border-radius: 5px;
+    margin-top: 1%;
+  }
+}
+
+html.nuit .edit-profile-form {
+  input {
+    color: $title-icons-night;
+    border: 1px solid $title-icons-night;
+    background-color: $bg-night;
+  }
+}
+
+.btn-edit {
+  margin-top: 2%;
+  color: $title-icons-light;
+
+  .btn-del {
+    margin-left: 0.3%;
+  }
+}
+
+html.nuit .btn-edit {
+  color: $title-icons-night;
+}
+/* END EDIT PROFILES */
+
+
+
+/* START ADMIN PROFILE */
+.link-create {
+  margin: 2%;
+
+  button {
+    border: 1px solid $title-icons-light;
+    padding: 1%;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+}
+
+html.nuit .link-create {
+  button {
+    border: 1px solid $title-icons-night;
+  }
+}
+
+.admin-infos {
+  margin: 2%;
+}
+
+.cards-admin {
+  margin: 2%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.solo-card {
+  border: 1px solid $title-icons-light;
+  margin-top: 2%;
+  padding: 2%;
+
+  img {
+    margin-bottom: 2%;
+  }
+
+  .title-resa {
+    color: $title-icons-light;
+    margin-bottom: 1%;
+    text-align: center;
+  }
+}
+
+html.nuit .solo-card {
+  border: 1px solid $title-icons-night;
+
+  .title-resa {
+    color: $title-icons-night;
+  }
+}
+
+.title-solo {
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+.your-restau {
+  color: $title-icons-light;
+  font-size: large;
+  text-align: center;
+}
+
+html.nuit .your-restau {
+  color: $title-icons-night;
+}
+
+.btn-admin {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  display: flex;
+  flex-direction: column;
+  color: $title-icons-light;
+  cursor: pointer;
+}
+
+html.nuit .btn-admin {
+  color: $title-icons-night;
+}
+
+.div-resa {
+  display: flex;
+  justify-content: space-between;
+}
+/* END ADMIN PROFILE */
+
+
+
+/* START USER PROFILE */
+.favs {
+  margin: 2%;
+  border: 1px solid $font-light;
+  padding: 1%;
+  width: 20%;
+
+  h2 {
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .favs {
+  border: 1px solid $bg-light-font-night;
+
+  h2 {
+    color: $title-icons-night;
+  }
+}
+
+.restau-fav {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 4%;
+}
+
+.btn-edit-user {
+  margin: 2%;
+  text-decoration: underline;
+}
+
+.btn-fav {
+  color: $title-icons-light;
+}
+
+html.nuit .btn-fav {
+  color: $title-icons-night;
+}
+
+.res-us {
+  margin: 4%;
+
+  h2 {
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .res-us {
+  h2 {
+    color: $title-icons-night;
+  }
+}
+
+.user-resa {
+  display: flex;
+  justify-content: space-between;
+}
+/* END USER PROFILE */
+
+
+
+/* START FORMS */
+.login-form {
+  input {
+    margin-left: 1%;
+    color: $title-icons-light;
+    border: 1px solid $title-icons-light;
+    background-color: $bg-light-font-night;
+    border-radius: 5px;
+    margin-top: 1%;
+  }
+
+  button {
+    color: $font-light;
+    border: 1px solid $title-icons-light;
+    border-radius: 15px;
+    padding: 1%;
+    margin-top: 2%;
+  }
+
+  p {
+    margin-top: 2%;
+  }
+}
+
+html.nuit .login-form {
+  input {
+    color: $title-icons-night;
+    border: 1px solid $title-icons-night;
+    background-color: $bg-night;
+  }
+
+  button {
+    color: $bg-light-font-night;
+    border: 1px solid $title-icons-night;
+  }
+}
+
+.form-ad {
+  width: 15%;
+}
+
+.form-group {
+  label {
+    margin-top: 1%;
+  }
+}
+
+.signup-form {
+  input {
+    margin-left: 1%;
+    color: $title-icons-light;
+    border: 1px solid $title-icons-light;
+    background-color: $bg-light-font-night;
+    border-radius: 5px;
+    margin-top: 1%;
+    width: 20%;
+  }
+
+  label {
+    margin-top: 1%;
+  }
+
+  button {
+    color: $font-light;
+    border: 1px solid $title-icons-light;
+    border-radius: 15px;
+    padding: 1%;
+    margin-top: 2%;
+  }
+
+  p {
+    margin-top: 2%;
+  }
+}
+
+html.nuit .signup-form {
+  input {
+    color: $title-icons-night;
+    border: 1px solid $title-icons-night;
+    background-color: $bg-night;
+  }
+
+  button {
+    color: $bg-light-font-night;
+    border: 1px solid $title-icons-night;
+  }
+}
+
+.logout-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+/* END FORMS */
+
+
+
+/* START HOME */
+/* start carousel */
+.carousel-container {
+  height: 50vh; 
+  max-width: 90%; 
+  margin-top: 4%;
+  margin-left: 5%;
+}
+
+@media (min-width: 640px) {
+  .carousel-container {
+    height: 60vh; 
+  }
+}
+
+@media (min-width: 1280px) {
+  .carousel-container {
+    height: 70vh; 
+  }
+}
+
+@media (min-width: 1536px) {
+  .carousel-container {
+    height: 80vh; 
+  }
+}
+
+.carousel-arrow {
+  display: none !important;
+}
+
+.carousel-indicators {
+  display: none !important;
+}
+
+.slide {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+}
+
+.slide-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: $bg-light-font-night;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 10;
+}
+/* end carousel */
+
+/* start hero */
+.hero-index {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4%;
+  margin-right: 8%;
+  justify-content: space-around;
+}
+
+.div-pic {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-pic {
+  height: 100%;
+  width: 60%;
+  object-fit: cover;
+}
+
+.text-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lead {
+  font-size: 250%;
+  color: $font-light;
+}
+
+html.nuit .lead {
+  color: $bg-light-font-night;
+}
+
+.lead-easier {
+  font-size: 250%;
+  font-weight: 750;
+  color: $title-icons-light;
+}
+
+.lead-eat {
+  font-size: 250%;
+  color: $title-icons-light;
+}
+
+html.nuit .lead-easier {
+  color: $title-icons-night;
+}
+
+html.nuit .lead-eat {
+  color: $title-icons-night;
+}
+
+.lead-cities {
+  font-size: 250%;
+  font-weight: 750;
+  color: $title-icons-light;
+}
+
+.lead-come {
+  font-size: 250%;
+  color: $title-icons-light;
+}
+
+html.nuit .lead-cities {
+  color: $title-icons-night;
+}
+
+html.nuit .lead-come {
+  color: $title-icons-night;
+}
+
+.text-cities {
+  margin-top: 10%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+/* end hero */
+/* END HOME */
 
 
 
 
-/* START DETAILS RESTAURANTS */
+
+
+
+/* START DETAILS RESTAURANTS ANELISE */
 .name-restau {
   color: $title-icons-light;
 }
@@ -1067,651 +1793,12 @@ html.nuit .form-comm {
 .log-comm {
   margin-top: 4%;
 }
-/* END DETAILS RESTAURANTS */
+/* END DETAILS RESTAURANTS ANELISE */
 
 
 
-/* START ADMIN PROFILE */
-.link-create {
-  margin: 2%;
 
-  button {
-    border: 1px solid $title-icons-light;
-    padding: 1%;
-    cursor: pointer;
-    border-radius: 15px;
-  }
-}
-
-html.nuit .link-create {
-  button {
-    border: 1px solid $title-icons-night;
-  }
-}
-
-.admin-infos {
-  margin: 2%;
-}
-
-.cards-admin {
-  margin: 2%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.solo-card {
-  border: 1px solid $title-icons-light;
-  margin-top: 2%;
-  padding: 2%;
-
-  img {
-    margin-bottom: 2%;
-  }
-
-  .title-resa {
-    color: $title-icons-light;
-    margin-bottom: 1%;
-    text-align: center;
-  }
-}
-
-html.nuit .solo-card {
-  border: 1px solid $title-icons-night;
-
-  .title-resa {
-    color: $title-icons-night;
-  }
-}
-
-.title-solo {
-  text-align: center;
-  margin-bottom: 2%;
-}
-
-.your-restau {
-  color: $title-icons-light;
-  font-size: large;
-  text-align: center;
-}
-
-html.nuit .your-restau {
-  color: $title-icons-night;
-}
-
-.btn-admin {
-  margin-top: 2%;
-  margin-bottom: 2%;
-  display: flex;
-  flex-direction: column;
-  color: $title-icons-light;
-  cursor: pointer;
-}
-
-html.nuit .btn-admin {
-  color: $title-icons-night;
-}
-
-.div-resa {
-  display: flex;
-  justify-content: space-between;
-}
-/* END ADMIN PROFILE */
-
-
-
-/* START CREATE RESTAURANT */
-.create-form {
-  width: 50%;
-  margin: 2%;
-
-  label {
-    margin-right: 1%;
-  }
-
-  input {
-    color: $title-icons-light;
-    background-color: $bg-light-font-night;
-    border: 1px solid $font-light;
-    padding: 1%;
-  }
-
-  select {
-    color: $title-icons-light;
-    background-color: $bg-light-font-night;
-  }
-
-  textarea {
-    color: $title-icons-light;
-  }
-
-  button {
-    color: $font-light;
-    border: 1px solid $title-icons-light;
-    border-radius: 15px;
-    padding: 1%;
-    margin-top: 2%;
-  }
-}
-
-html.nuit .create-form {
-  input {
-    color: $title-icons-night;
-    background-color: $bg-night;
-    border: 1px solid $bg-light-font-night;
-  }
-
-  select {
-    color: $title-icons-night;
-    background-color: $bg-night;
-  }
-
-  textarea {
-    color: $title-icons-night;
-  }
-
-  button {
-    color: $bg-light-font-night;
-    border: 1px solid $title-icons-night;
-  }
-}
-/* END CREATE RESTAURANT */
-
-
-
-/* START EDIT PROFILES */
-.edit-profile-form {
-  label {
-    margin-right: 1%;
-  }
-
-  input {
-    color: $title-icons-light;
-    border: 1px solid $title-icons-light;
-    background-color: $bg-light-font-night;
-    border-radius: 5px;
-    margin-top: 1%;
-  }
-}
-
-html.nuit .edit-profile-form {
-  input {
-    color: $title-icons-night;
-    border: 1px solid $title-icons-night;
-    background-color: $bg-night;
-  }
-}
-
-.btn-edit {
-  margin-top: 2%;
-  color: $title-icons-light;
-
-  .btn-del {
-    margin-left: 0.3%;
-  }
-}
-
-html.nuit .btn-edit {
-  color: $title-icons-night;
-}
-/* END EDIT PROFILES */
-
-
-
-/* START FORMS */
-.login-form {
-  input {
-    margin-left: 1%;
-    color: $title-icons-light;
-    border: 1px solid $title-icons-light;
-    background-color: $bg-light-font-night;
-    border-radius: 5px;
-    margin-top: 1%;
-  }
-
-  button {
-    color: $font-light;
-    border: 1px solid $title-icons-light;
-    border-radius: 15px;
-    padding: 1%;
-    margin-top: 2%;
-  }
-
-  p {
-    margin-top: 2%;
-  }
-}
-
-html.nuit .login-form {
-  input {
-    color: $title-icons-night;
-    border: 1px solid $title-icons-night;
-    background-color: $bg-night;
-  }
-
-  button {
-    color: $bg-light-font-night;
-    border: 1px solid $title-icons-night;
-  }
-}
-
-.form-ad {
-  width: 15%;
-}
-
-.form-group {
-  label {
-    margin-top: 1%;
-  }
-}
-
-.signup-form {
-  input {
-    margin-left: 1%;
-    color: $title-icons-light;
-    border: 1px solid $title-icons-light;
-    background-color: $bg-light-font-night;
-    border-radius: 5px;
-    margin-top: 1%;
-    width: 20%;
-  }
-
-  label {
-    margin-top: 1%;
-  }
-
-  button {
-    color: $font-light;
-    border: 1px solid $title-icons-light;
-    border-radius: 15px;
-    padding: 1%;
-    margin-top: 2%;
-  }
-
-  p {
-    margin-top: 2%;
-  }
-}
-
-html.nuit .signup-form {
-  input {
-    color: $title-icons-night;
-    border: 1px solid $title-icons-night;
-    background-color: $bg-night;
-  }
-
-  button {
-    color: $bg-light-font-night;
-    border: 1px solid $title-icons-night;
-  }
-}
-
-.logout-form {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-/* END FORMS */
-
-
-
-/* START EDIT RESTAURANT */
-.form-edit-restau {
-  margin: 2%;
-  width: 50%;
-
-  label {
-    margin-right: 1%;
-  }
-
-  input {
-    margin-left: 1%;
-    color: $title-icons-light;
-    border: 1px solid $font-light;
-    background-color: $bg-light-font-night;
-    border-radius: 5px;
-    margin-top: 1%;
-    padding: 0.5%;
-  }
-
-  button {
-    margin-top: 2%;
-    color: $font-light;
-    border: 1px solid $title-icons-light;
-    border-radius: 10px;
-    padding: 1%;
-  }
-
-  .textarea {
-    margin-top: 1%;
-  }
-
-  textarea {
-    color: $title-icons-light;
-  }
-}
-
-html.nuit .form-edit-restau {
-  input {
-    color: $title-icons-night;
-    border: 1px solid $bg-light-font-night;
-    background-color: $bg-night;
-  }
-
-  button {
-    color: $bg-light-font-night;
-    border: 1px solid $title-icons-night;
-  }
-
-  textarea {
-    color: $title-icons-night;
-  }
-}
-/* END EDIT RESTAURANT */
-
-
-
-/* START USER PROFILE */
-.favs {
-  margin: 2%;
-  border: 1px solid $font-light;
-  padding: 1%;
-  width: 20%;
-
-  h2 {
-    color: $title-icons-light;
-  }
-}
-
-html.nuit .favs {
-  border: 1px solid $bg-light-font-night;
-
-  h2 {
-    color: $title-icons-night;
-  }
-}
-
-.restau-fav {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 4%;
-}
-
-.btn-edit-user {
-  margin: 2%;
-  text-decoration: underline;
-}
-
-.btn-fav {
-  color: $title-icons-light;
-}
-
-html.nuit .btn-fav {
-  color: $title-icons-night;
-}
-
-.res-us {
-  margin: 4%;
-
-  h2 {
-    color: $title-icons-light;
-  }
-}
-
-html.nuit .res-us {
-  h2 {
-    color: $title-icons-night;
-  }
-}
-
-.user-resa {
-  display: flex;
-  justify-content: space-between;
-}
-/* END USER PROFILE */
-/* CARROUSEL ACCUEIL */
-
-/* src/pages/home/Home.css */
-
-.carousel-container {
-  height: 50vh; 
-  max-width: 90%; 
-  margin: 0 auto; /* Centre le carrousel horizontalement */
-}
-
-@media (min-width: 640px) {
-  .carousel-container {
-    height: 60vh; 
-  }
-}
-
-@media (min-width: 1280px) {
-  .carousel-container {
-    height: 70vh; 
-  }
-}
-
-@media (min-width: 1536px) {
-  .carousel-container {
-    height: 80vh; 
-  }
-}
-
-.home-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 1rem;
-}
-
-
-.carousel-arrow {
-  display: none !important;
-}
-
-.carousel-indicators {
-  display: none !important;
-}
-
-.slide {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.slide img {
-  width: 100%;
-  height: auto;
-}
-
-.slide-caption {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.5);  
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  z-index: 10;  
-}
-
-/* FIN CARROUSEL ACCUEIL */
-
-/* START HERO */
-.lead {
-  font-size: 250%;
-  color: #522A00;
-}
-
-.lead-easier {
-  font-size: 250%;
-  font-weight: 750;
-  color: #522A00;
-}
-
-.lead-eat {
-  font-size: 250%;
-  color: #ff4800;
-}
-
-.lead-cities {
-  font-size: 250%;
-  font-weight: 750;
-  color: #522A00;
-}
-
-.lead-come {
-  font-size: 250%;
-  color: #ff4800;
-}
-
-.shadow {
-  height: 105%;
-  width: 60%;
-}
-
-.cities {
-  margin-top: 4%;
-}
-
-.text-hero {
-  margin-top: 10%;
-}
-
-.text-cities {
-  margin-top: 12%;
-}
-
-.avis {
-  margin-top: 15%;
-}
-
-.expe {
-  font-size: 250%;
-  color: #522A00;
-  display: flex;
-  justify-content: center;
-}
-/* END HERO */
-
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-around;
-}
-
-.restaurant-card {
-  max-width: 20rem;
-  background-color: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.2s;
-  margin-top: 10%;
-}
-
-.restaurant-card:hover {
-  transform: scale(1.05);
-}
-
-.restaurant-image {
-  width: 100%;
-  height: auto;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.restaurant-content {
-  padding: 1.25rem;
-}
-
-.restaurant-title {
-  margin-bottom: 0.75rem;
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #1f2937;
-}
-
-.restaurant-description {
-  margin-bottom: 0.5rem; /* Réduire l'espace après le descriptif */
-  font-size: 0.875rem; /* Réduire la taille de la police */
-  color: #374151;
-  line-height: 1.2; /* Ajuster l'interligne pour un texte plus compact */
-  max-height: 3rem; /* Limiter la hauteur du descriptif */
-  overflow: hidden; /* Masquer tout texte excédant la hauteur maximale */
-  text-overflow: ellipsis; /* Ajouter des points de suspension pour indiquer qu'il y a plus de contenu */
-}
-
-.restaurant-city, .restaurant-food {
-  font-size: 0.875rem;
-  color: #6b7280;
-}
-
-.restaurant-link {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-  font-weight: medium;
-  color: white;
-  background-color: #3b82f6;
-  border-radius: 0.375rem;
-  text-decoration: none;
-  transition: background-color 0.2s;
-}
-
-.restaurant-link:hover {
-  background-color: #2563eb;
-}
-
-.restaurant-link-icon {
-  width: 0.875rem;
-  height: 0.875rem;
-  margin-left: 0.5rem;
-}
-
-
-/* SÉLECTION RESTAURANTS ET FOOD */ 
-
-.form-wrapper {
-  display: inline-flex;
-  align-items: center;
-  margin: 20px;
-}
-
-.label {
-  font-size: 16px;
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-.select {
-  width: 200px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  font-size: 14px;
-  background-color: #f9f9f9;
-}
-
-.select:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
-}
-
-/* FIN SÉLECTION RESTAURANTS ET FOOD */ 
-
-
-/* PAGE DÉTAIL DU RESTAURANT */
+/* PAGE DÉTAIL DU RESTAURANT NICO */
 .details-container {
   display: flex;
   flex-direction: column;
@@ -1763,6 +1850,4 @@ html.nuit .res-us {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
 }
-
-
-/* PAGE DÉTAIL DU RESTAURANT */
+/* PAGE DÉTAIL DU RESTAURANT NICO */

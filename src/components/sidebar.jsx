@@ -14,14 +14,15 @@ const Sidebar = ({ toggleDyslexic }) => {
     setShowSidebar(!showSidebar);
   };
 
- 
+  const closeSidebar = () => {
+    setShowSidebar(false);
+  };
 
   return (
     <div className="app-container">
       <div className={`sidebar ${showSidebar ? 'active' : ''} ${isNightMode ? 'nuit' : ''}`}>
-        <ul>
-          <li> <button onClick={toggleDyslexic}> {t('opendys')} </button> </li>
-        </ul>
+        <button className="close-btn" onClick={closeSidebar}>✖</button>
+        <button onClick={toggleDyslexic} className='dys-text'> {t('opendys')} </button>
       </div>
       <button onClick={toggleSidebar} className={`toggle-btn ${isNightMode ? 'nuit' : ''} ${isDyslexicMode ? 'dyslexic' : ''}`}>
         {t('access')}
