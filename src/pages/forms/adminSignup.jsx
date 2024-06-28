@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 import ky from 'ky';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { api_url } from '../../App';
 
 function AdminSign() {
   const [, setUser] = useAtom(userAtom);
@@ -24,7 +25,7 @@ function AdminSign() {
     }
 
     try {
-      const response = await ky.post('http://localhost:3000/admins', {
+      const response = await ky.post(`${api_url}admins`, {
         json: {
           admin: {
             email,

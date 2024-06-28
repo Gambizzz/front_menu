@@ -10,6 +10,7 @@ import { FaHeartBroken } from "react-icons/fa";
 import { IoTrashSharp } from "react-icons/io5";
 import { format } from 'date-fns';
 import { fr, enUS } from 'date-fns/locale';
+import { api_url } from '../../App';
 
 const UserProfile = () => {
   const [user] = useAtom(userAtom);
@@ -26,7 +27,7 @@ const UserProfile = () => {
       }
 
       try {
-        const reservationsResponse = await ky.get(`http://localhost:3000/users/${user.id}/reservations`, {
+        const reservationsResponse = await ky.get(`${api_url}users/${user.id}/reservations`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
@@ -35,7 +36,7 @@ const UserProfile = () => {
         setReservations(reservationsResponse);
 
         const restaurantIds = reservationsResponse.map(reservation => reservation.restaurant_id).join(',');
-        const restaurantsResponse = await ky.get(`http://localhost:3000/restaurants`, {
+        const restaurantsResponse = await ky.get(`${api_url}restaurants`, {
           searchParams: {
             ids: restaurantIds,
           },
@@ -57,7 +58,7 @@ const UserProfile = () => {
 
   const handleDelete = async (reservationId) => {
     try {
-      const response = await ky.delete(`http://localhost:3000/restaurants/${user.id}/reservations/${reservationId}`, {
+      const response = await ky.delete(`${api_url}restaurants/${user.id}/reservations/${reservationId}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -78,7 +79,7 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
-        const response = await ky.get('http://localhost:3000/favorites', {
+        const response = await ky.get(`${api_url}favorites`, {
           headers: {
             Authorization: `Bearer ${user.token}`
           }
@@ -96,7 +97,7 @@ const UserProfile = () => {
 
   const removeFavorite = async (favoriteId) => {
     try {
-      await ky.delete(`http://localhost:3000/favorites/${favoriteId}`, {
+      await ky.delete(`${api_url}favorites/${favoriteId}`, {
         headers: {
           Authorization: `Bearer ${user.token}`
         }

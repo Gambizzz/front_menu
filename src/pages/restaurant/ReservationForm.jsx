@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import ky from 'ky';
+import { api_url } from '../../App';
 
 const ReservationForm = ({ restaurantId, userToken }) => {
   const { t } = useTranslation();
@@ -11,7 +12,7 @@ const ReservationForm = ({ restaurantId, userToken }) => {
   const handleReservation = async (e) => {
     e.preventDefault();
     try {
-      const response = await ky.post(`http://localhost:3000/restaurants/${restaurantId}/reservations`, {
+      const response = await ky.post(`${api_url}restaurants/${restaurantId}/reservations`, {
         json: {
           reservation: {
             number,
