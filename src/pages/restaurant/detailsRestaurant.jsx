@@ -39,7 +39,13 @@ const Details = () => {
       try {
         const response = await ky.get(`${api_url}restaurants/${id}/comments`);
         const data = await response.json();
-        setComments(data);
+        console.log('Comments fetched:', data);
+        // Ajoutez user_id manuellement basé sur email
+        const enrichedComments = data.map(comment => ({
+          ...comment,
+          user_id: comment.email === user.email ? user.id : null
+        }));
+        setComments(enrichedComments);
       } catch (error) {
         console.error('Erreur lors de la récupération des commentaires : ', error);
         toast.error(t('errorFetchComments'));
@@ -61,7 +67,10 @@ const Details = () => {
         }
       });
       const data = await response.json();
-      setComments([...comments, data]);
+      // Ajoutez manuellement l'email et user_id de l'utilisateur au nouveau commentaire
+      const newCommentData = { ...data, email: user.email, user_id: user.id };
+      console.log('New comment added:', newCommentData); // Ajout du log pour vérifier les données du nouveau commentaire
+      setComments([...comments, newCommentData]);
       setNewComment('');
     } catch (error) {
       console.error('erreur lors de l\'ajout du commentaire : ', error);
