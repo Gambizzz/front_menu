@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../index.scss';
+import { api_url } from '../../App';
 
 const Restaurants = () => {
   const { t } = useTranslation();
@@ -15,6 +16,7 @@ const Restaurants = () => {
   const { city, food } = useParams(); 
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedFood, setSelectedFood] = useState('');
+  
 
   useEffect(() => {
     fetchRestaurants();
@@ -23,7 +25,7 @@ const Restaurants = () => {
   const fetchRestaurants = async () => {
     try {
       const token = user.token;
-      let url = 'http://localhost:3000/restaurants';
+      // let url = 'http://localhost:3000/restaurants'; 
 
       const queryParams = {};
       if (selectedCity) queryParams.city = selectedCity;
@@ -31,7 +33,7 @@ const Restaurants = () => {
 
       const queryString = new URLSearchParams(queryParams).toString();
 
-      const response = await ky.get(`${url}?${queryString}`, {
+      const response = await ky.get(`${api_url}restaurants?${queryString}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
