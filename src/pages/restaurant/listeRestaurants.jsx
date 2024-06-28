@@ -99,7 +99,7 @@ const Restaurants = () => {
         {restaurants.map((restaurant) => (
           <div className="restaurant-card" key={restaurant.id}>
             <Link to={`/restaurant/${restaurant.id}`}>
-              <img className="restaurant-image" src={restaurant.image_url} alt={restaurant.name} />
+              <img className="restaurant-image" src={restaurant.cover_image_url || restaurant.image_url} alt={restaurant.name} />
               <div className="restaurant-content">
                 <h5 className="restaurant-title">{restaurant.name}</h5>
                 <p className="restaurant-description">{restaurant.description}</p>

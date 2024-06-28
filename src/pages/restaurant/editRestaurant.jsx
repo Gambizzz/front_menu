@@ -15,6 +15,7 @@ const EditRestaurant = () => {
   const [city, setCity] = useState('');
   const [food, setFood] = useState('');
   const [photo, setPhoto] = useState(null);
+  const [coverPhoto, setCoverPhoto] = useState(null);
   const [user] = useAtom(userAtom);
 
   useEffect(() => {
@@ -62,6 +63,11 @@ const EditRestaurant = () => {
     setPhoto(e.target.files[0]);
   };
 
+  const handleCoverFileChange = (e) => {
+    setCoverPhoto(e.target.files[0]);
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -73,6 +79,7 @@ const EditRestaurant = () => {
       if (photo) {
         formData.append('restaurant[photo]', photo);
       }
+      formData.append('restaurant[cover_photo]', coverPhoto);
 
       const token = user.token;
 
@@ -125,6 +132,15 @@ const EditRestaurant = () => {
             type="file"
             onChange={handleFileChange}
             accept="image/*"
+          />
+        </div>
+        <div>
+          <label> {t('coverPicture')} </label>
+          <input
+            type="file"
+            onChange={handleCoverFileChange}
+            accept="image/*"
+            required
           />
         </div>
         <button type="submit"> {t('updateR')} </button>

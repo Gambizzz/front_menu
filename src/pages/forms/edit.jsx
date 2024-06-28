@@ -55,14 +55,23 @@ const Edit = () => {
           },
         });
 
-        setUser(null);
+        localStorage.removeItem('user');
+
+        // // Identifiez et supprimez les données spécifiques de l'utilisateur dans le localStorage
+        // Object.keys(localStorage).forEach(key => {
+        //   if (key.startsWith('user_')) {
+        //     localStorage.removeItem(key);
+        //   }
+        // });
 
         // Clear cookies or local storage to ensure logout
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
+        setUser(null);
+
         toast.success(t('accountDeleted'));
-        
+
         setTimeout(() => {
           window.location.href = "/";
         }, 1000); 
@@ -90,12 +99,11 @@ const Edit = () => {
           <label> {t('PassConfirm')} </label>
           <input type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
         </div>
+        <div className='btn-edit'>
+          <button type="submit"> {t('editR')} </button> | 
+          <button type="button" onClick={handleDeleteAccount} className='btn-del'> {t('delP')} </button>
+        </div>
       </form>
-
-      <div className='btn-edit'>
-        <button type="submit"> {t('editR')} </button> | 
-        <button onClick={handleDeleteAccount} className='btn-del'> {t('delP')} </button>
-      </div>
 
       <ToastContainer />
     </div>
@@ -103,4 +111,3 @@ const Edit = () => {
 };
 
 export default Edit;
-

@@ -19,6 +19,7 @@ function Logout() {
     window.location.href = "/";
   };
 
+
   return (
     <div className='logout-form'>
       <h1 className='title-pages'> {t('déco')} </h1>
