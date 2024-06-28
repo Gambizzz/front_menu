@@ -25,7 +25,7 @@ const Restaurants = () => {
   const fetchRestaurants = async () => {
     try {
       const token = user.token;
-      // let url = 'http://localhost:3000/restaurants';
+      // let url = 'http://localhost:3000/restaurants'; 
 
       const queryParams = {};
       if (selectedCity) queryParams.city = selectedCity;
