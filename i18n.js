@@ -175,6 +175,8 @@ i18n
           "th8": "AND MANY MORE",
           "th9": "TO COME...",
           "menuLink": "Discover its menu",
+          "adminCannotComment": "You are a restaurateur, you can't comment",
+          "adminCannotReserve": "You are a restaurateur, you can't book a table",
         }
       },
       fr: {
@@ -348,6 +350,8 @@ i18n
           "th8": "ET DANS BIEN D'AUTRES",
           "th9": "À VENIR...",
           "menuLink": "Découvrez son menu",
+          "adminCannotComment": "Vous êtes restaurateur, vous ne pouvez pas laisser de commentaire",
+          "adminCannotReserve": "Vous êtes restaurateur, vous ne pouvez pas effectuer de réservation",
         }
       }
     },
