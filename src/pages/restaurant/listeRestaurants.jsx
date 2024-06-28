@@ -97,7 +97,7 @@ const Restaurants = () => {
         {restaurants.map((restaurant) => (
           <div className="restau" key={restaurant.id}>
             <Link to={`/restaurant/${restaurant.id}`}>
-              <img src={restaurant.image_url} alt={restaurant.title} />
+              <img src={restaurant.cover_image_url || restaurant.image_url} alt={restaurant.name} />
               <h1> {restaurant.name} </h1>
               <p> {restaurant.description} </p>
               <p> {restaurant.city} </p>

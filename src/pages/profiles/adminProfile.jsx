@@ -118,12 +118,12 @@ const AdminProfile = () => {
 
       <div>
         <h2 className='your-restau'> {t('yourRestau')} </h2>
-        <div className='cards-admin'>
+        < div className='cards-admin'>
           {restaurants.length > 0 ? (
             restaurants.map(restaurant => (
               <div key={restaurant.id} className='solo-card'>
                 <h3>{restaurant.name}</h3>
-                <img src={restaurant.image_url} />
+                <img src={restaurant.cover_image_url || restaurant.image_url} alt={restaurant.name} />
                 <p>{restaurant.description}</p>
                 <p>{restaurant.city}</p>
                 <p>{restaurant.food}</p>

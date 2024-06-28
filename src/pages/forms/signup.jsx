@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 import ky from 'ky';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { api_url } from '../../App';
 
 function Sign() {
   const [, setUser] = useAtom(userAtom);
@@ -19,7 +20,7 @@ function Sign() {
     event.preventDefault();
 
     try {
-      const response = await ky.post('http://localhost:3000/users', {
+      const response = await ky.post(`${api_url}users`, {
         json: {
           user: {
             email,

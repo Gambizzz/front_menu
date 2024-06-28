@@ -31,6 +31,8 @@ import CreateRestaurant from './pages/restaurant/createRestaurant';
 import EditRestaurant from './pages/restaurant/editRestaurant';
 import EditAdmin from './pages/forms/editAdmin';
 
+export const api_url = import.meta.env.VITE_BACK_API_URL;
+
 function App() {
   const [isNightMode, setIsNightMode] = useAtom(nightModeAtom);
   const [isDyslexicMode, setIsDyslexicMode] = useAtom(dyslexicModeAtom);
@@ -40,10 +42,11 @@ function App() {
     const token = Cookies.get('token') || Cookies.get('adminToken');
     const userId = Cookies.get('id') || Cookies.get('adminId');
     const isAdmin = !!Cookies.get('adminToken');
+    const admin = Cookies.get('adminEmail')
 
     if (token && userId) {
       setUser({
-        email: "",
+        email: admin,
         id: userId,
         token: token,
         isLoggedIn: true,
