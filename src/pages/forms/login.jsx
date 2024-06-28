@@ -19,7 +19,7 @@ function Log() {
     event.preventDefault();
 
     try {
-      const response = await ky.post(`${api_url}sign_in`, {
+      const response = await ky.post(`${api_url}users/sign_in`, {
         json: {
           user: {
             email,
