@@ -5,6 +5,7 @@ import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { api_url } from '../../App';
 
 const CreateRestaurant = () => {
   const { t } = useTranslation('');
@@ -51,7 +52,7 @@ const CreateRestaurant = () => {
 
       const token = user.token;
 
-      const response = await ky.post('http://localhost:3000/restaurants', {
+      const response = await ky.post(`${api_url}restaurants`, {
         body: formData,
         headers: {
           Authorization: `Bearer ${token}`

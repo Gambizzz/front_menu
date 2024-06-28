@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import ky from 'ky';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { api_url } from '../../App';
 
 const ResetPasswordAdmin = () => {
   const { token } = useParams();
@@ -15,7 +16,7 @@ const ResetPasswordAdmin = () => {
   useEffect(() => {
     async function checkTokenValidity() {
       try {
-        await ky.get(`http://localhost:3000/password/reset/${token}`);
+        await ky.get(`${api_url}password/reset/${token}`);
         setTokenValid(true);
       } catch (error) {
         setTokenValid(false);
@@ -28,7 +29,7 @@ const ResetPasswordAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await ky.post('http://localhost:3000/admins/password', {
+      const response = await ky.post(`${api_url}admins/password`, {
         json: { 
           admin: { 
             email: '', 
