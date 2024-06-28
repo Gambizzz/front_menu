@@ -20,7 +20,7 @@ const Footer = () => {
     <div className='footer'>
       <div className='top-footer'>
         <img src={isNightMode ? logoFootNuit : logoFootJour} alt='Logo navbar' className='logo-footer'></img>
-        <Link to="/" className='link-form-footer gold'>RESTAURATEURS ?</Link>
+        <Link to="/admin/signup" className='link-form-footer gold'> RESTAURATEURS ? </Link>
       </div>
       <div className='pages-footer'>
         <Link to="/concept">{t('concept')}</Link>

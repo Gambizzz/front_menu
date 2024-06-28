@@ -7,18 +7,22 @@ import ky from 'ky';
 import Cookies from 'js-cookie';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { IoTrashSharp } from "react-icons/io5";
+import { format } from 'date-fns';
+import { fr, enUS } from 'date-fns/locale';
 
 const AdminProfile = () => {
   const [user] = useAtom(userAtom);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [restaurants, setRestaurants] = useState([]);
-  const [reservations, setReservations] = useState([]);
+  const [reservations, setReservations] = useState({});
+  const [refreshFlag, setRefreshFlag] = useState(false);
 
   useEffect(() => {
     if (user.isLoggedIn) {
       fetchRestaurants();
     }
-  }, [user.isLoggedIn]);
+  }, [user.isLoggedIn, refreshFlag]);
 
   const fetchRestaurants = async () => {
     const token = Cookies.get('adminToken'); 
@@ -56,7 +60,6 @@ const AdminProfile = () => {
 
   const handleDelete = async (restaurantId) => {
     const token = Cookies.get('adminToken'); 
-    console.log('Delete Token:', token);
 
     if (!token) {
       toast.error('Token is missing');
@@ -92,11 +95,23 @@ const AdminProfile = () => {
         }
       });
 
-      toast.success(t('reservation supprimé'));
+      toast.success(t('delRes'));
+      setRefreshFlag(prev => !prev);
     } catch (error) {
       console.error('Erreur lors de la suppression de la réservation : ', error);
       toast.error(t('deleteReservationError'));
     }
+  };
+
+  const formatDate = (date) => {
+    const locale = i18n.language === 'fr' ? fr : enUS;
+    return `${format(new Date(date), 'PPPP', { locale })}`;
+  };
+
+  const formatTime = (timeString) => {
+    const date = new Date(timeString);
+    const locale = i18n.language === 'fr' ? fr : enUS;
+    return format(date, 'HH:mm', { locale });
   };
 
   return (
@@ -104,8 +119,8 @@ const AdminProfile = () => {
       <h1 className="title-pages">{t('titleSpaceAdmin')}</h1>
 
       <div className='admin-infos'>
-        <p>{t('email')}: {user.email}</p>
-        <p>{t('id')}: {user.id}</p>
+        <p> {t('email')}: {user.email} </p>
+        <p> {t('id')}: {user.id} </p>
       </div>
 
       <div>
@@ -122,33 +137,35 @@ const AdminProfile = () => {
           {restaurants.length > 0 ? (
             restaurants.map(restaurant => (
               <div key={restaurant.id} className='solo-card'>
-                <h3>{restaurant.name}</h3>
+                <h3 className='title-solo'> <strong> {restaurant.name} </strong> </h3>
                 <img src={restaurant.cover_image_url || restaurant.image_url} alt={restaurant.name} />
-                <p>{restaurant.description}</p>
-                <p>{restaurant.city}</p>
-                <p>{restaurant.food}</p>
-                <p>{t('numberOfReservations')} : {reservations[restaurant.id]?.length || 0}</p>
+                <p> {t('descriptR')} : {restaurant.description} </p>
+                <p> {t('cityR')} : {restaurant.city} </p>
+                <p> {t('foodR')} : {restaurant.food} </p>
+                <p> {t('numberOfReservations')} : {reservations[restaurant.id]?.length || 0} </p>
+
                 <div className='btn-admin'>
-                  <Link to={`/edit-restaurant/${restaurant.id}`}>
-                    <button> {t('editR')} </button>
-                  </Link>
-                  <button onClick={() => handleDelete(restaurant.id)}> {t('delR')} </button>
+                  <div>
+                    <Link to={`/edit-restaurant/${restaurant.id}`}>
+                      <button> {t('editR')} </button>
+                    </Link>
+                  </div>
+                  <div>
+                    <button onClick={() => handleDelete(restaurant.id)}> {t('delR')} </button>
+                  </div>
                 </div>
+
                 <div>
-                <h4>{t('reservations')}:</h4>
+                  <h3 className='title-resa'> {t('reservations')} </h3>
                   {reservations[restaurant.id]?.length > 0 ? (
                     reservations[restaurant.id].map(reservation => (
-                      <div key={reservation.id}>
-                        <p>{t('reservationId')}: {reservation.id}</p>
-                        <p>{t('reservationDate')}: {reservation.date}</p>
-                        <p>{t('reservationTime')}: {reservation.time}</p>
-                        <p>{t('reservationEmail')}: {reservation.email}</p>
-                        <p>{t('reservationEmail')}: {reservation.user_id}</p>
-                        <button onClick={() => handleDeleteReservation(restaurant.id, reservation.id)}>{t('delR')}</button>
+                      <div key={reservation.id} className='div-resa'>
+                        <p>{t('client')} {reservation.user?.email} {t('hadReserv')} {reservation.number} {t('pers')} {t('on')} {formatDate(reservation.date)} {t('at')} {formatTime(reservation.time)} </p>
+                        <button onClick={() => handleDeleteReservation(restaurant.id, reservation.id)} className="btn-comm"> <IoTrashSharp /> </button>
                       </div>
                     ))
                   ) : (
-                    <p>{t('noReservations')}</p>
+                    <p> {t('noReservations')} </p>
                   )}
                 </div>
               </div>
