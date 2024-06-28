@@ -152,7 +152,7 @@ const Details = () => {
       </div>
       
       <div className="reservation-section">
-        <h2>{t("makeReservation")}</h2>
+        
         {user.isLoggedIn ? (
           <ReservationForm restaurantId={id} userToken={user.token} />
         ) : (

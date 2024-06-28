@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import ky from 'ky';
-import '../../index.scss'
+import '../../index.scss';
 
 const ReservationForm = ({ restaurantId, userToken }) => {
   const { t } = useTranslation();
@@ -60,3 +60,4 @@ const ReservationForm = ({ restaurantId, userToken }) => {
 };
 
 export default ReservationForm;
+
