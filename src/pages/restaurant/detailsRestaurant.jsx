@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ReservationForm from "./ReservationForm";
 import { FaHeart } from "react-icons/fa6";
 import { IoTrashSharp } from "react-icons/io5";
+import { api_url } from '../../App';
 
 const Details = () => {
   const { t } = useTranslation();
@@ -21,7 +22,7 @@ const Details = () => {
   useEffect(() => {
     const fetchRestaurant = async () => {
       try {
-        const response = await ky.get(`http://localhost:3000/restaurants/${id}`, {
+        const response = await ky.get(`${api_url}restaurants/${id}`, {
           headers: {
             Authorization: `Bearer ${user.token}`
           }
@@ -36,7 +37,7 @@ const Details = () => {
 
     const fetchComments = async () => {
       try {
-        const response = await ky.get(`http://localhost:3000/restaurants/${id}/comments`);
+        const response = await ky.get(`${api_url}restaurants/${id}/comments`);
         const data = await response.json();
         setComments(data);
       } catch (error) {
@@ -53,7 +54,7 @@ const Details = () => {
     e.preventDefault();
 
     try {
-      const response = await ky.post(`http://localhost:3000/restaurants/${id}/comments`, {
+      const response = await ky.post(`${api_url}restaurants/${id}/comments`, {
         json: { comment: { body: newComment } },
         headers: {
           Authorization: `Bearer ${user.token}`
@@ -70,7 +71,7 @@ const Details = () => {
 
   const removeComment = async (commentId) => {
     try {
-      await ky.delete(`http://localhost:3000/restaurants/${id}/comments/${commentId}`, {
+      await ky.delete(`${api_url}restaurants/${id}/comments/${commentId}`, {
         headers: {
           Authorization: `Bearer ${user.token}`
         }
@@ -85,7 +86,7 @@ const Details = () => {
 
   const addFavorite = async () => {
     try {
-      await ky.post('http://localhost:3000/favorites', {
+      await ky.post(`${api_url}favorites`, {
         json: { favorite: { restaurant_id: id } },
         headers: {
           Authorization: `Bearer ${user.token}`
