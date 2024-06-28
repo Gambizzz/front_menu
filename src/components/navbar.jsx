@@ -30,9 +30,9 @@ const Nav = ({ toggleTheme }) => {
           <Link to="/restaurants"> <p> RESTAURANTS </p> </Link>
           <Link to="/"> <img src={isNightMode ? logoNavNuit : logoNavJour} alt='Logo navbar' /> </Link>
           <Dropdown className='btn-dropdown'>
-            <Dropdown.Toggle className='gold log'> {user.isLoggedIn ? t('monEspace') : t('connexion')} </Dropdown.Toggle>
+            <Dropdown.Toggle className='gold log'> {user?.isLoggedIn ? t('monEspace') : t('connexion')} </Dropdown.Toggle>
             <Dropdown.Menu className='drop-box'>
-              {!user.isLoggedIn ? (
+              {!user?.isLoggedIn ? (
                 <>
                   <Dropdown.Item as={Link} to="/login" className='drop-text'> {t('seConnecterUser')} </Dropdown.Item>
                   <Dropdown.Item as={Link} to="/admin/login" className='drop-text'> {t('seConnecterAdmin')} </Dropdown.Item>
@@ -41,7 +41,7 @@ const Nav = ({ toggleTheme }) => {
                 </>
               ) : (
                 <>
-                  {user.isAdmin ? (
+                  {user?.isAdmin ? (
                     <>
                       <Dropdown.Item as={Link} to="/admin/profile" className='drop-text'> {t('profilRestaurateur')} </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/admin/logout" className='drop-text'> {t('seDeconnecter')} </Dropdown.Item>
@@ -68,7 +68,3 @@ const Nav = ({ toggleTheme }) => {
 }
 
 export default Nav;
-
-
-
-
