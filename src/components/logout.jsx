@@ -1,30 +1,28 @@
 import { useAtom } from 'jotai';
 import { userAtom } from '../atoms';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Cookies from 'js-cookie';
 
-function Logout() {
+const Logout = () => {
   const [, setUser] = useAtom(userAtom);
-  const { t } = useTranslation();
 
-  const handleLogout = () => {
+  useEffect(() => {
     setUser({
-      id: '',
+      email: "",
+      id: "",
+      token: "",
       isLoggedIn: false,
-      token: '',
+      isAdmin: false,
     });
 
-    Cookies.remove('token');
-    Cookies.remove('id');
-    window.location.href = "/";
-  };
+    Cookies.remove('userToken');
+    Cookies.remove('userId');
 
-  return (
-    <div className='logout-form'>
-      <h1 className='title-pages'> {t('déco')} </h1>
-      <button onClick={handleLogout}> {t('btn-déco')} </button>
-    </div>
-  );
-}
+    window.location.href = "/";
+  }, [setUser]);
+
+  return null;
+};
 
 export default Logout;

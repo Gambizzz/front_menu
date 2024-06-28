@@ -107,7 +107,7 @@ const Restaurants = () => {
                 <p className="restaurant-food">{restaurant.food}</p>
                 <div className="restaurant-link-wrapper">
                   <span className="restaurant-link-text">
-                    {t('Découvrez son Menu !')}
+                    {t('menuLink')}
                   </span>
                   <svg className="restaurant-link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
