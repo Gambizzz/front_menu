@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { IoTrashSharp } from "react-icons/io5";
 import { format } from 'date-fns';
 import { fr, enUS } from 'date-fns/locale';
+import { api_url } from '../../App';
 
 const AdminProfile = () => {
   const [user] = useAtom(userAtom);
@@ -33,7 +34,7 @@ const AdminProfile = () => {
     }
 
     try {
-      const response = await ky.get('http://localhost:3000/restaurants', {
+      const response = await ky.get(`${api_url}restaurants`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -45,7 +46,7 @@ const AdminProfile = () => {
       setRestaurants(adminRestaurants);
 
       adminRestaurants.forEach(async (restaurant) => {
-        const reservationsResponse = await ky.get(`http://localhost:3000/restaurants/${restaurant.id}/reservations`, {
+        const reservationsResponse = await ky.get(`${api_url}restaurants/${restaurant.id}/reservations`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -67,7 +68,7 @@ const AdminProfile = () => {
     }
 
     try {
-      await ky.delete(`http://localhost:3000/restaurants/${restaurantId}`, {
+      await ky.delete(`${api_url}restaurants/${restaurantId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -89,7 +90,7 @@ const AdminProfile = () => {
     }
 
     try {
-      await ky.delete(`http://localhost:3000/restaurants/${restaurant_id}/reservations/${reservationId}`, {
+      await ky.delete(`${api_url}restaurants/${restaurant_id}/reservations/${reservationId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

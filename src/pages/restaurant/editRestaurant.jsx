@@ -6,6 +6,7 @@ import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { api_url } from '../../App';
 
 const EditRestaurant = () => {
   const { id } = useParams();
@@ -25,7 +26,7 @@ const EditRestaurant = () => {
   const fetchRestaurant = async () => {
     try {
       const token = user.token;
-      const response = await ky.get(`http://localhost:3000/restaurants/${id}`, {
+      const response = await ky.get(`${api_url}restaurants/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -83,7 +84,7 @@ const EditRestaurant = () => {
 
       const token = user.token;
 
-      const response = await ky.put(`http://localhost:3000/restaurants/${id}`, {
+      const response = await ky.put(`${api_url}restaurants/${id}`, {
         body: formData,
         headers: {
           Authorization: `Bearer ${token}`

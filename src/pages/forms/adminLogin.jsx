@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 import ky from 'ky';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { api_url } from '../../App';
 
 function AdminLog() {
   const [, setUser] = useAtom(userAtom);
@@ -18,7 +19,7 @@ function AdminLog() {
     event.preventDefault();
 
     try {
-      const response = await ky.post('http://localhost:3000/admins/sign_in', {
+      const response = await ky.post(`${api_url}admins/sign_in`, {
         json: {
           admin: {
             email,

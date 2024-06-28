@@ -3,6 +3,7 @@ import ky from 'ky';
 import { useTranslation } from 'react-i18next';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { api_url } from '../../App';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -14,7 +15,7 @@ const ForgotPassword = () => {
     try {
       console.log('Sending email:', email);
 
-      const response = await ky.post('http://localhost:3000/users/password', {
+      const response = await ky.post(`${api_url}users/password`, {
         json: {
           user: { email: email } 
         },

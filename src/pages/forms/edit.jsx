@@ -5,6 +5,7 @@ import ky from "ky";
 import { useTranslation } from "react-i18next";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { api_url } from '../../App';
 
 const Edit = () => {
   const [user, setUser] = useAtom(userAtom);
@@ -17,7 +18,7 @@ const Edit = () => {
     e.preventDefault();
 
     try {
-      const updatedUser = await ky.put(`http://localhost:3000/users/${user.id}`, {
+      const updatedUser = await ky.put(`${api_url}users/${user.id}`, {
         json: {
           user: {
             email,
@@ -49,7 +50,7 @@ const Edit = () => {
   const handleDeleteAccount = async () => {
     if (window.confirm(t('confirmDeleteAccount'))) {
       try {
-        await ky.delete(`http://localhost:3000/users/${user.id}`, {
+        await ky.delete(`${api_url}users/${user.id}`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
