@@ -41,11 +41,11 @@ function App() {
     const token = Cookies.get('token') || Cookies.get('adminToken');
     const userId = Cookies.get('id') || Cookies.get('adminId');
     const isAdmin = !!Cookies.get('adminToken');
-    const admin = Cookies.get('adminEmail');
+    // const admin = Cookies.get('adminEmail');
 
     if (token && userId) {
       setUser({
-        email: admin,
+        email: "",
         id: userId,
         token: token,
         isLoggedIn: true,
