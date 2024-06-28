@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ReservationForm from "./ReservationForm";
 import { FaHeart } from "react-icons/fa6";
 import { IoTrashSharp } from "react-icons/io5";
+import '../../index.scss';
 
 const Details = () => {
   const { t } = useTranslation();
@@ -105,19 +106,17 @@ const Details = () => {
   return (
     <div className="details-container">
       <ToastContainer />
-
       <div className="card-details">
-        <h1 className="name-restau"> {restaurant.name} </h1>
-        <p>{t('descriptR')} : {restaurant.description} </p>
-        <p>{t('cityR')} : {restaurant.city} </p>
-        <p>{t('foodR')} : {restaurant.food} </p>
-        <div className="menu-details">
-          <h2> {t('ourMenu')} </h2>
-          <img src={restaurant.image_url} alt={restaurant.name} />
+        <img src={restaurant.image_url} alt={restaurant.name} />
+        <div className="text-content">
+          <h1 className="name-restau"> {restaurant.name} </h1>
+          <p>{t('descriptR')} : {restaurant.description} </p>
+          <p>{t('cityR')} : {restaurant.city} </p>
+          <p>{t('foodR')} : {restaurant.food} </p>
+          <button onClick={addFavorite} className="btn-fav">
+            <FaHeart size={30} />
+          </button>
         </div>
-        <button onClick={addFavorite} className="btn-fav">
-          <FaHeart size={30} />
-        </button>
       </div>
 
       <div className="comments-section">
@@ -151,6 +150,7 @@ const Details = () => {
           <p className="log-comm"> <strong> {t('loginToComment')} </strong> </p>
         )}
       </div>
+      
       <div className="reservation-section">
         <h2>{t("makeReservation")}</h2>
         {user.isLoggedIn ? (

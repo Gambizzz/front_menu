@@ -1640,214 +1640,95 @@ html.nuit .lead-come {
 /* END HOME */
 
 
-
-
-
-
-
-/* START DETAILS RESTAURANTS ANELISE */
-.name-restau {
-  color: $title-icons-light;
-}
-
-.card-details {
-  border: 1px solid $title-icons-light;
-  border-radius: 15px;
-  padding: 2%;
-  margin: 2%;
-}
-
-html.nuit .card-details {
-  border: 1px solid $title-icons-night;
-
-  h1 {
-    color: $title-icons-night;
-  }
-}
-
-.menu-details {
-  color: $title-icons-light;
-  padding: 2%;
-  margin: 2%;
-}
-
-html.nuit .menu-details {
-  color: $title-icons-night;
-}
-
-.resa-details {
-  padding: 2%;
-  margin: 2%;
-
-  h2 {
-    color: $title-icons-light;
-  }
-}
-
-html.nuit .resa-details {
-  h2 {
-    color: $title-icons-night;
-  }
-}
-
-.resa-form {
-  margin-top: 1%;
-
-  input {
-    margin-left: 1%;
-    color: $title-icons-light;
-    background-color: $bg-light-font-night;
-  }
-}
-
-.people {
-  border: 1px solid $title-icons-light;
-  border-radius: 5px;
-}
-
-html.nuit .people {
-  border: 1px solid $title-icons-night;
-}
-
-html.nuit .resa-form {
-  input {
-    color: $title-icons-night;
-    background-color: $bg-night;
-  }
-}
-
-.btn-resa {
-  margin: 2%;
-
-  button {
-    border: 1px solid $title-icons-light;
-    padding: 1%;
-    cursor: pointer;
-    border-radius: 15px;
-  }
-}
-
-html.nuit .btn-resa {
-  margin: 2%;
-
-  button {
-    border: 1px solid $title-icons-night;
-    padding: 1%;
-    cursor: pointer;
-    border-radius: 15px;
-  }
-}
-
-.comment {
-  display: flex;
-  gap: 1%;
-}
-
-.comments-section {
-  margin: 2%;
-  padding: 2%;
-
-  h2 {
-    color: $title-icons-light;
-    margin-bottom: 1%;
-  }
-}
-
-html.nuit .comments-section {
-  h2 {
-    color: $title-icons-night;
-  }
-}
-
-.btn-comm {
-  color: $title-icons-light;
-}
-
-html.nuit .btn-comm {
-  color: $title-icons-night;
-}
-
-.form-comm {
-  margin-top: 4%;
-  width: 40%;
-
-  textarea {
-    color: $title-icons-light;
-  }
-
-  button {
-    color: $title-icons-light;
-  }
-}
-
-html.nuit .form-comm {
-  textarea {
-    color: $title-icons-night;
-  }
-
-  button {
-    color: $title-icons-night;
-  }
-}
-
-.log-comm {
-  margin-top: 4%;
-}
-/* END DETAILS RESTAURANTS ANELISE */
-
-
-
-
-/* PAGE DÉTAIL DU RESTAURANT NICO */
 .details-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  padding: 20px;
 }
 
-.restaurant-info {
+.card-details {
   display: flex;
   align-items: flex-start;
   margin-bottom: 20px;
 }
 
-.restaurant-info img {
-  width: 600px; 
-  height: auto;
+.card-details img {
+  max-width: 400px;
+  max-height: 400px;
   margin-right: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
-.restaurant-details {
-  flex: 1;
-  background-color: #fff;
+.card-details .text-content {
+  max-width: 600px;
+  background-color: #f9f9f9;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.restaurant-details h1 {
-  margin-top: 0;
+.comments-section {
+  width: 100%;
+  max-width: 1000px;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.comments-section .comment {
+  background-color: #ffffff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-comm {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-comm textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
 }
 
 .reservation-section {
   width: 100%;
-  max-width: 600px;
-  background-color: #f9f9f9;
+  max-width: 1000px;
+  background-color: #f1f1f1;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   margin-top: 20px;
 }
 
-.menu-section {
-  width: 100%;
-  max-width: 600px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
+.reservation-section form {
+  display: flex;
+  flex-direction: column;
 }
-/* PAGE DÉTAIL DU RESTAURANT NICO */
+
+.reservation-section input,
+.reservation-section textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.btn-fav {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-comm {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
