@@ -137,7 +137,7 @@ const Details = () => {
             </div>
           ))
         )}
-        {user.isLoggedIn ? (
+        {user.isLoggedIn && !user.isAdmin ? (
           <form onSubmit={handleCommentSubmit} className="form-comm">
             <h2> {t("leaveComments")} </h2>
             <textarea
@@ -148,15 +148,15 @@ const Details = () => {
             <button type="submit"> <strong> {t('submitComment')} </strong> </button>
           </form>
         ) : (
-          <p className="log-comm"> <strong> {t('loginToComment')} </strong> </p>
+          <p className="log-comm"> <strong> {user.isAdmin ? t('adminCannotComment') : t('loginToComment')} </strong> </p>
         )}
       </div>
       <div className="reservation-section">
         <h2>{t("makeReservation")}</h2>
-        {user.isLoggedIn ? (
+        {user.isLoggedIn && !user.isAdmin ? (
           <ReservationForm restaurantId={id} userToken={user.token} />
         ) : (
-          <p> {t('noReservationForAdmin')} </p>
+          <p> <strong> {user.isAdmin ? t('adminCannotReserve') : t('loginToReserve')} </strong> </p>
         )}
       </div>
     </div>
