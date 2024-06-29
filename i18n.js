@@ -323,7 +323,7 @@ i18n
           "addComment": "Écrivez votre commentaire ici...",
           "submitComment": "POSTER",
           "loginToComment": "Connectez-vous pour commenter !",
-          "leaveComments": "LAISSEZ UN COMMENTAIRE AU RESTAURANT",
+          "leaveComments": "LAISSER UN COMMENTAIRE AU RESTAURANT",
           "commentRemoved": "Le commentaire a été supprimé",
           "errorRemovingComm": "Erreur durant la suppression du commentaire",
           "client": "Le client",

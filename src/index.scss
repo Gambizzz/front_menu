@@ -1645,35 +1645,149 @@ html.nuit .lead-come {
 
 
 
-/* START DETAILS RESTAURANTS ANELISE */
+/* START DETAILS RESTAURANTS */
+/* start card menu + details */
 .name-restau {
   color: $title-icons-light;
 }
 
-.card-details {
-  border: 1px solid $title-icons-light;
-  border-radius: 15px;
-  padding: 2%;
-  margin: 2%;
-}
-
-html.nuit .card-details {
-  border: 1px solid $title-icons-night;
-
-  h1 {
-    color: $title-icons-night;
-  }
+.details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
 }
 
 .menu-details {
-  color: $title-icons-light;
-  padding: 2%;
-  margin: 2%;
+  width: 40%;
+
+  h2 {
+    color: $title-icons-light;
+    text-align: center;
+    margin-bottom: 2%;
+  }
 }
 
-html.nuit .menu-details {
-  color: $title-icons-night;
+.card-details {
+  margin-top: 4%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
+
+.text-content {
+  width: 40%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.text-content:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card-content {
+ margin: 2%;
+
+ .name-restau {
+  margin-bottom: 2%;
+  text-align: center;
+ }
+
+ p {
+  margin-top: 2%;
+ }
+
+ button {
+  margin-top: 2%;
+ }
+}
+/* end card menu + details */
+
+/* start reservations + comments section */
+.tabs {
+  margin-top: 8%;
+  display: flex;
+  align-items: center;
+
+}
+
+.ant-tabs-tab-btn {
+  color: $title-icons-light;
+}
+
+
+.comment {
+  margin-top: 2%;
+}
+
+.comments-section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+
+  p {
+    color: $font-light;
+  }
+
+  h2 {
+    color: $title-icons-light;
+  }
+}
+
+.form-comm {
+  margin-top: 8%;
+
+    h2 {
+      margin-bottom: 2%;
+      text-align: center;
+    }
+
+  textarea {
+    border-color: $font-light;
+    color: $title-icons-light;
+    background-color: $bg-light-font-night;
+  }
+
+  textarea::placeholder {
+    color: $title-icons-light;
+    font-size: 80%;
+    font-style: italic;
+  }
+
+  button {
+    color: $title-icons-light;
+  }
+}
+
+:where(.css-dev-only-do-not-override-m4timi).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: $title-icons-light;
+}
+
+.reservation-section {
+  p {
+    color: $font-light;
+  }
+
+}
+
+.resa-form {
+  margin-top: 4%;
+
+  input {
+    color: $title-icons-light;
+    background-color: $bg-light-font-night;
+  }
+}
+/* end reservations + comments section */
+
+
+
+
+
 
 .resa-details {
   padding: 2%;
@@ -1690,15 +1804,7 @@ html.nuit .resa-details {
   }
 }
 
-.resa-form {
-  margin-top: 1%;
 
-  input {
-    margin-left: 1%;
-    color: $title-icons-light;
-    background-color: $bg-light-font-night;
-  }
-}
 
 .people {
   border: 1px solid $title-icons-light;
@@ -1737,117 +1843,4 @@ html.nuit .btn-resa {
     border-radius: 15px;
   }
 }
-
-.comment {
-  display: flex;
-  gap: 1%;
-}
-
-.comments-section {
-  margin: 2%;
-  padding: 2%;
-
-  h2 {
-    color: $title-icons-light;
-    margin-bottom: 1%;
-  }
-}
-
-html.nuit .comments-section {
-  h2 {
-    color: $title-icons-night;
-  }
-}
-
-.btn-comm {
-  color: $title-icons-light;
-}
-
-html.nuit .btn-comm {
-  color: $title-icons-night;
-}
-
-.form-comm {
-  margin-top: 4%;
-  width: 40%;
-
-  textarea {
-    color: $title-icons-light;
-  }
-
-  button {
-    color: $title-icons-light;
-  }
-}
-
-html.nuit .form-comm {
-  textarea {
-    color: $title-icons-night;
-  }
-
-  button {
-    color: $title-icons-night;
-  }
-}
-
-.log-comm {
-  margin-top: 4%;
-}
 /* END DETAILS RESTAURANTS ANELISE */
-
-
-
-
-/* PAGE DÉTAIL DU RESTAURANT NICO */
-.details-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
-}
-
-.restaurant-info {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
-}
-
-.restaurant-info img {
-  width: 600px; 
-  height: auto;
-  margin-right: 20px;
-  border-radius: 8px;
-}
-
-.restaurant-details {
-  flex: 1;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.restaurant-details h1 {
-  margin-top: 0;
-}
-
-.reservation-section {
-  width: 100%;
-  max-width: 600px;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-}
-
-.menu-section {
-  width: 100%;
-  max-width: 600px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-}
-/* PAGE DÉTAIL DU RESTAURANT NICO */
