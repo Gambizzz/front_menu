@@ -1392,101 +1392,416 @@ html.nuit .res-us {
 
 
 
-/* START FORMS */
+/* START SIGNUP FORMS */
+.signup-form {
+  margin-top: 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 4%;
+  border-radius: 20px;
+  position: relative;
+  align-items: center;
+}
+
+html.nuit .form {
+  background-color: $bg-light-font-night;
+}
+
+.title {
+  font-size: 150%;
+  color: $title-icons-light;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 20%;
+}
+
+html.nuit .title {
+  color: $title-icons-night;
+}
+
+.title::before, .title::after {
+  position: absolute;
+  content: "";
+  height: 16%;
+  width: 16%;
+  border-radius: 50%;
+  left: 0;
+  background-color: $title-icons-light;
+}
+
+html.nuit .title::before {
+  background-color: $title-icons-night;
+}
+
+html.nuit .title::after {
+  background-color: $title-icons-night;
+}
+
+.title::before {
+  width: 2%;
+  height: 2%;
+  background-color: $bg-light-font-night;
+}
+
+html.nuit .title::before {
+  background-color: $bg-light-font-night
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.message, .signin {
+  color: $font-light;
+  font-size: 80%;
+  margin-top: 4%;
+}
+
+html.nuit .message {
+  color: $title-icons-night;
+}
+
+html.nuit .signin {
+  color: $title-icons-night;
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a {
+  color: $font-light;
+}
+
+html.nuit .signin a {
+  color: $title-icons-night;
+}
+
+.signin a:hover {
+  text-decoration: underline $title-icons-light;
+}
+
+html.nuit .signin a:hover {
+  text-decoration: underline $bg-night;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  width: 100%;
+  padding: 6%;
+  outline: 0;
+  border: 1px solid $font-light;
+  border-radius: 10px;
+  margin-top: 6%;
+}
+
+html.nuit .form label .input {
+  border: 1px solid $bg-night;
+  background-color: transparent;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  background-color: $title-icons-light;
+  padding: 4%;
+  border-radius: 10px;
+  color: $bg-light-font-night;
+  font-size: 90%;
+  transition: .3s ease;
+  margin-top: 6%;
+  width: 100%;
+}
+
+html.nuit .submit {
+  background-color: $title-icons-night;
+  color: $bg-night;
+}
+
+.submit:hover {
+  background-color: $bg-light-font-night;
+  color: $title-icons-light;
+  border: 1px solid $title-icons-light;
+}
+
+html.nuit .submit:hover {
+  background-color: $bg-night;
+  color: $title-icons-night;
+  border: 1px solid $title-icons-night;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+/* END SIGNUP FORMS */
+
+
+
+/* START LOGIN FORMS */
+.login-form-container {
+  margin-top: 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
 .login-form {
-  input {
-    margin-left: 1%;
-    color: $title-icons-light;
-    border: 1px solid $title-icons-light;
-    background-color: $bg-light-font-night;
-    border-radius: 5px;
-    margin-top: 1%;
-  }
-
-  button {
-    color: $font-light;
-    border: 1px solid $title-icons-light;
-    border-radius: 15px;
-    padding: 1%;
-    margin-top: 2%;
-  }
-
-  p {
-    margin-top: 2%;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 4%;
+  border-radius: 20px;
+  position: relative;
+  align-items: center;
 }
 
 html.nuit .login-form {
-  input {
-    color: $title-icons-night;
-    border: 1px solid $title-icons-night;
-    background-color: $bg-night;
-  }
-
-  button {
-    color: $bg-light-font-night;
-    border: 1px solid $title-icons-night;
-  }
+  background-color: $bg-light-font-night;
 }
 
-.form-ad {
-  width: 15%;
+.tit-pag {
+  font-size: 150%;
+  color: $title-icons-light;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 20%;
+}
+
+html.nuit .tit-pag {
+  color: $title-icons-night;
+  font-size: 150%;
+  font-weight: 600;
+}
+
+.tit-pag::before, .tit-pag::after {
+  position: absolute;
+  content: "";
+  height: 16%;
+  width: 16%;
+  border-radius: 50%;
+  left: 0;
+  background-color: $title-icons-light;
+}
+
+html.nuit .tit-pag::before {
+  background-color: $title-icons-night;
+}
+
+html.nuit .tit-pag::after {
+  background-color: $title-icons-night;
+}
+
+.tit-pag::before {
+  width: 2%;
+  height: 2%;
+  background-color: $bg-light-font-night;
+}
+
+html.nuit .tit-pag::before {
+  background-color: $bg-light-font-night;
+}
+
+.tit-pag::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
 }
 
 .form-group {
-  label {
-    margin-top: 1%;
-  }
-}
-
-.signup-form {
-  input {
-    margin-left: 1%;
-    color: $title-icons-light;
-    border: 1px solid $title-icons-light;
-    background-color: $bg-light-font-night;
-    border-radius: 5px;
-    margin-top: 1%;
-    width: 20%;
-  }
-
-  label {
-    margin-top: 1%;
-  }
-
-  button {
-    color: $font-light;
-    border: 1px solid $title-icons-light;
-    border-radius: 15px;
-    padding: 1%;
-    margin-top: 2%;
-  }
-
-  p {
-    margin-top: 2%;
-  }
-}
-
-html.nuit .signup-form {
-  input {
-    color: $title-icons-night;
-    border: 1px solid $title-icons-night;
-    background-color: $bg-night;
-  }
-
-  button {
-    color: $bg-light-font-night;
-    border: 1px solid $title-icons-night;
-  }
-}
-
-.logout-form {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-}
-/* END FORMS */
+  gap: 2%;
+  margin-top: 8%;
 
+  input {
+    border: 1px solid $font-light;
+    border-radius: 10px;
+    margin-top: 1%;
+  }
+}
+
+html.nuit .form-group {
+  label {
+    color: $bg-night;
+  }
+
+  input {
+    border: 1px solid $bg-night;
+    background-color: transparent;
+  }
+}
+
+.btn-sub {
+  margin-top: 10%;
+  text-align: center;
+}
+
+.log-links {
+  margin-top: 8%;
+}
+
+html.nuit .log-links {
+  color: $title-icons-night;
+}
+
+.links {
+  color: $font-light;
+  text-decoration: none;
+}
+
+html.nuit .links {
+  color: $title-icons-night;
+}
+
+.links:hover {
+  text-decoration: underline $title-icons-light;
+}
+
+html.nuit .links:hover {
+  text-decoration: underline $bg-night;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+/* END LOGIN FORMS */
+
+
+
+/* START FORGOT PASSWORD */
+.forgot-pass {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60vh;
+  justify-content: center;
+}
+
+.forgot-form {
+  max-width: 100%;
+  background-color: #fff;
+  padding: 6% 8%;
+  font-size: 90%;
+  font-family: inherit;
+  color: $font-light;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+}
+
+html.nuit .forgot-form {
+  color: $bg-night;
+}
+
+.forgot-form h1.title-pages {
+  font-size: 180%;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+.forgot-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.forgot-form label {
+  display: block;
+  margin-bottom: 2%;
+}
+
+.forgot-form input {
+  width: 100%;
+  padding: 4%;
+  border-radius: 10px;
+  font-family: inherit;
+  border: 1px solid $title-icons-light;
+  box-sizing: border-box;
+  color: $title-icons-light;
+}
+
+html.nuit .forgot-form input {
+  border: 1px solid $title-icons-night;
+  color: $title-icons-night;
+}
+
+.forgot-form input::placeholder {
+  opacity: 0.5;
+}
+
+.forgot-form input:focus {
+  outline: none;
+  border-color: $font-light;
+}
+
+html.nuit .forgot-form input:focus {
+  border-color: $bg-night;
+}
+
+.forgot-form button {
+  margin-top: 8%;
+  border: 1px solid $title-icons-light;
+  background-color: $title-icons-light;
+  padding: 3%;
+  color: $bg-light-font-night;
+  border-radius: 10px;
+}
+
+html.nuit .forgot-form button {
+  border: 1px solid $title-icons-night;
+  background-color: $title-icons-night;
+  color: $bg-night;
+}
+
+.forgot-form .btn-forgot:hover {
+  background-color: $font-light;
+  border-color: $font-light;
+}
+
+html.nuit .forgot-form .btn-forgot:hover {
+  background-color: $bg-night;
+  border-color: $bg-night;
+  color: $bg-light-font-night;
+}
+/* END FORGOT PASSWORD */
 
 
 /* START HOME */
@@ -1872,5 +2187,17 @@ html.nuit .btn-resa {
     color: $bg-light-font-night;
   }
 }
+
+.reservation-section {
+  p {
+    color: $font-light;
+  }
+}
+
+html.nuit .reservation-section {
+  p {
+    color: $bg-light-font-night;
+  }
+}
 /* end reservations + comments section */
-/* END DETAILS RESTAURANTS ANELISE */
+/* END DETAILS RESTAURANTS */

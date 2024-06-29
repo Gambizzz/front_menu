@@ -65,27 +65,21 @@ function AdminSign() {
   };
 
   return (
-    <div className='signup-form'>
-      <form onSubmit={handleSignup}>
-      <h1 className="title-pages"> {t('signupForm')} </h1>
-        <div>
-          <label htmlFor='email'> {t('Email')} </label>
-          <input type='email' className='form-control' id='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t('placeEmail')} required />
-        </div>
-        <div>
-          <label htmlFor='password'> {t('Password')} </label>
-          <input type='password' className='form-control' id='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder={t('password')}required />
-        </div>
-        <div>
-          <label htmlFor='passwordConfirmation'> {t('PassConfirm')} </label>
-          <input type='password' className='form-control' id='confirmPassword' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder={t('passConfirm')} required />
-        </div>
-        <button type='submit'> {t('welcome')} </button>
+    <div class="signup-form">
+      <form class="form" onSubmit={handleSignup}>
+        <p class="title"> {t('signupForm')} </p>
+        <label>
+          <input type="email" class="input" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t('placeEmail')} required />
+        </label>
+        <label>
+          <input type="password" class="input" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder={t('password')} required />
+        </label>
+        <label>
+          <input type="password" class="input" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder={t('passConfirm')} required />
+        </label>
+        <button class="submit">{t('welcome')}</button>
+        <p class="signin"> <a href="/admin/login" class="links">{t('seConnecter')}</a> | <a href="/" class="links">{t('home')}</a></p>
       </form>
-      <p>
-        <Link to="/admin/login" className='links'> {t('seConnecter')} </Link> | 
-        <Link to="/" className='links'> {t('home')} </Link>
-      </p>
 
       <ToastContainer />
     </div>

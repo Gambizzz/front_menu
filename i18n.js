@@ -177,6 +177,7 @@ i18n
           "menuLink": "Discover its menu",
           "adminCannotComment": "You are a restaurateur, you can't comment",
           "adminCannotReserve": "You are a restaurateur, you can't book a table",
+          "loginToReserve": "Login to reserve !",
         }
       },
       fr: {
@@ -352,6 +353,7 @@ i18n
           "menuLink": "Découvrez son menu",
           "adminCannotComment": "Vous êtes restaurateur, vous ne pouvez pas laisser de commentaire",
           "adminCannotReserve": "Vous êtes restaurateur, vous ne pouvez pas effectuer de réservation",
+          "loginToReserve": "Connectez-vous pour réserver !",
         }
       }
     },

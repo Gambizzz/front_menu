@@ -57,30 +57,24 @@ function Sign() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='login-form' id='new_user'>
-      <h1 className="title-pages"> {t('signupForm')} </h1>
-      <div>
-        <label htmlFor='email'> {t('Email')} </label>
-        <input type='email' id='email' placeholder={t('placeEmail')} value={email} onChange={(e) => setEmail(e.target.value)} required />
-      </div>
-      <div>
-        <label htmlFor='password'> {t('Password')} </label>
-        <input type='password' id='password' placeholder={t('password')} value={password} onChange={(e) => setPassword(e.target.value)} required />
-      </div>
-      <div>
-        <label htmlFor='passwordConfirmation'> {t('PassConfirm')} </label>
-        <input type='password' id='passwordConfirmation' placeholder={t('passConfirm')} value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} required />
-      </div>
-      <div>
-        <button type='submit'> {t('welcome')} </button>
-      </div>
-      <p>
-        <Link to="/login" className='links'> {t('seConnecter')} </Link> | 
-        <Link to="/" className='links'> {t('home')} </Link>
-      </p>
+    <div class="signup-form">
+      <form class="form" onSubmit={handleSubmit}>
+        <p class="title">{t('signupForm')}</p>
+        <label>
+          <input type="email" class="input" id="email" placeholder={t('placeEmail')} value={email} onChange={(e) => setEmail(e.target.value)} required />
+        </label>
+        <label>
+          <input type="password" class="input" id="password" placeholder={t('password')} value={password} onChange={(e) => setPassword(e.target.value)} required />
+        </label>
+        <label>
+          <input type="password" class="input" id="passwordConfirmation" placeholder={t('passConfirm')} value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} required />
+        </label>
+        <button class="submit">{t('welcome')}</button>
+        <p class="signin"> <a href="/login" class="links">{t('seConnecter')}</a> | <a href="/" class="links">{t('home')}</a></p>
+      </form>
 
       <ToastContainer />
-    </form>
+      </div>
   );
 }
 
