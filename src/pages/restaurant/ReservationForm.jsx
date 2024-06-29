@@ -50,22 +50,28 @@ const ReservationForm = ({ restaurantId, userToken }) => {
   return (
     <form onSubmit={handleReservation} className="resa-form">
       <label>
-        {t("reservationNumber")}
-        <InputNumber min={1} max={10} defaultValue={3} onChange={handleNumberChange} />
+        <div>
+          {t("reservationNumber")}
+        </div>
+        <InputNumber min={1} max={10} defaultValue={1} onChange={handleNumberChange} className="input-number" />
       </label>
       <label>
-        {t("reservationDate")}
+        <div>
+          {t("reservationDate")}
+        </div>
         <Space direction="vertical">
-          <DatePicker onChange={handleDateChange} />
+          <DatePicker onChange={handleDateChange} className="input-number"/>
         </Space>
       </label>
       <label>
-        {t("reservationTime")}
-        <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
+        <div>
+          {t("reservationTime")}
+        </div>
+        <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required className="input-time" />
       </label>
 
       <div className="btn-resa">
-        <button type="submit">{t("makeResa")}</button>
+        <button type="submit"> {t("makeResa")} </button>
       </div>
     </form>
   );

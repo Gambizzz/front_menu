@@ -1002,7 +1002,7 @@ html.nuit .restaurant-card {
 
 .restaurant-image {
   width: 100%;
-  height: auto;
+  height: 45%;
   border-bottom: 0.5px solid $title-icons-light;
   object-fit: cover;
 }
@@ -1267,63 +1267,59 @@ html.nuit .link-create {
   margin: 2%;
 }
 
-.cards-admin {
-  margin: 2%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.solo-card {
-  border: 1px solid $title-icons-light;
-  margin-top: 2%;
-  padding: 2%;
-
-  img {
-    margin-bottom: 2%;
-  }
-
-  .title-resa {
-    color: $title-icons-light;
-    margin-bottom: 1%;
-    text-align: center;
-  }
-}
-
-html.nuit .solo-card {
-  border: 1px solid $title-icons-night;
-
-  .title-resa {
-    color: $title-icons-night;
-  }
-}
-
-.title-solo {
-  text-align: center;
-  margin-bottom: 2%;
-}
-
 .your-restau {
   color: $title-icons-light;
   font-size: large;
   text-align: center;
 }
 
+.admin-cards {
+  margin-top: 0%;
+}
+
 html.nuit .your-restau {
   color: $title-icons-night;
+}
+
+.img-restau-admin {
+  width: 100%;
+  height: 35%;
+  object-fit: cover;
+  border-bottom: 0.5px solid $title-icons-light;
+}
+
+html.nuit .img-restau-admin {
+  border-bottom: 0.5px solid $title-icons-night;
 }
 
 .btn-admin {
   margin-top: 2%;
   margin-bottom: 2%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-evenly;
   color: $title-icons-light;
   cursor: pointer;
 }
 
 html.nuit .btn-admin {
+  color: $title-icons-night;
+}
+
+.reserv-admin {
+  margin-top: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-resa {
+  text-align: center;
+  margin-bottom: 4%;
+  color: $title-icons-light;
+}
+
+html.nuit .title-resa {
   color: $title-icons-night;
 }
 
@@ -1641,14 +1637,14 @@ html.nuit .lead-come {
 
 
 
-
-
-
-
 /* START DETAILS RESTAURANTS */
 /* start card menu + details */
 .name-restau {
   color: $title-icons-light;
+}
+
+html.nuit .name-restau {
+  color: $title-icons-night;
 }
 
 .details-container {
@@ -1665,6 +1661,12 @@ html.nuit .lead-come {
     color: $title-icons-light;
     text-align: center;
     margin-bottom: 2%;
+  }
+}
+
+html.nuit .menu-details {
+  h2 {
+    color: $title-icons-night;
   }
 }
 
@@ -1712,11 +1714,14 @@ html.nuit .lead-come {
   margin-top: 8%;
   display: flex;
   align-items: center;
-
 }
 
 .ant-tabs-tab-btn {
   color: $title-icons-light;
+}
+
+html.nuit .ant-tabs-tab-btn {
+  color: $title-icons-night;
 }
 
 
@@ -1738,6 +1743,16 @@ html.nuit .lead-come {
   }
 }
 
+html.nuit .comments-section {
+  p {
+    color: $bg-light-font-night;
+  }
+
+  h2 {
+    color: $title-icons-night;
+  }
+}
+
 .form-comm {
   margin-top: 8%;
 
@@ -1753,7 +1768,7 @@ html.nuit .lead-come {
   }
 
   textarea::placeholder {
-    color: $title-icons-light;
+    color: $font-light;
     font-size: 80%;
     font-style: italic;
   }
@@ -1763,73 +1778,86 @@ html.nuit .lead-come {
   }
 }
 
+html.nuit .form-comm {
+  textarea {
+    border-color: $bg-light-font-night;
+    color: $title-icons-night;
+    background-color: $bg-night;
+  }
+
+  textarea::placeholder {
+    color: $bg-light-font-night;
+  }
+
+  button {
+    color: $title-icons-night;
+  }
+}
+
 :where(.css-dev-only-do-not-override-m4timi).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
   color: $title-icons-light;
 }
 
-.reservation-section {
-  p {
-    color: $font-light;
-  }
-
+html.nuit :where(.css-dev-only-do-not-override-m4timi).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: $title-icons-night;
 }
+
 
 .resa-form {
+  display: flex;
+  flex-direction: column;
   margin-top: 4%;
 
-  input {
-    color: $title-icons-light;
+  label {
+    color: $font-light;
+    background-color: transparent;
+  }
+
+  .input-number {
+    border: 1px solid $title-icons-light;
     background-color: $bg-light-font-night;
-  }
-}
-/* end reservations + comments section */
-
-
-
-
-
-
-.resa-details {
-  padding: 2%;
-  margin: 2%;
-
-  h2 {
     color: $title-icons-light;
+    margin-bottom: 2%;
   }
-}
 
-html.nuit .resa-details {
-  h2 {
-    color: $title-icons-night;
+  .input-time {
+    border: 1px solid $title-icons-light;
+    border-radius: 8px;
+    height: 34px;
+    background-color: $bg-light-font-night;
+    margin-top: 2%;
+    margin-bottom: 10%;
   }
-}
-
-
-
-.people {
-  border: 1px solid $title-icons-light;
-  border-radius: 5px;
-}
-
-html.nuit .people {
-  border: 1px solid $title-icons-night;
 }
 
 html.nuit .resa-form {
-  input {
+  label {
+    color: $bg-light-font-night;
+    background-color: transparent;
+  }
+
+  .input-number {
     color: $title-icons-night;
+    border: 1px solid $title-icons-night;
+    background-color: $bg-night;
+  }
+
+  .input-time {
+    border: 1px solid $title-icons-night;
+    border-radius: 8px;
+    height: 34px;
     background-color: $bg-night;
   }
 }
 
 .btn-resa {
-  margin: 2%;
 
   button {
     border: 1px solid $title-icons-light;
-    padding: 1%;
+    padding: 2%;
     cursor: pointer;
-    border-radius: 15px;
+    border-radius: 10px;
+    color: $title-icons-light;
   }
 }
 
@@ -1838,9 +1866,11 @@ html.nuit .btn-resa {
 
   button {
     border: 1px solid $title-icons-night;
-    padding: 1%;
+    padding: 2%;
     cursor: pointer;
-    border-radius: 15px;
+    border-radius: 10px;
+    color: $bg-light-font-night;
   }
 }
+/* end reservations + comments section */
 /* END DETAILS RESTAURANTS ANELISE */

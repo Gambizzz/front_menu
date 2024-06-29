@@ -134,16 +134,18 @@ const AdminProfile = () => {
 
       <div>
         <h2 className='your-restau'> {t('yourRestau')} </h2>
-        < div className='cards-admin'>
+        <div className='card-container admin-cards'>
           {restaurants.length > 0 ? (
             restaurants.map(restaurant => (
-              <div key={restaurant.id} className='solo-card'>
-                <h3 className='title-solo'> <strong> {restaurant.name} </strong> </h3>
-                <img src={restaurant.cover_image_url || restaurant.image_url} alt={restaurant.name} />
-                <p> {t('descriptR')} : {restaurant.description} </p>
-                <p> {t('cityR')} : {restaurant.city} </p>
-                <p> {t('foodR')} : {restaurant.food} </p>
-                <p> {t('numberOfReservations')} : {reservations[restaurant.id]?.length || 0} </p>
+              <div key={restaurant.id} className='restaurant-card'>
+                <img src={restaurant.cover_image_url || restaurant.image_url} alt={restaurant.name} className='img-restau-admin' />
+                <div className="restaurant-content">
+                  <h3 className='restaurant-title'> <strong> {restaurant.name} </strong> </h3>
+                  <p> {t('descriptR')} : {restaurant.description} </p>
+                  <p> {t('cityR')} : {restaurant.city} </p>
+                  <p> {t('foodR')} : {restaurant.food} </p>
+                  <p> {t('numberOfReservations')} : {reservations[restaurant.id]?.length || 0} </p>
+                </div>
 
                 <div className='btn-admin'>
                   <div>
@@ -156,7 +158,7 @@ const AdminProfile = () => {
                   </div>
                 </div>
 
-                <div>
+                <div className='reserv-admin'>
                   <h3 className='title-resa'> {t('reservations')} </h3>
                   {reservations[restaurant.id]?.length > 0 ? (
                     reservations[restaurant.id].map(reservation => (
