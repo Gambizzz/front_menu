@@ -1574,6 +1574,37 @@ html.nuit .res-us {
   display: flex;
   justify-content: space-between;
 }
+
+.title-pages {
+  margin-bottom: 0%;
+}
+
+.button-card-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4%;
+}
+
+.button-card {
+  background-color: #fff;
+  padding: 2%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-edit-user {
+  background-color: $title-icons-light;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-edit-user:hover {
+  background-color: #fe4c00dc;
+}
 /* END USER PROFILE */
 
 
@@ -2304,6 +2335,8 @@ html.nuit .comments-section {
 }
 
 .form-comm {
+  display: flex;
+  flex-direction: column;
   margin-top: 8%;
 
     h2 {
@@ -2436,3 +2469,7 @@ html.nuit .reservation-section {
 }
 /* end reservations + comments section */
 /* END DETAILS RESTAURANTS */
+
+
+
+
