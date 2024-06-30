@@ -10,6 +10,9 @@ import ReservationForm from "./ReservationForm";
 import { FaHeart } from "react-icons/fa6";
 import { IoTrashSharp } from "react-icons/io5";
 import { api_url } from '../../App';
+import { Tabs } from "antd";
+
+const { TabPane } = Tabs;
 
 const Details = () => {
   const { t } = useTranslation();
@@ -39,8 +42,6 @@ const Details = () => {
       try {
         const response = await ky.get(`${api_url}restaurants/${id}/comments`);
         const data = await response.json();
-        console.log('Comments fetched:', data);
-        // Ajoutez user_id manuellement basé sur email
         const enrichedComments = data.map(comment => ({
           ...comment,
           user_id: comment.email === user.email ? user.id : null
@@ -67,9 +68,7 @@ const Details = () => {
         }
       });
       const data = await response.json();
-      // Ajoutez manuellement l'email et user_id de l'utilisateur au nouveau commentaire
       const newCommentData = { ...data, email: user.email, user_id: user.id };
-      console.log('New comment added:', newCommentData); // Ajout du log pour vérifier les données du nouveau commentaire
       setComments([...comments, newCommentData]);
       setNewComment('');
     } catch (error) {
@@ -115,59 +114,65 @@ const Details = () => {
   return (
     <div className="details-container">
       <ToastContainer />
-
       <div className="card-details">
-        <h1 className="name-restau"> {restaurant.name} </h1>
-        <p>{t('descriptR')} : {restaurant.description} </p>
-        <p>{t('cityR')} : {restaurant.city} </p>
-        <p>{t('foodR')} : {restaurant.food} </p>
         <div className="menu-details">
-          <h2> {t('ourMenu')} </h2>
           <img src={restaurant.image_url} alt={restaurant.name} />
         </div>
-        <button onClick={addFavorite} className="btn-fav">
-          <FaHeart size={30} />
-        </button>
+        <div className="text-content">
+          <div className="card-content">
+            <h1 className="name-restau"> <strong> {restaurant.name} </strong> </h1>
+            <p>{t('descriptR')} : {restaurant.description} </p>
+            <p>{t('cityR')} : {restaurant.city} </p>
+            <p>{t('foodR')} : {restaurant.food} </p>
+            <button onClick={addFavorite} className="btn-fav">
+              <FaHeart size={20} />
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div className="comments-section">
-        <h2> {t("comments")} </h2>
-        {comments.length === 0 ? (
-          <p> {t('noComments')} </p>
-        ) : (
-          comments.map((comment) => (
-            <div className="comment" key={comment.id}>
-              <p> {t('client')} <strong> {comment.email} </strong> {t('hadComment')} {comment.body} </p>
-              {user && comment.user_id === user.id && (
-                <button onClick={() => removeComment(comment.id)} className="btn-comm">
-                  <IoTrashSharp /></button>
-              )}
-              <hr />
-            </div>
-          ))
-        )}
-        {user.isLoggedIn && !user.isAdmin ? (
-          <form onSubmit={handleCommentSubmit} className="form-comm">
-            <h2> {t("leaveComments")} </h2>
-            <textarea
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
-              placeholder={t('addComment')}
-            />
-            <button type="submit"> <strong> {t('submitComment')} </strong> </button>
-          </form>
-        ) : (
-          <p className="log-comm"> <strong> {user.isAdmin ? t('adminCannotComment') : t('loginToComment')} </strong> </p>
-        )}
-      </div>
-      <div className="reservation-section">
-        <h2>{t("makeReservation")}</h2>
-        {user.isLoggedIn && !user.isAdmin ? (
-          <ReservationForm restaurantId={id} userToken={user.token} />
-        ) : (
-          <p> <strong> {user.isAdmin ? t('adminCannotReserve') : t('loginToReserve')} </strong> </p>
-        )}
-      </div>
+      <Tabs defaultActiveKey="1" className="tabs">
+        <TabPane tab={t('comments')} key="1" className="title-tabs">
+          <div className="comments-section">
+            {comments.length === 0 ? (
+              <p> {t('noComments')} </p>
+            ) : (
+              comments.map((comment) => (
+                <div className="comment" key={comment.id}>
+                  <p> {t('client')} <strong> {comment.email} </strong> {t('hadComment')} {comment.body} </p>
+                  {user && comment.user_id === user.id && (
+                    <button onClick={() => removeComment(comment.id)} className="btn-comm">
+                      <IoTrashSharp /></button>
+                  )}
+                </div>
+              ))
+            )}
+            {user.isLoggedIn && !user.isAdmin ? (
+              <form onSubmit={handleCommentSubmit} className="form-comm">
+                <h2> {t("leaveComments")} </h2>
+                <textarea
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  placeholder={t('addComment')}
+                />
+                <button type="submit"> <strong> {t('submitComment')} </strong> </button>
+              </form>
+            ) : (
+              <p className="log-comm"> <strong> {user.isAdmin ? t('adminCannotComment') : t('loginToComment')} </strong> </p>
+            )}
+          </div>
+        </TabPane>
+
+        <TabPane tab={t('makeReservation')} key="2">
+          <div className="reservation-section">
+            {user.isLoggedIn && !user.isAdmin ? (
+              <ReservationForm restaurantId={id} userToken={user.token} />
+            ) : (
+              <p> <strong> {user.isAdmin ? t('adminCannotReserve') : t('loginToReserve')} </strong> </p>
+            )}
+          </div>
+        </TabPane>
+      </Tabs>
     </div>
   );
 };

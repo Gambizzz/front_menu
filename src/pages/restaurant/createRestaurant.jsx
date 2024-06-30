@@ -80,69 +80,74 @@ const CreateRestaurant = () => {
   };
 
   return (
-    <>
-      <h1 className="title-pages"> {t('addR')} </h1>
-      <form onSubmit={handleSubmit} className='create-form'>
-        <div>
-          <label> {t('nameR')} </label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label> {t('descriptR')} </label>
-          <textarea
-            name="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label> {t('cityR')} </label>
-          <select name="city" value={city} onChange={handleSelection} required>
-            <option value=''> {t('selectedCities')} </option>
-            {cities.map((city, index) => (
-              <option key={index} value={city}> {city} </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label> {t('foodR')} </label>
-          <select name="food" value={food} onChange={handleSelection} required>
-            <option value=''> {t('selectFood')} </option>
-            {foods.map((food, index) => (
-              <option key={index} value={food}> {food} </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label> {t('picture')} </label>
-          <input
-            type="file"
-            onChange={handleFileChange}
-            accept="image/*"
-            required
-          />
-        </div>
-        <div>
-          <label> {t('coverPicture')} </label>
-          <input
-            type="file"
-            onChange={handleCoverFileChange}
-            accept="image/*"
-            required
-          />
-        </div>
-        <button type="submit"> {t('createR')} </button>
-      </form>
+    <div className='create-form-container'>
+      <div className='create-form'>
+        <h1 className="title-pages tit-pag"> {t('addR')} </h1>
+        <form onSubmit={handleSubmit}>
+          <div className='form-group'>
+            <label> {t('nameR')} </label>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className='form-group'>
+            <label> {t('descriptR')} </label>
+            <textarea
+              name="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+          </div>
+          <div className='form-group'>
+            <label> {t('cityR')} </label>
+            <select name="city" value={city} onChange={handleSelection} required>
+              <option value=''> {t('selectedCities')} </option>
+              {cities.map((city, index) => (
+                <option key={index} value={city}> {city} </option>
+              ))}
+            </select>
+          </div>
+          <div className='form-group'>
+            <label> {t('foodR')} </label>
+            <select name="food" value={food} onChange={handleSelection} required>
+              <option value=''> {t('selectFood')} </option>
+              {foods.map((food, index) => (
+                <option key={index} value={food}> {food} </option>
+              ))}
+            </select>
+          </div>
+          <div className='form-group'>
+            <label> {t('picture')} </label>
+            <input
+              type="file"
+              onChange={handleFileChange}
+              accept="image/*"
+              required
+              className='input-pic'
+            />
+          </div>
+          <div className='form-group'>
+            <label> {t('coverPicture')} </label>
+            <input
+              type="file"
+              onChange={handleCoverFileChange}
+              accept="image/*"
+              required
+            />
+          </div>
+          <div className='submit btn-sub'>
+            <button type="submit"> {t('createR')} </button>
+          </div>
+        </form>
 
-      <ToastContainer />
-    </>
+        <ToastContainer />
+      </div>
+    </div>
   );
 };
 

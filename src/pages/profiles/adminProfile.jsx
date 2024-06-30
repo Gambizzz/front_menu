@@ -119,31 +119,37 @@ const AdminProfile = () => {
     <div>
       <h1 className="title-pages">{t('titleSpaceAdmin')}</h1>
 
-      <div className='admin-infos'>
-        <p> {t('email')}: {user.email} </p>
-        <p> {t('id')}: {user.id} </p>
+      <div className="button-card-container">
+        <div className="button-card">
+          <div className="button-wrapper">
+            <Link to="/admin/edit-profile" className="btn-edit-user"> 
+              {t('editAdmin')} 
+            </Link>
+          </div>
+          <div className="button-wrapper">
+            <Link to="/create-restaurant">
+              <button className="btn-create-restau"> 
+                {t('createRestau')} 
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
 
       <div>
-        <Link to="/admin/edit-profile" className='btn-edit-user'> {t('editAdmin')} </Link>
-      </div>
-
-      <div className='link-create'>
-        <Link to="/create-restaurant"> <button> {t('createRestau')} </button> </Link>
-      </div>
-
-      <div>
-        <h2 className='your-restau'> {t('yourRestau')} </h2>
-        < div className='cards-admin'>
+        <h1 className='your-restau'> {t('yourRestau')} </h1>
+        <div className='card-container admin-cards'>
           {restaurants.length > 0 ? (
             restaurants.map(restaurant => (
-              <div key={restaurant.id} className='solo-card'>
-                <h3 className='title-solo'> <strong> {restaurant.name} </strong> </h3>
-                <img src={restaurant.cover_image_url || restaurant.image_url} alt={restaurant.name} />
-                <p> {t('descriptR')} : {restaurant.description} </p>
-                <p> {t('cityR')} : {restaurant.city} </p>
-                <p> {t('foodR')} : {restaurant.food} </p>
-                <p> {t('numberOfReservations')} : {reservations[restaurant.id]?.length || 0} </p>
+              <div key={restaurant.id} className='restaurant-card'>
+                <img src={restaurant.cover_image_url || restaurant.image_url} alt={restaurant.name} className='img-restau-admin' />
+                <div className="restaurant-content">
+                  <h3 className='restaurant-title'> <strong> {restaurant.name} </strong> </h3>
+                  <p> {t('descriptR')} : {restaurant.description} </p>
+                  <p> {t('cityR')} : {restaurant.city} </p>
+                  <p> {t('foodR')} : {restaurant.food} </p>
+                  <p> {t('numberOfReservations')} : {reservations[restaurant.id]?.length || 0} </p>
+                </div>
 
                 <div className='btn-admin'>
                   <div>
@@ -156,7 +162,7 @@ const AdminProfile = () => {
                   </div>
                 </div>
 
-                <div>
+                <div className='reserv-admin'>
                   <h3 className='title-resa'> {t('reservations')} </h3>
                   {reservations[restaurant.id]?.length > 0 ? (
                     reservations[restaurant.id].map(reservation => (

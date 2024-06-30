@@ -41,19 +41,11 @@ const ForgotPasswordAdmin = () => {
 
   return (
     <div className='forgot-pass'>
-      <h1 className="title-pages"> {t('forgotPass')} </h1>
       <form onSubmit={handleSubmit} className='forgot-form'>
+        <h1 className="title-pages"> {t('forgotPass')} </h1>
         <label htmlFor="email"> {t('placeEmail')} </label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-
+        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <button type="submit" className='btn-forgot'> {t('sendEmail')} </button>
-
       </form>
 
       <ToastContainer />

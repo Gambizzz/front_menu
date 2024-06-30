@@ -71,7 +71,7 @@ i18n
           "titleSpaceUser": "MY CLIENT'S SPACE",
           "titleSpaceAdmin": "MY RESTAURATEUR'S SPACE",
           "editProfileButton": "EDIT MY PROFILE",
-          "editAdmin": "EDIT MY PROFILE",
+          "editAdmin": "Edit my profile",
           "createRestau": "Add my restaurant",
           "saveButton": "Save",
           "yourRestau": "YOUR RESTAURANTS",
@@ -177,6 +177,8 @@ i18n
           "menuLink": "Discover its menu",
           "adminCannotComment": "You are a restaurateur, you can't comment",
           "adminCannotReserve": "You are a restaurateur, you can't book a table",
+          "loginToReserve": "Login to reserve !",
+          "coverPicture": "Cover picture",
         }
       },
       fr: {
@@ -246,7 +248,7 @@ i18n
           "titleSpaceUser": "MON ESPACE CLIENT",
           "titleSpaceAdmin": "MON ESPACE RESTAURATEUR",
           "editProfileButton": "ÉDITER MON PROFIL",
-          "editAdmin": "ÉDITER MON PROFIL",
+          "editAdmin": "Éditer mon profil",
           "createRestau": "Ajouter mon restaurant",
           "saveButton": "Sauvegarder",
           "yourRestau": "VOS RESTAURANTS",
@@ -323,7 +325,7 @@ i18n
           "addComment": "Écrivez votre commentaire ici...",
           "submitComment": "POSTER",
           "loginToComment": "Connectez-vous pour commenter !",
-          "leaveComments": "LAISSEZ UN COMMENTAIRE AU RESTAURANT",
+          "leaveComments": "LAISSER UN COMMENTAIRE AU RESTAURANT",
           "commentRemoved": "Le commentaire a été supprimé",
           "errorRemovingComm": "Erreur durant la suppression du commentaire",
           "client": "Le client",
@@ -352,6 +354,8 @@ i18n
           "menuLink": "Découvrez son menu",
           "adminCannotComment": "Vous êtes restaurateur, vous ne pouvez pas laisser de commentaire",
           "adminCannotReserve": "Vous êtes restaurateur, vous ne pouvez pas effectuer de réservation",
+          "loginToReserve": "Connectez-vous pour réserver !",
+          "coverPicture": "Photo de couverture",
         }
       }
     },

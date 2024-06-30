@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import ky from 'ky';
 import { api_url } from '../../App';
+import { InputNumber, DatePicker, Space } from 'antd';
+
 
 const ReservationForm = ({ restaurantId, userToken }) => {
   const { t } = useTranslation();
-  const [number, setNumber] = useState('');
+  const [number, setNumber] = useState(1);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
 
@@ -37,23 +39,39 @@ const ReservationForm = ({ restaurantId, userToken }) => {
     }
   };
 
+  const handleNumberChange = (value) => {
+    setNumber(value);
+  };
+
+  const handleDateChange = (date, dateString) => {
+    setDate(dateString);
+  };
+
   return (
     <form onSubmit={handleReservation} className="resa-form">
       <label>
-        {t("reservationNumber")} :
-        <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} className="people" required />
+        <div>
+          {t("reservationNumber")}
+        </div>
+        <InputNumber min={1} max={10} defaultValue={1} onChange={handleNumberChange} className="input-number" />
       </label>
       <label>
-        {t("reservationDate")} :
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+        <div>
+          {t("reservationDate")}
+        </div>
+        <Space direction="vertical">
+          <DatePicker onChange={handleDateChange} className="input-number"/>
+        </Space>
       </label>
       <label>
-        {t("reservationTime")} :
-        <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
+        <div>
+          {t("reservationTime")}
+        </div>
+        <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required className="input-time" />
       </label>
 
       <div className="btn-resa">
-        <button type="submit">{t("makeResa")}</button>
+        <button type="submit"> {t("makeResa")} </button>
       </div>
     </form>
   );

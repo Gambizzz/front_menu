@@ -85,29 +85,35 @@ const Edit = () => {
   };
 
   return (
-    <div>
-      <h1 className="title-pages"> {t('editProfileForm')} </h1>
-      <form onSubmit={handleUpdate} className='edit-profile-form'>
-        <div>
-          <label> {t('placeEmail')} </label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div>
-          <label> {t('password')} </label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <div>
-          <label> {t('PassConfirm')} </label>
-          <input type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
-        </div>
-        <div className='btn-edit'>
-          <button type="submit"> {t('editR')} </button> | 
-          <button type="button" onClick={handleDeleteAccount} className='btn-del'> {t('delP')} </button>
-        </div>
-      </form>
+    <div className='edit-profile-container'>
+      <div className='edit-profile-form'>
+        <form onSubmit={handleUpdate}>
+          <h1 className="title-pages tit-pag"> {t('editProfileForm')} </h1>
+          <div className='form-group'>
+            <label htmlFor='email'> {t('placeEmail')} </label>
+            <input type="email" className='form-control' id='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='password'> {t('password')} </label>
+            <input type="password" className='form-control' id='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='passwordConfirmation'> {t('PassConfirm')} </label>
+            <input type="password" className='form-control' id='passwordConfirmation' value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} required />
+          </div>
+          <div className='submit btn-sub'>
+            <button type='submit'> {t('editR')} </button>
+          </div>
+        </form>
 
-      <ToastContainer />
+        <div className='btn-edit'>
+          <button onClick={handleDeleteAccount} className='btn-del'> {t('delP')} </button>
+        </div>
+
+        <ToastContainer />
+      </div>
     </div>
+
   );
 };
 
