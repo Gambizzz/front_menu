@@ -1518,45 +1518,9 @@ html.nuit .title-resa {
 
 
 /* START USER PROFILE */
-.favs {
-  margin: 2%;
-  border: 1px solid $font-light;
-  padding: 1%;
-  width: 20%;
-
-  h2 {
-    color: $title-icons-light;
-  }
-}
-
-html.nuit .favs {
-  border: 1px solid $bg-light-font-night;
-
-  h2 {
-    color: $title-icons-night;
-  }
-}
-
-.restau-fav {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 4%;
-}
-
-.btn-edit-user {
-  margin: 2%;
-  text-decoration: underline;
-}
-
-.btn-fav {
-  color: $title-icons-light;
-}
-
-html.nuit .btn-fav {
-  color: $title-icons-night;
-}
-
 .res-us {
+  display: flex;
+  flex-direction: column;
   margin: 4%;
 
   h2 {
@@ -1570,9 +1534,106 @@ html.nuit .res-us {
   }
 }
 
-.user-resa {
+.li-resa {
+  margin-bottom: 8%;
+}
+
+.card-resa {
+  width: 100%;
+  max-width: 80%;
+  height: auto;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  backdrop-filter: blur(10px);
+  transition: 0.5s ease-in-out;
+  margin: 2% 0;
+}
+
+.card-resa:hover {
+  transform: scale(1.05);
+}
+
+.textBox-resa {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 90px);
+  margin-left: 2%;
+  color: $font-light;
+  font-family: inherit;
+  padding: 2%;
+}
+
+html.nuit .textBox-resa {
+  color: $bg-night;
+}
+
+.span-resa {
+  font-size: 100%;
+}
+
+.h1-resa {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-resa {
+  font-size: 110%;
+}
+
+.favs {
+  display: flex;
+  flex-direction: column;
+  margin: 4%;
+
+  h2 {
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .favs {
+  h2 {
+    color: $title-icons-night;
+  }
+}
+
+.restau-fav {
+  margin-bottom: 8%;
+  width: 100%;
+  max-width: 80%;
+  height: auto;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+  transition: 0.5s ease-in-out;
+  margin: 2% 0;
+  padding: 2%;
+  color: $font-light;
+  font-family: inherit;
+}
+
+.restau-fav:hover {
+  transform: scale(1.05);
+}
+
+html.nuit .restau-fav {
+  color: $bg-night;
+}
+
+.btn-fav {
+  font-size: 110%;
+  font-weight: lighter;
+  color: $title-icons-light;
+}
+
+html.nuit .btn-fav {
+  color: $title-icons-night;
 }
 
 .title-pages {
@@ -1602,8 +1663,17 @@ html.nuit .res-us {
   text-decoration: none;
 }
 
+html.nuit .btn-edit-user {
+  background-color: $title-icons-night;
+  color: $bg-light-font-night;
+}
+
 .btn-edit-user:hover {
   background-color: #fe4c00dc;
+}
+
+html.nuit .btn-edit-user:hover {
+  background-color: #fcd256;
 }
 /* END USER PROFILE */
 
