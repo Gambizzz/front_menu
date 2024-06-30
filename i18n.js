@@ -178,6 +178,7 @@ i18n
           "adminCannotComment": "You are a restaurateur, you can't comment",
           "adminCannotReserve": "You are a restaurateur, you can't book a table",
           "loginToReserve": "Login to reserve !",
+          "coverPicture": "Cover picture",
         }
       },
       fr: {
@@ -354,6 +355,7 @@ i18n
           "adminCannotComment": "Vous êtes restaurateur, vous ne pouvez pas laisser de commentaire",
           "adminCannotReserve": "Vous êtes restaurateur, vous ne pouvez pas effectuer de réservation",
           "loginToReserve": "Connectez-vous pour réserver !",
+          "coverPicture": "Photo de couverture",
         }
       }
     },

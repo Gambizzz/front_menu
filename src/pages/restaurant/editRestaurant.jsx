@@ -19,6 +19,9 @@ const EditRestaurant = () => {
   const [coverPhoto, setCoverPhoto] = useState(null);
   const [user] = useAtom(userAtom);
 
+  const cities = ['Paris', 'Marseille', 'Toulouse', 'Lyon', 'Bordeaux', 'Lille', 'Montpellier', 'Nice', 'Rennes', 'Rouen', 'Strasbourg', 'Reims'];
+  const foods = ['Chinese', 'Japanese', 'Italian', 'French', 'Lebanese', 'Mediterranean', 'Greek', 'Mexican', 'Indian', 'Thaï', 'Korean', 'Vegetarian', 'Fast food'];
+
   useEffect(() => {
     fetchRestaurant();
   }, []);
@@ -40,23 +43,16 @@ const EditRestaurant = () => {
     }
   };
 
-  const handleChange = (e) => {
+  const handleSelection = (e) => {
     const { name, value } = e.target;
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'description':
-        setDescription(value);
-        break;
-      case 'city':
-        setCity(value);
-        break;
-      case 'food':
-        setFood(value);
-        break;
-      default:
-        break;
+    if (name === 'city') {
+      setCity(value);
+    } else if (name === 'food') {
+      setFood(value);
+    } else if (name === 'name') {
+      setName(value);
+    } else if (name === 'description') {
+      setDescription(value);
     }
   };
 
@@ -67,7 +63,6 @@ const EditRestaurant = () => {
   const handleCoverFileChange = (e) => {
     setCoverPhoto(e.target.files[0]);
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -105,50 +100,64 @@ const EditRestaurant = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className='form-edit-restau'>
-        <div>
-          <label> {t('nameR')} </label>
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </div>
-        <div>
-          <label className='textarea'> {t('descriptR')} </label>
-          <textarea
-            name="description"
-            value={description}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label> {t('cityR')} </label>
-          <input type="text" name="city" value={city} onChange={handleChange} />
-        </div>
-        <div>
-          <label> {t('foodR')} </label>
-          <input type="text" name="food" value={food} onChange={handleChange} />
-        </div>
-        <div>
-          <label> {t('picture')} </label>
-          <input
-            type="file"
-            onChange={handleFileChange}
-            accept="image/*"
-          />
-        </div>
-        <div>
-          <label> {t('coverPicture')} </label>
-          <input
-            type="file"
-            onChange={handleCoverFileChange}
-            accept="image/*"
-            required
-          />
-        </div>
-        <button type="submit"> {t('updateR')} </button>
-      </form>
-
-      <ToastContainer />
-    </>
+    <div className='edit-form-container'>
+      <div className='edit-form'>
+        <form onSubmit={handleSubmit}>
+          <h1 className="title-pages tit-pag"> {t('editR')} </h1>
+          <div className='form-group'>
+            <label> {t('nameR')} </label>
+            <input type="text" name="name" value={name} onChange={handleSelection} />
+          </div>
+          <div className='form-group'>
+            <label> {t('descriptR')} </label>
+            <textarea
+              name="description"
+              value={description}
+              onChange={handleSelection}
+            />
+          </div>
+          <div className='form-group'>
+            <label> {t('cityR')} </label>
+            <select name="city" value={city} onChange={handleSelection} required>
+              <option value=''> {t('selectedCities')} </option>
+              {cities.map((city, index) => (
+                <option key={index} value={city}> {city} </option>
+              ))}
+            </select>
+          </div>
+          <div className='form-group'>
+            <label> {t('foodR')} </label>
+            <select name="food" value={food} onChange={handleSelection} required>
+              <option value=''> {t('selectFood')} </option>
+              {foods.map((food, index) => (
+                <option key={index} value={food}> {food} </option>
+              ))}
+            </select>
+          </div>
+          <div className='form-group'>
+            <label> {t('picture')} </label>
+            <input
+              type="file"
+              onChange={handleFileChange}
+              accept="image/*"
+            />
+          </div>
+          <div className='form-group'>
+            <label> {t('coverPicture')} </label>
+            <input
+              type="file"
+              onChange={handleCoverFileChange}
+              accept="image/*"
+              required
+            />
+          </div>
+          <div className='submit btn-sub'>
+            <button type="submit"> {t('updateR')} </button>
+          </div>
+        </form>
+        <ToastContainer />
+      </div>
+    </div>  
   );
 };
 

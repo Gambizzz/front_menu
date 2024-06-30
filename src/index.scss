@@ -565,7 +565,7 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10%;
+  margin-top: 15%;
 
 }
 
@@ -853,13 +853,13 @@ html.nuit .form-contact label input:valid + span {
   color: $title-icons-night;
 }
 
-textarea {
+.form-group textarea {
   width: 100%;
   padding: 10px 10px 20px 10px;
   outline: 0;
   border: 1px solid $font-light;
   border-radius: 5px;
-  background-color: transparent;
+  background-color:$bg-light-font-night;
 }
 
 html.nuit textarea {
@@ -1091,155 +1091,276 @@ html.nuit .restaurant-link-icon {
 
 
 
-/* START CREATE RESTAURANT */
-.create-form {
-  width: 50%;
-  margin: 2%;
-
-  label {
-    margin-right: 1%;
-  }
-
-  input {
-    color: $title-icons-light;
-    background-color: $bg-light-font-night;
-    border: 1px solid $font-light;
-    padding: 1%;
-  }
-
-  select {
-    color: $title-icons-light;
-    background-color: $bg-light-font-night;
-  }
-
-  textarea {
-    color: $title-icons-light;
-  }
-
-  button {
-    color: $font-light;
-    border: 1px solid $title-icons-light;
-    border-radius: 15px;
-    padding: 1%;
-    margin-top: 2%;
-  }
+/* START CREATE + EDIT RESTAURANT FORMS */
+.create-form-container, .edit-form-container {
+  margin-top: 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
 }
 
-html.nuit .create-form {
-  input {
-    color: $title-icons-night;
-    background-color: $bg-night;
-    border: 1px solid $bg-light-font-night;
-  }
-
-  select {
-    color: $title-icons-night;
-    background-color: $bg-night;
-  }
-
-  textarea {
-    color: $title-icons-night;
-  }
-
-  button {
-    color: $bg-light-font-night;
-    border: 1px solid $title-icons-night;
-  }
+.create-form, .edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 4%;
+  border-radius: 20px;
+  position: relative;
+  align-items: center;
 }
-/* END CREATE RESTAURANT */
 
+html.nuit .create-form, html.nuit .edit-form {
+  background-color: $bg-light-font-night;
+}
 
+.tit-pag {
+  font-size: 150%;
+  color: $title-icons-light;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 20%;
+}
 
-/* START EDIT RESTAURANT */
-.form-edit-restau {
-  margin: 2%;
-  width: 50%;
+html.nuit .tit-pag {
+  color: $title-icons-night;
+  font-size: 150%;
+  font-weight: 600;
+}
 
-  label {
-    margin-right: 1%;
-  }
+.tit-pag::before, .tit-pag::after {
+  position: absolute;
+  content: "";
+  height: 16%;
+  width: 16%;
+  border-radius: 50%;
+  left: 0;
+  background-color: $title-icons-light;
+}
 
-  input {
-    margin-left: 1%;
-    color: $title-icons-light;
+html.nuit .tit-pag::before {
+  background-color: $title-icons-night;
+}
+
+html.nuit .tit-pag::after {
+  background-color: $title-icons-night;
+}
+
+.tit-pag::before {
+  width: 2%;
+  height: 2%;
+  background-color: $bg-light-font-night;
+}
+
+html.nuit .tit-pag::before {
+  background-color: $bg-light-font-night;
+}
+
+.tit-pag::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+  margin-top: 8%;
+
+  input, textarea, select {
     border: 1px solid $font-light;
-    background-color: $bg-light-font-night;
-    border-radius: 5px;
-    margin-top: 1%;
-    padding: 0.5%;
-  }
-
-  button {
-    margin-top: 2%;
-    color: $font-light;
-    border: 1px solid $title-icons-light;
     border-radius: 10px;
-    padding: 1%;
-  }
-
-  .textarea {
     margin-top: 1%;
-  }
-
-  textarea {
+    padding: 10px;
     color: $title-icons-light;
   }
-}
-
-html.nuit .form-edit-restau {
-  input {
-    color: $title-icons-night;
-    border: 1px solid $bg-light-font-night;
-    background-color: $bg-night;
-  }
-
-  button {
-    color: $bg-light-font-night;
-    border: 1px solid $title-icons-night;
-  }
 
   textarea {
+    resize: vertical;
+  }
+}
+
+input#file-upload-button {
+  background-color: transparent;
+}
+
+html.nuit .form-group {
+  label {
+    color: $bg-night;
+  }
+
+  input, textarea, select {
+    border: 1px solid $bg-night;
+    background-color: transparent;
     color: $title-icons-night;
   }
 }
-/* END EDIT RESTAURANT */
+
+.btn-sub {
+  margin-top: 10%;
+  text-align: center;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+/* END CREATE + EDIT RESTAURANT FORMS */
 
 
 
 /* START EDIT PROFILES */
+.edit-profile-container {
+  margin-top: 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
 .edit-profile-form {
-  label {
-    margin-right: 1%;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 4%;
+  border-radius: 20px;
+  position: relative;
+  align-items: center;
+}
+
+html.nuit .edit-profile-form {
+  background-color: $bg-light-font-night;
+}
+
+.tit-pag {
+  font-size: 150%;
+  color: $title-icons-light;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 20%;
+}
+
+html.nuit .tit-pag {
+  color: $title-icons-night;
+  font-size: 150%;
+  font-weight: 600;
+}
+
+.tit-pag::before, .tit-pag::after {
+  position: absolute;
+  content: "";
+  height: 16%;
+  width: 16%;
+  border-radius: 50%;
+  left: 0;
+  background-color: $title-icons-light;
+}
+
+html.nuit .tit-pag::before {
+  background-color: $title-icons-night;
+}
+
+html.nuit .tit-pag::after {
+  background-color: $title-icons-night;
+}
+
+.tit-pag::before {
+  width: 2%;
+  height: 2%;
+  background-color: $bg-light-font-night;
+}
+
+html.nuit .tit-pag::before {
+  background-color: $bg-light-font-night;
+}
+
+.tit-pag::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+  margin-top: 8%;
 
   input {
-    color: $title-icons-light;
-    border: 1px solid $title-icons-light;
-    background-color: $bg-light-font-night;
-    border-radius: 5px;
+    border: 1px solid $font-light;
+    border-radius: 10px;
     margin-top: 1%;
   }
 }
 
-html.nuit .edit-profile-form {
+html.nuit .form-group {
+  label {
+    color: $bg-night;
+  }
+
   input {
-    color: $title-icons-night;
-    border: 1px solid $title-icons-night;
-    background-color: $bg-night;
+    border: 1px solid $bg-night;
+    background-color: transparent;
   }
 }
 
-.btn-edit {
-  margin-top: 2%;
-  color: $title-icons-light;
+.btn-sub {
+  margin-top: 10%;
+  text-align: center;
+}
 
-  .btn-del {
-    margin-left: 0.3%;
-  }
+.btn-edit {
+  margin-top: 8%;
 }
 
 html.nuit .btn-edit {
   color: $title-icons-night;
+}
+
+.btn-del {
+  color: $font-light;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+html.nuit .btn-del {
+  color: $title-icons-night;
+}
+
+.btn-del:hover {
+  text-decoration: underline $title-icons-light;
+}
+
+html.nuit .btn-del:hover {
+  text-decoration: underline $bg-night;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
 }
 /* END EDIT PROFILES */
 
@@ -1557,6 +1678,55 @@ html.nuit .submit:hover {
   }
 }
 /* END SIGNUP FORMS */
+
+
+
+/* START LOGOUt FORM */
+.logout-form-container {
+  margin-top: 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.logout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 4%;
+  border-radius: 20px;
+  position: relative;
+  align-items: center;
+}
+
+html.nuit .logout-form {
+  background-color: $bg-light-font-night;
+}
+
+.submit {
+  margin-top: 10%;
+  text-align: center;
+}
+
+html.nuit .submit {
+  color: $bg-light-font-night;
+  border-color: $bg-night;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+/* END LOGOUt FORM */
 
 
 
