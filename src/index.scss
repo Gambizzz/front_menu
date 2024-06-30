@@ -1367,6 +1367,71 @@ html.nuit .btn-del:hover {
 
 
 /* START ADMIN PROFILE */
+.button-card-container {
+  display: flex;
+  justify-content: center;
+  height: 50vh;
+  align-items: center;
+}
+
+.button-card {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 4%;
+  border-radius: 20px;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+html.nuit .button-card {
+  background-color: $bg-light-font-night;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  a {
+    width: 80%;
+    padding: 10px 0;
+    text-align: center;
+    background-color: $title-icons-light;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  a:hover, button:hover {
+    background-color: darken($title-icons-light, 10%);
+  }
+
+  html.nuit a, html.nuit button {
+    background-color: $title-icons-night;
+  }
+
+  html.nuit a:hover, html.nuit button:hover {
+    background-color: lighten($title-icons-night, 10%);
+  }
+}
+
+html.nuit .button-wrapper {
+  a {
+    background-color: $title-icons-night;
+    color: $bg-light-font-night;
+  }
+
+  a:hover, button:hover {
+    background-color: darken($title-icons-night, 10%);
+  }
+}
+
 .link-create {
   margin: 2%;
 

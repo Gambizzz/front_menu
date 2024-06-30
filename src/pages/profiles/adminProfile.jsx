@@ -119,21 +119,25 @@ const AdminProfile = () => {
     <div>
       <h1 className="title-pages">{t('titleSpaceAdmin')}</h1>
 
-      <div className='admin-infos'>
-        <p> {t('email')}: {user.email} </p>
-        <p> {t('id')}: {user.id} </p>
+      <div className="button-card-container">
+        <div className="button-card">
+          <div className="button-wrapper">
+            <Link to="/admin/edit-profile" className="btn-edit-user"> 
+              {t('editAdmin')} 
+            </Link>
+          </div>
+          <div className="button-wrapper">
+            <Link to="/create-restaurant">
+              <button className="btn-create-restau"> 
+                {t('createRestau')} 
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
 
       <div>
-        <Link to="/admin/edit-profile" className='btn-edit-user'> {t('editAdmin')} </Link>
-      </div>
-
-      <div className='link-create'>
-        <Link to="/create-restaurant"> <button> {t('createRestau')} </button> </Link>
-      </div>
-
-      <div>
-        <h2 className='your-restau'> {t('yourRestau')} </h2>
+        <h1 className='your-restau'> {t('yourRestau')} </h1>
         <div className='card-container admin-cards'>
           {restaurants.length > 0 ? (
             restaurants.map(restaurant => (

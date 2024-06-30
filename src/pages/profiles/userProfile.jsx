@@ -124,8 +124,6 @@ const UserProfile = () => {
   return (
     <div>
       <h1 className="title-pages"> {t('titleSpaceUser')} </h1>
-      <p>{t('email')}: {user.email}</p>
-      <p>{t('id')}: {user.id}</p>
 
       <Link to="/edit">
         <button className='btn-edit-user'> {t('editProfileButton')} </button>
