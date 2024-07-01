@@ -7,22 +7,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
 
 
-/* Fonts */
-@font-face {
-  font-family: 'OpenDyslexic';
-  src: url('src/assets/fonts/OpenDyslexic3-Regular.ttf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'OpenDyslexic';
-  src: url('src/assets/fonts/OpenDyslexic3-Bold.ttf') format('opentype');
-  font-weight: bold;
-  font-style: normal;
-}
-
-
 /* Variables */
 $bg-light-font-night: #FCF6F2;
 $bg-night: #191970;
@@ -32,17 +16,6 @@ $title-icons-night: #FFC40C;
 $font: "Raleway", sans-serif;
 $title-font: "Overlock", sans-serif;
 
-
-/* START OPENDYS STYLES */
-body.dyslexic {
-  font-family: 'OpenDyslexic';
-}
-
-.toggle-btn.dyslexic {
-  font-family: 'OpenDyslexic';
-  font-size: 50%;
-}
-/* END OPENDYS STYLES */
 
 
 /* COLOR THEMES */
@@ -179,95 +152,6 @@ html.nuit .card-avatar-team {
   margin-bottom: 4%;
 }
 /* END GENERALS */
-
-
-
-/* START SIDEBAR */
-.app-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100%;
-  position: relative;
-}
-
-.sidebar {
-  width: 250px;
-  height: 20%;
-  position: fixed;
-  top: 50%;
-  right: -250px;
-  background-color: $bg-light-font-night;
-  color: $title-icons-light;
-  transform: translateY(-50%);
-  transition: left 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.sidebar.active {
-  display: flex;
-  justify-content: space-evenly;
-  right: 0;
-  background-color: transparent;
-
-  .dys-text {
-    color: $font-light;
-  }
-}
-
-html.nuit .sidebar.active {
-  background-color: transparent;
-
-  .dys-text {
-    color: $bg-light-font-night;
-  }
-}
-
-.toggle-btn {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background-color: $title-icons-light;
-  color: $bg-light-font-night;
-  border: none;
-  padding: 0.7%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 28%;
-  width: 1%;
-  border-radius: 10px 0 0 10px;
-  text-align: center;
-  writing-mode: vertical-lr;
-  text-orientation: upright;
-  font-family: $font;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.toggle-btn:focus {
-  outline: none;
-}
-
-.toggle-btn.nuit {
-  background-color: $title-icons-night;
-  color: $bg-night;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  padding: 10px;
-  border-bottom: 1px solid $font-light;
-}
-/* END SIDEBAR */
 
 
 
