@@ -417,6 +417,76 @@ html.nuit .navbar {
     padding: 5px;
   }
 }
+
+@media (max-width: 1195px) {
+  .navbar {
+    flex-direction: column;
+    font-size: 1em;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links p,
+  .nav-links img,
+  .nav-links .btn-dropdown {
+    margin: 10px 0;
+  }
+
+  .nav-links p {
+    margin-left: 15%;
+  }
+
+  .nav-links .btn-dropdown {
+   margin-left: 18%; 
+  }
+
+  .nav-links img {
+    width: 35%;
+    margin-left: 38%;
+  }
+
+  .switch {
+    width: 70px;
+    height: 35px;
+    margin-right: 75%;
+  }
+
+  .slider:before {
+    height: 25px;
+    width: 25px;
+    line-height: 20px;
+  }
+
+  .theme-toggler {
+    font-size: 1.2em;
+    padding-right: 5px;
+    margin-right: 2%;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 40%;
+    right: -100%;
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+
+  .toggle-btn {
+    margin-right: 0;
+    height: 20%;
+    width: auto;
+    font-size: 0.7rem;
+    padding: 5px;
+  }
+}
+
+
 /* END NAVBAR */
 
 
@@ -2584,6 +2654,7 @@ html.nuit .forgot-form .btn-forgot:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 4%;
 }
 
 .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
@@ -2639,6 +2710,26 @@ html.nuit .lead-come {
   flex-direction: column;
 }
 
+@media (max-width: 1440px) {
+  .hero-index {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 10;
+  }
+
+  .hero-pic {
+    width: 50%;
+  }
+
+  .text-hero {
+    margin-top: 4%;
+  }
+
+  .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
+    font-size: 200%;
+  }
+}
+
 @media (max-width: 1200px) {
   .hero-index {
     flex-direction: column;
@@ -2648,6 +2739,30 @@ html.nuit .lead-come {
 
   .hero-pic {
     width: 80%;
+  }
+
+  .text-hero {
+    margin-top: 4%;
+  }
+
+  .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
+    font-size: 200%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-index {
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10;
+  }
+
+  .hero-pic {
+    width: 50%;
+  }
+
+  .text-hero {
+    margin-top: 4%;
   }
 
   .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
