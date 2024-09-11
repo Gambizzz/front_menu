@@ -1,14 +1,18 @@
-import React from "react";
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
-
-
 
 const Concept = () => {
   const { t } = useTranslation();
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
     return(
         <>
-          <div className="page-header">
+          <div className="page-header" id="concept">
             <h1 className="title-pages"> {t('conceptTitle')} </h1>
             <h2> {t('sloganConcept')} </h2>
           </div>

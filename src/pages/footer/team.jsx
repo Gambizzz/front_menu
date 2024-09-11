@@ -1,12 +1,18 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Team = () => {
   const { t } = useTranslation();
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
     return(
         <>
-          <div className="page-header">
+          <div className="page-header" id="team">
             <h1 className="title-pages"> {t('teamTitle')} </h1>
             <h2> {t('team-slogan')} </h2>
           </div>

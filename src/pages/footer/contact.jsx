@@ -1,5 +1,6 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { PiBuildingOfficeFill } from "react-icons/pi";
 import { FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
@@ -7,11 +8,16 @@ import { MdEmail } from "react-icons/md";
 
 const Contact = () => {
   const { t } = useTranslation();
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
     return(
       <>
       <div className="contact-page-container">
-        <div className="page-header">
+        <div className="page-header" id="conctact">
           <h1 className="title-pages"> {t('contactTitle')} </h1>
           <h2 className="subtitle"> {t('contact-slogan')} </h2>
         </div>
