@@ -135,23 +135,26 @@ const UserProfile = () => {
   
     <div className="res-us">
       <h2> {t('resaUser')} </h2>
-      <ul>
+      <div className='ul-resa'>
         {reservations.map(reservation => (
-          <li key={reservation.id}>
-            <div className="user-resa">
-              <p>
-                {t('resaText')} {reservation.number} {t('pers')}, {t('on')} {formatDate(reservation.date)} {t('at')} {formatTime(reservation.time)} {t('at')}
-                {restaurants[reservation.restaurant_id] && (
-                  <span> {restaurants[reservation.restaurant_id]} </span>
-                )}
-                <button onClick={() => handleDelete(reservation.id)} className="btn-comm">
-                  <IoTrashSharp />
-                </button>
-              </p>
+          <div key={reservation.id} className='li-resa'>
+            <div className="card-resa">
+              <div className="textBox-resa">
+                <div className="textContent-resa">
+                  <p className="span-resa"> {t('resaText')} {reservation.number} {t('pers')} {t('on')} {formatDate(reservation.date)} {t('at')} {formatTime(reservation.time)} {t('at2')} {restaurants[reservation.restaurant_id] && (
+                      <span className='h1-resa'> {restaurants[reservation.restaurant_id]} </span>
+                    )} </p>
+                </div>
+                <div className='btn-resa'>
+                  <button onClick={() => handleDelete(reservation.id)}>
+                    <IoTrashSharp />
+                  </button>
+                </div>
+              </div>
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   
     <div className="favs">

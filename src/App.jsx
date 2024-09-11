@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useAtom } from 'jotai';
-import { nightModeAtom, dyslexicModeAtom, userAtom } from './atoms';
+import { nightModeAtom, userAtom } from './atoms';
 import Cookies from 'js-cookie';
 import './index.scss';
 import Log from './pages/forms/login';
@@ -14,11 +14,11 @@ import ForgotPassword from './pages/forms/forgotPassword';
 import ForgotPasswordAdmin from './pages/forms/forgotPasswordAdmin';
 import Home from './pages/home/home';
 import Nav from './components/navbar';
-import Sidebar from './components/sidebar';
 import Footer from './components/footer';
 import Concept from './pages/footer/concept';
 import Team from './pages/footer/team';
 import Contact from './pages/footer/contact';
+import Politics from './pages/footer/confidentiality';
 import Restaurants from './pages/restaurant/listeRestaurants';
 import Details from './pages/restaurant/detailsRestaurant';
 import AdminLog from './pages/forms/adminLogin';
@@ -30,11 +30,11 @@ import CreateRestaurant from './pages/restaurant/createRestaurant';
 import EditRestaurant from './pages/restaurant/editRestaurant';
 import EditAdmin from './pages/forms/editAdmin';
 
+
 export const api_url = import.meta.env.VITE_BACK_API_URL;
 
 function App() {
   const [isNightMode, setIsNightMode] = useAtom(nightModeAtom);
-  const [isDyslexicMode, setIsDyslexicMode] = useAtom(dyslexicModeAtom);
   const [, setUser] = useAtom(userAtom);
 
   useEffect(() => {
@@ -60,18 +60,10 @@ function App() {
     html.classList.toggle('nuit');
   };
 
-  const toggleDyslexic = () => {
-    setIsDyslexicMode(!isDyslexicMode);
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.toggle('dyslexic');
-  };
-
   return (
     <Router>
-      <Sidebar isNightMode={isNightMode} isDyslexicMode={isDyslexicMode} toggleDyslexic={toggleDyslexic} />
-
       <header>
-        <Nav isNightMode={isNightMode} toggleTheme={toggleTheme} toggleDyslexic={toggleDyslexic} />
+        <Nav isNightMode={isNightMode} toggleTheme={toggleTheme} />
       </header>
 
       <Routes>
@@ -92,6 +84,7 @@ function App() {
         <Route path='/concept' element={<Concept />} />
         <Route path='/team' element={<Team />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/confidentiality' element={<Politics />} />
         {/* Routes RESTAURANTS */}
         <Route path='/restaurants' element={<Restaurants />} />
         <Route path='/restaurant/:id' element={<Details />} />

@@ -16,7 +16,7 @@ const Restaurants = () => {
   const { city, food } = useParams();
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedFood, setSelectedFood] = useState('');
-
+  const [expandedDescriptions, setExpandedDescriptions] = useState({});
 
   useEffect(() => {
     fetchRestaurants();
@@ -25,7 +25,6 @@ const Restaurants = () => {
   const fetchRestaurants = async () => {
     try {
       const token = user.token;
-      // let url = 'http://localhost:3000/restaurants'; 
 
       const queryParams = {};
       if (selectedCity) queryParams.city = selectedCity;
@@ -54,9 +53,19 @@ const Restaurants = () => {
     setSelectedFood(e.target.value);
   };
 
-  const truncateDescription = (description) => {
-    const maxLength = 120;
+  const handleToggleDescription = (id) => {
+    setExpandedDescriptions(prevState => ({
+      ...prevState,
+      [id]: !prevState[id]
+    }));
+  };
+
+  const truncateDescription = (description, id) => {
+    const maxLength = 90;
     if (description.length > maxLength) {
+      if (expandedDescriptions[id]) {
+        return description;
+      }
       return description.slice(0, maxLength) + '...';
     }
     return description;
@@ -71,17 +80,7 @@ const Restaurants = () => {
           <label className="label">{t('selectedCities')}</label>
           <select className="select" value={selectedCity} onChange={handleCityChange}>
             <option value="">{t('allCities')}</option>
-            <option value="Paris">Paris</option>
-            <option value="Marseille">Marseille</option>
-            <option value="Lyon">Lyon</option>
-            <option value="Bordeaux">Bordeaux</option>
-            <option value="Lille">Lille</option>
-            <option value="Montpellier">Montpellier</option>
-            <option value="Nice">Nice</option>
-            <option value="Rennes">Rennes</option>
-            <option value="Rouen">Rouen</option>
-            <option value="Strasbourg">Strasbourg</option>
-            <option value="Reims">Reims</option>
+            {/* Options de ville */}
           </select>
         </div>
 
@@ -89,18 +88,7 @@ const Restaurants = () => {
           <label className="label">{t('selectFood')}</label>
           <select className="select" value={selectedFood} onChange={handleFoodChange}>
             <option value="">{t('allFood')}</option>
-            <option value="Italian">{t('italian')}</option>
-            <option value="French">{t('french')}</option>
-            <option value="Japanese">{t('japanese')}</option>
-            <option value="Chinese">{t('chinese')}</option>
-            <option value="Indian">{t('indian')}</option>
-            <option value="Mexican">{t('mexican')}</option>
-            <option value="Lebanese">{t('lebanese')}</option>
-            <option value="Mediterranean">{t('medit')}</option>
-            <option value="Thai">{t('thai')}</option>
-            <option value="Korean">{t('korean')}</option>
-            <option value="Vegetarian">{t('veggie')}</option>
-            <option value="Fast food">{t('fast')}</option>
+            {/* Options de nourriture */}
           </select>
         </div>
       </div>
@@ -113,9 +101,11 @@ const Restaurants = () => {
               <div className="restaurant-content-list">
                 <h5 className="restaurant-title-list">{restaurant.name}</h5>
                 <p className="restaurant-description-list">
-                  {truncateDescription(restaurant.description)}
-                  {restaurant.description.length > 120 && (
-                    <span> {t('Voir plus')} </span>
+                  {truncateDescription(restaurant.description, restaurant.id)}
+                  {restaurant.description.length > 90 && (
+                    <button onClick={() => handleToggleDescription(restaurant.id)} className="description-toggle-button">
+                      {expandedDescriptions[restaurant.id] ? t('Voir moins') : t('Voir plus')}
+                    </button>
                   )}
                 </p>
                 <p className="restaurant-city-list">{restaurant.city}</p>

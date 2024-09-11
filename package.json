@@ -10,9 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^41.4.2",
-    "@ckeditor/ckeditor5-react": "^7.0.0",
-    "antd": "^5.18.3",
+    "antd": "^5.19.0",
     "bootstrap": "^5.3.3",
     "bootswatch": "^5.3.3",
     "ckeditor4-react": "^5.1.0",
