@@ -126,6 +126,10 @@ html.nuit .card-social__item svg:hover {
 html.nuit .card-avatar-team {
   background: linear-gradient(to top, $title-icons-night 0%, #fcbc97 100%);
 }
+
+html.nuit .navbar {
+  background-color: #1a1a8e;
+}
 /* END NIGHT THEME STYLES */
 
 
@@ -163,6 +167,7 @@ html.nuit .card-avatar-team {
   width: 100%;
   padding-right: 10px;
   font-size: 1.2em;
+  background-color: #f5e6dc;
 }
 
 /* start language btn */
