@@ -6,7 +6,7 @@ import ky from "ky";
 import { Link, useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../../index.scss';
+
 import { api_url } from '../../App';
 
 const Restaurants = () => {
@@ -80,7 +80,6 @@ const Restaurants = () => {
           <label className="label">{t('selectedCities')}</label>
           <select className="select" value={selectedCity} onChange={handleCityChange}>
             <option value="">{t('allCities')}</option>
-            {/* Options de ville */}
           </select>
         </div>
 
