@@ -334,6 +334,7 @@ html.nuit .navbar {
 
 .drop-text {
   color: $font-light;
+  font-weight: bold;
 }
 
 .drop-text:hover {
@@ -1127,21 +1128,24 @@ html.nuit .form-wrapper {
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-around;
+  gap: 1.5rem;
+  justify-content: center;
   margin: 4%;
 }
 
 .restaurant-card {
-  max-width: 20rem;
+  flex: 1 1 calc(33.33% - 1rem); 
+  max-width: 30%;
+  min-height: 30rem; 
   background-color: $bg-light-font-night;
   border: 1px solid $title-icons-light;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.2s;
-  margin-top: 10%;
+  margin-top: 2rem;
 }
+
 
 html.nuit .restaurant-card {
   background-color: $bg-night;
@@ -3112,3 +3116,111 @@ html.nuit .reservation-section {
 
 
 
+.card-container-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 4%;
+}
+
+/* Styles pour les grands écrans (desktop) */
+.restaurant-card-list {
+  flex: 1 1 calc(33.33% - 1rem); /* 3 cartes par ligne */
+  max-width: calc(33.33% - 1rem);
+  height: auto; /* Ajuster la hauteur automatiquement pour éviter les débordements */
+  border: 1px solid $title-icons-light;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+  margin-top: 2rem;
+  background-color: #f5e6dc;
+}
+
+/* Styles pour les écrans moyens (tablettes) */
+@media (max-width: 768px) {
+  .restaurant-card-list {
+    flex: 1 1 calc(50% - 1rem); /* 2 cartes par ligne */
+    max-width: calc(50% - 1rem);
+  }
+}
+
+/* Styles pour les petits écrans (mobiles) */
+@media (max-width: 480px) {
+  .restaurant-card-list {
+    flex: 1 1 100%; /* 1 carte par ligne */
+    max-width: 100%;
+  }
+}
+
+.restaurant-image-list {
+  width: 100%;
+  height: auto; /* Ajuster la hauteur automatiquement */
+  border-bottom: 0.5px solid $title-icons-light;
+  object-fit: cover;
+}
+
+.restaurant-content-list {
+  padding: 1.25rem;
+  text-align: center;
+  overflow: hidden; /* Assurer que le texte ne dépasse pas */
+}
+
+.restaurant-title-list {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: $title-icons-light;
+  text-align: center;
+}
+
+.restaurant-description-list {
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.2;
+}
+
+.restaurant-city-list, .restaurant-food-list {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.restaurant-link-wrapper-list {
+  display: flex;
+  margin-top: 4%;
+  align-items: center;
+  justify-content: center;
+}
+
+.restaurant-link-text-list {
+  color: $font-light;
+  margin-right: 2%;
+}
+
+html.nuit .restaurant-link-text-list {
+  color: $title-icons-night;
+}
+
+.restaurant-link-icon-list {
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-left: 0.5rem;
+  color: $font-light;
+}
+
+html.nuit .restaurant-link-icon-list {
+  color: $title-icons-night;
+}
+
+.description-toggle-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0;
+  margin-top: 0.5rem;
+  text-decoration: underline;
+}

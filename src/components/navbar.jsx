@@ -6,6 +6,7 @@ import { Dropdown } from 'react-bootstrap';
 import { nightModeAtom, userAtom } from '../atoms';
 import logoNavJour from '../../src/assets/images/logo-nav-jour.svg';
 import logoNavNuit from '../../src/assets/images/logo-nav-nuit.svg';
+import '../components/navbar.css';
 
 const Nav = ({ toggleTheme }) => {
   const { t, i18n } = useTranslation();
@@ -27,10 +28,13 @@ const Nav = ({ toggleTheme }) => {
           <span className={`slider ${isNightMode ? 'night' : 'day'}`}></span>
         </label>
         <div className='nav-links'>
-          <Link to="/restaurants"> <p> RESTAURANTS </p> </Link>
+          <Link to="/restaurants"> <p className='font-weight'> RESTAURANTS </p> </Link>
           <Link to="/"> <img src={isNightMode ? logoNavNuit : logoNavJour} alt='Logo navbar' /> </Link>
           <Dropdown className='btn-dropdown'>
-            <Dropdown.Toggle className='gold log'> {user?.isLoggedIn ? t('monEspace') : t('connexion')} </Dropdown.Toggle>
+            <Dropdown.Toggle className='btn-dropdown gold log' style={{ fontWeight: 'bold' }}>
+              {user?.isLoggedIn ? t('monEspace') : t('connexion')}
+            </Dropdown.Toggle>
+
             <Dropdown.Menu className='drop-box'>
               {!user?.isLoggedIn ? (
                 <>
