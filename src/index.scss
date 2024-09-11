@@ -538,6 +538,7 @@ li {
 
 .drop-text {
   color: $font-light;
+  font-weight: bold;
 }
 
 .drop-text:hover {
@@ -975,21 +976,24 @@ html.nuit .form-wrapper {
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-around;
+  gap: 1.5rem;
+  justify-content: center;
   margin: 4%;
 }
 
 .restaurant-card {
-  max-width: 20rem;
+  flex: 1 1 calc(33.33% - 1rem); 
+  max-width: 30%;
+  min-height: 30rem; 
   background-color: $bg-light-font-night;
   border: 1px solid $title-icons-light;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.2s;
-  margin-top: 10%;
+  margin-top: 2rem;
 }
+
 
 html.nuit .restaurant-card {
   background-color: $bg-night;
@@ -2473,3 +2477,91 @@ html.nuit .reservation-section {
 
 
 
+.card-container-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 4%;
+}
+
+.restaurant-card-list {
+  flex: 1 1 calc(33.33% - 1rem); 
+  max-width: 30%;
+  height: 29rem; 
+  background-color: $bg-light-font-night;
+  border: 1px solid $title-icons-light;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+  margin-top: 2rem;
+}
+
+// .restaurant-description-list {
+//   margin-bottom: 0.5rem;
+//   font-size: 0.875rem;
+//   color: #374151;
+//   line-height: 1.2;
+//   max-height: 3rem;
+//   overflow: scroll;
+// }
+
+.restaurant-image-list {
+  width: 100%;
+  height: 45%;
+  border-bottom: 0.5px solid $title-icons-light;
+  object-fit: cover;
+}
+
+.restaurant-content-list {
+  padding: 1.25rem;
+  text-align: center;
+  background-color: #f5e6dc;
+}
+
+.restaurant-title-list {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: $title-icons-light;
+  text-align: center;
+}
+
+
+.restaurant-city-list {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.restaurant-food-list {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.restaurant-link-wrapper-list {
+  display: flex;
+  margin-top: 4%;
+  align-items: center;
+  justify-content: center;
+}
+
+.restaurant-link-text-list {
+  color: $font-light;
+  margin-right: 2%;
+}
+
+html.nuit .restaurant-link-text-list {
+  color: $title-icons-night;
+}
+
+.restaurant-link-icon-list {
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-left: 0.5rem;
+  color: $font-light;
+}
+
+html.nuit .restaurant-link-icon-list {
+  color: $title-icons-night;
+}
