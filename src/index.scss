@@ -23,7 +23,7 @@ body {
     background-color: $bg-light-font-night;
     color: $font-light;
     font-family: $font;
-    margin: 2% 5% !important;
+    margin: 0 5% 2% 5% !important;
 }
 /* END LIGHT THEME STYLES */
 
@@ -163,10 +163,11 @@ html.nuit .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 115%;
   padding-right: 5%;
   font-size: 1.2em;
   background-color: #f5e6dc;
+  right: 7%;
 }
 
 /* start language btn */

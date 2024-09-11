@@ -1,12 +1,19 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Politics = () => {
   const { t } = useTranslation();
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return(
     <>
-      <div className="page-header">
+      <div className="page-header" id="confidentiality">
         <h1 className="title-pages"> {t('politicsTitle')} </h1>
         <h2> {t('sloganPolitics')} </h2>
       </div>
