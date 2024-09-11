@@ -23,7 +23,7 @@ body {
     background-color: $bg-light-font-night;
     color: $font-light;
     font-family: $font;
-    margin: 2% 5% !important;
+    margin: 0 5% 2% 5% !important;
 }
 /* END LIGHT THEME STYLES */
 
@@ -125,6 +125,10 @@ html.nuit .card-social__item svg:hover {
 html.nuit .card-avatar-team {
   background: linear-gradient(to top, $title-icons-night 0%, #fcbc97 100%);
 }
+
+html.nuit .navbar {
+  background-color: #1a1a8e;
+}
 /* END NIGHT THEME STYLES */
 
 
@@ -159,9 +163,11 @@ html.nuit .card-avatar-team {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 115%;
   padding-right: 5%;
   font-size: 1.2em;
+  background-color: #f5e6dc;
+  right: 7%;
 }
 
 /* start language btn */
@@ -972,6 +978,18 @@ html.nuit .form-contact button {
   }
 }
 /* END PAGE CONTACT */
+
+
+/* START PAGE POLITICS */
+.politics {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  color: $font-light;
+  margin: 2%;
+  line-height: 3;
+}
+/* END PAGE POLITICS */
 
 
 

@@ -14,6 +14,7 @@ import logoFootNuit from '../../src/assets/images/logo-footer-nuit.svg';
 const Footer = () => {
   const { t } = useTranslation();
   const [isNightMode] = useAtom(nightModeAtom);
+  const currentYear = new Date().getFullYear();
 
   return (
     <div className='footer'>
@@ -22,9 +23,10 @@ const Footer = () => {
         <Link to="/admin/signup" className='link-form-footer gold'> RESTAURATEURS ? </Link>
       </div>
       <div className='pages-footer'>
-        <Link to="/concept#concept">{t('concept')}</Link>
-        <Link to="/team#team">{t('team')}</Link>
-        <Link to="/contact#contact">{t('contact')}</Link>
+        <Link to="/concept">{t('concept')}</Link>
+        <Link to="/team">{t('team')}</Link>
+        <Link to="/contact">{t('contact')}</Link>
+        <Link to="/confidentiality">{t('politics')}</Link>
       </div>
       <div className='links-footer'>
         <a href='https://www.instagram.com/' className='social-icons gold'><FaInstagram /></a>
@@ -33,9 +35,10 @@ const Footer = () => {
         <a href='https://www.apple.com/fr/app-store/' className='social-icons gold'><SiAppstore /></a>
         <a href='https://play.google.com/store/games?hl=fr' className='social-icons gold'><RiGooglePlayLine /></a>
       </div>
-      <p>MENU © THP - {t('hiver')} 2024.</p>
+      <p>MENU © THP - {t('hiver')} {currentYear}.</p>
     </div>
   )
 }
 
 export default Footer;
+

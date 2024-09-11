@@ -18,6 +18,7 @@ import Footer from './components/footer';
 import Concept from './pages/footer/concept';
 import Team from './pages/footer/team';
 import Contact from './pages/footer/contact';
+import Politics from './pages/footer/confidentiality';
 import Restaurants from './pages/restaurant/listeRestaurants';
 import Details from './pages/restaurant/detailsRestaurant';
 import AdminLog from './pages/forms/adminLogin';
@@ -28,6 +29,7 @@ import AdminProfile from './pages/profiles/adminProfile';
 import CreateRestaurant from './pages/restaurant/createRestaurant';
 import EditRestaurant from './pages/restaurant/editRestaurant';
 import EditAdmin from './pages/forms/editAdmin';
+
 
 export const api_url = import.meta.env.VITE_BACK_API_URL;
 
@@ -82,6 +84,7 @@ function App() {
         <Route path='/concept' element={<Concept />} />
         <Route path='/team' element={<Team />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/confidentiality' element={<Politics />} />
         {/* Routes RESTAURANTS */}
         <Route path='/restaurants' element={<Restaurants />} />
         <Route path='/restaurant/:id' element={<Details />} />
