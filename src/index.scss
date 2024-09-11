@@ -17,14 +17,13 @@ $font: "Raleway", sans-serif;
 $title-font: "Overlock", sans-serif;
 
 
-
 /* COLOR THEMES */
 /* START LIGHT THEME STYLES */
 body {
     background-color: $bg-light-font-night;
     color: $font-light;
     font-family: $font;
-    margin: 1.2%;
+    margin: 2% 5% !important;
 }
 /* END LIGHT THEME STYLES */
 
@@ -161,7 +160,7 @@ html.nuit .card-avatar-team {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding-right: 10px;
+  padding-right: 5%;
   font-size: 1.2em;
 }
 

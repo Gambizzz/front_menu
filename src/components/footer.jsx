@@ -1,4 +1,3 @@
-import React from 'react';
 import '../index.scss';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -23,9 +22,9 @@ const Footer = () => {
         <Link to="/admin/signup" className='link-form-footer gold'> RESTAURATEURS ? </Link>
       </div>
       <div className='pages-footer'>
-        <Link to="/concept">{t('concept')}</Link>
-        <Link to="/team">{t('team')}</Link>
-        <Link to="/contact">{t('contact')}</Link>
+        <Link to="/concept#concept">{t('concept')}</Link>
+        <Link to="/team#team">{t('team')}</Link>
+        <Link to="/contact#contact">{t('contact')}</Link>
       </div>
       <div className='links-footer'>
         <a href='https://www.instagram.com/' className='social-icons gold'><FaInstagram /></a>
