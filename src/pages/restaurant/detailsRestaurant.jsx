@@ -112,11 +112,27 @@ const Details = () => {
     return <div>{t('load')}</div>;
   }
 
+  const schemaOrgData = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": restaurant.name,
+    "description": restaurant.description,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": restaurant.city,
+      "addressCountry": "FR"
+    },
+    "image": restaurant.image_url,
+  };
+
   return (
     <div className="details-container">
       <Helmet titleTemplate="MENU | %s">
         <title>{restaurant ? restaurant.name : 'Restaurant'}</title>
         <meta name="description" content="Page avec les détails d'un restaurant"/>
+        <script type="application/ld+json">
+          {JSON.stringify(schemaOrgData)}
+        </script>
       </Helmet>
 
       <ToastContainer />
