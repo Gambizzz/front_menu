@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 
 const Team = () => {
   const { t } = useTranslation();
@@ -12,6 +13,9 @@ const Team = () => {
 
     return(
         <>
+        <Helmet>
+          <meta name="team" content="Une page qui présente les membres de l'équipe qui a crée ce site."/>
+        </Helmet>
           <div className="page-header" id="team">
             <h1 className="title-pages"> {t('teamTitle')} </h1>
             <h2> {t('team-slogan')} </h2>
@@ -93,6 +97,7 @@ const Team = () => {
               </ul>
             </div>
           </div>
+          
         </>
     )
 }

@@ -1,6 +1,6 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { Carousel } from "flowbite-react";
+import { Helmet } from "react-helmet";
 
 import "../../index.scss";
 
@@ -8,15 +8,21 @@ const Home = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="home">
-      {/* Hero Section */}
-      <div className="hero-index">
-        <div className="div-pic">
-          <img
-            src="images/pic_menu-1.png" 
-            className="hero-pic"
-            alt="Photo d'accueil"
-          />
+    <>
+      <Helmet titleTemplate="%s | Page d'accueil">
+        <title>MENU</title>
+        <meta name="description" content="La page d'accueil avec une phrase d'accroche et les villes disponibles"/>
+      </Helmet>
+      
+      <div className="home">
+        {/* Hero Section */}
+        <div className="hero-index">
+          <div className="div-pic">
+            <img
+              src="images/pic_menu-1.png"
+              className="hero-pic"
+              alt="Photo d'accueil"
+            />
           </div>
           <div className="text-hero">
             <p className="lead"> {t('th1')} </p>
@@ -93,7 +99,7 @@ const Home = () => {
           </Carousel>
         </div>
       </div>
-
+    </>
   );
 };
 
