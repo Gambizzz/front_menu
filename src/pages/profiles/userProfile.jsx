@@ -124,15 +124,18 @@ const UserProfile = () => {
   return (
     <div>
     <h1 className="title-pages"> {t('titleSpaceUser')} </h1>
-  
-    <div className="button-card-container">
-      <div className="button-card">
-        <Link to="/edit">
-          <button className="btn-edit-user"> {t('editProfileButton')} </button>
-        </Link>
+
+    <div className='full-container'>
+      <div className="button-card-container">
+        <div className="button-card">
+          <Link to="/edit">
+            <button className="btn-edit-user"> {t('editProfileButton')} </button>
+          </Link>
+        </div>
       </div>
+      <div className='svg-container2'></div>
     </div>
-  
+
     <div className="res-us">
       <h2> {t('resaUser')} </h2>
       <div className='ul-resa'>
