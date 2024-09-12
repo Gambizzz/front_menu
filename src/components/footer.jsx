@@ -20,11 +20,33 @@ const Footer = () => {
     <div className='footer'>
       {/* Animation */}
       <div className="animation-container">
-        <div className="animation-element"></div>
-        <div className="animation-element animation-element-2"></div>
-        <div className="animation-element animation-element-3"></div>
-        <div className="animation-element animation-element-4"></div>
-        <div className="animation-element animation-element-5"></div>
+        <div className="animation-wrapper">
+          <div className="animation-element"></div>
+          <div className="animation-element animation-element-2"></div>
+          <div className="animation-element animation-element-3"></div>
+          <div className="animation-element animation-element-4"></div>
+          <div className="animation-element animation-element-5"></div>
+          <div className="animation-element animation-element-6"></div>
+          <div className="animation-element animation-element-7"></div>
+          <div className="animation-element animation-element-8"></div>
+          <div className="animation-element animation-element-9"></div>
+          <div className="animation-element animation-element-10"></div>
+          <div className="animation-element animation-element-11"></div>
+          <div className="animation-element animation-element-12"></div>
+          {/* Répétition des éléments */}
+          <div class="animation-element"></div>
+          <div class="animation-element-2"></div>
+          <div class="animation-element-3"></div>
+          <div class="animation-element-4"></div>
+          <div class="animation-element-5"></div>
+          <div class="animation-element-6"></div>
+          <div class="animation-element-7"></div>
+          <div class="animation-element-8"></div>
+          <div class="animation-element-9"></div>
+          <div class="animation-element-10"></div>
+          <div class="animation-element-11"></div>
+          <div class="animation-element-12"></div>
+        </div>
       </div>
 
       <div className='top-footer'>

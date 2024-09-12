@@ -507,8 +507,15 @@ html.nuit .navbar {
 .animation-container {
   position: relative;
   width: 100%;
-  height: 150px; /* Ajuster à la hauteur des images animées */
-  overflow: hidden; /* Masque les éléments lorsqu'ils sortent de l'écran */
+  height: 150px;
+  overflow: hidden;
+}
+
+.animation-wrapper {
+  display: flex;
+  width: calc(100% * 2);
+  height: 100%;
+  animation: moveAnimation 12s linear infinite;
 }
 
 .animation-element {
@@ -517,10 +524,6 @@ html.nuit .navbar {
   background-image: url('/images/food.svg');
   background-size: contain;
   background-repeat: no-repeat;
-  position: absolute;
-  top: 0;
-  left: -150px; /* Position initiale avant d'entrer dans l'écran */
-  animation: moveAnimation 8s linear infinite;
 }
 
 .animation-element-2 {
@@ -529,10 +532,6 @@ html.nuit .navbar {
   background-image: url('/images/food2.svg');
   background-size: contain;
   background-repeat: no-repeat;
-  position: absolute;
-  top: 0;
-  left: calc(-150px - 200px); /* Espace constant entre les éléments */
-  animation: moveAnimation 8s linear infinite;
 }
 
 .animation-element-3 {
@@ -541,10 +540,6 @@ html.nuit .navbar {
   background-image: url('/images/food3.svg');
   background-size: contain;
   background-repeat: no-repeat;
-  position: absolute;
-  top: 0;
-  left: calc(-150px - 400px); /* Espace constant entre les éléments */
-  animation: moveAnimation 8s linear infinite;
 }
 
 .animation-element-4 {
@@ -553,10 +548,6 @@ html.nuit .navbar {
   background-image: url('/images/food4.svg');
   background-size: contain;
   background-repeat: no-repeat;
-  position: absolute;
-  top: 0;
-  left: calc(-150px - 600px); /* Espace constant entre les éléments */
-  animation: moveAnimation 8s linear infinite;
 }
 
 .animation-element-5 {
@@ -565,21 +556,74 @@ html.nuit .navbar {
   background-image: url('/images/food5.svg');
   background-size: contain;
   background-repeat: no-repeat;
-  position: absolute;
-  top: 0;
-  left: calc(-150px - 800px); /* Espace constant entre les éléments */
-  animation: moveAnimation 8s linear infinite;
+}
+
+.animation-element-6 {
+  width: 130px;
+  height: 130px;
+  background-image: url('/images/food6.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-7 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food7.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: -20px;
+}
+
+.animation-element-8 {
+  width: 100px;
+  height: 100px;
+  background-image: url('/images/food8.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-9 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food9.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-10 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food10.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-11 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food11.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-12 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food12.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: -0.8%;
 }
 
 @keyframes moveAnimation {
   0% {
-    transform: translateX(0); /* Départ */
+    transform: translateX(-50%);
   }
   100% {
-    transform: translateX(calc(100vw + 150px)); /* Fin hors de l'écran */
+    transform: translateX(0);
   }
 }
-
 
 
 
