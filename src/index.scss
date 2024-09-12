@@ -21,9 +21,11 @@ $title-font: "Overlock", sans-serif;
 /* START LIGHT THEME STYLES */
 body {
     background-color: $bg-light-font-night;
+    // background-color: #007bff;
     color: $font-light;
     font-family: $font;
     margin: 0 5% 2% 5% !important;
+    padding-top: 6%;
 }
 /* END LIGHT THEME STYLES */
 
@@ -163,11 +165,13 @@ html.nuit .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 115%;
+  width: 100%;
   padding-right: 5%;
   font-size: 1.2em;
   background-color: #f5e6dc;
-  right: 7%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .font-weight {
