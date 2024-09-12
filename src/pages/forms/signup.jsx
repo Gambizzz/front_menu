@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ky from 'ky';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api_url } from '../../App';
+import { Helmet } from 'react-helmet';
 
 function Sign() {
   const [email, setEmail] = useState('');
@@ -43,6 +44,11 @@ function Sign() {
 
   return (
     <div className="signup-form">
+      <Helmet titleTemplate="%s | S'inscrire">
+        <title>MENU</title>
+        <meta name="description" content="Page avec un formulaire d'inscription de l'utilisateur" />
+      </Helmet>
+
       <form className="form" onSubmit={handleSubmit}>
         <p className="title">{t('signupForm')}</p>
         <label>

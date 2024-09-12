@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ky from 'ky';
 import { useTranslation } from 'react-i18next';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api_url } from '../../App';
+import { Helmet } from 'react-helmet';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -17,7 +18,7 @@ const ForgotPassword = () => {
 
       const response = await ky.post(`${api_url}users/password`, {
         json: {
-          user: { email: email } 
+          user: { email: email }
         },
         headers: {
           "Content-Type": "application/json"
@@ -41,6 +42,11 @@ const ForgotPassword = () => {
 
   return (
     <div className='forgot-pass'>
+      <Helmet titleTemplate="%s | Mot de passe oublié">
+        <title>MENU</title>
+        <meta name="description" content="Page pour le mots de passe oublié de l'utilisateur avec un formulaire pour renvoyer un mail de réinitialisation" />
+      </Helmet>
+
       <form onSubmit={handleSubmit} className='forgot-form'>
         <h1 className="title-pages"> {t('forgotPass')} </h1>
         <label htmlFor="email"> {t('placeEmail')} </label>
@@ -54,7 +60,3 @@ const ForgotPassword = () => {
 };
 
 export default ForgotPassword;
-
-
-
-

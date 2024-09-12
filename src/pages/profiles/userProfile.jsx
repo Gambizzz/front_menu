@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
 import { useTranslation } from 'react-i18next';
@@ -11,6 +11,7 @@ import { IoTrashSharp } from "react-icons/io5";
 import { format } from 'date-fns';
 import { fr, enUS } from 'date-fns/locale';
 import { api_url } from '../../App';
+import { Helmet } from 'react-helmet';
 
 const UserProfile = () => {
   const [user] = useAtom(userAtom);
@@ -123,54 +124,59 @@ const UserProfile = () => {
 
   return (
     <div>
-    <h1 className="title-pages"> {t('titleSpaceUser')} </h1>
-  
-    <div className="button-card-container">
-      <div className="button-card">
-        <Link to="/edit">
-          <button className="btn-edit-user"> {t('editProfileButton')} </button>
-        </Link>
+      <Helmet titleTemplate="%s | Profil">
+        <title>MENU</title>
+        <meta name="description" content="Page de profil de l'utilisateur qui affiche les réservations prisent et les restaurants marqués comme favoris" />
+      </Helmet>
+
+      <h1 className="title-pages"> {t('titleSpaceUser')} </h1>
+
+      <div className="button-card-container">
+        <div className="button-card">
+          <Link to="/edit">
+            <button className="btn-edit-user"> {t('editProfileButton')} </button>
+          </Link>
+        </div>
       </div>
-    </div>
-  
-    <div className="res-us">
-      <h2> {t('resaUser')} </h2>
-      <div className='ul-resa'>
-        {reservations.map(reservation => (
-          <div key={reservation.id} className='li-resa'>
-            <div className="card-resa">
-              <div className="textBox-resa">
-                <div className="textContent-resa">
-                  <p className="span-resa"> {t('resaText')} {reservation.number} {t('pers')} {t('on')} {formatDate(reservation.date)} {t('at')} {formatTime(reservation.time)} {t('at2')} {restaurants[reservation.restaurant_id] && (
+
+      <div className="res-us">
+        <h2> {t('resaUser')} </h2>
+        <div className='ul-resa'>
+          {reservations.map(reservation => (
+            <div key={reservation.id} className='li-resa'>
+              <div className="card-resa">
+                <div className="textBox-resa">
+                  <div className="textContent-resa">
+                    <p className="span-resa"> {t('resaText')} {reservation.number} {t('pers')} {t('on')} {formatDate(reservation.date)} {t('at')} {formatTime(reservation.time)} {t('at2')} {restaurants[reservation.restaurant_id] && (
                       <span className='h1-resa'> {restaurants[reservation.restaurant_id]} </span>
                     )} </p>
-                </div>
-                <div className='btn-resa'>
-                  <button onClick={() => handleDelete(reservation.id)}>
-                    <IoTrashSharp />
-                  </button>
+                  </div>
+                  <div className='btn-resa'>
+                    <button onClick={() => handleDelete(reservation.id)}>
+                      <IoTrashSharp />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="favs">
+        <h2>{t('myFav')}</h2>
+        {favorites.map(favorite => (
+          <div key={favorite.id} className="restau-fav">
+            {favorite.restaurant.name}
+            <button onClick={() => removeFavorite(favorite.id)} className="btn-fav">
+              <FaHeartBroken />
+            </button>
           </div>
         ))}
       </div>
+
+      <ToastContainer />
     </div>
-  
-    <div className="favs">
-      <h2>{t('myFav')}</h2>
-      {favorites.map(favorite => (
-        <div key={favorite.id} className="restau-fav">
-          {favorite.restaurant.name}
-          <button onClick={() => removeFavorite(favorite.id)} className="btn-fav">
-            <FaHeartBroken />
-          </button>
-        </div>
-      ))}
-    </div>
-  
-    <ToastContainer />
-  </div>
   );
 };
 
