@@ -119,21 +119,24 @@ const AdminProfile = () => {
     <div>
       <h1 className="title-pages">{t('titleSpaceAdmin')}</h1>
 
-      <div className="button-card-container">
-        <div className="button-card">
-          <div className="button-wrapper">
-            <Link to="/admin/edit-profile" className="btn-edit-user"> 
-              {t('editAdmin')} 
-            </Link>
-          </div>
-          <div className="button-wrapper">
-            <Link to="/create-restaurant">
-              <button className="btn-create-restau"> 
-                {t('createRestau')} 
-              </button>
-            </Link>
+      <div className='full-container'>
+        <div className="button-card-container">
+          <div className="button-card">
+            <div className="button-wrapper">
+              <Link to="/admin/edit-profile" className="btn-edit-user"> 
+                {t('editAdmin')} 
+              </Link>
+            </div>
+            <div className="button-wrapper">
+              <Link to="/create-restaurant">
+                <button className="btn-create-restau"> 
+                  {t('createRestau')} 
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
+        <div className='svg-container1'></div>
       </div>
 
       <div>

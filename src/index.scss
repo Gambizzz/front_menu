@@ -613,7 +613,6 @@ html.nuit .navbar {
   background-image: url('/images/food12.svg');
   background-size: contain;
   background-repeat: no-repeat;
-  
 }
 
 @keyframes moveAnimation {
@@ -624,8 +623,6 @@ html.nuit .navbar {
     transform: translateX(0);
   }
 }
-
-
 
 .top-footer {
   width: 100%;
@@ -651,7 +648,7 @@ html.nuit .navbar {
 }
 
 .links-footer {
-  margin-top: 2%;
+  margin-top: 4%;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -1398,11 +1395,11 @@ html.nuit .description-toggle-button {
 
 /* START CREATE + EDIT RESTAURANT FORMS */
 .create-form-container, .edit-form-container {
-  margin-top: 6%;
+  margin-top: 8%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 110vh;
 }
 
 .create-form, .edit-form {
@@ -1527,11 +1524,11 @@ html.nuit .form-group {
 
 /* START EDIT PROFILES */
 .edit-profile-container {
-  margin-top: 6%;
+  margin-top: 8%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 60vh;
 }
 
 .edit-profile-form {
@@ -1675,8 +1672,38 @@ html.nuit .btn-del:hover {
 .button-card-container {
   display: flex;
   justify-content: center;
-  height: 50vh;
+  height: 60vh;
   align-items: center;
+}
+
+.full-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.svg-container1 {
+  width: 250px;
+  height: 300px;
+  margin-left: 80px;
+  background-image: url("/images/restau_admin.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: moveUpDown 2s infinite ease-in-out;
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .button-card {
@@ -1699,6 +1726,7 @@ html.nuit .button-card {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 20px 20px;
 
   a {
     width: 80%;
