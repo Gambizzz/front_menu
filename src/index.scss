@@ -501,8 +501,87 @@ html.nuit .navbar {
   flex-direction: column;
   align-items: center;
   margin-top: 15%;
-
+  overflow: hidden;
 }
+
+.animation-container {
+  position: relative;
+  width: 100%;
+  height: 150px; /* Ajuster à la hauteur des images animées */
+  overflow: hidden; /* Masque les éléments lorsqu'ils sortent de l'écran */
+}
+
+.animation-element {
+  width: 100px;
+  height: 100px;
+  background-image: url('/images/food.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: -150px; /* Position initiale avant d'entrer dans l'écran */
+  animation: moveAnimation 8s linear infinite;
+}
+
+.animation-element-2 {
+  width: 120px;
+  height: 110px;
+  background-image: url('/images/food2.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: calc(-150px - 200px); /* Espace constant entre les éléments */
+  animation: moveAnimation 8s linear infinite;
+}
+
+.animation-element-3 {
+  width: 130px;
+  height: 130px;
+  background-image: url('/images/food3.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: calc(-150px - 400px); /* Espace constant entre les éléments */
+  animation: moveAnimation 8s linear infinite;
+}
+
+.animation-element-4 {
+  width: 130px;
+  height: 130px;
+  background-image: url('/images/food4.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: calc(-150px - 600px); /* Espace constant entre les éléments */
+  animation: moveAnimation 8s linear infinite;
+}
+
+.animation-element-5 {
+  width: 130px;
+  height: 130px;
+  background-image: url('/images/food5.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: calc(-150px - 800px); /* Espace constant entre les éléments */
+  animation: moveAnimation 8s linear infinite;
+}
+
+@keyframes moveAnimation {
+  0% {
+    transform: translateX(0); /* Départ */
+  }
+  100% {
+    transform: translateX(calc(100vw + 150px)); /* Fin hors de l'écran */
+  }
+}
+
+
+
 
 .top-footer {
   width: 100%;

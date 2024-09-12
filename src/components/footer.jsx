@@ -18,6 +18,15 @@ const Footer = () => {
 
   return (
     <div className='footer'>
+      {/* Animation */}
+      <div className="animation-container">
+        <div className="animation-element"></div>
+        <div className="animation-element animation-element-2"></div>
+        <div className="animation-element animation-element-3"></div>
+        <div className="animation-element animation-element-4"></div>
+        <div className="animation-element animation-element-5"></div>
+      </div>
+
       <div className='top-footer'>
         <img src={isNightMode ? logoFootNuit : logoFootJour} alt='Logo navbar' className='logo-footer'></img>
         <Link to="/admin/signup" className='link-form-footer gold'> RESTAURATEURS ? </Link>
