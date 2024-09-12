@@ -2070,9 +2070,39 @@ html.nuit .btn-fav {
   margin-bottom: 4%;
 }
 
+.full-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.svg-container2 {
+  width: 350px;
+  height: 350px;
+  margin-left: 80px;
+  background-image: url("/images/restau_user.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: moveUpDown 2s infinite ease-in-out;
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .button-card {
   background-color: #fff;
-  padding: 2%;
+  padding: 4% 4%;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
