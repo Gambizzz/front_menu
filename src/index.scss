@@ -507,7 +507,7 @@ html.nuit .navbar {
 .animation-container {
   position: relative;
   width: 100%;
-  height: 150px;
+  height: 120px;
   overflow: hidden;
 }
 
@@ -519,8 +519,8 @@ html.nuit .navbar {
 }
 
 .animation-element {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   background-image: url('/images/food.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -613,7 +613,7 @@ html.nuit .navbar {
   background-image: url('/images/food12.svg');
   background-size: contain;
   background-repeat: no-repeat;
-  margin-right: -0.8%;
+  
 }
 
 @keyframes moveAnimation {
@@ -2193,10 +2193,11 @@ html.nuit .btn-edit-user:hover {
 
 /* START SIGNUP FORMS */
 .signup-form {
-  margin-top: 6%;
+  margin-top: 8%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 48vh;
 }
 
 .form {
@@ -2361,11 +2362,11 @@ html.nuit .submit:hover {
 
 /* START LOGOUT FORM */
 .logout-form-container {
-  margin-top: 6%;
+  margin-top: 8%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 25vh;
 }
 
 .logout-form {
@@ -2410,11 +2411,11 @@ html.nuit .submit {
 
 /* START LOGIN FORMS */
 .login-form-container {
-  margin-top: 6%;
+  margin-top: 8%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 50vh;
 }
 
 .login-form {
@@ -2553,10 +2554,11 @@ html.nuit .links:hover {
 
 /* START FORGOT PASSWORD */
 .forgot-pass {
+  margin-top: 8%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 60vh;
+  height: 45vh;
   justify-content: center;
 }
 
