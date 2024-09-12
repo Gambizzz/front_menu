@@ -422,6 +422,76 @@ html.nuit .navbar {
     padding: 5px;
   }
 }
+
+@media (max-width: 1195px) {
+  .navbar {
+    flex-direction: column;
+    font-size: 1em;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links p,
+  .nav-links img,
+  .nav-links .btn-dropdown {
+    margin: 10px 0;
+  }
+
+  .nav-links p {
+    margin-left: 15%;
+  }
+
+  .nav-links .btn-dropdown {
+   margin-left: 18%; 
+  }
+
+  .nav-links img {
+    width: 35%;
+    margin-left: 38%;
+  }
+
+  .switch {
+    width: 70px;
+    height: 35px;
+    margin-right: 75%;
+  }
+
+  .slider:before {
+    height: 25px;
+    width: 25px;
+    line-height: 20px;
+  }
+
+  .theme-toggler {
+    font-size: 1.2em;
+    padding-right: 5px;
+    margin-right: 2%;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 40%;
+    right: -100%;
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+
+  .toggle-btn {
+    margin-right: 0;
+    height: 20%;
+    width: auto;
+    font-size: 0.7rem;
+    padding: 5px;
+  }
+}
+
+
 /* END NAVBAR */
 
 
@@ -435,8 +505,131 @@ html.nuit .navbar {
   flex-direction: column;
   align-items: center;
   margin-top: 15%;
-
+  overflow: hidden;
 }
+
+.animation-container {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+}
+
+.animation-wrapper {
+  display: flex;
+  width: calc(100% * 2);
+  height: 100%;
+  animation: moveAnimation 12s linear infinite;
+}
+
+.animation-element {
+  width: 150px;
+  height: 150px;
+  background-image: url('/images/food.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-2 {
+  width: 120px;
+  height: 110px;
+  background-image: url('/images/food2.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-3 {
+  width: 130px;
+  height: 130px;
+  background-image: url('/images/food3.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-4 {
+  width: 130px;
+  height: 130px;
+  background-image: url('/images/food4.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-5 {
+  width: 130px;
+  height: 130px;
+  background-image: url('/images/food5.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-6 {
+  width: 130px;
+  height: 130px;
+  background-image: url('/images/food6.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-7 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food7.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: -20px;
+}
+
+.animation-element-8 {
+  width: 100px;
+  height: 100px;
+  background-image: url('/images/food8.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-9 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food9.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-10 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food10.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-11 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food11.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-12 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food12.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  
+}
+
+@keyframes moveAnimation {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
 
 .top-footer {
   width: 100%;
@@ -1059,7 +1252,45 @@ html.nuit .form-wrapper {
 }
 
 /* Cards Container */
-.card-container {
+html.nuit .restaurant-card-list {
+  background-color: $bg-night;
+  border: 1px solid $title-icons-night;
+}
+
+.restaurant-card-list:hover {
+  transform: scale(1.05);
+}
+
+html.nuit .restaurant-image-list {
+  border-bottom: 0.5px solid $title-icons-night;
+}
+
+html.nuit .restaurant-title-list {
+  color: $title-icons-night;
+}
+
+html.nuit .restaurant-description-list {
+  color: $bg-light-font-night;
+}
+
+html.nuit .restaurant-city-list {
+  color: #bab6b6;
+}
+
+html.nuit .restaurant-food-list {
+  color: #bab6b6;
+}
+
+html.nuit .restaurant-link-text-list {
+  color: $title-icons-night;
+}
+
+html.nuit .restaurant-link-icon-list {
+  color: $title-icons-night;
+}
+
+
+.card-container-list {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
@@ -1067,46 +1298,50 @@ html.nuit .form-wrapper {
   margin: 4%;
 }
 
-.restaurant-card {
-  flex: 1 1 calc(33.33% - 1rem); 
-  max-width: 30%;
-  min-height: 30rem; 
-  background-color: $bg-light-font-night;
+/* Styles pour les grands écrans (desktop) */
+.restaurant-card-list {
+  flex: 1 1 calc(33.33% - 1rem);
+  max-width: calc(33.33% - 1rem);
+  height: auto;
   border: 1px solid $title-icons-light;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.2s;
   margin-top: 2rem;
+  background-color: #f5e6dc;
 }
 
-
-html.nuit .restaurant-card {
-  background-color: $bg-night;
-  border: 1px solid $title-icons-night;
+/* Styles pour les écrans moyens (tablettes) */
+@media (max-width: 768px) {
+  .restaurant-card-list {
+    flex: 1 1 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
 }
 
-.restaurant-card:hover {
-  transform: scale(1.05);
+/* Styles pour les petits écrans (mobiles) */
+@media (max-width: 480px) {
+  .restaurant-card-list {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 }
 
-.restaurant-image {
+.restaurant-image-list {
   width: 100%;
-  height: 45%;
+  height: auto;
   border-bottom: 0.5px solid $title-icons-light;
   object-fit: cover;
 }
 
-html.nuit .restaurant-image {
-  border-bottom: 0.5px solid $title-icons-night;
-}
-
-.restaurant-content {
+.restaurant-content-list {
   padding: 1.25rem;
   text-align: center;
+  overflow: hidden;
 }
 
-.restaurant-title {
+.restaurant-title-list {
   margin-bottom: 0.75rem;
   font-size: 1.25rem;
   font-weight: bold;
@@ -1114,132 +1349,50 @@ html.nuit .restaurant-image {
   text-align: center;
 }
 
-html.nuit .restaurant-title {
-  color: $title-icons-night;
-}
-
-.restaurant-description {
+.restaurant-description-list {
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
   color: #374151;
   line-height: 1.2;
-  max-height: 3rem;
-  overflow: scroll;
 }
 
-html.nuit .restaurant-description {
-  color: $bg-light-font-night;
-}
-
-.restaurant-city {
+.restaurant-city-list, .restaurant-food-list {
   font-size: 0.875rem;
   color: #6b7280;
 }
 
-.restaurant-food {
-  font-size: 0.875rem;
-  color: #6b7280;
-}
-
-html.nuit .restaurant-city {
-  color: #bab6b6;
-}
-
-html.nuit .restaurant-food {
-  color: #bab6b6;
-}
-
-.restaurant-link-wrapper {
+.restaurant-link-wrapper-list {
   display: flex;
   margin-top: 4%;
   align-items: center;
   justify-content: center;
 }
 
-.restaurant-link-text {
+.restaurant-link-text-list {
   color: $font-light;
   margin-right: 2%;
 }
 
-html.nuit .restaurant-link-text {
-  color: $title-icons-night;
-}
-
-.restaurant-link-icon {
+.restaurant-link-icon-list {
   width: 0.875rem;
   height: 0.875rem;
   margin-left: 0.5rem;
   color: $font-light;
 }
 
-html.nuit .restaurant-link-icon {
+.description-toggle-button {
+  background: none;
+  border: none;
+  color: $font-light;
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0;
+  margin-top: 0.5rem;
+  text-decoration: none;
+}
+
+html.nuit .description-toggle-button {
   color: $title-icons-night;
-}
-
-/* Media Queries Cards Container */
-@media (max-width: 1200px) {
-  .restaurant-card {
-    max-width: 18rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .restaurant-card {
-    max-width: 16rem;
-  }
-
-  .card-container {
-    margin: 2%;
-    gap: 0.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .restaurant-card {
-    max-width: 14rem;
-    height: auto;
-  }
-
-  .restaurant-image {
-    height: 40%;
-  }
-
-  .restaurant-content {
-    padding: 0.75rem;
-  }
-
-  .restaurant-title {
-    font-size: 1rem;
-  }
-
-  .restaurant-description {
-    font-size: 0.75rem;
-    max-height: 4rem;
-  }
-
-  .restaurant-city,
-  .restaurant-food {
-    font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .restaurant-card {
-    max-width: 100%;
-  }
-
-  .restaurant-image {
-    height: 35%;
-  }
-
-  .restaurant-title {
-    font-size: 0.875rem;
-  }
-
-  .restaurant-description {
-    font-size: 0.7rem;
-    max-height: 5rem;
-  }
 }
 /* end cards */
 /* END PAGE RESTAU LIST */
@@ -2044,10 +2197,11 @@ html.nuit .btn-edit-user:hover {
 
 /* START SIGNUP FORMS */
 .signup-form {
-  margin-top: 6%;
+  margin-top: 8%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 48vh;
 }
 
 .form {
@@ -2212,11 +2366,11 @@ html.nuit .submit:hover {
 
 /* START LOGOUT FORM */
 .logout-form-container {
-  margin-top: 6%;
+  margin-top: 8%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 25vh;
 }
 
 .logout-form {
@@ -2261,11 +2415,11 @@ html.nuit .submit {
 
 /* START LOGIN FORMS */
 .login-form-container {
-  margin-top: 6%;
+  margin-top: 8%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 50vh;
 }
 
 .login-form {
@@ -2404,10 +2558,11 @@ html.nuit .links:hover {
 
 /* START FORGOT PASSWORD */
 .forgot-pass {
+  margin-top: 8%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 60vh;
+  height: 45vh;
   justify-content: center;
 }
 
@@ -2592,6 +2747,7 @@ html.nuit .forgot-form .btn-forgot:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 4%;
 }
 
 .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
@@ -2647,6 +2803,26 @@ html.nuit .lead-come {
   flex-direction: column;
 }
 
+@media (max-width: 1440px) {
+  .hero-index {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 10;
+  }
+
+  .hero-pic {
+    width: 50%;
+  }
+
+  .text-hero {
+    margin-top: 4%;
+  }
+
+  .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
+    font-size: 200%;
+  }
+}
+
 @media (max-width: 1200px) {
   .hero-index {
     flex-direction: column;
@@ -2656,6 +2832,30 @@ html.nuit .lead-come {
 
   .hero-pic {
     width: 80%;
+  }
+
+  .text-hero {
+    margin-top: 4%;
+  }
+
+  .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
+    font-size: 200%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-index {
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10;
+  }
+
+  .hero-pic {
+    width: 50%;
+  }
+
+  .text-hero {
+    margin-top: 4%;
   }
 
   .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
@@ -3005,111 +3205,5 @@ html.nuit .reservation-section {
 
 
 
-.card-container-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  margin: 4%;
-}
 
-/* Styles pour les grands écrans (desktop) */
-.restaurant-card-list {
-  flex: 1 1 calc(33.33% - 1rem); /* 3 cartes par ligne */
-  max-width: calc(33.33% - 1rem);
-  height: auto; /* Ajuster la hauteur automatiquement pour éviter les débordements */
-  border: 1px solid $title-icons-light;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.2s;
-  margin-top: 2rem;
-  background-color: #f5e6dc;
-}
 
-/* Styles pour les écrans moyens (tablettes) */
-@media (max-width: 768px) {
-  .restaurant-card-list {
-    flex: 1 1 calc(50% - 1rem); /* 2 cartes par ligne */
-    max-width: calc(50% - 1rem);
-  }
-}
-
-/* Styles pour les petits écrans (mobiles) */
-@media (max-width: 480px) {
-  .restaurant-card-list {
-    flex: 1 1 100%; /* 1 carte par ligne */
-    max-width: 100%;
-  }
-}
-
-.restaurant-image-list {
-  width: 100%;
-  height: auto; /* Ajuster la hauteur automatiquement */
-  border-bottom: 0.5px solid $title-icons-light;
-  object-fit: cover;
-}
-
-.restaurant-content-list {
-  padding: 1.25rem;
-  text-align: center;
-  overflow: hidden; /* Assurer que le texte ne dépasse pas */
-}
-
-.restaurant-title-list {
-  margin-bottom: 0.75rem;
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: $title-icons-light;
-  text-align: center;
-}
-
-.restaurant-description-list {
-  margin-bottom: 0.5rem;
-  font-size: 0.875rem;
-  color: #374151;
-  line-height: 1.2;
-}
-
-.restaurant-city-list, .restaurant-food-list {
-  font-size: 0.875rem;
-  color: #6b7280;
-}
-
-.restaurant-link-wrapper-list {
-  display: flex;
-  margin-top: 4%;
-  align-items: center;
-  justify-content: center;
-}
-
-.restaurant-link-text-list {
-  color: $font-light;
-  margin-right: 2%;
-}
-
-html.nuit .restaurant-link-text-list {
-  color: $title-icons-night;
-}
-
-.restaurant-link-icon-list {
-  width: 0.875rem;
-  height: 0.875rem;
-  margin-left: 0.5rem;
-  color: $font-light;
-}
-
-html.nuit .restaurant-link-icon-list {
-  color: $title-icons-night;
-}
-
-.description-toggle-button {
-  background: none;
-  border: none;
-  color: #007bff;
-  cursor: pointer;
-  font-size: 0.875rem;
-  padding: 0;
-  margin-top: 0.5rem;
-  text-decoration: underline;
-}
