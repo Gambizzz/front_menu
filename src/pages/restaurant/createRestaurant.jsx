@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ky from 'ky';
 import { useTranslation } from 'react-i18next';
 import { useAtom } from 'jotai';
@@ -6,6 +6,7 @@ import { userAtom } from '../../atoms';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api_url } from '../../App';
+import { Helmet } from 'react-helmet';
 
 const CreateRestaurant = () => {
   const { t } = useTranslation('');
@@ -81,6 +82,11 @@ const CreateRestaurant = () => {
 
   return (
     <div className='create-form-container'>
+      <Helmet titleTemplate="%s | Ajouter mon restaurant">
+        <title>MENU</title>
+        <meta name="description" content="Page avec une formulaire permettant de mettre les informations du restaurant à ajouter" />
+      </Helmet>
+
       <div className='create-form'>
         <h1 className="title-pages tit-pag"> {t('addR')} </h1>
         <form onSubmit={handleSubmit}>

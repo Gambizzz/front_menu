@@ -6,7 +6,7 @@ import { Dropdown } from 'react-bootstrap';
 import { nightModeAtom, userAtom } from '../atoms';
 import logoNavJour from '../../src/assets/images/logo-nav-jour.svg';
 import logoNavNuit from '../../src/assets/images/logo-nav-nuit.svg';
-import '../components/navbar.css';
+import '../index.scss';
 
 const Nav = ({ toggleTheme }) => {
   const { t, i18n } = useTranslation();

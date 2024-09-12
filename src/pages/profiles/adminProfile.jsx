@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
 import { useTranslation } from 'react-i18next';
@@ -11,6 +11,7 @@ import { IoTrashSharp } from "react-icons/io5";
 import { format } from 'date-fns';
 import { fr, enUS } from 'date-fns/locale';
 import { api_url } from '../../App';
+import { Helmet } from 'react-helmet';
 
 const AdminProfile = () => {
   const [user] = useAtom(userAtom);
@@ -26,7 +27,7 @@ const AdminProfile = () => {
   }, [user.isLoggedIn, refreshFlag]);
 
   const fetchRestaurants = async () => {
-    const token = Cookies.get('adminToken'); 
+    const token = Cookies.get('adminToken');
 
     if (!token) {
       toast.error('Token is missing');
@@ -60,7 +61,7 @@ const AdminProfile = () => {
   };
 
   const handleDelete = async (restaurantId) => {
-    const token = Cookies.get('adminToken'); 
+    const token = Cookies.get('adminToken');
 
     if (!token) {
       toast.error('Token is missing');
@@ -117,23 +118,31 @@ const AdminProfile = () => {
 
   return (
     <div>
+      <Helmet titleTemplate="%s | Profil">
+        <title>MENU</title>
+        <meta name="description" content="Page de profil du restaurateur qui affiche les informations du restaurant et les réservations qui lui sont liées" />
+      </Helmet>
+
       <h1 className="title-pages">{t('titleSpaceAdmin')}</h1>
 
-      <div className="button-card-container">
-        <div className="button-card">
-          <div className="button-wrapper">
-            <Link to="/admin/edit-profile" className="btn-edit-user"> 
-              {t('editAdmin')} 
-            </Link>
-          </div>
-          <div className="button-wrapper">
-            <Link to="/create-restaurant">
-              <button className="btn-create-restau"> 
-                {t('createRestau')} 
-              </button>
-            </Link>
+      <div className='full-container'>
+        <div className="button-card-container">
+          <div className="button-card">
+            <div className="button-wrapper">
+              <Link to="/admin/edit-profile" className="btn-edit-user"> 
+                {t('editAdmin')} 
+              </Link>
+            </div>
+            <div className="button-wrapper">
+              <Link to="/create-restaurant">
+                <button className="btn-create-restau"> 
+                  {t('createRestau')} 
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
+        <div className='svg-container1'></div>
       </div>
 
       <div>

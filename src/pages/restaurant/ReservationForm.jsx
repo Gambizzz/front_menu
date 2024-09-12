@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import ky from 'ky';
 import { api_url } from '../../App';
 import { InputNumber, DatePicker, Space } from 'antd';
+import { Helmet } from "react-helmet";
 
 
 const ReservationForm = ({ restaurantId, userToken }) => {
@@ -48,32 +49,39 @@ const ReservationForm = ({ restaurantId, userToken }) => {
   };
 
   return (
-    <form onSubmit={handleReservation} className="resa-form">
-      <label>
-        <div>
-          {t("reservationNumber")}
-        </div>
-        <InputNumber min={1} max={10} defaultValue={1} onChange={handleNumberChange} className="input-number" />
-      </label>
-      <label>
-        <div>
-          {t("reservationDate")}
-        </div>
-        <Space direction="vertical">
-          <DatePicker onChange={handleDateChange} className="input-number"/>
-        </Space>
-      </label>
-      <label>
-        <div>
-          {t("reservationTime")}
-        </div>
-        <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required className="input-time" />
-      </label>
+    <>
+      <Helmet titleTemplate="%s | Faire une réservation">
+        <title>MENU</title>
+        <meta name="description" content="Page avec un formulaire pour réserver dans le restaurant choisi" />
+      </Helmet>
 
-      <div className="btn-resa">
-        <button type="submit"> {t("makeResa")} </button>
-      </div>
-    </form>
+      <form onSubmit={handleReservation} className="resa-form">
+        <label>
+          <div>
+            {t("reservationNumber")}
+          </div>
+          <InputNumber min={1} max={10} defaultValue={1} onChange={handleNumberChange} className="input-number" />
+        </label>
+        <label>
+          <div>
+            {t("reservationDate")}
+          </div>
+          <Space direction="vertical">
+            <DatePicker onChange={handleDateChange} className="input-number" />
+          </Space>
+        </label>
+        <label>
+          <div>
+            {t("reservationTime")}
+          </div>
+          <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required className="input-time" />
+        </label>
+
+        <div className="btn-resa">
+          <button type="submit"> {t("makeResa")} </button>
+        </div>
+      </form>
+    </>
   );
 };
 
