@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAtom } from "jotai";
 import { userAtom } from "../../atoms";
@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../index.scss';
 import { api_url } from '../../App';
+import { Helmet } from "react-helmet";
 
 const Restaurants = () => {
   const { t } = useTranslation();
@@ -73,6 +74,9 @@ const Restaurants = () => {
 
   return (
     <>
+      <Helmet titleTemplate="%s | Listes des restaurants">
+        <title>MENU</title>
+      </Helmet>
       <center><h1 className="title-pages">{t('titleRestau')}</h1></center>
 
       <div className="form-wrapper">

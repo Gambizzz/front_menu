@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
@@ -8,6 +8,7 @@ import ky from 'ky';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api_url } from '../../App';
+import { Helmet } from 'react-helmet';
 
 function Log() {
   const [, setUser] = useAtom(userAtom);
@@ -54,30 +55,34 @@ function Log() {
 
   return (
     <div className='login-form-container'>
-    <div className='login-form'>
-      <form onSubmit={handleLogin}>
-        <h1 className="title-pages tit-pag"> {t('seCo')} </h1>
-        <div className='form-group'>
-          <label htmlFor='email'> {t('Email')} </label>
-          <input type='email' className='form-control' id='email' placeholder={t('placeEmail')} value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </div>
-        <div className='form-group'>
-          <label htmlFor='password'> {t('Password')} </label>
-          <input type='password' className='form-control' id='password' placeholder={t('password')} value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </div>
-        <div className='submit btn-sub'>
-          <button type='submit'> {t('connexion')} </button>
-        </div>
-        <p className='log-links'>
-          <Link to="/signup" className='links'> {t('signup')} </Link> |
-          <Link to="/forgot-password" className='links'> {t('forgotPassword')} </Link> |
-          <Link to="/" className='links'> {t('home')} </Link>
-        </p>
-      </form>
-      <ToastContainer />
+      <Helmet titleTemplate="%s | Se connecter">
+        <title>MENU</title>
+        <meta name="description" content="Page avec un formulaire pour la connexion de l'utilisateur" />
+      </Helmet>
+
+      <div className='login-form'>
+        <form onSubmit={handleLogin}>
+          <h1 className="title-pages tit-pag"> {t('seCo')} </h1>
+          <div className='form-group'>
+            <label htmlFor='email'> {t('Email')} </label>
+            <input type='email' className='form-control' id='email' placeholder={t('placeEmail')} value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='password'> {t('Password')} </label>
+            <input type='password' className='form-control' id='password' placeholder={t('password')} value={password} onChange={(e) => setPassword(e.target.value)} required />
+          </div>
+          <div className='submit btn-sub'>
+            <button type='submit'> {t('connexion')} </button>
+          </div>
+          <p className='log-links'>
+            <Link to="/signup" className='links'> {t('signup')} </Link> |
+            <Link to="/forgot-password" className='links'> {t('forgotPassword')} </Link> |
+            <Link to="/" className='links'> {t('home')} </Link>
+          </p>
+        </form>
+        <ToastContainer />
+      </div>
     </div>
-  </div>
-  
   );
 }
 

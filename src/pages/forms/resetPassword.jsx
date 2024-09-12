@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ky from 'ky';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api_url } from '../../App';
+import { Helmet } from 'react-helmet';
 
 const ResetPassword = () => {
   const { token } = useParams();
@@ -30,9 +31,9 @@ const ResetPassword = () => {
     e.preventDefault();
     try {
       const response = await ky.post(`${api_url}users/password`, {
-        json: { 
-          user: { 
-            email: '', 
+        json: {
+          user: {
+            email: '',
             password: password,
             password_confirmation: passwordConfirmation
           },
@@ -70,6 +71,11 @@ const ResetPassword = () => {
 
   return (
     <div>
+      <Helmet titleTemplate="%s | Modifier le mot de passe">
+        <title>MENU</title>
+        <meta name="description" content="Page avec un formulaire pour changer le mot de passe de l'utilisateur" />
+      </Helmet>
+
       <h1 className="title-pages"> {t('resetPassword')} </h1>
       <form onSubmit={handleSubmit}>
         <div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from 'react-router-dom';
 import ky from 'ky';
@@ -11,6 +11,7 @@ import { FaHeart } from "react-icons/fa6";
 import { IoTrashSharp } from "react-icons/io5";
 import { api_url } from '../../App';
 import { Tabs } from "antd";
+import { Helmet } from "react-helmet";
 
 const { TabPane } = Tabs;
 
@@ -111,8 +112,29 @@ const Details = () => {
     return <div>{t('load')}</div>;
   }
 
+  const schemaOrgData = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": restaurant.name,
+    "description": restaurant.description,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": restaurant.city,
+      "addressCountry": "FR"
+    },
+    "image": restaurant.image_url,
+  };
+
   return (
     <div className="details-container">
+      <Helmet titleTemplate="MENU | %s">
+        <title>{restaurant ? restaurant.name : 'Restaurant'}</title>
+        <meta name="description" content="Page avec les détails d'un restaurant"/>
+        <script type="application/ld+json">
+          {JSON.stringify(schemaOrgData)}
+        </script>
+      </Helmet>
+
       <ToastContainer />
       <div className="card-details">
         <div className="menu-details">

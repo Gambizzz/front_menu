@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../../atoms";
 import ky from "ky";
@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { api_url } from '../../App';
+import { Helmet } from "react-helmet";
 
 const Edit = () => {
   const [user, setUser] = useAtom(userAtom);
@@ -44,7 +45,7 @@ const Edit = () => {
 
     setTimeout(() => {
       window.location.href = "/";
-    }, 1000); 
+    }, 1000);
   };
 
   const handleDeleteAccount = async () => {
@@ -75,7 +76,7 @@ const Edit = () => {
 
         setTimeout(() => {
           window.location.href = "/";
-        }, 1000); 
+        }, 1000);
 
       } catch (error) {
         console.error("Error deleting account:", error);
@@ -86,6 +87,11 @@ const Edit = () => {
 
   return (
     <div className='edit-profile-container'>
+      <Helmet titleTemplate="%s | Éditer mon profil">
+        <title>MENU</title>
+        <meta name="description" content="Page d'édition des informations de l'utilisateur" />
+      </Helmet>
+
       <div className='edit-profile-form'>
         <form onSubmit={handleUpdate}>
           <h1 className="title-pages tit-pag"> {t('editProfileForm')} </h1>
@@ -113,7 +119,6 @@ const Edit = () => {
         <ToastContainer />
       </div>
     </div>
-
   );
 };
 

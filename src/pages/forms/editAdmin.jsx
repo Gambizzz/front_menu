@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
 import { useTranslation } from 'react-i18next';
@@ -6,6 +6,7 @@ import ky from 'ky';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api_url } from '../../App';
+import { Helmet } from 'react-helmet';
 
 const EditAdmin = () => {
   const [user, setUser] = useAtom(userAtom);
@@ -78,6 +79,11 @@ const EditAdmin = () => {
 
   return (
     <div className='edit-profile-container'>
+      <Helmet titleTemplate="%s | Éditer mon profil">
+        <title>MENU</title>
+        <meta name="description" content="Page d'édition des informations du restaurateur" />
+      </Helmet>
+
       <div className='edit-profile-form'>
         <form onSubmit={handleUpdate}>
           <h1 className="title-pages tit-pag"> {t('editProfileForm')} </h1>
@@ -105,7 +111,6 @@ const EditAdmin = () => {
         <ToastContainer />
       </div>
     </div>
-
   );
 };
 
