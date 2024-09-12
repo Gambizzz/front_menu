@@ -1,7 +1,7 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Helmet } from "react-helmet";
 
 const Politics = () => {
   const { t } = useTranslation();
@@ -11,8 +11,13 @@ const Politics = () => {
     window.scrollTo(0, 0);
   }, [location]);
 
-  return(
+  return (
     <>
+      <Helmet titleTemplate="%s | Les politiques de confidentialité">
+        <title>MENU</title>
+        <meta name="description" content="Page décrivant comment le site collecte et utilise les informations personnelles des utilisateurs" />
+      </Helmet>
+
       <div className="page-header" id="confidentiality">
         <h1 className="title-pages"> {t('politicsTitle')} </h1>
         <h2> {t('sloganPolitics')} </h2>

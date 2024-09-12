@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../atoms';
@@ -8,6 +8,7 @@ import ky from 'ky';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api_url } from '../../App';
+import { Helmet } from 'react-helmet';
 
 function AdminLog() {
   const [, setUser] = useAtom(userAtom);
@@ -41,11 +42,11 @@ function AdminLog() {
       Cookies.set('adminId', admin.id);
       Cookies.set('adminEmail', admin.email);
 
-      toast.success(t('log')); 
+      toast.success(t('log'));
 
       setTimeout(() => {
         window.location.href = "/";
-      }, 1000); 
+      }, 1000);
 
     } catch (error) {
       toast.error(t('logError'));
@@ -54,6 +55,11 @@ function AdminLog() {
 
   return (
     <div className='login-form-container'>
+      <Helmet titleTemplate="%s | Se connecter">
+        <title>MENU</title>
+        <meta name="description" content="Page avec un formulaire pour la connexion du restaurateur" />
+      </Helmet>
+
       <div className='login-form'>
         <form onSubmit={handleLogin}>
           <h1 className="title-pages tit-pag"> {t('seCo')} </h1>
@@ -74,7 +80,7 @@ function AdminLog() {
             <Link to="/" className='links'> {t('home')} </Link>
           </p>
         </form>
-        
+
         <ToastContainer />
       </div>
     </div>
@@ -82,5 +88,3 @@ function AdminLog() {
 }
 
 export default AdminLog;
-
-

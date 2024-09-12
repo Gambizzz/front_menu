@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ky from 'ky';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -7,6 +7,7 @@ import { userAtom } from '../../atoms';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api_url } from '../../App';
+import { Helmet } from 'react-helmet';
 
 const EditRestaurant = () => {
   const { id } = useParams();
@@ -101,6 +102,11 @@ const EditRestaurant = () => {
 
   return (
     <div className='edit-form-container'>
+      <Helmet titleTemplate="%s | Éditer mon restaurant">
+        <title>MENU</title>
+        <meta name="description" content="Page où le restaurateur peut modifier les informations de son restaurant" />
+      </Helmet>
+
       <div className='edit-form'>
         <form onSubmit={handleSubmit}>
           <h1 className="title-pages tit-pag"> {t('editR')} </h1>
@@ -157,7 +163,7 @@ const EditRestaurant = () => {
         </form>
         <ToastContainer />
       </div>
-    </div>  
+    </div>
   );
 };
 
