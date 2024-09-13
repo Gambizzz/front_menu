@@ -172,6 +172,7 @@ html.nuit .navbar {
   position: absolute;
   top: 0;
   left: 0;
+
 }
 
 .font-weight {
@@ -361,33 +362,102 @@ html.nuit .navbar {
 
 @media (max-width: 1310px) {
   .navbar {
-    flex-direction: column;
     font-size: 1em;
   }
 
   .nav-links {
-    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
-  .nav-links p,
-  .nav-links img,
-  .nav-links .btn-dropdown {
-    margin: 10px 0;
-  }
-
   .nav-links p {
-    margin-left: 15%;
+    margin-left: 80%;
   }
 
   .nav-links .btn-dropdown {
-   margin-left: 18%; 
+   margin-left: 36%; 
   }
 
   .nav-links img {
     width: 35%;
-    margin-left: 38%;
+    margin-left: 155%;
+  }
+
+  .switch {
+    width: 70px;
+    height: 35px;
+    margin-right: 75%;
+  }
+
+  .slider:before {
+    height: 25px;
+    width: 25px;
+    line-height: 20px;
+  }
+
+  .theme-toggler {
+    font-size: 1.2em;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 40%;
+    right: -100%;
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+
+  .toggle-btn {
+    margin-right: 0;
+    height: 20%;
+    width: auto;
+    font-size: 0.7rem;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 1490px) {
+  .navbar {
+    font-size: 1em;
+  }
+
+  .nav-links p {
+    margin-left: 80%;
+  }
+
+  .nav-links .btn-dropdown {
+   margin-left: 36%; 
+  }
+
+  .nav-links img {
+    width: 35%;
+    margin-left: 155%;
+  }
+}
+
+@media (max-width: 1195px) {
+  .navbar {
+    font-size: 1em;
+  }
+
+  .nav-links {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links p {
+    margin-left: 80%;
+  }
+
+  .nav-links .btn-dropdown {
+   margin-left: 36%; 
+  }
+
+  .nav-links img {
+    width: 50%;
+    margin-left: 275%;
   }
 
   .switch {
@@ -427,71 +497,55 @@ html.nuit .navbar {
   }
 }
 
-@media (max-width: 1195px) {
+@media (max-width: 1192px) {
   .navbar {
-    flex-direction: column;
     font-size: 1em;
   }
 
   .nav-links {
-    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
-  .nav-links p,
-  .nav-links img,
-  .nav-links .btn-dropdown {
-    margin: 10px 0;
-  }
-
   .nav-links p {
-    margin-left: 15%;
+    margin-left: 80%;
   }
 
   .nav-links .btn-dropdown {
-   margin-left: 18%; 
+   margin-left: 36%; 
   }
 
   .nav-links img {
-    width: 35%;
-    margin-left: 38%;
+    width: 50%;
+    margin-left: 195%;
   }
+}
 
-  .switch {
-    width: 70px;
-    height: 35px;
-    margin-right: 75%;
+@media (max-width: 1145px) {
+  .nav-links img {
+    width: 50%;
+    margin-left: 210%;
   }
+}
 
-  .slider:before {
-    height: 25px;
-    width: 25px;
-    line-height: 20px;
+@media (max-width: 1090px) {
+  .nav-links img {
+    width: 50%;
+    margin-left: 280%;
   }
+}
 
-  .theme-toggler {
-    font-size: 1.2em;
-    padding-right: 5px;
-    margin-right: 2%;
+@media (min-width: 375px) and (max-width: 1050px) {
+  .nav-links img {
+    width: 50%;
+    margin-left: 310%;
   }
+}
 
-  .sidebar {
-    width: 100%;
-    height: 40%;
-    right: -100%;
-  }
-
-  .sidebar.active {
-    right: 0;
-  }
-
-  .toggle-btn {
-    margin-right: 0;
-    height: 20%;
-    width: auto;
-    font-size: 0.7rem;
-    padding: 5px;
+@media (max-width: 1024px) {
+  .nav-links img {
+    width: 50%;
+    margin-left: 410%;
   }
 }
 
@@ -2788,7 +2842,7 @@ html.nuit .forgot-form .btn-forgot:hover {
 .hero-index {
   display: flex;
   flex-direction: row;
-  margin-top: 4%;
+  margin-top: 10%;
   margin-right: 8%;
   justify-content: space-around;
   flex-wrap: wrap;
