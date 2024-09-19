@@ -2618,13 +2618,15 @@ html.nuit .forgot-form .btn-forgot:hover {
 
 @media (min-width: 640px) {
   .carousel-container {
-    height: 60vh; 
+    height: 60vh;
+    margin-top: 2%;
   }
 }
 
 @media (min-width: 1280px) {
   .carousel-container {
-    height: 70vh; 
+    height: 70vh;
+    margin-top: 2%;
   }
 }
 
@@ -2677,18 +2679,20 @@ html.nuit .forgot-form .btn-forgot:hover {
   margin-top: 10%;
   margin-right: 8%;
   justify-content: space-around;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
 .div-pic {
   height: 100%;
   display: flex;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .hero-pic {
-  height: 100%;
+  height: auto;
   width: 60%;
+  max-width: 60%;
   object-fit: cover;
 }
 
@@ -2752,104 +2756,33 @@ html.nuit .lead-come {
   flex-direction: column;
 }
 
-@media (max-width: 1440px) {
-  .hero-index {
-    flex-direction: row;
-    align-items: center;
-    margin-right: 10;
-  }
-
-  .hero-pic {
-    width: 50%;
-  }
-
-  .text-hero {
-    margin-top: 4%;
-  }
-
-  .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
-    font-size: 200%;
-  }
-}
-
-@media (max-width: 1200px) {
+@media screen and (max-width: 1024px) {
   .hero-index {
     flex-direction: column;
-    align-items: center;
+    margin-top: calc(40% + 60px);
     margin-right: 0;
-  }
-
-  .hero-pic {
-    width: 80%;
-  }
-
-  .text-hero {
-    margin-top: 4%;
-  }
-
-  .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
-    font-size: 200%;
-  }
-}
-
-@media (max-width: 1024px) {
-  .hero-index {
-    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    margin-right: 10;
   }
 
-  .hero-pic {
-    width: 50%;
+  .div-pic, .hero-pic {
+    width: 80%;
+    max-width: 100%;
+    height: auto;
   }
 
   .text-hero {
-    margin-top: 4%;
+    margin-top: 20px;
   }
 
   .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
     font-size: 200%;
   }
-}
-
-@media (max-width: 992px) {
-  .hero-pic {
-    width: 100%;
-  }
-
-  .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
-    font-size: 180%;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-pic {
-    width: 100%;
-  }
-
-  .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
-    font-size: 160%;
-  }
 
   .text-cities {
-    margin: 5%;
+    margin-top: 14%;
   }
 }
-
-@media (max-width: 576px) {
-  .hero-pic {
-    width: 100%;
-  }
-
-  .lead, .lead-easier, .lead-eat, .lead-cities, .lead-come {
-    font-size: 140%;
-  }
-
-  .text-cities {
-    margin-top: 5%;
-  }
-}
-
 /* end hero */
 /* END HOME */
 
