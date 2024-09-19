@@ -1,0 +1,44 @@
+.logout-form-container {
+  margin-top: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 25vh;
+}
+
+.logout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 4%;
+  border-radius: 20px;
+  position: relative;
+  align-items: center;
+}
+
+html.nuit .logout-form {
+  background-color: $bg-light-font-night;
+}
+
+.submit {
+  margin-top: 10%;
+  text-align: center;
+}
+
+html.nuit .submit {
+  color: $bg-light-font-night;
+  border-color: $bg-night;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}

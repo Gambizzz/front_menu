@@ -1,0 +1,268 @@
+.button-card-container {
+  display: flex;
+  justify-content: center;
+  height: 60vh;
+  align-items: center;
+}
+
+.full-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.svg-container1 {
+  width: 250px;
+  height: 300px;
+  margin-left: 80px;
+  background-image: url("/images/restau_admin.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: moveUpDown 2s infinite ease-in-out;
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.button-card {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 4%;
+  border-radius: 20px;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+html.nuit .button-card {
+  background-color: $bg-light-font-night;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 20px;
+
+  a {
+    width: 80%;
+    padding: 10px 0;
+    text-align: center;
+    background-color: $title-icons-light;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  a:hover, button:hover {
+    background-color: darken($title-icons-light, 10%);
+  }
+
+  html.nuit a, html.nuit button {
+    background-color: $title-icons-night;
+  }
+
+  html.nuit a:hover, html.nuit button:hover {
+    background-color: lighten($title-icons-night, 10%);
+  }
+}
+
+html.nuit .button-wrapper {
+  a {
+    background-color: $title-icons-night;
+    color: $bg-light-font-night;
+  }
+
+  a:hover, button:hover {
+    background-color: darken($title-icons-night, 10%);
+  }
+}
+
+.link-create {
+  margin: 2%;
+
+  button {
+    border: 1px solid $title-icons-light;
+    padding: 1%;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+}
+
+html.nuit .link-create {
+  button {
+    border: 1px solid $title-icons-night;
+  }
+}
+
+.admin-infos {
+  margin: 2%;
+}
+
+.your-restau {
+  color: $title-icons-light;
+  font-size: large;
+  text-align: center;
+}
+
+.admin-cards {
+  margin-top: 0%;
+}
+
+html.nuit .your-restau {
+  color: $title-icons-night;
+}
+
+.img-restau-admin {
+  width: 100%;
+  height: 35%;
+  object-fit: cover;
+  border-bottom: 0.5px solid $title-icons-light;
+}
+
+html.nuit .img-restau-admin {
+  border-bottom: 0.5px solid $title-icons-night;
+}
+
+.btn-admin {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: $title-icons-light;
+  cursor: pointer;
+}
+
+html.nuit .btn-admin {
+  color: $title-icons-night;
+}
+
+.reserv-admin {
+  margin-top: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-resa {
+  text-align: center;
+  margin-bottom: 4%;
+  color: $title-icons-light;
+}
+
+html.nuit .title-resa {
+  color: $title-icons-night;
+}
+
+.div-resa {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+@media (max-width: 1024px) {
+  .button-card {
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+  }
+
+  .button-wrapper a {
+    width: 90%;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+
+  .img-restau-admin {
+    height: 30%;
+  }
+
+  .btn-admin {
+    flex-direction: column;
+    align-items: center;
+    font-size: 90%;
+  }
+
+  .title-resa {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 768px) {
+  .button-card {
+    gap: 10px;
+    padding: 1.5%;
+  }
+
+  .button-wrapper a {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .img-restau-admin {
+    height: 25%;
+  }
+
+  .btn-admin {
+    flex-direction: column;
+    align-items: center;
+    font-size: 80%;
+  }
+
+  .reserv-admin {
+    margin-top: 10%;
+  }
+
+  .title-resa {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .button-card {
+    flex-direction: column;
+    padding: 1%;
+  }
+
+  .button-wrapper a {
+    width: 100%;
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .img-restau-admin {
+    height: 20%;
+  }
+
+  .btn-admin {
+    flex-direction: column;
+    align-items: center;
+    font-size: 70%;
+  }
+
+  .reserv-admin {
+    margin-top: 5%;
+  }
+
+  .title-resa {
+    font-size: 0.9em;
+  }
+}

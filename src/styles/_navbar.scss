@@ -1,0 +1,262 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 1.2em;
+  background-color: #f5e6dc;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .switch, .nav-links, .theme-toggler {
+    margin-right: 10px;
+  }
+
+  .nav-links {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 6%;
+
+    .font-weight {
+      font-weight: bold;
+    }
+  }
+}
+
+html.nuit .navbar {
+  background-color: #1a1a8e;
+}
+
+/* LOGO */
+.nav-links img {
+  width: auto;
+  height: 90px;
+  position: relative;
+}
+
+/* LANGSWITCH */
+.switch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 36px;
+  position: relative;
+  margin-left: 4%;
+}
+
+.toggle {
+  opacity: 0;
+}
+
+.slider.day {
+  box-sizing: border-box;
+  border-radius: 100px;
+  border: 2px solid $font-light;
+  box-shadow: 4px 4px $title-icons-light;
+  background-color: $bg-light-font-night;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.3s;
+}
+
+.slider.night {
+  box-sizing: border-box;
+  border-radius: 100px;
+  border: 2px solid $bg-light-font-night;
+  box-shadow: 4px 4px $title-icons-night;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $bg-night;
+  transition: 0.3s;
+}
+
+.slider:before {
+  content: "FR";
+  border: 2px solid $title-icons-light;
+  background-color: $bg-light-font-night;
+  color: $title-icons-light;
+  font-size: 14px;
+  font-weight: 600;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 2px;
+  bottom: 1px;
+  border-radius: 100px;
+  text-align: center;
+  line-height: 25px;
+  transition: 0.3s;
+}
+
+.slider.night:before {
+  content: "FR";
+  box-sizing: border-box;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 2px;
+  bottom: 1px;
+  border: 2px solid $title-icons-night;
+  border-radius: 100px;
+  background-color: $bg-night;
+  color: $title-icons-night;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 25px;
+  transition: 0.3s;
+}
+
+.toggle:checked + .slider {
+  background-color: $bg-light-font-night;
+  transform: translateX(-32px);
+}
+
+.toggle:checked + .slider.night {
+  background-color: $bg-night;
+  transform: translateX(-32px);
+}
+
+.toggle:checked + .slider:before {
+  content: "EN";
+  transform: translateX(32px);
+  color: $font-light;
+  border-color: $font-light;
+}
+
+.toggle:checked + .slider.night:before {
+  content: "EN";
+  transform: translateX(32px);
+  color: $bg-light-font-night;
+  border-color: $bg-light-font-night;
+  background-color: $bg-night;
+}
+
+/* DROPDOWN MENU */
+.btn-dropdown {
+  padding-right: 10%;
+}
+
+.log {
+  color: $title-icons-light;
+  background-color: transparent !important;
+  border: none;
+  box-shadow: none;
+  font-size: 1em;
+}
+
+.log:hover {
+  background-color: transparent !important;
+  border: none;
+  color: $title-icons-light;
+}
+
+.log:focus,
+.log:active {
+  background-color: transparent !important;
+  border: none;
+  color: $title-icons-light !important;
+  box-shadow: none;
+}
+
+.drop-box {
+  border-color: $font-light;
+  background-color: $bg-light-font-night;
+}
+
+.drop-text {
+  color: $font-light;
+  font-weight: bold;
+}
+
+.drop-text:hover {
+  background-color: $title-icons-light;
+  color: $bg-light-font-night;
+}
+
+/* THÈME TOGGLER */
+.theme-toggler {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  font-size: 1.6em;
+  padding-right: 3.5%;
+  margin-right: 1%;
+}
+
+@media screen and (max-width: 827px) {
+  .navbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .switch, .nav-links, .theme-toggler {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-dropdown {
+    margin-left: 0;
+  }
+}
+
+
+html.nuit .log {
+  color: $title-icons-night;
+  background-color: transparent !important;
+  border: none;
+  box-shadow: none;
+  font-size: 1em;
+  }
+  
+  html.nuit .log:hover {
+  background-color: transparent !important;
+  border: none;
+  color: $title-icons-night;
+  }
+  
+  html.nuit .log:focus, .log:active {
+  background-color: transparent !important;
+  border: none;
+  color: $title-icons-night !important;
+  box-shadow: none;
+  }
+  
+  html.nuit .drop-box {
+  border-color: $title-icons-night;
+  background-color: $bg-night;
+  }
+  
+  html.nuit .drop-text {
+  color: $bg-light-font-night;
+  }
+  
+  html.nuit .drop-text:hover {
+  background-color: $title-icons-night;
+  color: $bg-night;
+  }
+  

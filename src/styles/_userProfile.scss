@@ -1,0 +1,314 @@
+.res-us {
+  display: flex;
+  flex-direction: column;
+  margin: 4%;
+
+  h2 {
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .res-us {
+  h2 {
+    color: $title-icons-night;
+  }
+}
+
+.li-resa {
+  margin-bottom: 8%;
+}
+
+.card-resa {
+  width: 100%;
+  max-width: 80%;
+  height: auto;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  backdrop-filter: blur(10px);
+  transition: 0.5s ease-in-out;
+  margin: 2% 0;
+}
+
+.card-resa:hover {
+  transform: scale(1.05);
+}
+
+.textBox-resa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 90px);
+  margin-left: 2%;
+  color: $font-light;
+  font-family: inherit;
+  padding: 2%;
+}
+
+html.nuit .textBox-resa {
+  color: $bg-night;
+}
+
+.span-resa {
+  font-size: 100%;
+}
+
+.h1-resa {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-resa {
+  font-size: 110%;
+}
+
+.favs {
+  display: flex;
+  flex-direction: column;
+  margin: 4%;
+
+  h2 {
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .favs {
+  h2 {
+    color: $title-icons-night;
+  }
+}
+
+.restau-fav {
+  margin-bottom: 8%;
+  width: 100%;
+  max-width: 80%;
+  height: auto;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+  transition: 0.5s ease-in-out;
+  margin: 2% 0;
+  padding: 2%;
+  color: $font-light;
+  font-family: inherit;
+}
+
+.restau-fav:hover {
+  transform: scale(1.05);
+}
+
+html.nuit .restau-fav {
+  color: $bg-night;
+}
+
+.btn-fav {
+  font-size: 110%;
+  font-weight: lighter;
+  color: $title-icons-light;
+}
+
+html.nuit .btn-fav {
+  color: $title-icons-night;
+}
+
+.title-pages {
+  margin-bottom: 0%;
+}
+
+.button-card-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4%;
+}
+
+.full-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .full-container {
+    flex-direction: column;
+
+    .svg-container2 {
+      margin-top: -80%;
+      margin-left: 40px;
+    }
+  }
+}
+
+.svg-container2 {
+  width: 350px;
+  height: 350px;
+  margin-left: 80px;
+  background-image: url("/images/restau_user.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: moveUpDown 2s infinite ease-in-out;
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.button-card {
+  background-color: #fff;
+  padding: 4% 4%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-edit-user {
+  background-color: $title-icons-light;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+html.nuit .btn-edit-user {
+  background-color: $title-icons-night;
+  color: $bg-light-font-night;
+}
+
+.btn-edit-user:hover {
+  background-color: #fe4c00dc;
+}
+
+html.nuit .btn-edit-user:hover {
+  background-color: #fcd256;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .card-resa, .restau-fav {
+    max-width: 90%;
+  }
+
+  .textBox-resa {
+    width: calc(100% - 60px);
+  }
+
+  .span-resa {
+    font-size: 90%;
+  }
+
+  .h1-resa {
+    font-size: 14px;
+  }
+
+  .btn-resa {
+    font-size: 100%;
+  }
+
+  .btn-fav {
+    font-size: 100%;
+  }
+
+  .button-card {
+    padding: 1.5%;
+  }
+
+  .btn-edit-user {
+    padding: 8px 16px;
+    font-size: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .res-us, .favs {
+    margin: 2%;
+  }
+
+  .card-resa, .restau-fav {
+    max-width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1% 2%;
+  }
+
+  .textBox-resa {
+    width: 100%;
+    margin-left: 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .span-resa {
+    font-size: 80%;
+  }
+
+  .h1-resa {
+    font-size: 12px;
+  }
+
+  .btn-resa, .btn-fav {
+    font-size: 90%;
+  }
+
+  .button-card {
+    padding: 1%;
+  }
+
+  .btn-edit-user {
+    padding: 6px 12px;
+    font-size: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .res-us, .favs {
+    margin: 1%;
+  }
+
+  .card-resa, .restau-fav {
+    max-width: 100%;
+    padding: 1% 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .textBox-resa {
+    width: 100%;
+    margin: 0;
+  }
+
+  .span-resa {
+    font-size: 70%;
+  }
+
+  .h1-resa {
+    font-size: 10px;
+  }
+
+  .btn-resa, .btn-fav {
+    font-size: 80%;
+  }
+
+  .button-card {
+    padding: 0.5%;
+  }
+
+  .btn-edit-user {
+    padding: 4px 8px;
+    font-size: 70%;
+  }
+}

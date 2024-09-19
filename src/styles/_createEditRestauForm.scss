@@ -1,0 +1,124 @@
+.create-form-container, .edit-form-container {
+  margin-top: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 110vh;
+}
+
+.create-form, .edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 4%;
+  border-radius: 20px;
+  position: relative;
+  align-items: center;
+}
+
+html.nuit .create-form, html.nuit .edit-form {
+  background-color: $bg-light-font-night;
+}
+
+.tit-pag {
+  font-size: 150%;
+  color: $title-icons-light;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 20%;
+}
+
+html.nuit .tit-pag {
+  color: $title-icons-night;
+  font-size: 150%;
+  font-weight: 600;
+}
+
+.tit-pag::before, .tit-pag::after {
+  position: absolute;
+  content: "";
+  height: 16%;
+  width: 16%;
+  border-radius: 50%;
+  left: 0;
+  background-color: $title-icons-light;
+}
+
+html.nuit .tit-pag::before {
+  background-color: $title-icons-night;
+}
+
+html.nuit .tit-pag::after {
+  background-color: $title-icons-night;
+}
+
+.tit-pag::before {
+  width: 2%;
+  height: 2%;
+  background-color: $bg-light-font-night;
+}
+
+html.nuit .tit-pag::before {
+  background-color: $bg-light-font-night;
+}
+
+.tit-pag::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+  margin-top: 8%;
+
+  input, textarea, select {
+    border: 1px solid $font-light;
+    border-radius: 10px;
+    margin-top: 1%;
+    padding: 10px;
+    color: $title-icons-light;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+input#file-upload-button {
+  background-color: transparent;
+}
+
+html.nuit .form-group {
+  label {
+    color: $bg-night;
+  }
+
+  input, textarea, select {
+    border: 1px solid $bg-night;
+    background-color: transparent;
+    color: $title-icons-night;
+  }
+}
+
+.btn-sub {
+  margin-top: 10%;
+  text-align: center;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
