@@ -1,0 +1,201 @@
+.full-contact {
+  display: flex;
+  align-items: center;
+  margin-top: 10%;
+  margin-left: 20%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.contact-form {
+  display: flex;
+  justify-content: end;
+  flex: 1;
+  margin-right: 30%;
+  border-radius: 12px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.form-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  background-color: transparent;
+  border: solid 1px $title-icons-light;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+}
+
+html.nuit .form-contact {
+  border: solid 1px $title-icons-night;
+}
+
+.flex-contact {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form-contact label {
+  position: relative;
+}
+
+.form-contact label input,
+.form-contact label textarea {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid $font-light;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+html.nuit .form-contact label input,
+html.nuit .form-contact label textarea {
+  border: 1px solid $bg-light-font-night;
+}
+
+.form-contact label input + span,
+.form-contact label textarea + span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: $font-light;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+html.nuit .form-contact label input + span,
+html.nuit .form-contact label textarea + span {
+  color: $title-icons-night;
+}
+
+.form-contact label input:placeholder-shown + span,
+.form-contact label textarea:placeholder-shown + span {
+  top: 15px;
+  font-size: 0.9em;
+}
+
+.form-contact label input:focus + span,
+.form-contact label input:valid + span,
+.form-contact label textarea:focus + span,
+.form-contact label textarea:valid + span {
+  top: 30px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.form-contact label input:valid + span,
+.form-contact label textarea:valid + span {
+  color: $title-icons-light;
+}
+
+html.nuit .form-contact label input:valid + span,
+html.nuit .form-contact label textarea:valid + span {
+  color: $title-icons-night;
+}
+
+.coord-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 350px;
+  flex: 1;
+  margin-right: 15%;
+}
+
+.ref-contact p {
+  display: flex;
+  flex-direction: row;
+  margin: 2%;
+  align-items: center;
+
+  .icon {
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .ref-contact p .icon {
+  color: $title-icons-night;
+}
+
+html.nuit .form-contact button {
+  color: $bg-night;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .full-contact {
+    margin-left: 10%;
+  }
+
+  .contact-form {
+    margin-right: 20%;
+  }
+
+  .coord-contact {
+    margin-right: 10%;
+  }
+}
+
+@media (max-width: 992px) {
+  .full-contact {
+    margin-left: 5%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-form {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .coord-contact {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .full-contact {
+    margin-left: 0;
+    margin-top: 5%;
+  }
+
+  .form-contact {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .coord-contact {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-contact {
+    padding: 10px;
+  }
+
+  .form-contact label input,
+  .form-contact label textarea {
+    padding: 8px;
+  }
+
+  .form-contact label input + span,
+  .form-contact label textarea + span {
+    top: 10px;
+    font-size: 0.8em;
+  }
+
+  .form-contact label input:focus + span,
+  .form-contact label textarea:focus + span,
+  .form-contact label input:valid + span,
+  .form-contact label textarea:valid + span {
+    top: 20px;
+    font-size: 0.6em;
+  }
+}

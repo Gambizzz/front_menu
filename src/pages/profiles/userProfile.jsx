@@ -130,7 +130,6 @@ const UserProfile = () => {
       </Helmet>
 
       <h1 className="title-pages"> {t('titleSpaceUser')} </h1>
-
       <div className='full-container'>
         <div className="button-card-container">
           <div className="button-card">
@@ -140,6 +139,7 @@ const UserProfile = () => {
           </div>
         </div>
         <div className='svg-container2'></div>
+        </div>
 
         <div className="res-us">
           <h2> {t('resaUser')} </h2>
@@ -178,7 +178,6 @@ const UserProfile = () => {
         </div>
 
         <ToastContainer />
-      </div>
     </>
   );
 };

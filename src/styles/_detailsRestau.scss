@@ -1,0 +1,298 @@
+/* CARD MENU + DETAILS */
+.name-restau {
+  color: $title-icons-light;
+}
+
+html.nuit .name-restau {
+  color: $title-icons-night;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+@media (max-width: 1200px) {
+  .details-container {
+    margin-top: 30%;
+  }
+}
+
+.menu-details {
+  width: 40%;
+
+  img {
+    border-radius: 20px;
+    border: 2px solid $title-icons-light;
+  }
+}
+
+html.nuit .menu-details {
+  img {
+    border: 2px solid $title-icons-night;
+  }
+}
+
+.card-details {
+  margin-top: 4%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.text-content {
+  width: 40%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.text-content:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card-content {
+  margin: 2%;
+
+  .name-restau {
+    margin-bottom: 2%;
+    text-align: center;
+  }
+
+  p {
+    margin-top: 2%;
+  }
+
+  button {
+    margin-top: 2%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .menu-details {
+    width: 60%;
+  }
+
+  .text-content {
+    width: 60%;
+  }
+}
+
+@media (max-width: 992px) {
+  .menu-details {
+    width: 80%;
+  }
+
+  .text-content {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-details {
+    width: 100%;
+  }
+
+  .text-content {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .menu-details {
+    width: 100%;
+  }
+
+  .text-content {
+    width: 100%;
+  }
+
+  .card-content {
+    margin: 5%;
+  }
+}
+/* CARD MENU + DETAILS */
+
+/* RESA + COMMENTS */
+.tabs {
+  margin-top: 8%;
+  display: flex;
+  align-items: center;
+}
+
+.ant-tabs-tab-btn {
+  color: $title-icons-light;
+}
+
+html.nuit .ant-tabs-tab-btn {
+  color: $title-icons-night;
+}
+
+
+.comment {
+  margin-top: 2%;
+}
+
+.comments-section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+
+  p {
+    color: $font-light;
+  }
+
+  h2 {
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .comments-section {
+  p {
+    color: $bg-light-font-night;
+  }
+
+  h2 {
+    color: $title-icons-night;
+  }
+}
+
+.form-comm {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8%;
+
+    h2 {
+      margin-bottom: 2%;
+      text-align: center;
+    }
+
+  textarea {
+    border-color: $font-light;
+    color: $title-icons-light;
+    background-color: $bg-light-font-night;
+  }
+
+  textarea::placeholder {
+    color: $font-light;
+    font-size: 80%;
+    font-style: italic;
+  }
+
+  button {
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .form-comm {
+  textarea {
+    border-color: $bg-light-font-night;
+    color: $title-icons-night;
+    background-color: $bg-night;
+  }
+
+  textarea::placeholder {
+    color: $bg-light-font-night;
+  }
+
+  button {
+    color: $title-icons-night;
+  }
+}
+
+:where(.css-dev-only-do-not-override-m4timi).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: $title-icons-light;
+}
+
+html.nuit :where(.css-dev-only-do-not-override-m4timi).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: $title-icons-night;
+}
+
+.resa-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4%;
+
+  label {
+    color: $font-light;
+    background-color: transparent;
+  }
+
+  .input-number {
+    border: 1px solid $title-icons-light;
+    background-color: $bg-light-font-night;
+    color: $title-icons-light;
+    margin-bottom: 2%;
+  }
+
+  .input-time {
+    border: 1px solid $title-icons-light;
+    border-radius: 8px;
+    height: 34px;
+    background-color: $bg-light-font-night;
+    margin-top: 2%;
+    margin-bottom: 10%;
+  }
+}
+
+html.nuit .resa-form {
+  label {
+    color: $bg-light-font-night;
+    background-color: transparent;
+  }
+
+  .input-number {
+    color: $title-icons-night;
+    border: 1px solid $title-icons-night;
+    background-color: $bg-night;
+  }
+
+  .input-time {
+    border: 1px solid $title-icons-night;
+    border-radius: 8px;
+    height: 34px;
+    background-color: $bg-night;
+  }
+}
+
+.btn-resa {
+
+  button {
+    border: 1px solid $title-icons-light;
+    padding: 2%;
+    cursor: pointer;
+    border-radius: 10px;
+    color: $title-icons-light;
+  }
+}
+
+html.nuit .btn-resa {
+  margin: 2%;
+
+  button {
+    border: 1px solid $title-icons-night;
+    padding: 2%;
+    cursor: pointer;
+    border-radius: 10px;
+    color: $bg-light-font-night;
+  }
+}
+
+.reservation-section {
+  p {
+    color: $font-light;
+  }
+}
+
+html.nuit .reservation-section {
+  p {
+    color: $bg-light-font-night;
+  }
+}
+/* RESA + COMMENTS */

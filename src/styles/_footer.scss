@@ -1,0 +1,167 @@
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15%;
+  overflow: hidden;
+}
+
+.animation-container {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+}
+
+.animation-wrapper {
+  display: flex;
+  width: calc(100% * 2);
+  height: 100%;
+  animation: moveAnimation 12s linear infinite;
+}
+
+.animation-element {
+  width: 150px;
+  height: 150px;
+  background-image: url('/images/food.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-2 {
+  width: 120px;
+  height: 110px;
+  background-image: url('/images/food2.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-3 {
+  width: 130px;
+  height: 130px;
+  background-image: url('/images/food3.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-4 {
+  width: 130px;
+  height: 130px;
+  background-image: url('/images/food4.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-5 {
+  width: 130px;
+  height: 130px;
+  background-image: url('/images/food5.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-6 {
+  width: 130px;
+  height: 130px;
+  background-image: url('/images/food6.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-7 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food7.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: -20px;
+}
+
+.animation-element-8 {
+  width: 100px;
+  height: 100px;
+  background-image: url('/images/food8.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-9 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food9.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-10 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food10.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-11 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food11.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.animation-element-12 {
+  width: 120px;
+  height: 120px;
+  background-image: url('/images/food12.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@keyframes moveAnimation {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.top-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-footer {
+  width: 15%;
+}
+
+.link-form-footer {
+  color: $title-icons-light;
+  font-weight: bold;
+}
+
+.pages-footer {
+  margin-top: 2%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.links-footer {
+  margin-top: 4%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.social-icons {
+  color: $title-icons-light;
+  padding: 0;
+  font-size: 1.5em;
+}

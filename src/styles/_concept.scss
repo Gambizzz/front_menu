@@ -1,0 +1,138 @@
+.concept-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 10%;
+}
+
+.card-concept {
+  width: 300px;
+  height: 200px;
+  perspective: 1000px;
+  margin: 10px;
+}
+
+.card-inner-concept {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.999s;
+}
+
+.card-concept:hover .card-inner-concept {
+  transform: rotateY(180deg);
+}
+
+.card-front-concept,
+.card-back-concept {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-front-concept {
+  background-color: $title-icons-light;
+  color: $bg-light-font-night;
+  display: flex;
+  align-items: center;
+  border: 10px solid $title-icons-light;
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 24px;
+  transform: rotateY(0deg);
+}
+
+.card-back-concept {
+  background-color: $font-light;
+  color: $bg-light-font-night;
+  display: flex;
+  align-items: center;
+  border: 10px solid $font-light;
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 24px;
+  transform: rotateY(180deg);
+
+  p {
+    text-align: center;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .concept-cards {
+    justify-content: space-between;
+  }
+
+  .card-concept {
+    width: 250px;
+    height: 175px;
+  }
+
+  .card-front-concept,
+  .card-back-concept {
+    border-width: 8px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .concept-cards {
+    justify-content: center;
+  }
+
+  .card-concept {
+    width: 220px;
+    height: 150px;
+  }
+
+  .card-front-concept,
+  .card-back-concept {
+    border-width: 6px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .concept-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-concept {
+    width: 200px;
+    height: 140px;
+  }
+
+  .card-front-concept,
+  .card-back-concept {
+    border-width: 5px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-concept {
+    width: 180px;
+    height: 120px;
+  }
+
+  .card-front-concept,
+  .card-back-concept {
+    border-width: 4px;
+    font-size: 14px;
+  }
+}
+
+html.nuit .card-front-concept {
+  background-color: $title-icons-night;
+  border-color: $title-icons-night;
+  color: $bg-night;
+  }
+  html.nuit .card-back-concept {
+  background-color: $bg-light-font-night;
+  border-color: $bg-light-font-night;
+  color: $bg-night;
+  }

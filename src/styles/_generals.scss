@@ -1,0 +1,26 @@
+.title-pages {
+  font-family: $title-font;
+  font-size: 40px;
+  color: $title-icons-light;
+  text-align: center;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.title-pages.night {
+  font-family: $title-font;
+  font-size: 40px;
+  color: $title-icons-night;
+}
+
+.page-header {
+  text-align: center;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+html.nuit .title-pages {
+  font-family: $title-font;
+  font-size: 40px;
+  color: $title-icons-night;
+  }
