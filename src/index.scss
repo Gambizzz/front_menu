@@ -1967,10 +1967,21 @@ html.nuit .btn-fav {
 
 .full-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /* Alignement en ligne par défaut pour les écrans plus larges */
   align-items: center;
   justify-content: center;
   gap: 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .full-container {
+    flex-direction: column;
+
+    .svg-container2 {
+      margin-top: -80%;
+      margin-left: 40px;
+    }
+  }
 }
 
 .svg-container2 {
